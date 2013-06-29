@@ -18,12 +18,18 @@
  *
  **/
 
-#include <QApplication>
+#ifndef TYPES_H
+#define TYPES_H
 
-int main(int argc, char *argv[])
+#include <net-snmp/net-snmp-includes.h>
+
+namespace Model
 {
-   QApplication app(argc, argv);
-
-   return app.exec();
+    typedef enum {
+        SNMPv1 = SNMP_VERSION_1,
+        SNMPv2 = SNMP_VERSION_2c,
+        SNMPv3 = SNMP_VERSION_3
+    } SNMPVersion;
 }
 
+#endif // TYPES_H

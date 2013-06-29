@@ -18,12 +18,22 @@
  *
  **/
 
-#include <QApplication>
+#ifndef SNMPEXCEPTION_H
+#define SNMPEXCEPTION_H
 
-int main(int argc, char *argv[])
+namespace Model
 {
-   QApplication app(argc, argv);
-
-   return app.exec();
+    class SNMPException
+    {
+    public:
+        SNMPException(const char *message = "SNMP Exception") : _message(message) {}
+        const char *message() const
+        {
+            return _message;
+        }
+    protected:
+        const char *_message;
+    };
 }
 
+#endif // SNMPEXCEPTION_H
