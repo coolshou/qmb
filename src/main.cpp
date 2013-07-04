@@ -18,12 +18,45 @@
  *
  **/
 
-#include <QApplication>
+/**
+ * @file main.cpp
+ * @brief Implementacion de funcion principal
+ * @author Juan Jose Salazar Garcia, jjslzgc@gmail.com
+ * @version 0.1.0
+ * @date Junio 2013
+ */
 
+#include <QApplication>
+#include "global.h"
+
+void setUpApplication(QApplication *app);
+
+/**
+ * @brief Implementa la funcion principal
+ * @param argc Numero de argumentos
+ * @param argv Argumentos de la linea de ordenes
+ * @return Codigo de finalizacion de ejecucion, 0 con exito, 1 con errores.
+ */
 int main(int argc, char *argv[])
 {
    QApplication app(argc, argv);
 
+   setUpApplication(&app);
+
    return app.exec();
 }
 
+/**
+ * @brief Establece las propiedades de la aplicacion
+ * @param app Puntero a instancia de QApplication de control de flujo de ejecucion.
+ */
+void setUpApplication(QApplication *app)
+{
+    if(!app)
+        return;
+
+    app -> setOrganizationName(ORGANIZATION_NAME);
+    app -> setOrganizationDomain(ORGANIZATION_DOMAIN);
+    app -> setApplicationName(APPLICATION_NAME);
+    app -> setApplicationVersion(APPLICATION_VERSION);
+}

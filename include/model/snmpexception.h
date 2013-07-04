@@ -18,21 +18,103 @@
  *
  **/
 
+/**
+ * @file snmpexception.h
+ * @brief Declaracion de clase SNMPException
+ * @author Juan Jose Salazar Garcia, jjslzgc@gmail.com
+ * @version 0.1.0
+ * @date Junio 2013
+ */
+
 #ifndef SNMPEXCEPTION_H
 #define SNMPEXCEPTION_H
 
+#include <string>
+#include "types.h"
+
 namespace Model
 {
+    /**
+     * @brief Clase SNMPException que implementa la notificacion de errores SNMP
+     */
     class SNMPException
     {
     public:
-        SNMPException(const char *message = "SNMP Exception") : _message(message) {}
-        const char *message() const
+        /**
+         * @brief Constructor de SNMPException
+         * @param message Mensaje descriptivo del error producido
+         */
+        SNMPException(const std::string& message = "SNMP : Error desconocido") : _message(message) {}
+
+        /**
+         * @brief Obtiene el mensaje de error
+         * @return Mensaje de error
+         */
+        const std::string& message() const
         {
             return _message;
         }
     protected:
-        const char *_message;
+        /**
+         * @brief Mensaje descriptivo del error producido
+         */
+        const std::string _message;
+    };
+
+    /**
+     * @brief Clase SNMPSessionException que implementa la notificacion de errores con sesiones SNMP
+     */
+    class SNMPSessionException : public SNMPException
+    {
+    public:
+        /**
+         * @brief Constructor de SNMPSessionException
+         * @param session Sesion SNMP erronea
+         * @param message Mensaje descriptivo del error producido
+         */
+        SNMPSessionException(const SNMPSession& session, const std::string& message = "SNMP : Error en sesion") : SNMPException(message), _session(session) {}
+
+        /**
+         * @brief Obtiene la sesion que ha producido el error
+         * @return Sesion SNMP erronea
+         */
+        const SNMPSession& session() const
+        {
+            return _session;
+        }
+    private:
+        /**
+         * @brief Sesion SNMP erronea
+         */
+        SNMPSession _session;
+    };
+
+    /**
+     * @brief Clase SNMPOIDException que implementa la notificacion de errores con OIDs
+     */
+    class SNMPOIDException : public SNMPException
+    {
+    public:
+        /**
+         * @brief Constructor de SNMPOIDException
+         * @param oid OID erroneo
+         * @param message Mensaje descriptivo del error producido
+         */
+        SNMPOIDException(const std::string& badOID, const std::string& message = "SNMP : Error en OID ") : SNMPException(message), _badOID(badOID) {}
+
+        /**
+         * @brief Obtiene el OID que ha producido el error
+         * @return OID erroneo
+         */
+        const std::string& badOID() const
+        {
+            return _badOID;
+        }
+    private:
+        /**
+         * @brief OID erroneo
+         */
+        std::string _badOID;
     };
 }
 
