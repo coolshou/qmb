@@ -98,58 +98,69 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="types_8h.html" title="Declaracion de tipos. ">types.h</a>&quot;</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="global_8h.html" title="Constantes globales. ">global.h</a>&quot;</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="snmpexception_8h.html" title="Declaracion de clase SNMPException. ">snmpexception.h</a>&quot;</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">namespace </span>Model</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{</div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="code" href="class_model_1_1_s_n_m_p_manager.html">   44</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_model_1_1_s_n_m_p_manager.html" title="Clase SNMPManager que implementa la funcionalidad del gestor SNMP. ">SNMPManager</a></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keyword">static</span> std::map&lt;std::string, void *&gt; *<a class="code" href="class_model_1_1_s_n_m_p_manager.html#a9e7b1f35bd6db743450816ca321bfc6f" title="Envia mensaje de peticion SNMP GET y recibe mensaje de respuesta. ">snmpget</a>(SNMPVersion version,</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                                                      <span class="keyword">const</span> std::string&amp; community,</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                                                      <span class="keyword">const</span> std::string&amp; agent,</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                                                      <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; oids) <span class="keywordflow">throw</span>(<a class="code" href="class_model_1_1_s_n_m_p_exception.html" title="Clase SNMPException que implementa la notificacion de errores SNMP. ">SNMPException</a>);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="snmpoid_8h.html" title="Declaracion de clase SNMPOID. ">snmpoid.h</a>&quot;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="snmpexception_8h.html" title="Declaracion de clase SNMPException. ">snmpexception.h</a>&quot;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">namespace </span>Model</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;{</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="code" href="class_model_1_1_s_n_m_p_manager.html">   45</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_model_1_1_s_n_m_p_manager.html" title="Clase SNMPManager que implementa la funcionalidad del gestor SNMP. ">SNMPManager</a></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_model_1_1_s_n_m_p_manager.html#ac1336cac2d8f3d975b0ff3c0379788fb" title="Envia mensaje de peticion SNMP GET y recibe mensaje de respuesta. ">snmpget</a>(SNMPVersion version,</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                            <span class="keyword">const</span> std::string&amp; community,</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                            <span class="keyword">const</span> std::string&amp; agent,</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                            std::vector&lt;SNMPOID *&gt;&amp; oids) <span class="keywordflow">throw</span>(<a class="code" href="class_model_1_1_s_n_m_p_exception.html" title="Clase SNMPException que implementa la notificacion de errores SNMP. ">SNMPException</a>);</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keyword">static</span> std::map&lt;std::string, void *&gt; *<a class="code" href="class_model_1_1_s_n_m_p_manager.html#a0184cb42eabf67c00f11c4b8134324f4" title="Envia mensaje de peticion SNMP GETNEXT y recibe mensaje de respuesta. ">snmpgetnext</a>(SNMPVersion version,</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                                                          <span class="keyword">const</span> std::string&amp; community,</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                                                          <span class="keyword">const</span> std::string&amp; agent,</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                                                          <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; oids) <span class="keywordflow">throw</span>(<a class="code" href="class_model_1_1_s_n_m_p_exception.html" title="Clase SNMPException que implementa la notificacion de errores SNMP. ">SNMPException</a>);</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keyword">static</span> std::map&lt;std::string, void *&gt; *<a class="code" href="class_model_1_1_s_n_m_p_manager.html#a55e6bab7bf8ac0b92cebcd8a4dd677ec" title="Envia mensaje de peticion SNMP GET BULK y recibe mensaje de respuesta. ">snmpgetbulk</a>(SNMPVersion version,</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                                                          <span class="keyword">const</span> std::string&amp; community,</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                                                          <span class="keyword">const</span> std::string&amp; agent,</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                                                          <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; oids,</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                                                          <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> nrepeaters = <a class="code" href="global_8h.html#a847b68e41991c6c4b4c4b0558d4583bf">DEFAULT_NON_REPEATERS</a>,</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                                                          <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> mrepetitions = <a class="code" href="global_8h.html#a8ab5602e7ab3d5f70b55794c0376252b">DEFAULT_MAX_REPETITIONS</a>) <span class="keywordflow">throw</span>(<a class="code" href="class_model_1_1_s_n_m_p_exception.html" title="Clase SNMPException que implementa la notificacion de errores SNMP. ">SNMPException</a>);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_model_1_1_s_n_m_p_manager.html#aec0df7d3ed923131af5331f579119f91" title="Envia mensaje de peticion SNMP SET y recibe mensaje de respuesta. ">snmpset</a>(SNMPVersion version, </div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                            <span class="keyword">const</span> std::string&amp; community,</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                            <span class="keyword">const</span> std::string&amp; agent,</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                            <span class="keyword">const</span> std::map&lt;std::string, SNMPDataTuple&gt;&amp; variables) <span class="keywordflow">throw</span>(<a class="code" href="class_model_1_1_s_n_m_p_exception.html" title="Clase SNMPException que implementa la notificacion de errores SNMP. ">SNMPException</a>);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> initSNMP();</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="keyword">static</span> SNMPSession *createSession(SNMPVersion version,</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                                          <span class="keyword">const</span> std::string&amp; community,</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                                          <span class="keyword">const</span> std::string&amp; agent) <span class="keywordflow">throw</span>(<a class="code" href="class_model_1_1_s_n_m_p_exception.html" title="Clase SNMPException que implementa la notificacion de errores SNMP. ">SNMPException</a>);</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <span class="keyword">static</span> SNMPPDU *createPDU(SNMPPDUType type,</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                                  <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; oids,</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                                  <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> nrepeaters = <a class="code" href="global_8h.html#a847b68e41991c6c4b4c4b0558d4583bf">DEFAULT_NON_REPEATERS</a>,</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                                  <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> mrepetitions = <a class="code" href="global_8h.html#a8ab5602e7ab3d5f70b55794c0376252b">DEFAULT_MAX_REPETITIONS</a>,</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                                  <span class="keyword">const</span> std::vector&lt;SNMPDataTuple&gt;&amp; values = std::vector&lt;SNMPDataTuple&gt;()) <span class="keywordflow">throw</span>(<a class="code" href="class_model_1_1_s_n_m_p_exception.html" title="Clase SNMPException que implementa la notificacion de errores SNMP. ">SNMPException</a>);</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        <span class="keyword">static</span> SNMPPDU *sendPDU(SNMPSession *session, SNMPPDU *pdu);</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> _initialized;</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    };</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;}</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="preprocessor">#endif // SNMPMANAGER_H</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_model_1_1_s_n_m_p_manager.html#abe6515d8d3f4cb54dc53335c8e12c17a" title="Envia mensaje de peticion SNMP GETNEXT y recibe mensaje de respuesta. ">snmpgetnext</a>(SNMPVersion version,</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                                <span class="keyword">const</span> std::string&amp; community,</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                                <span class="keyword">const</span> std::string&amp; agent,</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                                std::vector&lt;SNMPOID *&gt; &amp;oids) <span class="keywordflow">throw</span>(<a class="code" href="class_model_1_1_s_n_m_p_exception.html" title="Clase SNMPException que implementa la notificacion de errores SNMP. ">SNMPException</a>);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_model_1_1_s_n_m_p_manager.html#a75ed3c395a876aab435e82eefc6f63b9" title="Envia mensaje de peticion SNMP GET BULK y recibe mensaje de respuesta. ">snmpgetbulk</a>(SNMPVersion version,</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                                <span class="keyword">const</span> std::string&amp; community,</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                                <span class="keyword">const</span> std::string&amp; agent,</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                                std::vector&lt;SNMPOID *&gt;&amp; oids,</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                                <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> nrepeaters = <a class="code" href="global_8h.html#a847b68e41991c6c4b4c4b0558d4583bf">DEFAULT_NON_REPEATERS</a>,</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                                <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> mrepetitions = <a class="code" href="global_8h.html#a8ab5602e7ab3d5f70b55794c0376252b">DEFAULT_MAX_REPETITIONS</a>) <span class="keywordflow">throw</span>(<a class="code" href="class_model_1_1_s_n_m_p_exception.html" title="Clase SNMPException que implementa la notificacion de errores SNMP. ">SNMPException</a>);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_model_1_1_s_n_m_p_manager.html#a3fbb2252963bc9e6778869f9f996d8a1" title="Envia mensaje de peticion SNMP SET y recibe mensaje de respuesta. ">snmpset</a>(SNMPVersion version,</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                            <span class="keyword">const</span> std::string&amp; community,</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                            <span class="keyword">const</span> std::string&amp; agent,</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                            std::vector&lt;SNMPOID *&gt; &amp;oids) <span class="keywordflow">throw</span>(<a class="code" href="class_model_1_1_s_n_m_p_exception.html" title="Clase SNMPException que implementa la notificacion de errores SNMP. ">SNMPException</a>);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> initSNMP();</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <span class="keyword">static</span> SNMPSession *createSession(SNMPVersion version,</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                                          <span class="keyword">const</span> std::string&amp; community,</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                                          <span class="keyword">const</span> std::string&amp; agent) <span class="keywordflow">throw</span>(<a class="code" href="class_model_1_1_s_n_m_p_exception.html" title="Clase SNMPException que implementa la notificacion de errores SNMP. ">SNMPException</a>);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <span class="keyword">static</span> SNMPPDU *createPDU(SNMPPDUType type,</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                                  <span class="keyword">const</span> std::vector&lt;SNMPOID *&gt; &amp;oids,</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                                  <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> nrepeaters = <a class="code" href="global_8h.html#a847b68e41991c6c4b4c4b0558d4583bf">DEFAULT_NON_REPEATERS</a>,</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                                  <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> mrepetitions = <a class="code" href="global_8h.html#a8ab5602e7ab3d5f70b55794c0376252b">DEFAULT_MAX_REPETITIONS</a>) <span class="keywordflow">throw</span>(<a class="code" href="class_model_1_1_s_n_m_p_exception.html" title="Clase SNMPException que implementa la notificacion de errores SNMP. ">SNMPException</a>);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        <span class="keyword">static</span> SNMPPDU *sendPDU(SNMPSession *session, SNMPPDU *pdu) <span class="keywordflow">throw</span>(<a class="code" href="class_model_1_1_s_n_m_p_exception.html" title="Clase SNMPException que implementa la notificacion de errores SNMP. ">SNMPException</a>);</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> processResponse(SNMPPDU *pdu, std::vector&lt;SNMPOID *&gt;&amp; oids);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> snmpoperation(SNMPPDUType type,</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                                  SNMPVersion version,</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                                  <span class="keyword">const</span> std::string&amp; community,</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                                  <span class="keyword">const</span> std::string&amp; agent,</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                                  std::vector&lt;SNMPOID *&gt; &amp;oids,</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                                  <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> nrepeaters = <a class="code" href="global_8h.html#a847b68e41991c6c4b4c4b0558d4583bf">DEFAULT_NON_REPEATERS</a>,</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                                  <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> mrepetitions = <a class="code" href="global_8h.html#a8ab5602e7ab3d5f70b55794c0376252b">DEFAULT_MAX_REPETITIONS</a>);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> _initialized;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    };</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;}</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="preprocessor">#endif // SNMPMANAGER_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Viernes, 5 de Julio de 2013 00:50:53 para QMB por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Viernes, 5 de Julio de 2013 22:30:20 para QMB por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

@@ -34,6 +34,7 @@
 #include <map>
 #include "types.h"
 #include "global.h"
+#include "snmpoid.h"
 #include "snmpexception.h"
 
 namespace Model
@@ -51,12 +52,11 @@ namespace Model
          * @param agent Dirección IP o nombre de dominio del agente SNMP.
          * @param oids Lista de OIDs
          * @throw SNMPException
-         * @return Pares (OID, valor) resultado de la consulta.
          */
-        static std::map<std::string, void *> *snmpget(SNMPVersion version,
-                                                      const std::string& community,
-                                                      const std::string& agent,
-                                                      const std::vector<std::string>& oids) throw(SNMPException);
+        static void snmpget(SNMPVersion version,
+                            const std::string& community,
+                            const std::string& agent,
+                            std::vector<SNMPOID *>& oids) throw(SNMPException);
 
         /**
          * @brief Envia mensaje de peticion SNMP GETNEXT y recibe mensaje de respuesta.
@@ -65,12 +65,11 @@ namespace Model
          * @param agent Dirección IP o nombre de dominio del agente SNMP.
          * @param oids Lista de OIDs
          * @throw SNMPException
-         * @return Pares (OID, valor) resultado de la consulta.
          */
-        static std::map<std::string, void *> *snmpgetnext(SNMPVersion version,
-                                                          const std::string& community,
-                                                          const std::string& agent,
-                                                          const std::vector<std::string>& oids) throw(SNMPException);
+        static void snmpgetnext(SNMPVersion version,
+                                const std::string& community,
+                                const std::string& agent,
+                                std::vector<SNMPOID *> &oids) throw(SNMPException);
 
         /**
          * @brief Envia mensaje de peticion SNMP GET BULK y recibe mensaje de respuesta.
@@ -81,27 +80,26 @@ namespace Model
          * @param nrepeaters Numero de variables sobre las que no se iterara
          * @param mrepetitions Numero de iteraciones sobre cada variable
          * @throw SNMPException
-         * @return Pares (OID, valor) resultado de la consulta.
          */
-        static std::map<std::string, void *> *snmpgetbulk(SNMPVersion version,
-                                                          const std::string& community,
-                                                          const std::string& agent,
-                                                          const std::vector<std::string>& oids,
-                                                          unsigned short nrepeaters = DEFAULT_NON_REPEATERS,
-                                                          unsigned short mrepetitions = DEFAULT_MAX_REPETITIONS) throw(SNMPException);
+        static void snmpgetbulk(SNMPVersion version,
+                                const std::string& community,
+                                const std::string& agent,
+                                std::vector<SNMPOID *>& oids,
+                                unsigned short nrepeaters = DEFAULT_NON_REPEATERS,
+                                unsigned short mrepetitions = DEFAULT_MAX_REPETITIONS) throw(SNMPException);
 
         /**
          * @brief Envia mensaje de peticion SNMP SET y recibe mensaje de respuesta.
          * @param version Version de SNMP utilizada.
          * @param community Nombre de la comunidad.
-         * @param agent Dirección IP o nombre de dominio del agente SNMP.
-         * @param variables Pares (OID, valor)
+         * @param oids Lista de OIDs con su tipo y valor
          * @throw SNMPException
          */
-        static void snmpset(SNMPVersion version, 
+        static void snmpset(SNMPVersion version,
                             const std::string& community,
                             const std::string& agent,
-                            const std::map<std::string, SNMPDataTuple>& variables) throw(SNMPException);
+                            std::vector<SNMPOID *> &oids) throw(SNMPException);
+
     private:
         /**
          * @brief Inicializa la libreria SNMP
@@ -113,6 +111,7 @@ namespace Model
          * @param version Version de SNMP utilizada.
          * @param community Nombre de la comunidad.
          * @param agent Dirección IP o nombre de dominio del agente SNMP.
+         * @throw SNMPException
          * @return Sesion SNMP Agente-Gestor inicializada y abierta.
          */
         static SNMPSession *createSession(SNMPVersion version,
@@ -125,22 +124,48 @@ namespace Model
          * @param oids Lista de OIDs
          * @param nrepeaters Numero de variables sobre las que no se iterara
          * @param mrepetitions Numero de iteraciones sobre cada variable
-         * @param values Valores asignados a los OIDs
+         * @throw SNMPException
          * @return PDU SNMP
          */
         static SNMPPDU *createPDU(SNMPPDUType type,
-                                  const std::vector<std::string>& oids,
+                                  const std::vector<SNMPOID *> &oids,
                                   unsigned short nrepeaters = DEFAULT_NON_REPEATERS,
-                                  unsigned short mrepetitions = DEFAULT_MAX_REPETITIONS,
-                                  const std::vector<SNMPDataTuple>& values = std::vector<SNMPDataTuple>()) throw(SNMPException);
+                                  unsigned short mrepetitions = DEFAULT_MAX_REPETITIONS) throw(SNMPException);
 
         /**
          * @brief Envia la PDU SNMP de peticion a traves de una sesion Gestor-Agente
          * @param session Gestion SNMP Gestor-Agente
          * @param pdu PDU SNMP de peticion
+         * @throw SNMPException
          * @return PDU de respuesta
          */
-        static SNMPPDU *sendPDU(SNMPSession *session, SNMPPDU *pdu);
+        static SNMPPDU *sendPDU(SNMPSession *session, SNMPPDU *pdu) throw(SNMPException);
+
+        /**
+         * @brief Procesa la PDU SNMP de respuesta del agente
+         * @param pdu PDU SNMP de respuesta
+         * @param oids Lista de OIDs
+         */
+        static void processResponse(SNMPPDU *pdu, std::vector<SNMPOID *>& oids);
+
+        /**
+         * @brief Invoca una operacion SNMP de consulta (GET, GETNEXT, GET BULK) o modificacion (SET)
+         * @param type Tipo de PDU de peticion
+         * @param version Version de SNMP utilizada.
+         * @param community Nombre de la comunidad.
+         * @param agent Dirección IP o nombre de dominio del agente SNMP.
+         * @param oids Lista de OIDs
+         * @param nrepeaters Numero de variables sobre las que no se iterara
+         * @param mrepetitions Numero de iteraciones sobre cada variable
+         * @throw SNMPException
+         */
+        static void snmpoperation(SNMPPDUType type,
+                                  SNMPVersion version,
+                                  const std::string& community,
+                                  const std::string& agent,
+                                  std::vector<SNMPOID *> &oids,
+                                  unsigned short nrepeaters = DEFAULT_NON_REPEATERS,
+                                  unsigned short mrepetitions = DEFAULT_MAX_REPETITIONS);
 
         /**
          * @brief Especifica si la libreria SNMP ha sido inicializada

@@ -136,13 +136,25 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        std::string _badOID;</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    };</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;}</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="preprocessor">#endif // SNMPEXCEPTION_H</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
+<div class="line"><a name="l00123"></a><span class="lineno"><a class="code" href="class_model_1_1_s_n_m_p_packet_exception.html">  123</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_model_1_1_s_n_m_p_packet_exception.html" title="Clase SNMPPacketException que implementa la notificacion de errores en los mensajes SNMP...">SNMPPacketException</a> : <span class="keyword">public</span> <a class="code" href="class_model_1_1_s_n_m_p_exception.html" title="Clase SNMPException que implementa la notificacion de errores SNMP. ">SNMPException</a></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    {</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00131"></a><span class="lineno"><a class="code" href="class_model_1_1_s_n_m_p_packet_exception.html#ac261a17dc1b1dd146e67311c01f016e9">  131</a></span>&#160;        <a class="code" href="class_model_1_1_s_n_m_p_packet_exception.html#ac261a17dc1b1dd146e67311c01f016e9" title="Constructor de SNMPPacketException. ">SNMPPacketException</a>(<span class="keyword">const</span> std::string&amp; <a class="code" href="class_model_1_1_s_n_m_p_packet_exception.html#ac6e84f444fd91893331b6e4f7de380aa" title="Obtiene el error del mensaje SNMP. ">error</a>, <span class="keyword">const</span> std::string&amp; <a class="code" href="class_model_1_1_s_n_m_p_exception.html#ad71bf6b0212f2d7fcdc45784e4e59cf6" title="Obtiene el mensaje de error. ">message</a> = <span class="stringliteral">&quot;SNMP : Error en mensaje de respuesta&quot;</span>) : <a class="code" href="class_model_1_1_s_n_m_p_exception.html" title="Clase SNMPException que implementa la notificacion de errores SNMP. ">SNMPException</a>(<a class="code" href="class_model_1_1_s_n_m_p_exception.html#ad71bf6b0212f2d7fcdc45784e4e59cf6" title="Obtiene el mensaje de error. ">message</a>), _error(error) {}</div>
+<div class="line"><a name="l00136"></a><span class="lineno"><a class="code" href="class_model_1_1_s_n_m_p_packet_exception.html#ac6e84f444fd91893331b6e4f7de380aa">  136</a></span>&#160;        <span class="keyword">const</span> std::string&amp; <a class="code" href="class_model_1_1_s_n_m_p_packet_exception.html#ac6e84f444fd91893331b6e4f7de380aa" title="Obtiene el error del mensaje SNMP. ">error</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="keyword">        </span>{</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            <span class="keywordflow">return</span> _error;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        }</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        std::string _error;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    };</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;}</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="preprocessor">#endif // SNMPEXCEPTION_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Viernes, 5 de Julio de 2013 00:50:53 para QMB por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Viernes, 5 de Julio de 2013 22:30:20 para QMB por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

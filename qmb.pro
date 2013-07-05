@@ -14,10 +14,13 @@ INCLUDEPATH += . include/model include
 HEADERS += include/global.h \
            include/types.h \
            include/model/snmpexception.h \
-           include/model/snmpmanager.h
-SOURCES += src/main.cpp src/model/snmpmanager.cpp
+           include/model/snmpmanager.h \
+    include/model/snmpoid.h
+SOURCES += src/main.cpp src/model/snmpmanager.cpp \
+    src/model/snmpoid.cpp
 
 LIBS += -lnetsnmp
 
 OTHER_FILES += \
-    README
+    README \
+    LICENSE

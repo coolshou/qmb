@@ -102,26 +102,23 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Métodos públicos estáticos</h2></td></tr>
-<tr class="memitem:a9e7b1f35bd6db743450816ca321bfc6f"><td class="memItemLeft" align="right" valign="top">static std::map&lt; std::string, <br class="typebreak"/>
-void * &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_1_1_s_n_m_p_manager.html#a9e7b1f35bd6db743450816ca321bfc6f">snmpget</a> (SNMPVersion version, const std::string &amp;community, const std::string &amp;agent, const std::vector&lt; std::string &gt; &amp;oids)  throw (SNMPException)</td></tr>
-<tr class="memdesc:a9e7b1f35bd6db743450816ca321bfc6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envia mensaje de peticion SNMP GET y recibe mensaje de respuesta.  <a href="#a9e7b1f35bd6db743450816ca321bfc6f">Más...</a><br/></td></tr>
-<tr class="separator:a9e7b1f35bd6db743450816ca321bfc6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0184cb42eabf67c00f11c4b8134324f4"><td class="memItemLeft" align="right" valign="top">static std::map&lt; std::string, <br class="typebreak"/>
-void * &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_1_1_s_n_m_p_manager.html#a0184cb42eabf67c00f11c4b8134324f4">snmpgetnext</a> (SNMPVersion version, const std::string &amp;community, const std::string &amp;agent, const std::vector&lt; std::string &gt; &amp;oids)  throw (SNMPException)</td></tr>
-<tr class="memdesc:a0184cb42eabf67c00f11c4b8134324f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envia mensaje de peticion SNMP GETNEXT y recibe mensaje de respuesta.  <a href="#a0184cb42eabf67c00f11c4b8134324f4">Más...</a><br/></td></tr>
-<tr class="separator:a0184cb42eabf67c00f11c4b8134324f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a55e6bab7bf8ac0b92cebcd8a4dd677ec"><td class="memItemLeft" align="right" valign="top">static std::map&lt; std::string, <br class="typebreak"/>
-void * &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_1_1_s_n_m_p_manager.html#a55e6bab7bf8ac0b92cebcd8a4dd677ec">snmpgetbulk</a> (SNMPVersion version, const std::string &amp;community, const std::string &amp;agent, const std::vector&lt; std::string &gt; &amp;oids, unsigned short nrepeaters=<a class="el" href="global_8h.html#a847b68e41991c6c4b4c4b0558d4583bf">DEFAULT_NON_REPEATERS</a>, unsigned short mrepetitions=<a class="el" href="global_8h.html#a8ab5602e7ab3d5f70b55794c0376252b">DEFAULT_MAX_REPETITIONS</a>)  throw (SNMPException)</td></tr>
-<tr class="memdesc:a55e6bab7bf8ac0b92cebcd8a4dd677ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envia mensaje de peticion SNMP GET BULK y recibe mensaje de respuesta.  <a href="#a55e6bab7bf8ac0b92cebcd8a4dd677ec">Más...</a><br/></td></tr>
-<tr class="separator:a55e6bab7bf8ac0b92cebcd8a4dd677ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aec0df7d3ed923131af5331f579119f91"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_1_1_s_n_m_p_manager.html#aec0df7d3ed923131af5331f579119f91">snmpset</a> (SNMPVersion version, const std::string &amp;community, const std::string &amp;agent, const std::map&lt; std::string, <a class="el" href="struct_model_1_1_s_n_m_p_data_tuple_struct.html">SNMPDataTuple</a> &gt; &amp;variables)  throw (SNMPException)</td></tr>
-<tr class="memdesc:aec0df7d3ed923131af5331f579119f91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envia mensaje de peticion SNMP SET y recibe mensaje de respuesta.  <a href="#aec0df7d3ed923131af5331f579119f91">Más...</a><br/></td></tr>
-<tr class="separator:aec0df7d3ed923131af5331f579119f91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1336cac2d8f3d975b0ff3c0379788fb"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_1_1_s_n_m_p_manager.html#ac1336cac2d8f3d975b0ff3c0379788fb">snmpget</a> (SNMPVersion version, const std::string &amp;community, const std::string &amp;agent, std::vector&lt; <a class="el" href="class_model_1_1_s_n_m_p_o_i_d.html">SNMPOID</a> * &gt; &amp;oids)  throw (SNMPException)</td></tr>
+<tr class="memdesc:ac1336cac2d8f3d975b0ff3c0379788fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envia mensaje de peticion SNMP GET y recibe mensaje de respuesta.  <a href="#ac1336cac2d8f3d975b0ff3c0379788fb">Más...</a><br/></td></tr>
+<tr class="separator:ac1336cac2d8f3d975b0ff3c0379788fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe6515d8d3f4cb54dc53335c8e12c17a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_1_1_s_n_m_p_manager.html#abe6515d8d3f4cb54dc53335c8e12c17a">snmpgetnext</a> (SNMPVersion version, const std::string &amp;community, const std::string &amp;agent, std::vector&lt; <a class="el" href="class_model_1_1_s_n_m_p_o_i_d.html">SNMPOID</a> * &gt; &amp;oids)  throw (SNMPException)</td></tr>
+<tr class="memdesc:abe6515d8d3f4cb54dc53335c8e12c17a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envia mensaje de peticion SNMP GETNEXT y recibe mensaje de respuesta.  <a href="#abe6515d8d3f4cb54dc53335c8e12c17a">Más...</a><br/></td></tr>
+<tr class="separator:abe6515d8d3f4cb54dc53335c8e12c17a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75ed3c395a876aab435e82eefc6f63b9"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_1_1_s_n_m_p_manager.html#a75ed3c395a876aab435e82eefc6f63b9">snmpgetbulk</a> (SNMPVersion version, const std::string &amp;community, const std::string &amp;agent, std::vector&lt; <a class="el" href="class_model_1_1_s_n_m_p_o_i_d.html">SNMPOID</a> * &gt; &amp;oids, unsigned short nrepeaters=<a class="el" href="global_8h.html#a847b68e41991c6c4b4c4b0558d4583bf">DEFAULT_NON_REPEATERS</a>, unsigned short mrepetitions=<a class="el" href="global_8h.html#a8ab5602e7ab3d5f70b55794c0376252b">DEFAULT_MAX_REPETITIONS</a>)  throw (SNMPException)</td></tr>
+<tr class="memdesc:a75ed3c395a876aab435e82eefc6f63b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envia mensaje de peticion SNMP GET BULK y recibe mensaje de respuesta.  <a href="#a75ed3c395a876aab435e82eefc6f63b9">Más...</a><br/></td></tr>
+<tr class="separator:a75ed3c395a876aab435e82eefc6f63b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3fbb2252963bc9e6778869f9f996d8a1"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_1_1_s_n_m_p_manager.html#a3fbb2252963bc9e6778869f9f996d8a1">snmpset</a> (SNMPVersion version, const std::string &amp;community, const std::string &amp;agent, std::vector&lt; <a class="el" href="class_model_1_1_s_n_m_p_o_i_d.html">SNMPOID</a> * &gt; &amp;oids)  throw (SNMPException)</td></tr>
+<tr class="memdesc:a3fbb2252963bc9e6778869f9f996d8a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envia mensaje de peticion SNMP SET y recibe mensaje de respuesta.  <a href="#a3fbb2252963bc9e6778869f9f996d8a1">Más...</a><br/></td></tr>
+<tr class="separator:a3fbb2252963bc9e6778869f9f996d8a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
 <div class="textblock"><p>Clase <a class="el" href="class_model_1_1_s_n_m_p_manager.html" title="Clase SNMPManager que implementa la funcionalidad del gestor SNMP. ">SNMPManager</a> que implementa la funcionalidad del gestor SNMP. </p>
 </div><h2 class="groupheader">Documentación de las funciones miembro</h2>
-<a class="anchor" id="a9e7b1f35bd6db743450816ca321bfc6f"></a>
+<a class="anchor" id="ac1336cac2d8f3d975b0ff3c0379788fb"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -129,7 +126,7 @@ void * &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::map&lt; std::string, void * &gt; * Model::SNMPManager::snmpget </td>
+          <td class="memname">void Model::SNMPManager::snmpget </td>
           <td>(</td>
           <td class="paramtype">SNMPVersion&#160;</td>
           <td class="paramname"><em>version</em>, </td>
@@ -149,7 +146,7 @@ void * &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="class_model_1_1_s_n_m_p_o_i_d.html">SNMPOID</a> * &gt; &amp;&#160;</td>
           <td class="paramname"><em>oids</em>&#160;</td>
         </tr>
         <tr>
@@ -187,11 +184,10 @@ void * &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Devuelve</dt><dd>Pares (OID, valor) resultado de la consulta. </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="a55e6bab7bf8ac0b92cebcd8a4dd677ec"></a>
+<a class="anchor" id="a75ed3c395a876aab435e82eefc6f63b9"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -199,7 +195,7 @@ void * &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::map&lt; std::string, void * &gt; * Model::SNMPManager::snmpgetbulk </td>
+          <td class="memname">void Model::SNMPManager::snmpgetbulk </td>
           <td>(</td>
           <td class="paramtype">SNMPVersion&#160;</td>
           <td class="paramname"><em>version</em>, </td>
@@ -219,7 +215,7 @@ void * &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="class_model_1_1_s_n_m_p_o_i_d.html">SNMPOID</a> * &gt; &amp;&#160;</td>
           <td class="paramname"><em>oids</em>, </td>
         </tr>
         <tr>
@@ -271,11 +267,10 @@ void * &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Devuelve</dt><dd>Pares (OID, valor) resultado de la consulta. </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="a0184cb42eabf67c00f11c4b8134324f4"></a>
+<a class="anchor" id="abe6515d8d3f4cb54dc53335c8e12c17a"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -283,7 +278,7 @@ void * &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::map&lt; std::string, void * &gt; * Model::SNMPManager::snmpgetnext </td>
+          <td class="memname">void Model::SNMPManager::snmpgetnext </td>
           <td>(</td>
           <td class="paramtype">SNMPVersion&#160;</td>
           <td class="paramname"><em>version</em>, </td>
@@ -303,7 +298,7 @@ void * &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="class_model_1_1_s_n_m_p_o_i_d.html">SNMPOID</a> * &gt; &amp;&#160;</td>
           <td class="paramname"><em>oids</em>&#160;</td>
         </tr>
         <tr>
@@ -341,11 +336,10 @@ void * &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Devuelve</dt><dd>Pares (OID, valor) resultado de la consulta. </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="aec0df7d3ed923131af5331f579119f91"></a>
+<a class="anchor" id="a3fbb2252963bc9e6778869f9f996d8a1"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -373,8 +367,8 @@ void * &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::map&lt; std::string, <a class="el" href="struct_model_1_1_s_n_m_p_data_tuple_struct.html">SNMPDataTuple</a> &gt; &amp;&#160;</td>
-          <td class="paramname"><em>variables</em>&#160;</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="class_model_1_1_s_n_m_p_o_i_d.html">SNMPOID</a> * &gt; &amp;&#160;</td>
+          <td class="paramname"><em>oids</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -400,8 +394,22 @@ void * &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
   <table class="params">
     <tr><td class="paramname">version</td><td>Version de SNMP utilizada. </td></tr>
     <tr><td class="paramname">community</td><td>Nombre de la comunidad. </td></tr>
+    <tr><td class="paramname">oids</td><td>Lista de OIDs con su tipo y valor </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Excepciones</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="class_model_1_1_s_n_m_p_exception.html" title="Clase SNMPException que implementa la notificacion de errores SNMP. ">SNMPException</a></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">version</td><td>Version de SNMP utilizada. </td></tr>
+    <tr><td class="paramname">community</td><td>Nombre de la comunidad. </td></tr>
     <tr><td class="paramname">agent</td><td>Dirección IP o nombre de dominio del agente SNMP. </td></tr>
-    <tr><td class="paramname">variables</td><td>Pares (OID, valor) </td></tr>
+    <tr><td class="paramname">oids</td><td>Lista de OIDs con su tipo y valor </td></tr>
   </table>
   </dd>
 </dl>
@@ -421,7 +429,7 @@ void * &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Viernes, 5 de Julio de 2013 00:50:53 para QMB por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Viernes, 5 de Julio de 2013 22:30:20 para QMB por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

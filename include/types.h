@@ -29,6 +29,7 @@
 #ifndef TYPES_H
 #define TYPES_H
 
+#include <net-snmp/net-snmp-config.h>
 #include <net-snmp/net-snmp-includes.h>
 
 namespace Model
@@ -72,14 +73,6 @@ namespace Model
     } SNMPDataType;
 
     /**
-     * @brief Tupla de datos (Tipo, Valor)
-     */
-    typedef struct SNMPDataTupleStruct {
-        SNMPDataType type;                      /**< Tipo de dato */
-        void *value;                            /**< Valor del dato */
-    } SNMPDataTuple;
-
-    /**
      * @brief Sesion SNMP Gestor-Agente
      */
     typedef netsnmp_session SNMPSession;
@@ -90,9 +83,9 @@ namespace Model
     typedef struct snmp_pdu SNMPPDU;
 
     /**
-     * @brief OID SNMP
+     * @brief Lista de variables de PDU SNMP
      */
-    typedef oid SNMPOID;
+    typedef netsnmp_variable_list SNMPVariableList;
 }
 
 #endif // TYPES_H

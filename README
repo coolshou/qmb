@@ -4,5 +4,10 @@
 
     - Descripcion
 
-    QMB es un navegador para la MIB (Management Information Base) de agentes
-    SNMP (Simple Network Management Protocol) version 1 y 2.
+    QMB es un navegador para la MIB (Management Information Base) de
+    agentes SNMP (Simple Network Management Protocol) version 1 y 2.
+
+    - Licencia
+
+    QMB tiene licencia publica general de GNU version 3, para mas
+    detalles leer el fichero LICENSE.

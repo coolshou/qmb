@@ -86,7 +86,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Clases</a> &#124;
 <a href="#typedef-members">'typedefs'</a> &#124;
 <a href="#enum-members">Enumeraciones</a>  </div>
   <div class="headertitle">
@@ -96,16 +95,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 
 <p>Declaracion de tipos.  
 <a href="#details">Más...</a></p>
-<div class="textblock"><code>#include &lt;net-snmp/net-snmp-includes.h&gt;</code><br/>
+<div class="textblock"><code>#include &lt;net-snmp/net-snmp-config.h&gt;</code><br/>
+<code>#include &lt;net-snmp/net-snmp-includes.h&gt;</code><br/>
 </div>
 <p><a href="types_8h_source.html">Ir al código fuente de este archivo.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Clases</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_model_1_1_s_n_m_p_data_tuple_struct.html">Model::SNMPDataTupleStruct</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tupla de datos (Tipo, Valor)  <a href="struct_model_1_1_s_n_m_p_data_tuple_struct.html#details">Más...</a><br/></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 'typedefs'</h2></td></tr>
 <tr class="memitem:ac721971dc3b497f15c18dbcc4e059ddb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac721971dc3b497f15c18dbcc4e059ddb"></a>
@@ -121,11 +115,6 @@ typedef enum <br class="typebreak"/>
 Model::SNMPDataTypeEnum&#160;</td><td class="memItemRight" valign="bottom"><b>Model::SNMPDataType</b></td></tr>
 <tr class="memdesc:a64bf45b3b96bd2eaf02c6583cb1139bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tipo de dato SNMP. <br/></td></tr>
 <tr class="separator:a64bf45b3b96bd2eaf02c6583cb1139bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a77fcad999678b6b902556684f13214d1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a77fcad999678b6b902556684f13214d1"></a>
-typedef struct <br class="typebreak"/>
-<a class="el" href="struct_model_1_1_s_n_m_p_data_tuple_struct.html">Model::SNMPDataTupleStruct</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Model::SNMPDataTuple</b></td></tr>
-<tr class="memdesc:a77fcad999678b6b902556684f13214d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tupla de datos (Tipo, Valor) <br/></td></tr>
-<tr class="separator:a77fcad999678b6b902556684f13214d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0e0f271b10ffa425c8941c3369ea8918"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0e0f271b10ffa425c8941c3369ea8918"></a>
 typedef netsnmp_session&#160;</td><td class="memItemRight" valign="bottom"><b>Model::SNMPSession</b></td></tr>
 <tr class="memdesc:a0e0f271b10ffa425c8941c3369ea8918"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sesion SNMP Gestor-Agente. <br/></td></tr>
@@ -134,10 +123,10 @@ typedef netsnmp_session&#160;</td><td class="memItemRight" valign="bottom"><b>Mo
 typedef struct snmp_pdu&#160;</td><td class="memItemRight" valign="bottom"><b>Model::SNMPPDU</b></td></tr>
 <tr class="memdesc:af0eb4a99d157d3d5f687471ed3d5f0eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">PDU SNMP Peticion/Respuesta. <br/></td></tr>
 <tr class="separator:af0eb4a99d157d3d5f687471ed3d5f0eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1a9f20a5702d4c34b8482d85bf455d2b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1a9f20a5702d4c34b8482d85bf455d2b"></a>
-typedef oid&#160;</td><td class="memItemRight" valign="bottom"><b>Model::SNMPOID</b></td></tr>
-<tr class="memdesc:a1a9f20a5702d4c34b8482d85bf455d2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">OID SNMP. <br/></td></tr>
-<tr class="separator:a1a9f20a5702d4c34b8482d85bf455d2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf50e8f8def59663fa585014f2ec0afa"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaf50e8f8def59663fa585014f2ec0afa"></a>
+typedef netsnmp_variable_list&#160;</td><td class="memItemRight" valign="bottom"><b>Model::SNMPVariableList</b></td></tr>
+<tr class="memdesc:aaf50e8f8def59663fa585014f2ec0afa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lista de variables de PDU SNMP. <br/></td></tr>
+<tr class="separator:aaf50e8f8def59663fa585014f2ec0afa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumeraciones</h2></td></tr>
@@ -190,7 +179,7 @@ Enumeraciones</h2></td></tr>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Viernes, 5 de Julio de 2013 00:50:53 para QMB por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Viernes, 5 de Julio de 2013 22:30:20 para QMB por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

@@ -116,6 +116,33 @@ namespace Model
          */
         std::string _badOID;
     };
+
+    /**
+     * @brief Clase SNMPPacketException que implementa la notificacion de errores en los mensajes SNMP
+     */
+    class SNMPPacketException : public SNMPException
+    {
+    public:
+        /**
+         * @brief Constructor de SNMPPacketException
+         * @param error Error del mensaje SNMP
+         * @param message Mensaje descriptivo del error producido
+         */
+        SNMPPacketException(const std::string& error, const std::string& message = "SNMP : Error en mensaje de respuesta") : SNMPException(message), _error(error) {}
+        /**
+         * @brief Obtiene el error del mensaje SNMP
+         * @return Error del mensaje SNMP
+         */
+        const std::string& error() const
+        {
+            return _error;
+        }
+    private:
+        /**
+         * @brief Error del mensaje SNMP
+         */
+        std::string _error;
+    };
 }
 
 #endif // SNMPEXCEPTION_H
