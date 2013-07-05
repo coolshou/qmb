@@ -18,3 +18,6 @@ HEADERS += include/global.h \
 SOURCES += src/main.cpp src/model/snmpmanager.cpp
 
 LIBS += -lnetsnmp
+
+OTHER_FILES += \
+    README
