@@ -39,7 +39,22 @@ Model::SNMPOID::SNMPOID(const std::string& strOID, SNMPDataType type, void *valu
     _parseOID = new oid[MAX_OID_LEN];
     _parseOIDLength = MAX_OID_LEN;
 
-    parse(); // Parseamos el OID para generar su notacion numerica
+    parseOIDtoNumeric(); // Parseamos el OID para generar su notacion numerica
+}
+
+/**
+ * @brief Constructor de SNMPOID
+ * @param parseOID OID en notacion numerica
+ * @param parseOIDLength Longitud del OID en notacion numerica
+ * @param type Tipo de dato
+ * @param value Valor del dato
+ */
+Model::SNMPOID::SNMPOID(oid  *parseOID, size_t parseOIDLength, SNMPDataType type, void *value)
+    : _parseOID(parseOID), _parseOIDLength(parseOIDLength), _type(type), _value(value)
+{
+    _strOID = std::string();
+
+    parseOIDtoTextual(); // Parseamos el OID para generar su notacion textual
 }
 
 /**
@@ -70,7 +85,7 @@ void Model::SNMPOID::setStrOID(const std::string& strOID) throw(SNMPOIDException
 {
     _strOID = strOID;
 
-    parse();
+    parseOIDtoNumeric();
 }
 
 /**
@@ -130,8 +145,24 @@ void Model::SNMPOID::setValue(void *value)
     _value = value;
 }
 
-void Model::SNMPOID::parse() throw(SNMPOIDException)
+/**
+ * @brief Parsea el OID en notacion textual a notacion numerica
+ * @throw SNMPOIDException
+ */
+void Model::SNMPOID::parseOIDtoNumeric() throw(SNMPOIDException)
 {
-    //if(!snmp_parse_oid(_strOID.c_str(), _parseOID, &_parseOIDLength))
-    //    throw SNMPOIDException(_strOID ,"Error en la creacion de la PDU. OID mal formado.");
+    if(!snmp_parse_oid(_strOID.c_str(), _parseOID, &_parseOIDLength))
+        throw SNMPOIDException(_strOID ,"Error en la creacion de la PDU. OID mal formado.");
+}
+
+/**
+ * @brief Parsea el OID en notacion numerica a notacion textual
+ */
+void Model::SNMPOID::parseOIDtoTextual()
+{
+    for(int k = 0; k < (int) _parseOIDLength; k++) {
+        _strOID += (char) _parseOID[k];
+        if(k != ((int)_parseOIDLength - 1))
+            _strOID += ".";
+    }
 }

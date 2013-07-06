@@ -3,7 +3,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.4"/>
 <title>QMB: Referencia de la Clase Model::SNMPManager</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -32,7 +31,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Generado por Doxygen 1.8.4 -->
+<!-- Generado por Doxygen 1.8.1.2 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 </script>
@@ -89,35 +88,328 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="header">
   <div class="summary">
 <a href="#pub-static-methods">Métodos públicos estáticos</a> &#124;
+<a href="#pri-static-methods">Métodos privados estáticos</a> &#124;
+<a href="#pri-static-attribs">Atributos privados estáticos</a> &#124;
 <a href="class_model_1_1_s_n_m_p_manager-members.html">Lista de todos los miembros</a>  </div>
   <div class="headertitle">
 <div class="title">Referencia de la Clase Model::SNMPManager</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Clase <a class="el" href="class_model_1_1_s_n_m_p_manager.html" title="Clase SNMPManager que implementa la funcionalidad del gestor SNMP. ">SNMPManager</a> que implementa la funcionalidad del gestor SNMP.  
+<p>Clase <a class="el" href="class_model_1_1_s_n_m_p_manager.html" title="Clase SNMPManager que implementa la funcionalidad del gestor SNMP.">SNMPManager</a> que implementa la funcionalidad del gestor SNMP.  
  <a href="class_model_1_1_s_n_m_p_manager.html#details">Más...</a></p>
 
 <p><code>#include &lt;<a class="el" href="snmpmanager_8h_source.html">snmpmanager.h</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+<tr class="heading"><td colspan="2"><h2><a name="pub-static-methods"></a>
 Métodos públicos estáticos</h2></td></tr>
 <tr class="memitem:ac1336cac2d8f3d975b0ff3c0379788fb"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_1_1_s_n_m_p_manager.html#ac1336cac2d8f3d975b0ff3c0379788fb">snmpget</a> (SNMPVersion version, const std::string &amp;community, const std::string &amp;agent, std::vector&lt; <a class="el" href="class_model_1_1_s_n_m_p_o_i_d.html">SNMPOID</a> * &gt; &amp;oids)  throw (SNMPException)</td></tr>
-<tr class="memdesc:ac1336cac2d8f3d975b0ff3c0379788fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envia mensaje de peticion SNMP GET y recibe mensaje de respuesta.  <a href="#ac1336cac2d8f3d975b0ff3c0379788fb">Más...</a><br/></td></tr>
-<tr class="separator:ac1336cac2d8f3d975b0ff3c0379788fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:ac1336cac2d8f3d975b0ff3c0379788fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envia mensaje de peticion SNMP GET y recibe mensaje de respuesta.  <a href="#ac1336cac2d8f3d975b0ff3c0379788fb"></a><br/></td></tr>
 <tr class="memitem:abe6515d8d3f4cb54dc53335c8e12c17a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_1_1_s_n_m_p_manager.html#abe6515d8d3f4cb54dc53335c8e12c17a">snmpgetnext</a> (SNMPVersion version, const std::string &amp;community, const std::string &amp;agent, std::vector&lt; <a class="el" href="class_model_1_1_s_n_m_p_o_i_d.html">SNMPOID</a> * &gt; &amp;oids)  throw (SNMPException)</td></tr>
-<tr class="memdesc:abe6515d8d3f4cb54dc53335c8e12c17a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envia mensaje de peticion SNMP GETNEXT y recibe mensaje de respuesta.  <a href="#abe6515d8d3f4cb54dc53335c8e12c17a">Más...</a><br/></td></tr>
-<tr class="separator:abe6515d8d3f4cb54dc53335c8e12c17a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:abe6515d8d3f4cb54dc53335c8e12c17a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envia mensaje de peticion SNMP GETNEXT y recibe mensaje de respuesta.  <a href="#abe6515d8d3f4cb54dc53335c8e12c17a"></a><br/></td></tr>
 <tr class="memitem:a75ed3c395a876aab435e82eefc6f63b9"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_1_1_s_n_m_p_manager.html#a75ed3c395a876aab435e82eefc6f63b9">snmpgetbulk</a> (SNMPVersion version, const std::string &amp;community, const std::string &amp;agent, std::vector&lt; <a class="el" href="class_model_1_1_s_n_m_p_o_i_d.html">SNMPOID</a> * &gt; &amp;oids, unsigned short nrepeaters=<a class="el" href="global_8h.html#a847b68e41991c6c4b4c4b0558d4583bf">DEFAULT_NON_REPEATERS</a>, unsigned short mrepetitions=<a class="el" href="global_8h.html#a8ab5602e7ab3d5f70b55794c0376252b">DEFAULT_MAX_REPETITIONS</a>)  throw (SNMPException)</td></tr>
-<tr class="memdesc:a75ed3c395a876aab435e82eefc6f63b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envia mensaje de peticion SNMP GET BULK y recibe mensaje de respuesta.  <a href="#a75ed3c395a876aab435e82eefc6f63b9">Más...</a><br/></td></tr>
-<tr class="separator:a75ed3c395a876aab435e82eefc6f63b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:a75ed3c395a876aab435e82eefc6f63b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envia mensaje de peticion SNMP GET BULK y recibe mensaje de respuesta.  <a href="#a75ed3c395a876aab435e82eefc6f63b9"></a><br/></td></tr>
 <tr class="memitem:a3fbb2252963bc9e6778869f9f996d8a1"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_1_1_s_n_m_p_manager.html#a3fbb2252963bc9e6778869f9f996d8a1">snmpset</a> (SNMPVersion version, const std::string &amp;community, const std::string &amp;agent, std::vector&lt; <a class="el" href="class_model_1_1_s_n_m_p_o_i_d.html">SNMPOID</a> * &gt; &amp;oids)  throw (SNMPException)</td></tr>
-<tr class="memdesc:a3fbb2252963bc9e6778869f9f996d8a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envia mensaje de peticion SNMP SET y recibe mensaje de respuesta.  <a href="#a3fbb2252963bc9e6778869f9f996d8a1">Más...</a><br/></td></tr>
-<tr class="separator:a3fbb2252963bc9e6778869f9f996d8a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:a3fbb2252963bc9e6778869f9f996d8a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envia mensaje de peticion SNMP SET y recibe mensaje de respuesta.  <a href="#a3fbb2252963bc9e6778869f9f996d8a1"></a><br/></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="pri-static-methods"></a>
+Métodos privados estáticos</h2></td></tr>
+<tr class="memitem:ae23c544cd8ba2199c1808740b2295125"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae23c544cd8ba2199c1808740b2295125"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_1_1_s_n_m_p_manager.html#ae23c544cd8ba2199c1808740b2295125">initSNMP</a> ()</td></tr>
+<tr class="memdesc:ae23c544cd8ba2199c1808740b2295125"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicializa la libreria SNMP. <br/></td></tr>
+<tr class="memitem:ae9c6237f8fe6b31bc73dd808a8acef78"><td class="memItemLeft" align="right" valign="top">static SNMPSession *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_1_1_s_n_m_p_manager.html#ae9c6237f8fe6b31bc73dd808a8acef78">createSession</a> (SNMPVersion version, const std::string &amp;community, const std::string &amp;agent)  throw (SNMPException)</td></tr>
+<tr class="memdesc:ae9c6237f8fe6b31bc73dd808a8acef78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crea, inicializa y abre una session SNMP Agente-Gestor.  <a href="#ae9c6237f8fe6b31bc73dd808a8acef78"></a><br/></td></tr>
+<tr class="memitem:adc47a544a1a1f4bf21819f8e4738ad60"><td class="memItemLeft" align="right" valign="top">static SNMPPDU *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_1_1_s_n_m_p_manager.html#adc47a544a1a1f4bf21819f8e4738ad60">createPDU</a> (SNMPPDUType type, const std::vector&lt; <a class="el" href="class_model_1_1_s_n_m_p_o_i_d.html">SNMPOID</a> * &gt; &amp;oids, unsigned short nrepeaters=<a class="el" href="global_8h.html#a847b68e41991c6c4b4c4b0558d4583bf">DEFAULT_NON_REPEATERS</a>, unsigned short mrepetitions=<a class="el" href="global_8h.html#a8ab5602e7ab3d5f70b55794c0376252b">DEFAULT_MAX_REPETITIONS</a>)  throw (SNMPException)</td></tr>
+<tr class="memdesc:adc47a544a1a1f4bf21819f8e4738ad60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crea una PDU SNMP de peticion.  <a href="#adc47a544a1a1f4bf21819f8e4738ad60"></a><br/></td></tr>
+<tr class="memitem:adb89ceb52998aef547bea42742352d4e"><td class="memItemLeft" align="right" valign="top">static SNMPPDU *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_1_1_s_n_m_p_manager.html#adb89ceb52998aef547bea42742352d4e">sendPDU</a> (SNMPSession *session, SNMPPDU *pdu)  throw (SNMPException)</td></tr>
+<tr class="memdesc:adb89ceb52998aef547bea42742352d4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envia la PDU SNMP de peticion a traves de una sesion Gestor-Agente.  <a href="#adb89ceb52998aef547bea42742352d4e"></a><br/></td></tr>
+<tr class="memitem:a8eb73898f6ded62535aee86d016ceb3b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_1_1_s_n_m_p_manager.html#a8eb73898f6ded62535aee86d016ceb3b">processResponse</a> (SNMPPDU *pdu, std::vector&lt; <a class="el" href="class_model_1_1_s_n_m_p_o_i_d.html">SNMPOID</a> * &gt; &amp;oids)</td></tr>
+<tr class="memdesc:a8eb73898f6ded62535aee86d016ceb3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Procesa la PDU SNMP de respuesta del agente.  <a href="#a8eb73898f6ded62535aee86d016ceb3b"></a><br/></td></tr>
+<tr class="memitem:add91da04cb9c07f1ec955991a415eaa2"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_model_1_1_s_n_m_p_o_i_d.html">SNMPOID</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_1_1_s_n_m_p_manager.html#add91da04cb9c07f1ec955991a415eaa2">findOID</a> (const std::vector&lt; <a class="el" href="class_model_1_1_s_n_m_p_o_i_d.html">SNMPOID</a> * &gt; &amp;oids, SNMPVariableList *var)</td></tr>
+<tr class="memdesc:add91da04cb9c07f1ec955991a415eaa2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Busca el OID correspondiente a una variable de una PDU SNMP de respuesta.  <a href="#add91da04cb9c07f1ec955991a415eaa2"></a><br/></td></tr>
+<tr class="memitem:ac5117b8dc8c2747d358a0291c5947c70"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_1_1_s_n_m_p_manager.html#ac5117b8dc8c2747d358a0291c5947c70">snmpoperation</a> (SNMPPDUType type, SNMPVersion version, const std::string &amp;community, const std::string &amp;agent, std::vector&lt; <a class="el" href="class_model_1_1_s_n_m_p_o_i_d.html">SNMPOID</a> * &gt; &amp;oids, unsigned short nrepeaters=<a class="el" href="global_8h.html#a847b68e41991c6c4b4c4b0558d4583bf">DEFAULT_NON_REPEATERS</a>, unsigned short mrepetitions=<a class="el" href="global_8h.html#a8ab5602e7ab3d5f70b55794c0376252b">DEFAULT_MAX_REPETITIONS</a>)</td></tr>
+<tr class="memdesc:ac5117b8dc8c2747d358a0291c5947c70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Invoca una operacion SNMP de consulta (GET, GETNEXT, GET BULK) o modificacion (SET)  <a href="#ac5117b8dc8c2747d358a0291c5947c70"></a><br/></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2><a name="pri-static-attribs"></a>
+Atributos privados estáticos</h2></td></tr>
+<tr class="memitem:a584e8f1698a36ba2b0c7f8be158dc432"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_1_1_s_n_m_p_manager.html#a584e8f1698a36ba2b0c7f8be158dc432">_initialized</a> = false</td></tr>
+<tr class="memdesc:a584e8f1698a36ba2b0c7f8be158dc432"><td class="mdescLeft">&#160;</td><td class="mdescRight">Especifica si la libreria SNMP ha sido inicializada.  <a href="#a584e8f1698a36ba2b0c7f8be158dc432"></a><br/></td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
-<div class="textblock"><p>Clase <a class="el" href="class_model_1_1_s_n_m_p_manager.html" title="Clase SNMPManager que implementa la funcionalidad del gestor SNMP. ">SNMPManager</a> que implementa la funcionalidad del gestor SNMP. </p>
-</div><h2 class="groupheader">Documentación de las funciones miembro</h2>
+<a name="details" id="details"></a><h2>Descripción detallada</h2>
+<div class="textblock"><p>Clase <a class="el" href="class_model_1_1_s_n_m_p_manager.html" title="Clase SNMPManager que implementa la funcionalidad del gestor SNMP.">SNMPManager</a> que implementa la funcionalidad del gestor SNMP. </p>
+</div><h2>Documentación de las funciones miembro</h2>
+<a class="anchor" id="adc47a544a1a1f4bf21819f8e4738ad60"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Model::SNMPPDU * Model::SNMPManager::createPDU </td>
+          <td>(</td>
+          <td class="paramtype">SNMPPDUType&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="class_model_1_1_s_n_m_p_o_i_d.html">SNMPOID</a> * &gt; &amp;&#160;</td>
+          <td class="paramname"><em>oids</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>nrepeaters</em> = <code><a class="el" href="global_8h.html#a847b68e41991c6c4b4c4b0558d4583bf">DEFAULT_NON_REPEATERS</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>mrepetitions</em> = <code><a class="el" href="global_8h.html#a8ab5602e7ab3d5f70b55794c0376252b">DEFAULT_MAX_REPETITIONS</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>  throw (<a class="el" href="class_model_1_1_s_n_m_p_exception.html">SNMPException</a>)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Crea una PDU SNMP de peticion. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>Tipo de PDU SNMP </td></tr>
+    <tr><td class="paramname">oids</td><td>Lista de OIDs </td></tr>
+    <tr><td class="paramname">nrepeaters</td><td>Numero de variables sobre las que no se iterara </td></tr>
+    <tr><td class="paramname">mrepetitions</td><td>Numero de iteraciones sobre cada variable </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Excepciones</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="class_model_1_1_s_n_m_p_exception.html" title="Clase SNMPException que implementa la notificacion de errores SNMP.">SNMPException</a></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>PDU SNMP </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ae9c6237f8fe6b31bc73dd808a8acef78"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Model::SNMPSession * Model::SNMPManager::createSession </td>
+          <td>(</td>
+          <td class="paramtype">SNMPVersion&#160;</td>
+          <td class="paramname"><em>version</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>community</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>agent</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>  throw (<a class="el" href="class_model_1_1_s_n_m_p_exception.html">SNMPException</a>)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Crea, inicializa y abre una session SNMP Agente-Gestor. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">version</td><td>Version de SNMP utilizada. </td></tr>
+    <tr><td class="paramname">community</td><td>Nombre de la comunidad. </td></tr>
+    <tr><td class="paramname">agent</td><td>Dirección IP o nombre de dominio del agente SNMP. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Excepciones</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="class_model_1_1_s_n_m_p_exception.html" title="Clase SNMPException que implementa la notificacion de errores SNMP.">SNMPException</a></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Sesion SNMP Agente-Gestor inicializada y abierta. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="add91da04cb9c07f1ec955991a415eaa2"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_model_1_1_s_n_m_p_o_i_d.html">Model::SNMPOID</a> * Model::SNMPManager::findOID </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="class_model_1_1_s_n_m_p_o_i_d.html">SNMPOID</a> * &gt; &amp;&#160;</td>
+          <td class="paramname"><em>oids</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SNMPVariableList *&#160;</td>
+          <td class="paramname"><em>var</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Busca el OID correspondiente a una variable de una PDU SNMP de respuesta. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">oids</td><td>Lista de OIDs </td></tr>
+    <tr><td class="paramname">var</td><td>Variable de la lista de variables de una PDU SNMP de respuesta </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Excepciones</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="class_model_1_1_s_n_m_p_exception.html" title="Clase SNMPException que implementa la notificacion de errores SNMP.">SNMPException</a></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>OID correspondiente a la variable si se encuentra en el vector o 0 en caso contrario</dd></dl>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">oids</td><td>Lista de OIDs </td></tr>
+    <tr><td class="paramname">var</td><td>Variable de la lista de variables de una PDU SNMP de respuesta </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>OID correspondiente a la variable si se encuentra en el vector o 0 en caso contrario </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a8eb73898f6ded62535aee86d016ceb3b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Model::SNMPManager::processResponse </td>
+          <td>(</td>
+          <td class="paramtype">SNMPPDU *&#160;</td>
+          <td class="paramname"><em>pdu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="class_model_1_1_s_n_m_p_o_i_d.html">SNMPOID</a> * &gt; &amp;&#160;</td>
+          <td class="paramname"><em>oids</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Procesa la PDU SNMP de respuesta del agente. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pdu</td><td>PDU SNMP de respuesta </td></tr>
+    <tr><td class="paramname">oids</td><td>Lista de OIDs </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="adb89ceb52998aef547bea42742352d4e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Model::SNMPPDU * Model::SNMPManager::sendPDU </td>
+          <td>(</td>
+          <td class="paramtype">SNMPSession *&#160;</td>
+          <td class="paramname"><em>session</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SNMPPDU *&#160;</td>
+          <td class="paramname"><em>pdu</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>  throw (<a class="el" href="class_model_1_1_s_n_m_p_exception.html">SNMPException</a>)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Envia la PDU SNMP de peticion a traves de una sesion Gestor-Agente. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">session</td><td>Gestion SNMP Gestor-Agente </td></tr>
+    <tr><td class="paramname">pdu</td><td>PDU SNMP de peticion </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Excepciones</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="class_model_1_1_s_n_m_p_exception.html" title="Clase SNMPException que implementa la notificacion de errores SNMP.">SNMPException</a></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>PDU de respuesta </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="ac1336cac2d8f3d975b0ff3c0379788fb"></a>
 <div class="memitem">
 <div class="memproto">
@@ -152,13 +444,7 @@ Métodos públicos estáticos</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td></td>
-        </tr>
-        <tr>
-          <td align="right">throw </td><td>(</td><td colspan="2"><a class="el" href="class_model_1_1_s_n_m_p_exception.html">SNMPException</a></td>
-        </tr>
-        <tr>
-          <td align="right"></td><td>)</td><td></td><td></td>
+          <td></td><td>  throw (<a class="el" href="class_model_1_1_s_n_m_p_exception.html">SNMPException</a>)</td>
         </tr>
       </table>
   </td>
@@ -180,7 +466,7 @@ Métodos públicos estáticos</h2></td></tr>
 </dl>
 <dl class="exception"><dt>Excepciones</dt><dd>
   <table class="exception">
-    <tr><td class="paramname"><a class="el" href="class_model_1_1_s_n_m_p_exception.html" title="Clase SNMPException que implementa la notificacion de errores SNMP. ">SNMPException</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="class_model_1_1_s_n_m_p_exception.html" title="Clase SNMPException que implementa la notificacion de errores SNMP.">SNMPException</a></td><td></td></tr>
   </table>
   </dd>
 </dl>
@@ -233,13 +519,7 @@ Métodos públicos estáticos</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td></td>
-        </tr>
-        <tr>
-          <td align="right">throw </td><td>(</td><td colspan="2"><a class="el" href="class_model_1_1_s_n_m_p_exception.html">SNMPException</a></td>
-        </tr>
-        <tr>
-          <td align="right"></td><td>)</td><td></td><td></td>
+          <td></td><td>  throw (<a class="el" href="class_model_1_1_s_n_m_p_exception.html">SNMPException</a>)</td>
         </tr>
       </table>
   </td>
@@ -263,7 +543,7 @@ Métodos públicos estáticos</h2></td></tr>
 </dl>
 <dl class="exception"><dt>Excepciones</dt><dd>
   <table class="exception">
-    <tr><td class="paramname"><a class="el" href="class_model_1_1_s_n_m_p_exception.html" title="Clase SNMPException que implementa la notificacion de errores SNMP. ">SNMPException</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="class_model_1_1_s_n_m_p_exception.html" title="Clase SNMPException que implementa la notificacion de errores SNMP.">SNMPException</a></td><td></td></tr>
   </table>
   </dd>
 </dl>
@@ -304,13 +584,7 @@ Métodos públicos estáticos</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td></td>
-        </tr>
-        <tr>
-          <td align="right">throw </td><td>(</td><td colspan="2"><a class="el" href="class_model_1_1_s_n_m_p_exception.html">SNMPException</a></td>
-        </tr>
-        <tr>
-          <td align="right"></td><td>)</td><td></td><td></td>
+          <td></td><td>  throw (<a class="el" href="class_model_1_1_s_n_m_p_exception.html">SNMPException</a>)</td>
         </tr>
       </table>
   </td>
@@ -332,7 +606,91 @@ Métodos públicos estáticos</h2></td></tr>
 </dl>
 <dl class="exception"><dt>Excepciones</dt><dd>
   <table class="exception">
-    <tr><td class="paramname"><a class="el" href="class_model_1_1_s_n_m_p_exception.html" title="Clase SNMPException que implementa la notificacion de errores SNMP. ">SNMPException</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="class_model_1_1_s_n_m_p_exception.html" title="Clase SNMPException que implementa la notificacion de errores SNMP.">SNMPException</a></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ac5117b8dc8c2747d358a0291c5947c70"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Model::SNMPManager::snmpoperation </td>
+          <td>(</td>
+          <td class="paramtype">SNMPPDUType&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SNMPVersion&#160;</td>
+          <td class="paramname"><em>version</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>community</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>agent</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="class_model_1_1_s_n_m_p_o_i_d.html">SNMPOID</a> * &gt; &amp;&#160;</td>
+          <td class="paramname"><em>oids</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>nrepeaters</em> = <code><a class="el" href="global_8h.html#a847b68e41991c6c4b4c4b0558d4583bf">DEFAULT_NON_REPEATERS</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>mrepetitions</em> = <code><a class="el" href="global_8h.html#a8ab5602e7ab3d5f70b55794c0376252b">DEFAULT_MAX_REPETITIONS</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Invoca una operacion SNMP de consulta (GET, GETNEXT, GET BULK) o modificacion (SET) </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>Tipo de PDU de peticion </td></tr>
+    <tr><td class="paramname">version</td><td>Version de SNMP utilizada. </td></tr>
+    <tr><td class="paramname">community</td><td>Nombre de la comunidad. </td></tr>
+    <tr><td class="paramname">agent</td><td>Dirección IP o nombre de dominio del agente SNMP. </td></tr>
+    <tr><td class="paramname">oids</td><td>Lista de OIDs </td></tr>
+    <tr><td class="paramname">nrepeaters</td><td>Numero de variables sobre las que no se iterara </td></tr>
+    <tr><td class="paramname">mrepetitions</td><td>Numero de iteraciones sobre cada variable </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Excepciones</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="class_model_1_1_s_n_m_p_exception.html" title="Clase SNMPException que implementa la notificacion de errores SNMP.">SNMPException</a></td><td></td></tr>
   </table>
   </dd>
 </dl>
@@ -373,13 +731,7 @@ Métodos públicos estáticos</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td></td>
-        </tr>
-        <tr>
-          <td align="right">throw </td><td>(</td><td colspan="2"><a class="el" href="class_model_1_1_s_n_m_p_exception.html">SNMPException</a></td>
-        </tr>
-        <tr>
-          <td align="right"></td><td>)</td><td></td><td></td>
+          <td></td><td>  throw (<a class="el" href="class_model_1_1_s_n_m_p_exception.html">SNMPException</a>)</td>
         </tr>
       </table>
   </td>
@@ -400,7 +752,7 @@ Métodos públicos estáticos</h2></td></tr>
 </dl>
 <dl class="exception"><dt>Excepciones</dt><dd>
   <table class="exception">
-    <tr><td class="paramname"><a class="el" href="class_model_1_1_s_n_m_p_exception.html" title="Clase SNMPException que implementa la notificacion de errores SNMP. ">SNMPException</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="class_model_1_1_s_n_m_p_exception.html" title="Clase SNMPException que implementa la notificacion de errores SNMP.">SNMPException</a></td><td></td></tr>
   </table>
   </dd>
 </dl>
@@ -415,10 +767,34 @@ Métodos públicos estáticos</h2></td></tr>
 </dl>
 <dl class="exception"><dt>Excepciones</dt><dd>
   <table class="exception">
-    <tr><td class="paramname"><a class="el" href="class_model_1_1_s_n_m_p_exception.html" title="Clase SNMPException que implementa la notificacion de errores SNMP. ">SNMPException</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="class_model_1_1_s_n_m_p_exception.html" title="Clase SNMPException que implementa la notificacion de errores SNMP.">SNMPException</a></td><td></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<h2>Documentación de los datos miembro</h2>
+<a class="anchor" id="a584e8f1698a36ba2b0c7f8be158dc432"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Model::SNMPManager::_initialized = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Especifica si la libreria SNMP ha sido inicializada. </p>
+<p>Inicializacion de atributo estatico _initialized. </p>
 
 </div>
 </div>
@@ -429,9 +805,9 @@ Métodos públicos estáticos</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Viernes, 5 de Julio de 2013 22:30:20 para QMB por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Sábado, 6 de Julio de 2013 22:29:25 para QMB por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.4
+</a> 1.8.1.2
 </small></address>
 </body>
 </html>

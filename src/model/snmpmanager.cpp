@@ -168,7 +168,7 @@ Model::SNMPPDU *Model::SNMPManager::createPDU(SNMPPDUType type,
 
     pdu = snmp_pdu_create(type);            // Creacion de PDU SNMP
 
-    // Iteramos por los distintos OIDs
+    // Iteramos a traves de los OIDs
     for(std::vector<SNMPOID *>::const_iterator vi = oids.begin(); vi != oids.end(); vi++) {
         if(type == SNMPPDUSet) // Aniadimos a la PDU el valor correspondiente al k-esimo OID
             snmp_add_var(pdu, (*vi) -> parseOID(), (*vi) -> parseOIDLength(),
@@ -221,9 +221,71 @@ Model::SNMPPDU *Model::SNMPManager::sendPDU(SNMPSession *session, SNMPPDU *pdu) 
  */
 void Model::SNMPManager::processResponse(SNMPPDU *pdu, std::vector<SNMPOID *>& oids)
 {
-    /*for(SNMPVariableList *vl = pdu -> variables; vl; vl = vl -> next_variable) {
+    // Iteramos por la lista de variables de la PDU de respuesta
+    for(SNMPVariableList *vl = pdu -> variables; vl; vl = vl -> next_variable) {
+        // Buscamos el OID correspondiente a la variable actual en la lista de OIDs
+        // ya que no necesariamente deben coincidir ambas listas (Peticiones SNMP GET BULK)
+        SNMPOID *currOID = findOID(oids, vl);
 
-    }*/
+        if(!currOID) { // OID no encontrado, luego lo creamos e incluimos en la lista de OIDs
+            currOID = new SNMPOID(vl -> name, vl -> name_length, (SNMPDataType) vl -> type);
+            oids.push_back(currOID);
+        } else // Establecemos el tipo de valor del OID
+            currOID -> setType((SNMPDataType) vl -> type);
+
+        // Establecemos el valor del OID
+        switch(vl -> type) {
+        case SNMPDataInteger:
+        case SNMPDataUnsigned:
+        case SNMPDataBits:
+        case SNMPDataCounter:
+        case SNMPDataTimeTicks:
+            currOID -> setValue(vl -> val.integer);
+            break;
+        case SNMPDataCounter64:
+            currOID -> setValue(vl -> val.counter64);
+            break;
+        case SNMPDataBitString:
+            currOID -> setValue(vl -> val.bitstring);
+            break;
+        case SNMPDataOctetString:
+        case SNMPDataIPAddress:
+            currOID -> setValue(vl -> val.string);
+            break;
+        case SNMPDataObjectId:
+            currOID -> setValue(vl -> val.objid);
+            break;
+        }
+    }
+}
+
+/**
+ * @brief Busca el OID correspondiente a una variable de una PDU SNMP de respuesta
+ * @param oids Lista de OIDs
+ * @param var Variable de la lista de variables de una PDU SNMP de respuesta
+ * @return OID correspondiente a la variable si se encuentra en el vector o 0 en caso contrario
+ */
+Model::SNMPOID *Model::SNMPManager::findOID(const std::vector<SNMPOID *>& oids, SNMPVariableList *var)
+{
+    if(oids.empty()) // Lista de OIDs vacia
+        return 0;    // OID no encontrado
+
+    // Iteramos por la lista de OIDs en busca del OID asociado a la variable de la PDU
+    for(std::vector<SNMPOID *>::const_iterator vi = oids.begin(); vi != oids.end(); vi++) {
+        SNMPOID *currOID = *vi; // OID actual
+        // Comprobamos si las longitudes coinciden
+        if(currOID -> parseOIDLength() == var -> name_length) {
+            oid *currParseOID = currOID -> parseOID(); // Obtenemos puntero al OID en notacion numerica
+            bool equal = true;
+            // Comprobamos la igualdad de los numeros que componen el OID
+            for(int k = 0; k < (int) currOID -> parseOIDLength() && equal; k++)
+                equal = currParseOID[k] != (var -> name)[k];
+            if(equal) // OID encontrado
+                return currOID;
+        }
+    }
+
+    return 0; // OID no encontrado
 }
 
 /**

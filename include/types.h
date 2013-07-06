@@ -63,13 +63,14 @@ namespace Model
         SNMPDataUnsigned    = ASN_UNSIGNED,     /**< Tipo Unsigned */
         SNMPDataOctetString = ASN_OCTET_STR,    /**< Tipo String */
         SNMPDataBits        = ASN_BIT8,         /**< Tipo Bits */
+        SNMPDataBitString   = ASN_BIT_STR,      /**< Tipo Bit String */
         SNMPDataObjectId    = ASN_OBJECT_ID,    /**< Tipo OID */
         SNMPDataIPAddress   = ASN_IPADDRESS,    /**< Tipo IP Address */
         SNMPDataCounter     = ASN_COUNTER,      /**< Tipo Counter */
+        SNMPDataCounter64   = ASN_COUNTER64,    /**< Tipo Counter64 */
         SNMPDataGauge       = ASN_GAUGE,        /**< Tipo Gauge */
         SNMPDataTimeTicks   = ASN_TIMETICKS,    /**< Tipo Time Ticks */
         SNMPDataOpaque      = ASN_OPAQUE        /**< Tipo Opaque */
-
     } SNMPDataType;
 
     /**
