@@ -279,7 +279,7 @@ Model::SNMPOID *Model::SNMPManager::findOID(const std::vector<SNMPOID *>& oids, 
             bool equal = true;
             // Comprobamos la igualdad de los numeros que componen el OID
             for(int k = 0; k < (int) currOID -> parseOIDLength() && equal; k++)
-                equal = currParseOID[k] != (var -> name)[k];
+                equal = currParseOID[k] == (var -> name)[k];
             if(equal) // OID encontrado
                 return currOID;
         }

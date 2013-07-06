@@ -27,6 +27,7 @@
  */
 
 #include <QApplication>
+#include "mainwindow.h"
 #include "global.h"
 
 void setUpApplication(QApplication *app);
@@ -40,8 +41,11 @@ void setUpApplication(QApplication *app);
 int main(int argc, char *argv[])
 {
    QApplication app(argc, argv);
+   View::MainWindow window;
 
    setUpApplication(&app);
+
+   window.show();
 
    return app.exec();
 }
