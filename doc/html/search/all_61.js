@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['about',['about',['../class_view_1_1_main_window.html#aec40bc821cebc083c56214007d02cdc8',1,'View::MainWindow']]],
   ['application_5fname',['APPLICATION_NAME',['../global_8h.html#adf41b2857036247c970bc8594b6a636a',1,'global.h']]],
   ['application_5fname_5flong',['APPLICATION_NAME_LONG',['../global_8h.html#aba165aeaa0680f18db5864ec33f46379',1,'global.h']]],
   ['application_5fversion',['APPLICATION_VERSION',['../global_8h.html#a6efa9917d91d75dcb9036443bc2483cd',1,'global.h']]],

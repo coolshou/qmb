@@ -59,13 +59,32 @@ void View::MainWindow::closeEvent(QCloseEvent *event)
 }
 
 /**
+ * @brief Ranura Acerca de ..
+ */
+void View::MainWindow::about()
+{
+    QMessageBox::about(this, tr("About %1").arg(APPLICATION_NAME),
+                             tr("<h2>%1 %2</h2>"
+                                "<h3>Invoicing and Management for SMBs</h3>"
+                                "<p>(C) %3 %4 <a href= \"mailto:%5\" >%5</a></p>"
+                                "<p><a href= \"%6\" >%6</a></p>"
+                                "<p>Licensed under <a href=\"http://www.gnu.org/licenses/gpl.html\" >GNU General Public License version 3</a></p>")
+                             .arg(APPLICATION_NAME_LONG)
+                             .arg(APPLICATION_VERSION)
+                             .arg(APPLICATION_YEARS)
+                             .arg(AUTHOR_NAME)
+                             .arg(AUTHOR_EMAIL)
+                             .arg(APPLICATION_WEB));
+}
+
+/**
  * @brief Crea los widgets
  */
 void View::MainWindow::createWidgets()
 {
     createCentralWidget();
     createActions();
-    createMenu();
+    createMenus();
     createToolBar();
     createStatusBar();
 }
@@ -83,15 +102,27 @@ void View::MainWindow::createCentralWidget()
  */
 void View::MainWindow::createActions()
 {
+    _exitAction = new QAction(tr("E&xit"), this);
+    _exitAction -> setStatusTip(tr("Exit the application"));
 
+    _aboutAction = new QAction(tr("&About"), this);
+    _aboutAction -> setStatusTip(tr("Show information about the Application"));
+
+    _aboutQtAction = new QAction(tr("About &Qt"), this);
+    _aboutQtAction -> setStatusTip(tr("Show information about Qt framework"));
 }
 
 /**
  * @brief Crea los menus
  */
-void View::MainWindow::createMenu()
+void View::MainWindow::createMenus()
 {
+    _applicationMenu = menuBar() -> addMenu(tr("&Application"));
+    _applicationMenu -> addAction(_exitAction);
 
+    _helpMenu = menuBar() -> addMenu(tr("&Help"));
+    _helpMenu -> addAction(_aboutAction);
+    _helpMenu -> addAction(_aboutQtAction);
 }
 
 /**
@@ -115,5 +146,7 @@ void View::MainWindow::createStatusBar()
  */
 void View::MainWindow::createConnections()
 {
-
+    connect(_exitAction, SIGNAL(triggered()), this, SLOT(close()));
+    connect(_aboutAction, SIGNAL(triggered()), this, SLOT(about()));
+    connect(_aboutQtAction, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
 }

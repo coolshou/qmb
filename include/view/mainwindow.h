@@ -31,6 +31,11 @@
 
 #include <QMainWindow>
 
+QT_BEGIN_NAMESPACE
+class QAction;
+class QMenu;
+QT_END_NAMESPACE
+
 namespace View
 {
     /**
@@ -57,6 +62,12 @@ namespace View
          */
         void closeEvent(QCloseEvent *event);
 
+    private slots:
+        /**
+         * @brief Ranura Acerca de ..
+         */
+        void about();
+
     private:
         /**
          * @brief Crea los widgets
@@ -76,7 +87,7 @@ namespace View
         /**
          * @brief Crea los menus
          */
-        void createMenu();
+        void createMenus();
 
         /**
          * @brief Crea las barras de herramientas
@@ -92,6 +103,12 @@ namespace View
          * @brief Establece las conexiones
          */
         void createConnections();
+
+        QAction *_exitAction;       /**< Accion Salir */
+        QAction *_aboutAction;      /**< Accion Acerca de */
+        QAction *_aboutQtAction;    /**< Accion Acerca de Qt */
+        QMenu *_applicationMenu;    /**< Menu Aplication */
+        QMenu *_helpMenu;           /**< Menu Ayuda */
     };
 }
 
