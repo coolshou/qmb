@@ -45,19 +45,15 @@ namespace Model
         /**
          * @brief Constructor de SNMPOID
          * @param strOID OID en notacion textual
-         * @param type Tipo de dato
-         * @param value Valor del dato
          */
-        SNMPOID(const std::string& strOID, SNMPData *data = 0);
+        SNMPOID(const std::string& strOID);
 
         /**
          * @brief Constructor de SNMPOID
          * @param parseOID OID en notacion numerica
          * @param parseOIDLength Longitud del OID en notacion numerica
-         * @param type Tipo de dato
-         * @param value Valor del dato
          */
-        SNMPOID(oid  *parseOID, size_t parseOIDLength, SNMPData *data = 0);
+        SNMPOID(oid  *parseOID, size_t parseOIDLength);
 
         /**
          * @brief Constructor copia de SNMPOID

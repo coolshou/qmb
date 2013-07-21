@@ -65,7 +65,7 @@ Model::SNMPData::~SNMPData()
 Model::SNMPData& Model::SNMPData::operator=(const SNMPData& snmpData)
 {
     _type = snmpData.type();
-    newValue(snmpData.value());
+    setValue(snmpData.value());
 
     return *this;
 }
@@ -112,24 +112,6 @@ void *Model::SNMPData::value() const
  */
 void Model::SNMPData::setValue(void *value)
 {
-    newValue(value);
-}
-
-/**
- * @brief Devuelve el tipo del dato
- * @return Tipo del dato
- */
-Model::SNMPDataType Model::SNMPData::type() const
-{
-    return _type;
-}
-
-/**
- * @brief Asigna memoria para el valor del dato
- * @param value Nuevo valor del dato
- */
-void Model::SNMPData::newValue(void *value)
-{
     deleteValue();
 
     switch(_type) {
@@ -174,6 +156,24 @@ void Model::SNMPData::newValue(void *value)
 }
 
 /**
+ * @brief Devuelve el tipo del dato
+ * @return Tipo del dato
+ */
+Model::SNMPDataType Model::SNMPData::type() const
+{
+    return _type;
+}
+
+/**
+ * @brief Establece el tipo del dato
+ * @param type Tipo del dato
+ */
+void Model::SNMPData::setType(SNMPDataType type)
+{
+    _type = type;
+}
+
+/**
  * @brief Inicializa el valor del dato
  * @param value Valor del dato
  */
@@ -213,32 +213,42 @@ void Model::SNMPData::initValue(void *value)
  * @brief Libera memoria del valor del dato
  */
 void Model::SNMPData::deleteValue()
-{
+{   
     switch(_type) {
     case SNMPDataInteger:
     case SNMPDataUnsigned:
     case SNMPDataBits:
     case SNMPDataCounter:
     case SNMPDataTimeTicks:
-        delete _value.integer;
-        _value.integer = 0;
+        if(_value.integer) {
+            delete _value.integer;
+            _value.integer = 0;
+        }
         break;
     case SNMPDataCounter64:
-        delete _value.counter64;
-        _value.counter64 = 0;
+        if(_value.counter64) {
+            delete _value.counter64;
+            _value.counter64 = 0;
+        }
         break;
     case SNMPDataBitString:
-        delete _value.bitstring;
-        _value.bitstring = 0;
+        if(_value.bitstring) {
+            delete _value.bitstring;
+            _value.bitstring = 0;
+        }
         break;
     case SNMPDataOctetString:
     case SNMPDataIPAddress:
-        delete _value.string;
-        _value.string = 0;
+        if(_value.string) {
+            delete _value.string;
+            _value.string = 0;
+        }
         break;
     case SNMPDataObjectId:
-        delete _value.objid;
-        _value.objid = 0;
+        if(_value.objid) {
+            delete _value.objid;
+            _value.objid = 0;
+        }
         break;
     default:
         _value.integer = 0;

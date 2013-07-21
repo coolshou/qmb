@@ -81,13 +81,13 @@ namespace Model
          * @return Tipo del dato
          */
         SNMPDataType type() const;
-    private:
-        /**
-         * @brief Asigna memoria para el valor del dato
-         * @param value Nuevo valor del dato
-         */
-        void newValue(void *value);
 
+        /**
+         * @brief Establece el tipo del dato
+         * @param type Tipo del dato
+         */
+        void setType(SNMPDataType type);
+    private:
         /**
          * @brief Inicializa el valor del dato
          * @param value Valor del dato

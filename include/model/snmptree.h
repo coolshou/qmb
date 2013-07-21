@@ -47,6 +47,11 @@ namespace Model
         SNMPTree(SNMPOID *object);
 
         /**
+         * @brief Destructor de SNMPTree
+         */
+        ~SNMPTree();
+
+        /**
          * @brief Obtiene el OID asociado al nodo del arbol
          * @return OID asociado al nodo del arbol
          */

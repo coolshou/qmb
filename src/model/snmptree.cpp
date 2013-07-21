@@ -38,6 +38,17 @@ Model::SNMPTree::SNMPTree(SNMPOID *object) : _object(object)
 }
 
 /**
+ * @brief Destructor de SNMPTree
+ */
+Model::SNMPTree::~SNMPTree()
+{
+    delete _object;
+
+    for(std::vector<SNMPTree *>::iterator vi = _childs.begin(); vi != _childs.end(); vi++)
+        delete *vi;
+}
+
+/**
  * @brief Obtiene el OID asociado al nodo del arbol
  * @return OID asociado al nodo del arbol
  */

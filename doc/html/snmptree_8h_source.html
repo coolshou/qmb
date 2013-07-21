@@ -103,27 +103,29 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <a class="code" href="class_model_1_1_s_n_m_p_tree.html#aa690db563a032a7c62bf69d056797270" title="Constructor de SNMPTree. ">SNMPTree</a>(<a class="code" href="class_model_1_1_s_n_m_p_o_i_d.html" title="Clase SNMPOID que implementa el tratamiento de OIDs. ">SNMPOID</a> *<span class="keywordtype">object</span>);</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <a class="code" href="class_model_1_1_s_n_m_p_o_i_d.html" title="Clase SNMPOID que implementa el tratamiento de OIDs. ">SNMPOID</a> *<a class="code" href="class_model_1_1_s_n_m_p_tree.html#a0abec61cf6449004ef185ff324fc0d10" title="Obtiene el OID asociado al nodo del arbol. ">object</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <a class="code" href="class_model_1_1_s_n_m_p_tree.html" title="Clase SNMPTree que implementa el arbol de OIDs. ">SNMPTree</a> *<a class="code" href="class_model_1_1_s_n_m_p_tree.html#a870c7f66aa3f30ba8b407084fff0bef0" title="Obtiene el nodo padre. ">parent</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_model_1_1_s_n_m_p_tree.html#a4932348483912d55bbc1e8faca0cdfa6" title="Establece el nodo padre. ">setParent</a>(<a class="code" href="class_model_1_1_s_n_m_p_tree.html" title="Clase SNMPTree que implementa el arbol de OIDs. ">SNMPTree</a> *parent);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        std::vector&lt;SNMPTree *&gt;&amp; <a class="code" href="class_model_1_1_s_n_m_p_tree.html#a6d781cd052bd734a494375852a16a476" title="Obtiene la lista de nodos hijo. ">childs</a>();</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00076"></a><span class="lineno"><a class="code" href="class_model_1_1_s_n_m_p_tree.html#a4fbbc35c607b1441c430e34ded1e8d4a">   76</a></span>&#160;        <a class="code" href="class_model_1_1_s_n_m_p_o_i_d.html" title="Clase SNMPOID que implementa el tratamiento de OIDs. ">SNMPOID</a> *<a class="code" href="class_model_1_1_s_n_m_p_tree.html#a4fbbc35c607b1441c430e34ded1e8d4a" title="OID asociado al nodo del arbol. ">_object</a>;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00081"></a><span class="lineno"><a class="code" href="class_model_1_1_s_n_m_p_tree.html#ad64bddcd27254edf5b36b5e811da8636">   81</a></span>&#160;        <a class="code" href="class_model_1_1_s_n_m_p_tree.html" title="Clase SNMPTree que implementa el arbol de OIDs. ">SNMPTree</a> *<a class="code" href="class_model_1_1_s_n_m_p_tree.html#ad64bddcd27254edf5b36b5e811da8636" title="Nodo padre. ">_parent</a>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <a class="code" href="class_model_1_1_s_n_m_p_tree.html#af78e03fe3303172876e9feefe40969c9" title="Destructor de SNMPTree. ">~SNMPTree</a>();</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <a class="code" href="class_model_1_1_s_n_m_p_o_i_d.html" title="Clase SNMPOID que implementa el tratamiento de OIDs. ">SNMPOID</a> *<a class="code" href="class_model_1_1_s_n_m_p_tree.html#a0abec61cf6449004ef185ff324fc0d10" title="Obtiene el OID asociado al nodo del arbol. ">object</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <a class="code" href="class_model_1_1_s_n_m_p_tree.html" title="Clase SNMPTree que implementa el arbol de OIDs. ">SNMPTree</a> *<a class="code" href="class_model_1_1_s_n_m_p_tree.html#a870c7f66aa3f30ba8b407084fff0bef0" title="Obtiene el nodo padre. ">parent</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_model_1_1_s_n_m_p_tree.html#a4932348483912d55bbc1e8faca0cdfa6" title="Establece el nodo padre. ">setParent</a>(<a class="code" href="class_model_1_1_s_n_m_p_tree.html" title="Clase SNMPTree que implementa el arbol de OIDs. ">SNMPTree</a> *parent);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        std::vector&lt;SNMPTree *&gt;&amp; <a class="code" href="class_model_1_1_s_n_m_p_tree.html#a6d781cd052bd734a494375852a16a476" title="Obtiene la lista de nodos hijo. ">childs</a>();</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="code" href="class_model_1_1_s_n_m_p_tree.html#a4fbbc35c607b1441c430e34ded1e8d4a">   81</a></span>&#160;        <a class="code" href="class_model_1_1_s_n_m_p_o_i_d.html" title="Clase SNMPOID que implementa el tratamiento de OIDs. ">SNMPOID</a> *<a class="code" href="class_model_1_1_s_n_m_p_tree.html#a4fbbc35c607b1441c430e34ded1e8d4a" title="OID asociado al nodo del arbol. ">_object</a>;</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00086"></a><span class="lineno"><a class="code" href="class_model_1_1_s_n_m_p_tree.html#a64de2de8577c268d0f567306a709fa3d">   86</a></span>&#160;        std::vector&lt;SNMPTree *&gt; <a class="code" href="class_model_1_1_s_n_m_p_tree.html#a64de2de8577c268d0f567306a709fa3d" title="Lista de nodos hijo. ">_childs</a>;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    };</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;}</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="preprocessor">#endif // SNMPTREE_H</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="code" href="class_model_1_1_s_n_m_p_tree.html#ad64bddcd27254edf5b36b5e811da8636">   86</a></span>&#160;        <a class="code" href="class_model_1_1_s_n_m_p_tree.html" title="Clase SNMPTree que implementa el arbol de OIDs. ">SNMPTree</a> *<a class="code" href="class_model_1_1_s_n_m_p_tree.html#ad64bddcd27254edf5b36b5e811da8636" title="Nodo padre. ">_parent</a>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="code" href="class_model_1_1_s_n_m_p_tree.html#a64de2de8577c268d0f567306a709fa3d">   91</a></span>&#160;        std::vector&lt;SNMPTree *&gt; <a class="code" href="class_model_1_1_s_n_m_p_tree.html#a64de2de8577c268d0f567306a709fa3d" title="Lista de nodos hijo. ">_childs</a>;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    };</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor">#endif // SNMPTREE_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Domingo, 21 de Julio de 2013 11:40:54 para QMB por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Domingo, 21 de Julio de 2013 16:45:09 para QMB por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

@@ -31,6 +31,17 @@
 #include "snmpmanager.h"
 
 /**
+ * @brief Inicializa la libreria SNMP
+ */
+void Model::SNMPManager::initSNMP()
+{
+    if(!_initialized) {
+        init_snmp(APPLICATION_NAME);
+        _initialized = true;
+    }
+}
+
+/**
  * @brief Envia mensaje de peticion SNMP GET y recibe mensaje de respuesta.
  * @param version Version de SNMP utilizada.
  * @param community Nombre de la comunidad.
@@ -96,17 +107,6 @@ void Model::SNMPManager::snmpset(SNMPVersion version,
                                  std::vector<SNMPOID *>& oids) throw(SNMPException)
 {
     snmpoperation(SNMPPDUSet, version, community, agent, oids);
-}
-
-/**
- * @brief Inicializa la libreria SNMP
- */
-void Model::SNMPManager::initSNMP()
-{
-    if(!_initialized) {
-        init_snmp(APPLICATION_NAME);
-        _initialized = true;
-    }
 }
 
 /**
@@ -229,7 +229,8 @@ void Model::SNMPManager::processResponse(SNMPPDU *pdu, std::vector<SNMPOID *>& o
         SNMPOID *currOID = findOID(oids, vl);
 
         if(!currOID) { // OID no encontrado, luego lo creamos e incluimos en la lista de OIDs
-            currOID = new SNMPOID(vl -> name, vl -> name_length, new SNMPData((SNMPDataType)vl -> type));
+            currOID = new SNMPOID(vl -> name, vl -> name_length);
+            currOID -> data() -> setType((SNMPDataType)vl -> type);
             oids.push_back(currOID);
         }
 
@@ -318,7 +319,7 @@ void Model::SNMPManager::snmpoperation(SNMPPDUType type,
     if(type != SNMPPDUSet)                                        // Procesamos la respuesta a una consulta
         processResponse(responsePDU, oids);                       // Procesamiento de PDU de respuesta
 
-    snmp_free_pdu(responsePDU);                                   // Liberacion de recursos en PDU de respuesta
+    //snmp_free_pdu(responsePDU);                                   // Liberacion de recursos en PDU de respuesta
     snmp_close(session);                                          // Cerramos la sesion
     SOCK_CLEANUP;                                                 // Liberacion de recursos para SOs win32 (Sin efecto en SOs Unix).
 }

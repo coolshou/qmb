@@ -126,12 +126,12 @@ Métodos públicos</h2></td></tr>
 <tr class="memitem:a531b9c5ec5abb0ae5dc86d3f32845035"><td class="memItemLeft" align="right" valign="top">SNMPDataType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_1_1_s_n_m_p_data.html#a531b9c5ec5abb0ae5dc86d3f32845035">type</a> () const </td></tr>
 <tr class="memdesc:a531b9c5ec5abb0ae5dc86d3f32845035"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devuelve el tipo del dato.  <a href="#a531b9c5ec5abb0ae5dc86d3f32845035">Más...</a><br/></td></tr>
 <tr class="separator:a531b9c5ec5abb0ae5dc86d3f32845035"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad12974cd4b24057bdabe28a7b7b4c970"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_1_1_s_n_m_p_data.html#ad12974cd4b24057bdabe28a7b7b4c970">setType</a> (SNMPDataType <a class="el" href="class_model_1_1_s_n_m_p_data.html#a531b9c5ec5abb0ae5dc86d3f32845035">type</a>)</td></tr>
+<tr class="memdesc:ad12974cd4b24057bdabe28a7b7b4c970"><td class="mdescLeft">&#160;</td><td class="mdescRight">Establece el tipo del dato.  <a href="#ad12974cd4b24057bdabe28a7b7b4c970">Más...</a><br/></td></tr>
+<tr class="separator:ad12974cd4b24057bdabe28a7b7b4c970"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Métodos privados</h2></td></tr>
-<tr class="memitem:a24d4eb288d469d61dc4914340ca588aa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_1_1_s_n_m_p_data.html#a24d4eb288d469d61dc4914340ca588aa">newValue</a> (void *<a class="el" href="class_model_1_1_s_n_m_p_data.html#a99f38452a78de5e3389643476d23cfbf">value</a>)</td></tr>
-<tr class="memdesc:a24d4eb288d469d61dc4914340ca588aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Asigna memoria para el valor del dato.  <a href="#a24d4eb288d469d61dc4914340ca588aa">Más...</a><br/></td></tr>
-<tr class="separator:a24d4eb288d469d61dc4914340ca588aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abcca5055e11185f54433c8ee6af150ab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_1_1_s_n_m_p_data.html#abcca5055e11185f54433c8ee6af150ab">initValue</a> (void *<a class="el" href="class_model_1_1_s_n_m_p_data.html#a99f38452a78de5e3389643476d23cfbf">value</a>)</td></tr>
 <tr class="memdesc:abcca5055e11185f54433c8ee6af150ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicializa el valor del dato.  <a href="#abcca5055e11185f54433c8ee6af150ab">Más...</a><br/></td></tr>
 <tr class="separator:abcca5055e11185f54433c8ee6af150ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -246,38 +246,6 @@ SNMPDataType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 
 </div>
 </div>
-<a class="anchor" id="a24d4eb288d469d61dc4914340ca588aa"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Model::SNMPData::newValue </td>
-          <td>(</td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>value</em>)</td><td></td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Asigna memoria para el valor del dato. </p>
-<dl class="params"><dt>Parámetros</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">value</td><td>Nuevo valor del dato </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a class="anchor" id="a55886e04b413b60a141d1c92058751a5"></a>
 <div class="memitem">
 <div class="memproto">
@@ -300,6 +268,30 @@ SNMPDataType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   </dd>
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd></dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ad12974cd4b24057bdabe28a7b7b4c970"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Model::SNMPData::setType </td>
+          <td>(</td>
+          <td class="paramtype">SNMPDataType&#160;</td>
+          <td class="paramname"><em>type</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Establece el tipo del dato. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>Tipo del dato </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -370,7 +362,7 @@ SNMPDataType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Domingo, 21 de Julio de 2013 11:40:54 para QMB por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Domingo, 21 de Julio de 2013 16:45:09 para QMB por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

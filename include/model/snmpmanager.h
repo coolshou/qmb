@@ -45,6 +45,11 @@ namespace Model
     {
     public:
         /**
+         * @brief Inicializa la libreria SNMP
+         */
+        static void initSNMP();
+
+        /**
          * @brief Envia mensaje de peticion SNMP GET y recibe mensaje de respuesta.
          * @param version Version de SNMP utilizada.
          * @param community Nombre de la comunidad.
@@ -100,11 +105,6 @@ namespace Model
                             std::vector<SNMPOID *> &oids) throw(SNMPException);
 
     private:
-        /**
-         * @brief Inicializa la libreria SNMP
-         */
-        static void initSNMP();
-
         /**
          * @brief Crea, inicializa y abre una session SNMP Agente-Gestor
          * @param version Version de SNMP utilizada.

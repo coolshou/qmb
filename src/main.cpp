@@ -29,8 +29,10 @@
 #include <QApplication>
 #include "mainwindow.h"
 #include "global.h"
+#include "snmpmanager.h"
 
 void setUpApplication(QApplication *app);
+void testSNMP(const char *agent);
 
 /**
  * @brief Implementa la funcion principal
