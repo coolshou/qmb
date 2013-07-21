@@ -31,7 +31,6 @@
 
 #include <string>
 #include <vector>
-#include <map>
 #include "types.h"
 #include "global.h"
 #include "snmpoid.h"

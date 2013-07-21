@@ -69,9 +69,39 @@ namespace Model
         SNMPDataCounter     = ASN_COUNTER,      /**< Tipo Counter */
         SNMPDataCounter64   = ASN_COUNTER64,    /**< Tipo Counter64 */
         SNMPDataGauge       = ASN_GAUGE,        /**< Tipo Gauge */
-        SNMPDataTimeTicks   = ASN_TIMETICKS,    /**< Tipo Time Ticks */
-        SNMPDataOpaque      = ASN_OPAQUE        /**< Tipo Opaque */
+        SNMPDataTimeTicks   = ASN_TIMETICKS     /**< Tipo Time Ticks */
     } SNMPDataType;
+
+
+    /**
+     * @brief Estado del objeto de la MIB
+     */
+    typedef enum MIBStatusEnum {
+        MIBStatusMandatory  = MIB_STATUS_MANDATORY,   /**< Estado Mandatory */
+        MIBStatusOptional   = MIB_STATUS_OPTIONAL,    /**< Estado Optional */
+        MIBStatusObsolete   = MIB_STATUS_OBSOLETE,    /**< Estado Obsolete */
+        MIBStatusDeprecated = MIB_STATUS_DEPRECATED   /**< Estado Deprecated */
+    } MIBStatus;
+
+    /**
+     * @brief Model de acceso del objeto de la MIB
+     */
+    typedef enum MIBAccessEnum {
+        MIBAccessReadOnly      = MIB_ACCESS_READONLY,  /**< Acceso Read-Only */
+        MIBAccessReadWrite     = MIB_ACCESS_READWRITE, /**< Acceso Read-Write */
+        MIBAccessWriteOnly     = MIB_ACCESS_WRITEONLY, /**< Acceso Write-Only */
+        MIBAccessNotAccessible = MIB_ACCESS_NOACCESS   /**< Acceso Not-Accessible */
+    } MIBAccess;
+
+    /**
+     * @brief Valor tomado por un dato en SNMP
+     */
+    typedef netsnmp_vardata SNMPValue;
+
+    /**
+     * @brief Contador de 64 bits
+     */
+    typedef struct counter64 SNMPCounter64;
 
     /**
      * @brief Sesion SNMP Gestor-Agente

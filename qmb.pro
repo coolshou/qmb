@@ -16,10 +16,14 @@ HEADERS += include/global.h \
            include/model/snmpexception.h \
            include/model/snmpmanager.h \
     include/model/snmpoid.h \
-    include/view/mainwindow.h
+    include/view/mainwindow.h \
+    include/model/snmptree.h \
+    include/model/snmpdata.h
 SOURCES += src/main.cpp src/model/snmpmanager.cpp \
     src/model/snmpoid.cpp \
-    src/view/mainwindow.cpp
+    src/view/mainwindow.cpp \
+    src/model/snmpdata.cpp \
+    src/model/snmptree.cpp
 
 LIBS += -lnetsnmp
 

@@ -135,7 +135,7 @@ Model::SNMPSession *Model::SNMPManager::createSession(SNMPVersion version,
     SOCK_STARTUP;                                       // Inicializacion para SOs win32 (Sin efecto en SOs Unix).
 
     if(!(openedSession = snmp_open(&session))) {        // Apertura de sesion
-        SOCK_CLEANUP;
+        SOCK_CLEANUP;                                   // Liberacion de recursos para SOs win32 (Sin efecto en SOs Unix).
         throw SNMPSessionException(session, "Error de apertura en sesion SNMP");
     }
 
@@ -172,7 +172,8 @@ Model::SNMPPDU *Model::SNMPManager::createPDU(SNMPPDUType type,
     for(std::vector<SNMPOID *>::const_iterator vi = oids.begin(); vi != oids.end(); vi++) {
         if(type == SNMPPDUSet) // Aniadimos a la PDU el valor correspondiente al k-esimo OID
             snmp_add_var(pdu, (*vi) -> parseOID(), (*vi) -> parseOIDLength(),
-                         (*vi) -> type(), (const char *) (*vi) -> value());
+                         (*vi) -> data() -> type(),
+                         (const char *) (*vi) -> data() -> value());
         else // Aniadimos a la PDU el valor nulo correspondiente al k-esimo OID
             snmp_add_null_var(pdu, (*vi) -> parseOID(), (*vi) -> parseOIDLength());
     }
@@ -228,10 +229,9 @@ void Model::SNMPManager::processResponse(SNMPPDU *pdu, std::vector<SNMPOID *>& o
         SNMPOID *currOID = findOID(oids, vl);
 
         if(!currOID) { // OID no encontrado, luego lo creamos e incluimos en la lista de OIDs
-            currOID = new SNMPOID(vl -> name, vl -> name_length, (SNMPDataType) vl -> type);
+            currOID = new SNMPOID(vl -> name, vl -> name_length, new SNMPData((SNMPDataType)vl -> type));
             oids.push_back(currOID);
-        } else // Establecemos el tipo de valor del OID
-            currOID -> setType((SNMPDataType) vl -> type);
+        }
 
         // Establecemos el valor del OID
         switch(vl -> type) {
@@ -240,20 +240,20 @@ void Model::SNMPManager::processResponse(SNMPPDU *pdu, std::vector<SNMPOID *>& o
         case SNMPDataBits:
         case SNMPDataCounter:
         case SNMPDataTimeTicks:
-            currOID -> setValue(vl -> val.integer);
+            currOID -> data() -> setValue(vl -> val.integer);
             break;
         case SNMPDataCounter64:
-            currOID -> setValue(vl -> val.counter64);
+            currOID -> data() -> setValue(vl -> val.counter64);
             break;
         case SNMPDataBitString:
-            currOID -> setValue(vl -> val.bitstring);
+            currOID -> data() -> setValue(vl -> val.bitstring);
             break;
         case SNMPDataOctetString:
         case SNMPDataIPAddress:
-            currOID -> setValue(vl -> val.string);
+            currOID -> data() -> setValue(vl -> val.string);
             break;
         case SNMPDataObjectId:
-            currOID -> setValue(vl -> val.objid);
+            currOID -> data() -> setValue(vl -> val.objid);
             break;
         }
     }
@@ -318,9 +318,9 @@ void Model::SNMPManager::snmpoperation(SNMPPDUType type,
     if(type != SNMPPDUSet)                                        // Procesamos la respuesta a una consulta
         processResponse(responsePDU, oids);                       // Procesamiento de PDU de respuesta
 
-    snmp_free_pdu(responsePDU);
-    snmp_close(session);
-    SOCK_CLEANUP;
+    snmp_free_pdu(responsePDU);                                   // Liberacion de recursos en PDU de respuesta
+    snmp_close(session);                                          // Cerramos la sesion
+    SOCK_CLEANUP;                                                 // Liberacion de recursos para SOs win32 (Sin efecto en SOs Unix).
 }
 
 /**

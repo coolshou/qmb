@@ -34,7 +34,7 @@
  * @param type Tipo de dato
  * @param value Valor del dato
  */
-Model::SNMPOID::SNMPOID(const std::string& strOID, SNMPDataType type, void *value) : _strOID(strOID), _type(type), _value(value)
+Model::SNMPOID::SNMPOID(const std::string& strOID, SNMPData *data) : _strOID(strOID), _data(data)
 {
     _parseOID = new oid[MAX_OID_LEN];
     _parseOIDLength = MAX_OID_LEN;
@@ -49,8 +49,8 @@ Model::SNMPOID::SNMPOID(const std::string& strOID, SNMPDataType type, void *valu
  * @param type Tipo de dato
  * @param value Valor del dato
  */
-Model::SNMPOID::SNMPOID(oid  *parseOID, size_t parseOIDLength, SNMPDataType type, void *value)
-    : _parseOID(parseOID), _parseOIDLength(parseOIDLength), _type(type), _value(value)
+Model::SNMPOID::SNMPOID(oid  *parseOID, size_t parseOIDLength, SNMPData *data)
+    : _parseOID(parseOID), _parseOIDLength(parseOIDLength), _data(data)
 {
     _strOID = std::string();
 
@@ -58,14 +58,42 @@ Model::SNMPOID::SNMPOID(oid  *parseOID, size_t parseOIDLength, SNMPDataType type
 }
 
 /**
+ * @brief Constructor copia de SNMPOID
+ * @param snmpOID Objeto origen
+ */
+Model::SNMPOID::SNMPOID(const SNMPOID& snmpOID)
+{
+    *this = snmpOID;
+}
+
+/**
  * @brief Destructor de SNMPOID
  */
 Model::SNMPOID::~SNMPOID()
 {
-    delete _parseOID;
+    if(_parseOID)
+        delete [] _parseOID;
+    if(_data)
+        delete _data;
+}
 
-    if(_value)
-        delete [] (char *) _value;
+/**
+ * @brief Redefinicion de operador de asignacion
+ * @param snmpOID Objeto origen
+ * @return Referencia a this
+ */
+Model::SNMPOID& Model::SNMPOID::operator=(const SNMPOID& snmpOID)
+{
+    _strOID = snmpOID.strOID();
+    std::copy(snmpOID.parseOID(), snmpOID.parseOID() + snmpOID.parseOIDLength(), _parseOID);
+    _parseOIDLength = snmpOID.parseOIDLength();
+    _data = snmpOID.data();
+    _name = snmpOID.name();
+    _status = snmpOID.status();
+    _access = snmpOID.access();
+    _description = snmpOID.description();
+
+    return *this;
 }
 
 /**
@@ -107,42 +135,97 @@ size_t Model::SNMPOID::parseOIDLength() const
 }
 
 /**
- * @brief Obtiene el tipo de dato
- * @return Tipo de dato
+ * @brief Obtiene el Dato SNMP
+ * @return Dato SNMP
  */
-Model::SNMPDataType Model::SNMPOID::type() const
+Model::SNMPData *Model::SNMPOID::data() const
 {
-    return _type;
+    return _data;
 }
 
 /**
- * @brief Establece el tipo de dato
- * @param type Tipo de dato
+ * @brief Establece el dato SNMP
+ * @param data Valor del
  */
-void Model::SNMPOID::setType(SNMPDataType type)
+void Model::SNMPOID::setData(SNMPData *data)
 {
-    _type = type;
+    if(_data)
+        delete _data;
+
+    _data = data;
+}
+
+
+/**
+ * @brief Obtiene el nombre del objeto
+ * @return Nombre del objeto
+ */
+const std::string& Model::SNMPOID::name() const
+{
+    return _name;
 }
 
 /**
- * @brief Obtiene el valor del dato
- * @return Valor del dato
+ * @brief Establece el nombre del objeto
+ * @param name Nombre del objeto
  */
-void *Model::SNMPOID::value() const
+void Model::SNMPOID::setName(const std::string& name)
 {
-    return _value;
+    _name = name;
 }
 
 /**
- * @brief Establece el valor del dato
- * @param value Valor del dato
+ * @brief obtiene el estado del objeto
+ * @return Estado del objeto
  */
-void Model::SNMPOID::setValue(void *value)
+Model::MIBStatus Model::SNMPOID::status() const
 {
-    if(_value)
-        delete [] (char *) _value;
+    return _status;
+}
 
-    _value = value;
+/**
+ * @brief Establece el estado del objeto
+ * @param status Estado del objeto
+ */
+void Model::SNMPOID::setStatus(MIBStatus status)
+{
+    _status = status;
+}
+
+/**
+ * @brief Obtiene el modo de acceso del objeto
+ * @return Modo de acceso del objeto
+ */
+Model::MIBAccess Model::SNMPOID::access() const
+{
+    return _access;
+}
+
+/**
+ * @brief Establece el modo de acceso del objeto
+ * @param access Modo de acceso del objeto
+ */
+void Model::SNMPOID::setAccess(MIBAccess access)
+{
+    _access = access;
+}
+
+/**
+ * @brief Obtiene la descripcion textual del objeto
+ * @return Descripcion textual del objeto
+ */
+const std::string& Model::SNMPOID::description() const
+{
+    return _description;
+}
+
+/**
+ * @brief Establece la descripcion textual del objeto
+ * @param description Descripcion textual del objeto
+ */
+void Model::SNMPOID::setDescription(const std::string& description)
+{
+    _description = description;
 }
 
 /**

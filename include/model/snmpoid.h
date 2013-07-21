@@ -30,8 +30,9 @@
 #define SNMPOID_H
 
 #include <string>
-#include "types.h"
+#include "snmpdata.h"
 #include "snmpexception.h"
+#include "types.h"
 
 namespace Model
 {
@@ -47,7 +48,7 @@ namespace Model
          * @param type Tipo de dato
          * @param value Valor del dato
          */
-        SNMPOID(const std::string& strOID, SNMPDataType type = SNMPDataNull, void *value = 0);
+        SNMPOID(const std::string& strOID, SNMPData *data = 0);
 
         /**
          * @brief Constructor de SNMPOID
@@ -56,7 +57,13 @@ namespace Model
          * @param type Tipo de dato
          * @param value Valor del dato
          */
-        SNMPOID(oid  *parseOID, size_t parseOIDLength, SNMPDataType type = SNMPDataNull, void *value = 0);
+        SNMPOID(oid  *parseOID, size_t parseOIDLength, SNMPData *data = 0);
+
+        /**
+         * @brief Constructor copia de SNMPOID
+         * @param snmpOID Objeto origen
+         */
+        SNMPOID(const SNMPOID& snmpOID);
 
         /**
          * @brief Destructor de SNMPOID
@@ -64,16 +71,23 @@ namespace Model
         ~SNMPOID();
 
         /**
+         * @brief Redefinicion de operador de asignacion
+         * @param snmpOID Objeto origen
+         * @return Referencia a this
+         */
+        SNMPOID& operator=(const SNMPOID& snmpOID);
+
+        /**
          * @brief Obtiene el OID en notacion textual
          * @return OID en notacion textual
          */
-        const std::string &strOID() const;
+        const std::string& strOID() const;
 
         /**
          * @brief Establece el OID en notacion textual
          * @param strOID OID en notacion textual
          */
-        void setStrOID(const std::string &strOID) throw(SNMPOIDException);
+        void setStrOID(const std::string& strOID) throw(SNMPOIDException);
 
         /**
          * @brief Obtiene el OID en notacion numerica
@@ -88,28 +102,64 @@ namespace Model
         size_t parseOIDLength() const;
 
         /**
-         * @brief Obtiene el tipo de dato
-         * @return Tipo de dato
+         * @brief Obtiene el Dato SNMP
+         * @return Dato SNMP
          */
-        SNMPDataType type() const;
+        SNMPData *data() const;
 
         /**
-         * @brief Establece el tipo de dato
-         * @param type Tipo de dato
+         * @brief Establece el dato SNMP
+         * @param data Valor del
          */
-        void setType(SNMPDataType type);
+        void setData(SNMPData *data);
 
         /**
-         * @brief Obtiene el valor del dato
-         * @return Valor del dato
+         * @brief Obtiene el nombre del objeto
+         * @return Nombre del objeto
          */
-        void *value() const;
+        const std::string& name() const;
 
         /**
-         * @brief Establece el valor del dato
-         * @param value Valor del dato
+         * @brief Establece el nombre del objeto
+         * @param name Nombre del objeto
          */
-        void setValue(void *value);
+        void setName(const std::string& name);
+
+        /**
+         * @brief obtiene el estado del objeto
+         * @return Estado del objeto
+         */
+        MIBStatus status() const;
+
+        /**
+         * @brief Establece el estado del objeto
+         * @param status Estado del objeto
+         */
+        void setStatus(MIBStatus status);
+
+        /**
+         * @brief Obtiene el modo de acceso del objeto
+         * @return Modo de acceso del objeto
+         */
+        MIBAccess access() const;
+
+        /**
+         * @brief Establece el modo de acceso del objeto
+         * @param access Modo de acceso del objeto
+         */
+        void setAccess(MIBAccess access);
+
+        /**
+         * @brief Obtiene la descripcion textual del objeto
+         * @return Descripcion textual del objeto
+         */
+        const std::string& description() const;
+
+        /**
+         * @brief Establece la descripcion textual del objeto
+         * @param description Descripcion textual del objeto
+         */
+        void setDescription(const std::string& description);
 
     private:
         /**
@@ -127,24 +177,41 @@ namespace Model
          * @brief OID en notacion textual
          */
         std::string _strOID;
+
         /**
          * @brief OID en notacion numerica
          */
         oid *_parseOID;
 
         /**
-         * @brief L
+         * @brief Longitud del OID en notacion numerica
          */
         size_t _parseOIDLength;
 
         /**
-         * @brief Tipo de dato
+         * @brief Dato SNMP
          */
-        SNMPDataType _type;
+        SNMPData *_data;
+
         /**
-         * @brief Valor del dato
+         * @brief Nombre del objeto
          */
-        void *_value;
+        std::string _name;
+
+        /**
+         * @brief Estado del objeto
+         */
+        MIBStatus _status;
+
+        /**
+         * @brief Modo de acceso del objeto
+         */
+        MIBAccess _access;
+
+        /**
+         * @brief Descripcion textual del objeto
+         */
+        std::string _description;
     };
 }
 

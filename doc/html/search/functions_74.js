@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['type',['type',['../class_model_1_1_s_n_m_p_o_i_d.html#abfea01f904d1e68eb758ed973ed4c7ad',1,'Model::SNMPOID']]]
+  ['type',['type',['../class_model_1_1_s_n_m_p_data.html#a531b9c5ec5abb0ae5dc86d3f32845035',1,'Model::SNMPData']]]
 ];
