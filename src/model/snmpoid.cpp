@@ -27,6 +27,7 @@
  */
 
 #include "snmpoid.h"
+#include <sstream>
 
 /**
  * @brief Constructor de SNMPOID
@@ -228,9 +229,13 @@ void Model::SNMPOID::parseOIDtoNumeric() throw(SNMPOIDException)
  */
 void Model::SNMPOID::parseOIDtoTextual()
 {
+    std::stringstream ss;
+
     for(int k = 0; k < (int) _parseOIDLength; k++) {
-        _strOID += (char) _parseOID[k];
+        ss << _parseOID[k];
         if(k != ((int)_parseOIDLength - 1))
-            _strOID += ".";
+            ss << ".";
     }
+
+    _strOID = ss.str();
 }

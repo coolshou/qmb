@@ -29,6 +29,7 @@
 #include "snmpdata.h"
 #include <algorithm>
 #include <cstring>
+#include <sstream>
 
 /**
  * @brief Constructor de SNMPData
@@ -224,6 +225,44 @@ Model::SNMPDataType Model::SNMPData::type() const
 void Model::SNMPData::setType(SNMPDataType type)
 {
     _type = type;
+}
+
+/**
+ * @brief Obtiene representacion textual del valor del dato
+ * @return Representacion textual del valor del dato
+ */
+std::string Model::SNMPData::toString() const
+{
+    std::stringstream ss;
+
+    switch(_type) {
+    case SNMPDataInteger:
+    case SNMPDataUnsigned:
+    case SNMPDataBits:
+    case SNMPDataCounter:
+    case SNMPDataTimeTicks:
+        ss << *_value.integer;
+        break;
+    case SNMPDataCounter64:
+        ss << _value.counter64 -> high << _value.counter64 -> low;
+        break;
+    case SNMPDataBitString:
+        ss << _value.bitstring;
+        break;
+    case SNMPDataOctetString:
+    case SNMPDataIPAddress:
+        ss << _value.string;
+        break;
+    case SNMPDataObjectId:
+        for(int k = 0; k < MAX_OID_LEN && _value.objid[k]; k++)
+            ss << _value.objid[k]
+               << (((k+1) < MAX_OID_LEN && _value.objid[k+1]) ? "." : "");
+        break;
+    default:
+        ss << 0;
+    }
+
+    return ss.str();
 }
 
 /**

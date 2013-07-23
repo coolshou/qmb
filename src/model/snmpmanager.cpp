@@ -222,8 +222,9 @@ Model::SNMPPDU *Model::SNMPManager::sendPDU(SNMPSession *session, SNMPPDU *pdu) 
  */
 void Model::SNMPManager::processResponse(SNMPPDU *pdu, std::vector<SNMPOID *>& oids, SNMPPDUType type)
 {
+    int k = 0;
+
     if(type == SNMPPDUGet || type == SNMPPDUGetNext) {
-        int k = 0;
 
         // Iteramos por la lista de variables de la PDU de
         // respuesta estableciendo el (tipo, valor) de cada OID
@@ -232,7 +233,16 @@ void Model::SNMPManager::processResponse(SNMPPDU *pdu, std::vector<SNMPOID *>& o
             oids.at(k) -> data() -> setValue((SNMPValue) vl -> val);
         }
     } else if(type == SNMPPDUGetBulk) {
-        // TO DO
+        for(std::vector<SNMPOID *>::iterator vi = oids.begin();vi != oids.end(); ++vi)
+            delete *vi;
+
+        oids.clear();
+
+        for(SNMPVariableList *vl = pdu -> variables; vl; vl = vl -> next_variable, k++) {
+            oids.push_back(new SNMPOID(vl -> name, vl -> name_length));
+            oids.back() -> data() -> setType((SNMPDataType) vl -> type);
+            oids.back() -> data() -> setValue((SNMPValue) vl -> val);
+        }
     }
 }
 

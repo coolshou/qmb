@@ -85,15 +85,11 @@ int testSNMPAPI(const char *agent)
     Model::SNMPManager::initSNMP();
 
     try {
-        oids.push_back(new Model::SNMPOID("1.3.6.1.2.1.4.2.0"));
-        oids.push_back(new Model::SNMPOID("1.3.6.1.2.1.1.4.0"));
-        oids.push_back(new Model::SNMPOID("1.3.6.1.2.1.1.6.0"));
-        Model::SNMPManager::snmpget(Model::SNMPv1, "public", agent, oids);
+        oids.push_back(new Model::SNMPOID("1.3.6.1.2.1"));
+        Model::SNMPManager::snmpgetbulk(Model::SNMPv2, "public", agent, oids, 0, 5);
         for(std::vector<Model::SNMPOID *>::iterator vi=oids.begin();vi!=oids.end();++vi)
-            if((*vi) -> data() -> type() == Model::SNMPDataOctetString)
-                std::cout << (*vi) -> strOID() << " := " << (unsigned char *) (*vi) -> data() -> value() << std::endl;
-            else
-                std::cout << (*vi) -> strOID() << " := " <<  *((long *) (*vi) -> data() -> value()) << std::endl;
+            std::cout << (*vi) -> strOID() << " := "
+                      <<  (*vi) -> data() -> toString() << std::endl;
     } catch (Model::SNMPPacketException &exception) {
         std::cout << exception.message() << std::endl;
         std::cout << "Error : " << exception.error() << std::endl;

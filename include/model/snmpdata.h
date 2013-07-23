@@ -29,6 +29,7 @@
 #ifndef SNMPDATA_H
 #define SNMPDATA_H
 
+#include <string>
 #include "types.h"
 
 namespace Model
@@ -93,6 +94,12 @@ namespace Model
          * @param type Tipo del dato
          */
         void setType(SNMPDataType type);
+
+        /**
+         * @brief Obtiene representacion textual del valor del dato
+         * @return Representacion textual del valor del dato
+         */
+        std::string toString() const;
     private:
         /**
          * @brief Inicializa el valor del dato
