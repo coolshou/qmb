@@ -145,7 +145,7 @@ namespace Model
          * @param pdu PDU SNMP de respuesta
          * @param oids Lista de OIDs
          */
-        static void processResponse(SNMPPDU *pdu, std::vector<SNMPOID *>& oids);
+        static void processResponse(SNMPPDU *pdu, std::vector<SNMPOID *>& oids, SNMPPDUType type);
 
         /**
          * @brief Busca el OID correspondiente a una variable de una PDU SNMP de respuesta

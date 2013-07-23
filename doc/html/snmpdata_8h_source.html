@@ -112,25 +112,27 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_model_1_1_s_n_m_p_data.html#aa319ed35790cb3e11178db480d31895a" title="Establece el valor del dato. ">setValue</a>(<span class="keywordtype">void</span> *value);</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        SNMPDataType <a class="code" href="class_model_1_1_s_n_m_p_data.html#a531b9c5ec5abb0ae5dc86d3f32845035" title="Devuelve el tipo del dato. ">type</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_model_1_1_s_n_m_p_data.html#aa319ed35790cb3e11178db480d31895a" title="Establece el valor del dato. ">setValue</a>(<span class="keyword">const</span> SNMPValue &amp;value);</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_model_1_1_s_n_m_p_data.html#ad12974cd4b24057bdabe28a7b7b4c970" title="Establece el tipo del dato. ">setType</a>(SNMPDataType type);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_model_1_1_s_n_m_p_data.html#abcca5055e11185f54433c8ee6af150ab" title="Inicializa el valor del dato. ">initValue</a>(<span class="keywordtype">void</span> *value);</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_model_1_1_s_n_m_p_data.html#a04097492cd8198d2cfec3507d9887c88" title="Libera memoria del valor del dato. ">deleteValue</a>();</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
-<div class="line"><a name="l00105"></a><span class="lineno"><a class="code" href="class_model_1_1_s_n_m_p_data.html#a0dc9d93ec62553e9b9a8d19cf8390a17">  105</a></span>&#160;        SNMPValue <a class="code" href="class_model_1_1_s_n_m_p_data.html#a0dc9d93ec62553e9b9a8d19cf8390a17" title="Valor del dato. ">_value</a>;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
-<div class="line"><a name="l00110"></a><span class="lineno"><a class="code" href="class_model_1_1_s_n_m_p_data.html#afec1f7eb841400b4451ce191ad5d2d05">  110</a></span>&#160;        SNMPDataType <a class="code" href="class_model_1_1_s_n_m_p_data.html#afec1f7eb841400b4451ce191ad5d2d05" title="Tipo del dato. ">_type</a>;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    };</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;}</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="preprocessor">#endif // SNMPDATA_H</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        SNMPDataType <a class="code" href="class_model_1_1_s_n_m_p_data.html#a531b9c5ec5abb0ae5dc86d3f32845035" title="Devuelve el tipo del dato. ">type</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_model_1_1_s_n_m_p_data.html#ad12974cd4b24057bdabe28a7b7b4c970" title="Establece el tipo del dato. ">setType</a>(SNMPDataType type);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_model_1_1_s_n_m_p_data.html#abcca5055e11185f54433c8ee6af150ab" title="Inicializa el valor del dato. ">initValue</a>(<span class="keywordtype">void</span> *value);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_model_1_1_s_n_m_p_data.html#a04097492cd8198d2cfec3507d9887c88" title="Libera memoria del valor del dato. ">deleteValue</a>();</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
+<div class="line"><a name="l00111"></a><span class="lineno"><a class="code" href="class_model_1_1_s_n_m_p_data.html#a0dc9d93ec62553e9b9a8d19cf8390a17">  111</a></span>&#160;        SNMPValue <a class="code" href="class_model_1_1_s_n_m_p_data.html#a0dc9d93ec62553e9b9a8d19cf8390a17" title="Valor del dato. ">_value</a>;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
+<div class="line"><a name="l00116"></a><span class="lineno"><a class="code" href="class_model_1_1_s_n_m_p_data.html#afec1f7eb841400b4451ce191ad5d2d05">  116</a></span>&#160;        SNMPDataType <a class="code" href="class_model_1_1_s_n_m_p_data.html#afec1f7eb841400b4451ce191ad5d2d05" title="Tipo del dato. ">_type</a>;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    };</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;}</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor">#endif // SNMPDATA_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Domingo, 21 de Julio de 2013 16:45:08 para QMB por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Martes, 23 de Julio de 2013 18:54:57 para QMB por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

@@ -128,22 +128,75 @@ void Model::SNMPData::setValue(void *value)
         *_value.counter64 = *((SNMPCounter64 *) value);
         break;
     case SNMPDataBitString:
-        _value.bitstring = new unsigned char;
+        _value.bitstring = new unsigned char[(int) strlen((const char *) value) + 1];
         std::copy(((unsigned char *) value),
-                  ((unsigned char *) value)+ strlen(((const char *) value)),
+                  ((unsigned char *) value) + (int) strlen(((const char *) value)),
                   _value.bitstring);
+        _value.bitstring[(int) strlen((const char *) value)] = '\0';
         break;
     case SNMPDataOctetString:
     case SNMPDataIPAddress:
-        _value.string = new unsigned char;
+        _value.string = new unsigned char[(int) strlen((const char *) value) + 1];
         std::copy(((unsigned char *) value),
-                  ((unsigned char *) value)+ strlen(((const char *) value)),
+                  ((unsigned char *) value) + (int) strlen(((const char *) value)),
                   _value.string);
+        _value.string[(int) strlen((const char *) value)] = '\0';
         break;
     case SNMPDataObjectId:
-        _value.objid = new oid;
-        std::copy(((unsigned char *) value),
-                  ((unsigned char *) value)+ MAX_OID_LEN,
+        _value.objid = new oid[MAX_OID_LEN];
+        std::copy(((oid *) value),
+                  ((oid *) value)+ MAX_OID_LEN,
+                  _value.objid);
+        break;
+    default:
+        _value.integer = 0;
+        _value.counter64 = 0;
+        _value.bitstring = 0;
+        _value.string = 0;
+        _value.objid = 0;
+    }
+}
+
+/**
+ * @brief Establece el valor del dato
+ * @param value Valor del dato
+ */
+void Model::SNMPData::setValue(const SNMPValue &value)
+{
+    deleteValue();
+
+    switch(_type) {
+    case SNMPDataInteger:
+    case SNMPDataUnsigned:
+    case SNMPDataBits:
+    case SNMPDataCounter:
+    case SNMPDataTimeTicks:
+        _value.integer = new long;
+        *_value.integer = *(value.integer);
+        break;
+    case SNMPDataCounter64:
+        _value.counter64 = new SNMPCounter64;
+        *_value.counter64 = *(value.counter64);
+        break;
+    case SNMPDataBitString:
+        _value.bitstring = new unsigned char[(int) strlen((const char *) value.bitstring) + 1];
+        std::copy((value.bitstring),
+                  (value.bitstring)+ (int) strlen(((const char *) value.bitstring)),
+                  _value.bitstring);
+        _value.bitstring[(int) strlen((const char *) value.bitstring)] = '\0';
+        break;
+    case SNMPDataOctetString:
+    case SNMPDataIPAddress:
+        _value.string = new unsigned char[(int) strlen((const char *) value.string) + 1];
+        std::copy((value.string),
+                  (value.string)+ (int) strlen(((const char *) value.string)),
+                  _value.string);
+        _value.string[(int) strlen((const char *) value.string)] = '\0';
+        break;
+    case SNMPDataObjectId:
+        _value.objid = new oid[MAX_OID_LEN];
+        std::copy((value.objid),
+                  (value.objid)+ MAX_OID_LEN,
                   _value.objid);
         break;
     default:

@@ -142,19 +142,6 @@ Model::SNMPData *Model::SNMPOID::data() const
 }
 
 /**
- * @brief Establece el dato SNMP
- * @param data Valor del
- */
-void Model::SNMPOID::setData(SNMPData *data)
-{
-    if(_data)
-        delete _data;
-
-    _data = data;
-}
-
-
-/**
  * @brief Obtiene el nombre del objeto
  * @return Nombre del objeto
  */

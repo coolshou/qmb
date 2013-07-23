@@ -77,6 +77,12 @@ namespace Model
         void setValue(void *value);
 
         /**
+         * @brief Establece el valor del dato
+         * @param value Valor del dato
+         */
+        void setValue(const SNMPValue &value);
+
+        /**
          * @brief Devuelve el tipo del dato
          * @return Tipo del dato
          */

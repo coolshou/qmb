@@ -104,12 +104,6 @@ namespace Model
         SNMPData *data() const;
 
         /**
-         * @brief Establece el dato SNMP
-         * @param data Valor del
-         */
-        void setData(SNMPData *data);
-
-        /**
          * @brief Obtiene el nombre del objeto
          * @return Nombre del objeto
          */
