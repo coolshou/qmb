@@ -50,6 +50,16 @@ namespace Model
         static void initSNMP();
 
         /**
+         * @brief Establece parametros de configuracion para una sesion SNMP
+         * @param remotePort Numero de puerto del agente SNMP remoto
+         * @param retries Numero de reintentos
+         * @param timeout Numero de uSegundos para producirse un timeout
+         */
+        static void configSNMP(unsigned short remotePort = DEFAULT_REMOTE_PORT,
+                               unsigned short retries = DEFAULT_RETRIES,
+                               long timeout = DEFAULT_TIMEOUT);
+
+        /**
          * @brief Envia mensaje de peticion SNMP GET y recibe mensaje de respuesta.
          * @param version Version de SNMP utilizada.
          * @param community Nombre de la comunidad.
@@ -179,6 +189,21 @@ namespace Model
          * @brief Especifica si la libreria SNMP ha sido inicializada
          */
         static bool _initialized;
+
+        /**
+         * @brief Numero de puerto del agente SNMP remoto
+         */
+        static unsigned short _remotePort;
+
+        /**
+         * @brief Numero de reintentos
+         */
+        static unsigned short _retries;
+
+        /**
+         * @brief Numero de uSegundos para producirse un timeout
+         */
+        static long _timeout;
     };
 }
 

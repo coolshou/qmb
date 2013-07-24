@@ -47,15 +47,15 @@ int testSNMPAPI(const char *agent);
  */
 int main(int argc, char *argv[])
 {
-   /*QApplication app(argc, argv);
+   QApplication app(argc, argv);
    View::MainWindow window;
 
    setUpApplication(&app);
 
    window.show();
 
-   return app.exec();*/
-   return testSNMPAPI("192.168.1.30");
+   return app.exec();
+   //return testSNMPAPI("192.168.1.30");
 
 }
 
@@ -90,11 +90,21 @@ int testSNMPAPI(const char *agent)
         for(std::vector<Model::SNMPOID *>::iterator vi=oids.begin();vi!=oids.end();++vi)
             std::cout << (*vi) -> strOID() << " := "
                       <<  (*vi) -> data() -> toString() << std::endl;
-    } catch (Model::SNMPPacketException &exception) {
+    } catch (Model::SNMPSessionException& exception) {
         std::cout << exception.message() << std::endl;
-        std::cout << "Error : " << exception.error() << std::endl;
+        std::cout << "Agent : " << exception.session().peername << ":"
+                  << exception.session().remote_port << " Community: "
+                  << exception.session().community << std::endl;
         return -1;
-    }  catch (Model::SNMPException &exception) {
+    } catch (Model::SNMPOIDException& exception) {
+        std::cout << exception.message() << std::endl;
+        std::cout << "OID : " << exception.badOID() << std::endl;
+        return -1;
+    } catch (Model::SNMPPacketException& exception) {
+        std::cout << exception.message() << std::endl;
+        std::cout << "Packet Error : " << exception.error() << std::endl;
+        return -1;
+    } catch (Model::SNMPException& exception) {
         std::cout << exception.message() << std::endl;
         return -1;
     }

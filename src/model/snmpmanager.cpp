@@ -42,6 +42,19 @@ void Model::SNMPManager::initSNMP()
 }
 
 /**
+ * @brief Establece parametros de configuracion para una sesion SNMP
+ * @param remotePort Numero de puerto del agente SNMP remoto
+ * @param retries Numero de reintentos
+ * @param timeout Numero de uSegundos para producirse un timeout
+ */
+void Model::SNMPManager::configSNMP(unsigned short remotePort, unsigned short retries, long timeout)
+{
+    _remotePort = remotePort;
+    _retries = retries;
+    _timeout = timeout;
+}
+
+/**
  * @brief Envia mensaje de peticion SNMP GET y recibe mensaje de respuesta.
  * @param version Version de SNMP utilizada.
  * @param community Nombre de la comunidad.
@@ -54,6 +67,9 @@ void Model::SNMPManager::snmpget(SNMPVersion version,
                                  const std::string& agent,
                                  std::vector<SNMPOID *> &oids) throw(SNMPException)
 {
+    if(!_initialized)
+        return;
+
     snmpoperation(SNMPPDUGet, version, community, agent, oids);
 }
 
@@ -70,6 +86,9 @@ void Model::SNMPManager::snmpgetnext(SNMPVersion version,
                                      const std::string& agent,
                                      std::vector<SNMPOID *> &oids) throw(SNMPException)
 {
+    if(!_initialized)
+        return;
+
     snmpoperation(SNMPPDUGetNext, version, community, agent, oids);
 }
 
@@ -90,6 +109,9 @@ void Model::SNMPManager::snmpgetbulk(SNMPVersion version,
                                      unsigned short nrepeaters,
                                      unsigned short mrepetitions) throw(SNMPException)
 {
+    if(!_initialized)
+        return;
+
     snmpoperation(SNMPPDUGetBulk, version, community, agent, oids, nrepeaters, mrepetitions);
 }
 
@@ -106,6 +128,9 @@ void Model::SNMPManager::snmpset(SNMPVersion version,
                                  const std::string& agent,
                                  std::vector<SNMPOID *>& oids) throw(SNMPException)
 {
+    if(!_initialized)
+        return;
+
     snmpoperation(SNMPPDUSet, version, community, agent, oids);
 }
 
@@ -128,6 +153,9 @@ Model::SNMPSession *Model::SNMPManager::createSession(SNMPVersion version,
         throw SNMPException("Error de inicializacion en sesion SNMP. Version no soportada.");
 
     snmp_sess_init(&session);                           // Inicializacion de sesion
+    session.remote_port = _remotePort;                  // Numero de puerto del agente remoto
+    session.retries = _retries;                         // Numero de reintentos
+    session.timeout = _timeout;                         // Numero de uSegundos para timeout
     session.version = version;                          // Version SNMP
     session.community = (u_char *) community.c_str();   // Comunidad SNMPv1-2
     session.community_len = community.length();         // Longitud del nombre de la comunidad
@@ -314,3 +342,18 @@ void Model::SNMPManager::snmpoperation(SNMPPDUType type,
  * @brief Inicializacion de atributo estatico _initialized
  */
 bool Model::SNMPManager::_initialized = false;
+
+/**
+ * @brief Numero de puerto del agente SNMP remoto
+ */
+unsigned short Model::SNMPManager::_remotePort = DEFAULT_REMOTE_PORT;
+
+/**
+ * @brief Numero de reintentos
+ */
+unsigned short Model::SNMPManager::_retries = DEFAULT_RETRIES;
+
+/**
+ * @brief Numero de uSegundos para producirse un timeout
+ */
+long Model::SNMPManager::_timeout = DEFAULT_TIMEOUT;

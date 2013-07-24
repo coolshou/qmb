@@ -41,5 +41,8 @@
 
 #define DEFAULT_NON_REPEATERS 0                                         /**< Numero de variables por defecto sobre las que no se iterara en una operacion GET BULK */
 #define DEFAULT_MAX_REPETITIONS 10                                      /**< Numero de iteraciones por defecto sobre cada variable en una operacion GET BULK */
+#define DEFAULT_REMOTE_PORT 161                                         /**< Numero de puerto del agente SNMP remoto */
+#define DEFAULT_RETRIES 2                                               /**< Numero de reintentos */
+#define DEFAULT_TIMEOUT 2000000L                                        /**< Numero de uSegundos para producirse un timeout */
 
 #endif // GLOBAL_H

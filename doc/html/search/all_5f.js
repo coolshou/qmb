@@ -18,9 +18,12 @@ var searchData=
   ['_5fparent',['_parent',['../class_model_1_1_s_n_m_p_tree.html#ad64bddcd27254edf5b36b5e811da8636',1,'Model::SNMPTree']]],
   ['_5fparseoid',['_parseOID',['../class_model_1_1_s_n_m_p_o_i_d.html#ad2a7a37b0884b8ffe6fac899cd7483fb',1,'Model::SNMPOID']]],
   ['_5fparseoidlength',['_parseOIDLength',['../class_model_1_1_s_n_m_p_o_i_d.html#a65296f153080c4100ce6c68cbd14e94a',1,'Model::SNMPOID']]],
+  ['_5fremoteport',['_remotePort',['../class_model_1_1_s_n_m_p_manager.html#af857df1df892f28dc2a8ab6252dda06c',1,'Model::SNMPManager']]],
+  ['_5fretries',['_retries',['../class_model_1_1_s_n_m_p_manager.html#a80a042ce53be5eb86090c4f52a191a02',1,'Model::SNMPManager']]],
   ['_5fsession',['_session',['../class_model_1_1_s_n_m_p_session_exception.html#a6ae9148e600c22ffa3b7c3f66c953209',1,'Model::SNMPSessionException']]],
   ['_5fstatus',['_status',['../class_model_1_1_s_n_m_p_o_i_d.html#a63bc09544d4eb78a40cb5203ad99ed4d',1,'Model::SNMPOID']]],
   ['_5fstroid',['_strOID',['../class_model_1_1_s_n_m_p_o_i_d.html#a4ffd987a02279aa8d717f599730a15fe',1,'Model::SNMPOID']]],
+  ['_5ftimeout',['_timeout',['../class_model_1_1_s_n_m_p_manager.html#ab088e51455a573ffd5a6808e7462e527',1,'Model::SNMPManager']]],
   ['_5ftype',['_type',['../class_model_1_1_s_n_m_p_data.html#afec1f7eb841400b4451ce191ad5d2d05',1,'Model::SNMPData']]],
   ['_5fvalue',['_value',['../class_model_1_1_s_n_m_p_data.html#a0dc9d93ec62553e9b9a8d19cf8390a17',1,'Model::SNMPData']]]
 ];

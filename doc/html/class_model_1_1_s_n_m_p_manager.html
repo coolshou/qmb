@@ -108,6 +108,9 @@ Métodos públicos estáticos</h2></td></tr>
 static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_1_1_s_n_m_p_manager.html#ae23c544cd8ba2199c1808740b2295125">initSNMP</a> ()</td></tr>
 <tr class="memdesc:ae23c544cd8ba2199c1808740b2295125"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicializa la libreria SNMP. <br/></td></tr>
 <tr class="separator:ae23c544cd8ba2199c1808740b2295125"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac43a39f01313a0f592f7d5c72cc9294f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_1_1_s_n_m_p_manager.html#ac43a39f01313a0f592f7d5c72cc9294f">configSNMP</a> (unsigned short remotePort=<a class="el" href="global_8h.html#a839596657b0b68b19e5aef696e47901a">DEFAULT_REMOTE_PORT</a>, unsigned short retries=<a class="el" href="global_8h.html#a107b146cc517708c4931b4803946c01c">DEFAULT_RETRIES</a>, long timeout=<a class="el" href="global_8h.html#aad2dd72565852b91c809cd4685833b17">DEFAULT_TIMEOUT</a>)</td></tr>
+<tr class="memdesc:ac43a39f01313a0f592f7d5c72cc9294f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Establece parametros de configuracion para una sesion SNMP.  <a href="#ac43a39f01313a0f592f7d5c72cc9294f">Más...</a><br/></td></tr>
+<tr class="separator:ac43a39f01313a0f592f7d5c72cc9294f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac1336cac2d8f3d975b0ff3c0379788fb"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_1_1_s_n_m_p_manager.html#ac1336cac2d8f3d975b0ff3c0379788fb">snmpget</a> (SNMPVersion version, const std::string &amp;community, const std::string &amp;agent, std::vector&lt; <a class="el" href="class_model_1_1_s_n_m_p_o_i_d.html">SNMPOID</a> * &gt; &amp;oids)  throw (SNMPException)</td></tr>
 <tr class="memdesc:ac1336cac2d8f3d975b0ff3c0379788fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envia mensaje de peticion SNMP GET y recibe mensaje de respuesta.  <a href="#ac1336cac2d8f3d975b0ff3c0379788fb">Más...</a><br/></td></tr>
 <tr class="separator:ac1336cac2d8f3d975b0ff3c0379788fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -147,10 +150,72 @@ Atributos privados estáticos</h2></td></tr>
 <tr class="memitem:a584e8f1698a36ba2b0c7f8be158dc432"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_1_1_s_n_m_p_manager.html#a584e8f1698a36ba2b0c7f8be158dc432">_initialized</a> = false</td></tr>
 <tr class="memdesc:a584e8f1698a36ba2b0c7f8be158dc432"><td class="mdescLeft">&#160;</td><td class="mdescRight">Especifica si la libreria SNMP ha sido inicializada.  <a href="#a584e8f1698a36ba2b0c7f8be158dc432">Más...</a><br/></td></tr>
 <tr class="separator:a584e8f1698a36ba2b0c7f8be158dc432"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af857df1df892f28dc2a8ab6252dda06c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af857df1df892f28dc2a8ab6252dda06c"></a>
+static unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_1_1_s_n_m_p_manager.html#af857df1df892f28dc2a8ab6252dda06c">_remotePort</a> = <a class="el" href="global_8h.html#a839596657b0b68b19e5aef696e47901a">DEFAULT_REMOTE_PORT</a></td></tr>
+<tr class="memdesc:af857df1df892f28dc2a8ab6252dda06c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Numero de puerto del agente SNMP remoto. <br/></td></tr>
+<tr class="separator:af857df1df892f28dc2a8ab6252dda06c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80a042ce53be5eb86090c4f52a191a02"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a80a042ce53be5eb86090c4f52a191a02"></a>
+static unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_1_1_s_n_m_p_manager.html#a80a042ce53be5eb86090c4f52a191a02">_retries</a> = <a class="el" href="global_8h.html#a107b146cc517708c4931b4803946c01c">DEFAULT_RETRIES</a></td></tr>
+<tr class="memdesc:a80a042ce53be5eb86090c4f52a191a02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Numero de reintentos. <br/></td></tr>
+<tr class="separator:a80a042ce53be5eb86090c4f52a191a02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab088e51455a573ffd5a6808e7462e527"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab088e51455a573ffd5a6808e7462e527"></a>
+static long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_1_1_s_n_m_p_manager.html#ab088e51455a573ffd5a6808e7462e527">_timeout</a> = <a class="el" href="global_8h.html#aad2dd72565852b91c809cd4685833b17">DEFAULT_TIMEOUT</a></td></tr>
+<tr class="memdesc:ab088e51455a573ffd5a6808e7462e527"><td class="mdescLeft">&#160;</td><td class="mdescRight">Numero de uSegundos para producirse un timeout. <br/></td></tr>
+<tr class="separator:ab088e51455a573ffd5a6808e7462e527"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
 <div class="textblock"><p>Clase <a class="el" href="class_model_1_1_s_n_m_p_manager.html" title="Clase SNMPManager que implementa la funcionalidad del gestor SNMP. ">SNMPManager</a> que implementa la funcionalidad del gestor SNMP. </p>
 </div><h2 class="groupheader">Documentación de las funciones miembro</h2>
+<a class="anchor" id="ac43a39f01313a0f592f7d5c72cc9294f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Model::SNMPManager::configSNMP </td>
+          <td>(</td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>remotePort</em> = <code><a class="el" href="global_8h.html#a839596657b0b68b19e5aef696e47901a">DEFAULT_REMOTE_PORT</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned short&#160;</td>
+          <td class="paramname"><em>retries</em> = <code><a class="el" href="global_8h.html#a107b146cc517708c4931b4803946c01c">DEFAULT_RETRIES</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long&#160;</td>
+          <td class="paramname"><em>timeout</em> = <code><a class="el" href="global_8h.html#aad2dd72565852b91c809cd4685833b17">DEFAULT_TIMEOUT</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Establece parametros de configuracion para una sesion SNMP. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">remotePort</td><td>Numero de puerto del agente SNMP remoto </td></tr>
+    <tr><td class="paramname">retries</td><td>Numero de reintentos </td></tr>
+    <tr><td class="paramname">timeout</td><td>Numero de uSegundos para producirse un timeout </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="adc47a544a1a1f4bf21819f8e4738ad60"></a>
 <div class="memitem">
 <div class="memproto">
@@ -866,7 +931,7 @@ Atributos privados estáticos</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Martes, 23 de Julio de 2013 22:51:35 para QMB por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Miércoles, 24 de Julio de 2013 12:49:19 para QMB por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>
