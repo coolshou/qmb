@@ -221,7 +221,7 @@ void Model::SNMPOID::setDescription(const std::string& description)
 void Model::SNMPOID::parseOIDtoNumeric() throw(SNMPOIDException)
 {
     if(!snmp_parse_oid(_strOID.c_str(), _parseOID, &_parseOIDLength))
-        throw SNMPOIDException(_strOID ,"Error en la creacion de la PDU. OID mal formado.");
+        throw SNMPOIDException(_strOID ,"Error en la creacion del objeto. OID mal formado.");
 }
 
 /**

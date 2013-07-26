@@ -198,11 +198,13 @@ Model::SNMPPDU *Model::SNMPManager::createPDU(SNMPPDUType type,
 
     // Iteramos a traves de los OIDs
     for(std::vector<SNMPOID *>::const_iterator vi = oids.begin(); vi != oids.end(); vi++) {
-        if(type == SNMPPDUSet) // Aniadimos a la PDU el valor correspondiente al k-esimo OID
+        if(type == SNMPPDUSet) { // Aniadimos a la PDU el valor correspondiente al k-esimo OID
+            if((*vi) -> data() -> type() == SNMPDataUnknown)
+                throw SNMPOIDException((*vi) -> strOID(), "Error en la creacion de la PDU. Operacion SNMPSet sobre OID de tipo desconocido.");
             snmp_add_var(pdu, (*vi) -> parseOID(), (*vi) -> parseOIDLength(),
                          (*vi) -> data() -> type(),
                          (const char *) (*vi) -> data() -> value());
-        else // Aniadimos a la PDU el valor nulo correspondiente al k-esimo OID
+        } else // Aniadimos a la PDU el valor nulo correspondiente al k-esimo OID
             snmp_add_null_var(pdu, (*vi) -> parseOID(), (*vi) -> parseOIDLength());
     }
 

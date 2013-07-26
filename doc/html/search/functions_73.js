@@ -11,7 +11,7 @@ var searchData=
   ['settype',['setType',['../class_model_1_1_s_n_m_p_data.html#ad12974cd4b24057bdabe28a7b7b4c970',1,'Model::SNMPData']]],
   ['setupapplication',['setUpApplication',['../main_8cpp.html#acf2082698673417dd75308713c43c822',1,'main.cpp']]],
   ['setvalue',['setValue',['../class_model_1_1_s_n_m_p_data.html#aa319ed35790cb3e11178db480d31895a',1,'Model::SNMPData::setValue(void *value)'],['../class_model_1_1_s_n_m_p_data.html#ae07e0f3b76dcec037fcc57c8777b4da9',1,'Model::SNMPData::setValue(const SNMPValue &amp;value)']]],
-  ['snmpdata',['SNMPData',['../class_model_1_1_s_n_m_p_data.html#ab3189c78f037524f80cd4f5d2043f28c',1,'Model::SNMPData::SNMPData(SNMPDataType type=SNMPDataNull, void *value=0)'],['../class_model_1_1_s_n_m_p_data.html#a89f7f6e8d349ec7879e8fad585f2efdf',1,'Model::SNMPData::SNMPData(const SNMPData &amp;snmpData)']]],
+  ['snmpdata',['SNMPData',['../class_model_1_1_s_n_m_p_data.html#a7ea2f611a69248199f25366c45e2b729',1,'Model::SNMPData::SNMPData(SNMPDataType type=SNMPDataUnknown, void *value=0)'],['../class_model_1_1_s_n_m_p_data.html#a89f7f6e8d349ec7879e8fad585f2efdf',1,'Model::SNMPData::SNMPData(const SNMPData &amp;snmpData)']]],
   ['snmpexception',['SNMPException',['../class_model_1_1_s_n_m_p_exception.html#a3cd5ded7724a25439fc1fa88d0b8e638',1,'Model::SNMPException']]],
   ['snmpget',['snmpget',['../class_model_1_1_s_n_m_p_manager.html#ac1336cac2d8f3d975b0ff3c0379788fb',1,'Model::SNMPManager']]],
   ['snmpgetbulk',['snmpgetbulk',['../class_model_1_1_s_n_m_p_manager.html#a75ed3c395a876aab435e82eefc6f63b9',1,'Model::SNMPManager']]],

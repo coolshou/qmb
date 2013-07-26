@@ -29,15 +29,10 @@
 #include <QApplication>
 #include "mainwindow.h"
 #include "global.h"
-#include "snmpmanager.h"
-#include <vector>
-#include <iostream>
 
 // Declaracion de funciones
 
 void setUpApplication(QApplication *app);
-
-int testSNMPAPI(const char *agent);
 
 /**
  * @brief Implementa la funcion principal
@@ -55,8 +50,6 @@ int main(int argc, char *argv[])
    window.show();
 
    return app.exec();
-   //return testSNMPAPI("192.168.1.30");
-
 }
 
 /**
@@ -72,42 +65,4 @@ void setUpApplication(QApplication *app)
     app -> setOrganizationDomain(ORGANIZATION_DOMAIN);
     app -> setApplicationName(APPLICATION_NAME);
     app -> setApplicationVersion(APPLICATION_VERSION);
-}
-
-/**
- * @brief Realiza conjunto de pruebas de la API SNMP sobre un agente SNNP
- * @param agent IP o dominio del agente SNMP
- */
-int testSNMPAPI(const char *agent)
-{
-    std::vector<Model::SNMPOID *> oids;
-
-    Model::SNMPManager::initSNMP();
-
-    try {
-        oids.push_back(new Model::SNMPOID("1.3.6.1.2.1"));
-        Model::SNMPManager::snmpgetbulk(Model::SNMPv2, "public", agent, oids, 0, 5);
-        for(std::vector<Model::SNMPOID *>::iterator vi=oids.begin();vi!=oids.end();++vi)
-            std::cout << (*vi) -> strOID() << " := "
-                      <<  (*vi) -> data() -> toString() << std::endl;
-    } catch (Model::SNMPSessionException& exception) {
-        std::cout << exception.message() << std::endl;
-        std::cout << "Agent : " << exception.session().peername << ":"
-                  << exception.session().remote_port << " Community: "
-                  << exception.session().community << std::endl;
-        return -1;
-    } catch (Model::SNMPOIDException& exception) {
-        std::cout << exception.message() << std::endl;
-        std::cout << "OID : " << exception.badOID() << std::endl;
-        return -1;
-    } catch (Model::SNMPPacketException& exception) {
-        std::cout << exception.message() << std::endl;
-        std::cout << "Packet Error : " << exception.error() << std::endl;
-        return -1;
-    } catch (Model::SNMPException& exception) {
-        std::cout << exception.message() << std::endl;
-        return -1;
-    }
-
-    return 0;
 }

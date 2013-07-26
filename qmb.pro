@@ -7,8 +7,8 @@ TARGET = qmb
 OBJECTS_DIR = build
 MOC_DIR = build
 RCC_DIR = build
-DEPENDPATH += . include src include/model include/view src/model src/view
-INCLUDEPATH += . include/view include include/model
+DEPENDPATH += . include src include/model include/test include/view src/model src/test src/view
+INCLUDEPATH += . include/view include include/model include/test
 
 # Input
 HEADERS += include/global.h \
@@ -18,13 +18,15 @@ HEADERS += include/global.h \
            include/model/snmpmanager.h \
            include/model/snmpoid.h \
            include/model/snmptree.h \
-           include/view/mainwindow.h
+           include/view/mainwindow.h \
+    include/test/testsnmpmanager.h
 SOURCES += src/main.cpp \
            src/model/snmpdata.cpp \
            src/model/snmpmanager.cpp \
            src/model/snmpoid.cpp \
            src/model/snmptree.cpp \
-           src/view/mainwindow.cpp
+           src/view/mainwindow.cpp \
+    src/test/testsnmpmanager.cpp
 
 LIBS += -lnetsnmp
 

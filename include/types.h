@@ -58,6 +58,7 @@ namespace Model
      * @brief Tipo de dato SNMP
      */
     typedef enum SNMPDataTypeEnum {
+        SNMPDataUnknown     = -1,               /**< Tipo Desconocido */
         SNMPDataNull        = ASN_NULL,         /**< Tipo Null */
         SNMPDataInteger     = ASN_INTEGER,      /**< Tipo Integer */
         SNMPDataUnsigned    = ASN_UNSIGNED,     /**< Tipo Unsigned */
@@ -117,6 +118,19 @@ namespace Model
      * @brief Lista de variables de PDU SNMP
      */
     typedef netsnmp_variable_list SNMPVariableList;
+}
+
+namespace Test
+{
+    /**
+     * @brief Operation de test
+     */
+    typedef enum TestOperationEnum {
+        TestGet,     /**< Probar SNMP GET */
+        TestGetNext, /**< Probar SNMP GET NEXT */
+        TestGetBulk, /**< Probar SNMP GET BULK */
+        TestSet      /**< Probar SNMP SET */
+    } TestOperation;
 }
 
 #endif // TYPES_H

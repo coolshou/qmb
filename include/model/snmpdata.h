@@ -45,7 +45,7 @@ namespace Model
          * @param type Tipo de dato
          * @param value Valor del dato
          */
-        SNMPData(SNMPDataType type = SNMPDataNull, void *value = 0);
+        SNMPData(SNMPDataType type = SNMPDataUnknown, void *value = 0);
 
         /**
          * @brief Constructor copia de SNMPData
