@@ -31,6 +31,16 @@
 
 #include <QWidget>
 
+QT_BEGIN_NAMESPACE
+class QLabel;
+class QLineEdit;
+class QSpinBox;
+class QComboBox;
+class QPushButton;
+class QTreeView;
+class QTextEdit;
+QT_END_NAMESPACE
+
 namespace View
 {
     class CentralWidget : public QWidget
@@ -39,7 +49,21 @@ namespace View
     public:
         CentralWidget(QWidget *parent = 0);
     private:
-
+        void createWidgets();
+        void createConnections();
+        QLabel *_agentLabel;
+        QLineEdit *_agentLineEdit;
+        QLabel *_portLabel;
+        QSpinBox *_portSpinBox;
+        QLabel *_versionLabel;
+        QComboBox *_versionComboBox;
+        QPushButton *_propertiesButton;
+        QTreeView *_mibTreeView;
+        QPushButton *_getPushButton;
+        QPushButton *_getNextPushButton;
+        QPushButton *_getBulkPushButton;
+        QPushButton *_setPushButton;
+        QTextEdit *_resultTextEdit;
     };
 }
 
