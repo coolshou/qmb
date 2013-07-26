@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['centralwidget',['CentralWidget',['../class_view_1_1_central_widget.html',1,'View']]],
   ['childs',['childs',['../class_model_1_1_s_n_m_p_tree.html#a6d781cd052bd734a494375852a16a476',1,'Model::SNMPTree']]],
   ['closeevent',['closeEvent',['../class_view_1_1_main_window.html#a6135218326dccf7d6ef34413e1ceaead',1,'View::MainWindow']]],
   ['configsnmp',['configSNMP',['../class_model_1_1_s_n_m_p_manager.html#ac43a39f01313a0f592f7d5c72cc9294f',1,'Model::SNMPManager']]],

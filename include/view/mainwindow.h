@@ -38,6 +38,8 @@ QT_END_NAMESPACE
 
 namespace View
 {
+    class CentralWidget;
+
     /**
      * @brief Clase MainWindow
      */
@@ -104,11 +106,12 @@ namespace View
          */
         void createConnections();
 
-        QAction *_exitAction;       /**< Accion Salir */
-        QAction *_aboutAction;      /**< Accion Acerca de */
-        QAction *_aboutQtAction;    /**< Accion Acerca de Qt */
-        QMenu *_applicationMenu;    /**< Menu Aplication */
-        QMenu *_helpMenu;           /**< Menu Ayuda */
+        QAction *_exitAction;          /**< Accion Salir */
+        QAction *_aboutAction;         /**< Accion Acerca de */
+        QAction *_aboutQtAction;       /**< Accion Acerca de Qt */
+        QMenu *_applicationMenu;       /**< Menu Aplication */
+        QMenu *_helpMenu;              /**< Menu Ayuda */
+        CentralWidget *_centralWidget;
     };
 }
 

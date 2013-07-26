@@ -29,10 +29,13 @@
 #include <QApplication>
 #include "mainwindow.h"
 #include "global.h"
+#include "testsnmpmanager.h"
+#include <iostream>
 
 // Declaracion de funciones
 
 void setUpApplication(QApplication *app);
+void testSNMP(const char *agent, const char *community);
 
 /**
  * @brief Implementa la funcion principal
@@ -42,14 +45,19 @@ void setUpApplication(QApplication *app);
  */
 int main(int argc, char *argv[])
 {
-   QApplication app(argc, argv);
-   View::MainWindow window;
+    QApplication app(argc, argv);
+    View::MainWindow window;
 
-   setUpApplication(&app);
+    if(argc == 3) {
+        testSNMP(argv[1], argv[2]);
+        return 0;
+    }
 
-   window.show();
+    setUpApplication(&app);
 
-   return app.exec();
+    window.show();
+
+    return app.exec();
 }
 
 /**
@@ -65,4 +73,19 @@ void setUpApplication(QApplication *app)
     app -> setOrganizationDomain(ORGANIZATION_DOMAIN);
     app -> setApplicationName(APPLICATION_NAME);
     app -> setApplicationVersion(APPLICATION_VERSION);
+}
+
+void testSNMP(const char *agent, const char *community)
+{
+    Model::SNMPManager::initSNMP();
+
+    std::vector<Model::SNMPOID *> oids;
+    oids.push_back(new Model::SNMPOID("1.3.6.1.2.1.1.1.0"));
+    oids.push_back(new Model::SNMPOID("1.3.6.1.2.1.1.2.0"));
+    oids.push_back(new Model::SNMPOID("1.3.6.1.2.1.1.3.0"));
+
+    if(Test::TestSNMPManager::testGet(Model::SNMPv1, community, agent, oids, true))
+        std::cout << "SNMP Get test completed sucessfully :-)" << std::endl;
+    else
+        std::cout << "SNMP Get test has errors :-(" << std::endl;
 }

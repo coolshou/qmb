@@ -28,6 +28,7 @@
 
 #include <QtGui>
 #include "mainwindow.h"
+#include "centralwidget.h"
 #include "global.h"
 
 /**
@@ -94,7 +95,9 @@ void View::MainWindow::createWidgets()
  */
 void View::MainWindow::createCentralWidget()
 {
+    _centralWidget = new CentralWidget;
 
+    setCentralWidget(_centralWidget);
 }
 
 /**
