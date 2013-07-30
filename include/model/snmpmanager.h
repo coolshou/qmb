@@ -34,6 +34,7 @@
 #include "types.h"
 #include "global.h"
 #include "snmpoid.h"
+#include "snmpnode.h"
 #include "snmpexception.h"
 
 namespace Model
@@ -184,6 +185,10 @@ namespace Model
                                   std::vector<SNMPOID *> &oids,
                                   unsigned short nrepeaters = DEFAULT_NON_REPEATERS,
                                   unsigned short mrepetitions = DEFAULT_MAX_REPETITIONS);
+
+        static SNMPNode *getMIBTree();
+
+        static void snmpParseMIB(SNMPNode *node, SNMPTree *tree);
 
         /**
          * @brief Especifica si la libreria SNMP ha sido inicializada

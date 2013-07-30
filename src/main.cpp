@@ -35,7 +35,7 @@
 // Declaracion de funciones
 
 void setUpApplication(QApplication *app);
-void testSNMP(const char *agent, const char *community);
+void testSNMP(std::string agent, std::string community);
 
 /**
  * @brief Implementa la funcion principal
@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
     View::MainWindow window;
 
     if(argc == 3) {
-        testSNMP(argv[1], argv[2]);
+        testSNMP(std::string(argv[1]), std::string(argv[2]));
         return 0;
     }
 
@@ -75,16 +75,12 @@ void setUpApplication(QApplication *app)
     app -> setApplicationVersion(APPLICATION_VERSION);
 }
 
-void testSNMP(const char *agent, const char *community)
+void testSNMP(std::string agent, std::string community)
 {
     Model::SNMPManager::initSNMP();
-
     std::vector<Model::SNMPOID *> oids;
     oids.push_back(new Model::SNMPOID("1.3.6.1.2.1.1.1.0"));
-    oids.push_back(new Model::SNMPOID("1.3.6.1.2.1.1.2.0"));
-    oids.push_back(new Model::SNMPOID("1.3.6.1.2.1.1.3.0"));
-
-    if(Test::TestSNMPManager::testGet(Model::SNMPv1, community, agent, oids, true))
+    if(Test::TestSNMPManager::testGetBulk(Model::SNMPv2, community, agent, oids, 0, 5, true))
         std::cout << "SNMP Get test completed sucessfully :-)" << std::endl;
     else
         std::cout << "SNMP Get test has errors :-(" << std::endl;

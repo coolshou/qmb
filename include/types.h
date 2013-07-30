@@ -73,7 +73,6 @@ namespace Model
         SNMPDataTimeTicks   = ASN_TIMETICKS     /**< Tipo Time Ticks */
     } SNMPDataType;
 
-
     /**
      * @brief Estado del objeto de la MIB
      */
@@ -118,6 +117,11 @@ namespace Model
      * @brief Lista de variables de PDU SNMP
      */
     typedef netsnmp_variable_list SNMPVariableList;
+
+    /**
+     * @brief Arbol de la MIB
+     */
+    typedef struct tree SNMPTree;
 }
 
 namespace Test

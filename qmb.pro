@@ -17,18 +17,18 @@ HEADERS += include/global.h \
            include/model/snmpexception.h \
            include/model/snmpmanager.h \
            include/model/snmpoid.h \
-           include/model/snmptree.h \
            include/view/mainwindow.h \
     include/test/testsnmpmanager.h \
-    include/view/centralwidget.h
+    include/view/centralwidget.h \
+    include/model/snmpnode.h
 SOURCES += src/main.cpp \
            src/model/snmpdata.cpp \
            src/model/snmpmanager.cpp \
            src/model/snmpoid.cpp \
-           src/model/snmptree.cpp \
            src/view/mainwindow.cpp \
     src/test/testsnmpmanager.cpp \
-    src/view/centralwidget.cpp
+    src/view/centralwidget.cpp \
+    src/model/snmpnode.cpp
 
 LIBS += -lnetsnmp
 

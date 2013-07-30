@@ -19,32 +19,32 @@
  **/
 
 /**
- * @file snmptree.cpp
- * @brief Implementacion de metodos de la clase SNMPTree
+ * @file snmpnode.cpp
+ * @brief Implementacion de metodos de la clase SNMPNode
  * @author Juan Jose Salazar Garcia, jjslzgc@gmail.com
  * @version 0.1.0
  * @date Julio 2013
  */
 
-#include "snmptree.h"
+#include "snmpnode.h"
 
 /**
- * @brief Constructor de SNMPTree
+ * @brief Constructor de SNMPNode
  * @param object OID asociado al nodo del arbol
  */
-Model::SNMPTree::SNMPTree(SNMPOID *object) : _object(object)
+Model::SNMPNode::SNMPNode(SNMPOID *object) : _object(object)
 {
     _parent = 0;
 }
 
 /**
- * @brief Destructor de SNMPTree
+ * @brief Destructor de SNMPNode
  */
-Model::SNMPTree::~SNMPTree()
+Model::SNMPNode::~SNMPNode()
 {
     delete _object;
 
-    for(std::vector<SNMPTree *>::iterator vi = _childs.begin(); vi != _childs.end(); vi++)
+    for(std::vector<SNMPNode *>::iterator vi = _childs.begin(); vi != _childs.end(); vi++)
         delete *vi;
 }
 
@@ -52,7 +52,7 @@ Model::SNMPTree::~SNMPTree()
  * @brief Obtiene el OID asociado al nodo del arbol
  * @return OID asociado al nodo del arbol
  */
-Model::SNMPOID *Model::SNMPTree::object() const
+Model::SNMPOID *Model::SNMPNode::object() const
 {
     return _object;
 }
@@ -61,7 +61,7 @@ Model::SNMPOID *Model::SNMPTree::object() const
  * @brief Obtiene el nodo padre
  * @return Nodo padre
  */
-Model::SNMPTree *Model::SNMPTree::parent() const
+Model::SNMPNode *Model::SNMPNode::parent() const
 {
     return _parent;
 }
@@ -70,7 +70,7 @@ Model::SNMPTree *Model::SNMPTree::parent() const
  * @brief Establece el nodo padre
  * @param Nodo padre
  */
-void Model::SNMPTree::setParent(SNMPTree *parent)
+void Model::SNMPNode::setParent(SNMPNode *parent)
 {
     _parent = parent;
 }
@@ -79,7 +79,7 @@ void Model::SNMPTree::setParent(SNMPTree *parent)
  * @brief Obtiene la lista de nodos hijo
  * @return Lista de nodos hijo
  */
-std::vector<Model::SNMPTree *>& Model::SNMPTree::childs()
+std::vector<Model::SNMPNode *>& Model::SNMPNode::childs()
 {
     return _childs;
 }

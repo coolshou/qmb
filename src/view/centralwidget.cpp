@@ -1,3 +1,31 @@
+/**
+ *  This file is part of QMB.
+ *
+ *  Copyright (c) 2013 Juan Jose Salazar Garcia jjslzgc@gmail.com
+ *
+ *  QMB is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  QMB is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with QMB.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ **/
+
+/**
+ * @file centralwidget.cpp
+ * @brief Implementacion de metodos de la clase CentralWidget
+ * @author Juan Jose Salazar Garcia, jjslzgc@gmail.com
+ * @version 0.1.0
+ * @date Julio 2013
+ */
+
 #include "centralwidget.h"
 #include "types.h"
 #include <QLabel>
@@ -11,12 +39,19 @@
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 
+/**
+ * @brief Constructor de CentralWidget
+ * @param parent Widget padre
+ */
 View::CentralWidget::CentralWidget(QWidget *parent)
 {
     createWidgets();
     createConnections();
 }
 
+/**
+ * @brief Crea los widgets
+ */
 void View::CentralWidget::createWidgets()
 {
     _agentLabel = new QLabel(tr("&Agent: "));
@@ -86,6 +121,9 @@ void View::CentralWidget::createWidgets()
     setLayout(mainLayout);
 }
 
+/**
+ * @brief Establece las conexiones
+ */
 void View::CentralWidget::createConnections()
 {
 

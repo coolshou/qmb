@@ -19,8 +19,8 @@
  **/
 
 /**
- * @file mainwindow.h
- * @brief Declaracion de clase MainWindow
+ * @file centralwidget.h
+ * @brief Declaracion de clase CentralWidget
  * @author Juan Jose Salazar Garcia, jjslzgc@gmail.com
  * @version 0.1.0
  * @date Julio 2013
@@ -43,13 +43,26 @@ QT_END_NAMESPACE
 
 namespace View
 {
+    /**
+     * @brief Clase CentralWidget
+     */
     class CentralWidget : public QWidget
     {
         Q_OBJECT
     public:
+        /**
+         * @brief Constructor de CentralWidget
+         * @param parent Widget padre
+         */
         CentralWidget(QWidget *parent = 0);
     private:
+        /**
+         * @brief Crea los widgets
+         */
         void createWidgets();
+        /**
+         * @brief Establece las conexiones
+         */
         void createConnections();
         QLabel *_agentLabel;
         QLineEdit *_agentLineEdit;

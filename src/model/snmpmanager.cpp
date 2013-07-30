@@ -112,6 +112,9 @@ void Model::SNMPManager::snmpgetbulk(SNMPVersion version,
     if(!_initialized)
         return;
 
+    if(version == SNMPv1)
+        throw SNMPException("Error en sesion SNMP. La operacion Get Bulk no esta soportada por SNMPv1");
+
     snmpoperation(SNMPPDUGetBulk, version, community, agent, oids, nrepeaters, mrepetitions);
 }
 
@@ -201,9 +204,26 @@ Model::SNMPPDU *Model::SNMPManager::createPDU(SNMPPDUType type,
         if(type == SNMPPDUSet) { // Aniadimos a la PDU el valor correspondiente al k-esimo OID
             if((*vi) -> data() -> type() == SNMPDataUnknown)
                 throw SNMPOIDException((*vi) -> strOID(), "Error en la creacion de la PDU. Operacion SNMPSet sobre OID de tipo desconocido.");
-            snmp_add_var(pdu, (*vi) -> parseOID(), (*vi) -> parseOIDLength(),
-                         (*vi) -> data() -> type(),
-                         (const char *) (*vi) -> data() -> value());
+
+            char dataType; // Tipo de dato
+
+            switch((*vi) -> data() -> type()) {
+            case SNMPDataInteger:     dataType = 'i'; break;
+            case SNMPDataUnsigned:    dataType = 'u'; break;
+            case SNMPDataBits:        dataType = 'b'; break;
+            case SNMPDataCounter:     dataType = 'c'; break;
+            case SNMPDataTimeTicks:   dataType = 't'; break;
+            case SNMPDataCounter64:   dataType = 'C'; break;
+            case SNMPDataBitString:   dataType = 'b'; break;
+            case SNMPDataOctetString: dataType = 's'; break;
+            case SNMPDataIPAddress:   dataType = 'a'; break;
+            case SNMPDataObjectId:    dataType = 'o'; break;
+            default:                  dataType = '=';
+            }
+
+            // Aniadimos a la PDU el (tipo, valor) correspondiente al k-esimo OID
+            snmp_add_var(pdu, (*vi) -> parseOID(), (*vi) -> parseOIDLength(), dataType, (const char *) (*vi) -> data() -> value());
+
         } else // Aniadimos a la PDU el valor nulo correspondiente al k-esimo OID
             snmp_add_null_var(pdu, (*vi) -> parseOID(), (*vi) -> parseOIDLength());
     }
@@ -268,7 +288,7 @@ void Model::SNMPManager::processResponse(SNMPPDU *pdu, std::vector<SNMPOID *>& o
 
         oids.clear();
 
-        for(SNMPVariableList *vl = pdu -> variables; vl; vl = vl -> next_variable, k++) {
+        for(SNMPVariableList *vl = pdu -> variables; vl; vl = vl -> next_variable) {
             oids.push_back(new SNMPOID(vl -> name, vl -> name_length));
             oids.back() -> data() -> setType((SNMPDataType) vl -> type);
             oids.back() -> data() -> setValue((SNMPValue) vl -> val);
@@ -338,6 +358,24 @@ void Model::SNMPManager::snmpoperation(SNMPPDUType type,
     snmp_free_pdu(responsePDU);                                   // Liberacion de recursos en PDU de respuesta
     snmp_close(session);                                          // Cerramos la sesion
     SOCK_CLEANUP;                                                 // Liberacion de recursos para SOs win32 (Sin efecto en SOs Unix).
+}
+
+Model::SNMPNode *Model::SNMPManager::getMIBTree()
+{
+    SNMPNode *node = new SNMPNode(new SNMPOID("1"));
+    SNMPTree *tree = 0;
+
+    netsnmp_init_mib();
+    snmp_set_mib_warnings(2);
+
+    snmpParseMIB(node, tree);
+
+    return node;
+}
+
+void Model::SNMPManager::snmpParseMIB(SNMPNode *node, SNMPTree *tree)
+{
+
 }
 
 /**

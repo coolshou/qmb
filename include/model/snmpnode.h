@@ -19,15 +19,15 @@
  **/
 
 /**
- * @file snmptree.h
- * @brief Declaracion de clase SNMPTree
+ * @file snmpnode.h
+ * @brief Declaracion de clase SNMPNode
  * @author Juan Jose Salazar Garcia, jjslzgc@gmail.com
  * @version 0.1.0
  * @date Julio 2013
  */
 
-#ifndef SNMPTREE_H
-#define SNMPTREE_H
+#ifndef SNMPNODE_H
+#define SNMPNODE_H
 
 #include "snmpoid.h"
 #include <vector>
@@ -35,21 +35,21 @@
 namespace Model
 {
     /**
-     * @brief Clase SNMPTree que implementa el arbol de OIDs
+     * @brief Clase SNMPNode que implementa un nodo del arbol de la MIB
      */
-    class SNMPTree
+    class SNMPNode
     {
     public:
         /**
-         * @brief Constructor de SNMPTree
+         * @brief Constructor de SNMPNode
          * @param object OID asociado al nodo del arbol
          */
-        SNMPTree(SNMPOID *object);
+        SNMPNode(SNMPOID *object);
 
         /**
-         * @brief Destructor de SNMPTree
+         * @brief Destructor de SNMPNode
          */
-        ~SNMPTree();
+        ~SNMPNode();
 
         /**
          * @brief Obtiene el OID asociado al nodo del arbol
@@ -61,19 +61,19 @@ namespace Model
          * @brief Obtiene el nodo padre
          * @return Nodo padre
          */
-        SNMPTree *parent() const;
+        SNMPNode *parent() const;
 
         /**
          * @brief Establece el nodo padre
          * @param Nodo padre
          */
-        void setParent(SNMPTree *parent);
+        void setParent(SNMPNode *parent);
 
         /**
          * @brief Obtiene la lista de nodos hijo
          * @return Lista de nodos hijo
          */
-        std::vector<SNMPTree *>& childs();
+        std::vector<SNMPNode *>& childs();
     private:
         /**
          * @brief OID asociado al nodo del arbol
@@ -83,13 +83,13 @@ namespace Model
         /**
          * @brief Nodo padre
          */
-        SNMPTree *_parent;
+        SNMPNode *_parent;
 
         /**
          * @brief Lista de nodos hijo
          */
-        std::vector<SNMPTree *> _childs;
+        std::vector<SNMPNode *> _childs;
     };
 }
 
-#endif // SNMPTREE_H
+#endif // SNMPNODE_H
