@@ -123,6 +123,9 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 <tr class="memitem:a3fbb2252963bc9e6778869f9f996d8a1"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_1_1_s_n_m_p_manager.html#a3fbb2252963bc9e6778869f9f996d8a1">snmpset</a> (SNMPVersion version, const std::string &amp;community, const std::string &amp;agent, std::vector&lt; <a class="el" href="class_model_1_1_s_n_m_p_o_i_d.html">SNMPOID</a> * &gt; &amp;oids)  throw (SNMPException)</td></tr>
 <tr class="memdesc:a3fbb2252963bc9e6778869f9f996d8a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envia mensaje de peticion SNMP SET y recibe mensaje de respuesta.  <a href="#a3fbb2252963bc9e6778869f9f996d8a1">Más...</a><br/></td></tr>
 <tr class="separator:a3fbb2252963bc9e6778869f9f996d8a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a021d63dbb00187d7e8c7fd4fa4b8a4ba"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a021d63dbb00187d7e8c7fd4fa4b8a4ba"></a>
+static <a class="el" href="class_model_1_1_s_n_m_p_node.html">SNMPNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getMIBTree</b> ()</td></tr>
+<tr class="separator:a021d63dbb00187d7e8c7fd4fa4b8a4ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-methods"></a>
 Métodos privados estáticos</h2></td></tr>
@@ -144,12 +147,9 @@ Métodos privados estáticos</h2></td></tr>
 <tr class="memitem:ac5117b8dc8c2747d358a0291c5947c70"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_1_1_s_n_m_p_manager.html#ac5117b8dc8c2747d358a0291c5947c70">snmpoperation</a> (SNMPPDUType type, SNMPVersion version, const std::string &amp;community, const std::string &amp;agent, std::vector&lt; <a class="el" href="class_model_1_1_s_n_m_p_o_i_d.html">SNMPOID</a> * &gt; &amp;oids, unsigned short nrepeaters=<a class="el" href="global_8h.html#a847b68e41991c6c4b4c4b0558d4583bf">DEFAULT_NON_REPEATERS</a>, unsigned short mrepetitions=<a class="el" href="global_8h.html#a8ab5602e7ab3d5f70b55794c0376252b">DEFAULT_MAX_REPETITIONS</a>)</td></tr>
 <tr class="memdesc:ac5117b8dc8c2747d358a0291c5947c70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Invoca una operacion SNMP de consulta (GET, GETNEXT, GET BULK) o modificacion (SET)  <a href="#ac5117b8dc8c2747d358a0291c5947c70">Más...</a><br/></td></tr>
 <tr class="separator:ac5117b8dc8c2747d358a0291c5947c70"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a021d63dbb00187d7e8c7fd4fa4b8a4ba"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a021d63dbb00187d7e8c7fd4fa4b8a4ba"></a>
-static <a class="el" href="class_model_1_1_s_n_m_p_node.html">SNMPNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getMIBTree</b> ()</td></tr>
-<tr class="separator:a021d63dbb00187d7e8c7fd4fa4b8a4ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a70a3032ad11a767a75aaf6ed3b417bcf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a70a3032ad11a767a75aaf6ed3b417bcf"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>snmpParseMIB</b> (<a class="el" href="class_model_1_1_s_n_m_p_node.html">SNMPNode</a> *node, SNMPTree *tree)</td></tr>
-<tr class="separator:a70a3032ad11a767a75aaf6ed3b417bcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24c850fea2518f0a78e69b9d32b63cba"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a24c850fea2518f0a78e69b9d32b63cba"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><b>snmpParseMIB</b> (<a class="el" href="class_model_1_1_s_n_m_p_node.html">SNMPNode</a> *root, SNMPTree *tree)</td></tr>
+<tr class="separator:a24c850fea2518f0a78e69b9d32b63cba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
 Atributos privados estáticos</h2></td></tr>
@@ -937,7 +937,7 @@ static long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Martes, 30 de Julio de 2013 17:04:26 para QMB por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Jueves, 1 de Agosto de 2013 20:05:48 para QMB por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

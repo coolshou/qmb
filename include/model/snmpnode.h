@@ -43,8 +43,9 @@ namespace Model
         /**
          * @brief Constructor de SNMPNode
          * @param object OID asociado al nodo del arbol
+         * @param parent Nodo padre
          */
-        SNMPNode(SNMPOID *object);
+        SNMPNode(SNMPOID *object = 0, SNMPNode *parent = 0);
 
         /**
          * @brief Destructor de SNMPNode
@@ -56,6 +57,12 @@ namespace Model
          * @return OID asociado al nodo del arbol
          */
         SNMPOID *object() const;
+
+        /**
+         * @brief Establece el OID asociado al nodo del arbol
+         * @param object OID asociado al nodo del arbol
+         */
+        void setObject(SNMPOID *object);
 
         /**
          * @brief Obtiene el nodo padre

@@ -29,6 +29,7 @@
 #include <QApplication>
 #include "mainwindow.h"
 #include "global.h"
+#include "snmpmanager.h"
 #include "testsnmpmanager.h"
 #include <iostream>
 
@@ -79,9 +80,6 @@ void testSNMP(std::string agent, std::string community)
 {
     Model::SNMPManager::initSNMP();
     std::vector<Model::SNMPOID *> oids;
-    oids.push_back(new Model::SNMPOID("1.3.6.1.2.1.1.1.0"));
-    if(Test::TestSNMPManager::testGetBulk(Model::SNMPv2, community, agent, oids, 0, 5, true))
-        std::cout << "SNMP Get test completed sucessfully :-)" << std::endl;
-    else
-        std::cout << "SNMP Get test has errors :-(" << std::endl;
+    oids.push_back(new Model::SNMPOID("1.3.6.1.2.1.1.0"));
+    std::cout << "SNMP Get Bulk test " << (Test::TestSNMPManager::testGetBulk(Model::SNMPv2, community, agent, oids, 0, 10., true) ? "completed successfully" : "has errors") << std::endl;
 }

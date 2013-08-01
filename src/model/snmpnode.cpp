@@ -31,11 +31,10 @@
 /**
  * @brief Constructor de SNMPNode
  * @param object OID asociado al nodo del arbol
+ * @param parent Nodo padre
  */
-Model::SNMPNode::SNMPNode(SNMPOID *object) : _object(object)
-{
-    _parent = 0;
-}
+Model::SNMPNode::SNMPNode(SNMPOID *object, SNMPNode *parent) : _object(object), _parent(parent)
+{}
 
 /**
  * @brief Destructor de SNMPNode
@@ -55,6 +54,15 @@ Model::SNMPNode::~SNMPNode()
 Model::SNMPOID *Model::SNMPNode::object() const
 {
     return _object;
+}
+
+/**
+ * @brief Establece el OID asociado al nodo del arbol
+ * @param object OID asociado al nodo del arbol
+ */
+void Model::SNMPNode::setObject(SNMPOID *object)
+{
+    _object = object;
 }
 
 /**

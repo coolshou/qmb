@@ -115,6 +115,8 @@ namespace Model
                             const std::string& agent,
                             std::vector<SNMPOID *> &oids) throw(SNMPException);
 
+        static SNMPNode *getMIBTree();
+
     private:
         /**
          * @brief Crea, inicializa y abre una session SNMP Agente-Gestor
@@ -186,9 +188,7 @@ namespace Model
                                   unsigned short nrepeaters = DEFAULT_NON_REPEATERS,
                                   unsigned short mrepetitions = DEFAULT_MAX_REPETITIONS);
 
-        static SNMPNode *getMIBTree();
-
-        static void snmpParseMIB(SNMPNode *node, SNMPTree *tree);
+        static void snmpParseMIB(SNMPNode *root, SNMPTree *tree);
 
         /**
          * @brief Especifica si la libreria SNMP ha sido inicializada
