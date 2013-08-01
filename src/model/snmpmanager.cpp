@@ -146,7 +146,6 @@ Model::SNMPNode *Model::SNMPManager::getMIBTree()
 
     netsnmp_init_mib();         // Inicializa la lectura de la MIB
     snmp_set_mib_warnings(0);   // Inhabilita los mensajes de advertencia
-    snmp_set_mib_errors(0);     // Inhabilita los mensajes de error
 
     // Leer todos los modulos de la MIB
     if((tree = read_all_mibs())) {
@@ -391,7 +390,7 @@ void Model::SNMPManager::snmpParseMIB(SNMPNode *root, SNMPTree *tree)
     if(!tree)
         return;
 
-    if(root -> parent()) {
+    if(root -> parent() && root -> parent() -> object()) {
         parseOID = new oid[(parseOIDLength = root -> parent() -> object() -> parseOIDLength() + 1)];
         std::copy(root -> parent() -> object() -> parseOID(),
                   root -> parent() -> object() -> parseOID() + parseOIDLength, parseOID);
@@ -403,10 +402,10 @@ void Model::SNMPManager::snmpParseMIB(SNMPNode *root, SNMPTree *tree)
     SNMPOID *object = new SNMPOID(parseOID, parseOIDLength);
 
     object -> data() -> setType((SNMPDataType) tree -> type);
-    object -> setName(std::string(tree -> label));
+    object -> setName(tree -> label);
     object -> setStatus((MIBStatus) tree -> status);
     object -> setAccess((MIBAccess) tree -> access);
-    object -> setDescription(std::string(tree -> description));
+    object -> setDescription(tree -> description);
 
     root -> setObject(object);
 

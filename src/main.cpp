@@ -32,6 +32,7 @@
 #include "snmpmanager.h"
 #include "testsnmpmanager.h"
 #include <iostream>
+#include <stdexcept>
 
 // Declaracion de funciones
 
@@ -46,7 +47,7 @@ void testSNMP(std::string agent, std::string community);
  */
 int main(int argc, char *argv[])
 {
-    QApplication app(argc, argv);
+    /*QApplication app(argc, argv);
     View::MainWindow window;
 
     if(argc == 3) {
@@ -58,7 +59,18 @@ int main(int argc, char *argv[])
 
     window.show();
 
-    return app.exec();
+    return app.exec();*/
+
+    Model::SNMPNode *node = Model::SNMPManager::getMIBTree();
+    if(node) {
+        try {
+            std::cout << "MIB Tree has been successfully parsed :-)" << std::endl;
+        } catch(std::logic_error &le) {
+            std::cout << le.what() << std::endl;
+        }
+    }
+
+    return 0;
 }
 
 /**
