@@ -115,6 +115,10 @@ namespace Model
                             const std::string& agent,
                             std::vector<SNMPOID *> &oids) throw(SNMPException);
 
+        /**
+         * @brief Obtiene el arbol del modulo SNMPv2-MIB
+         * @return Arbol MIB
+         */
         static SNMPNode *getMIBTree();
 
     private:
@@ -188,6 +192,11 @@ namespace Model
                                   unsigned short nrepeaters = DEFAULT_NON_REPEATERS,
                                   unsigned short mrepetitions = DEFAULT_MAX_REPETITIONS);
 
+        /**
+         * @brief Parsea un modulo MIB para generar un arbol del mismo
+         * @param root Nodo raiz del subarbol de la MIB
+         * @param tree Puntero al objeto del modulo de la MIB parseado
+         */
         static void snmpParseMIB(SNMPNode *root, SNMPMIBTree *tree);
 
         /**

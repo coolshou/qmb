@@ -138,18 +138,26 @@ void Model::SNMPManager::snmpset(SNMPVersion version,
     snmpoperation(SNMPPDUSet, version, community, agent, oids);
 }
 
-
+/**
+ * @brief Obtiene el arbol del modulo SNMPv2-MIB
+ * @return Arbol MIB
+ */
 Model::SNMPNode *Model::SNMPManager::getMIBTree()
 {
     SNMPNode *root = 0;         // Nodo raiz del arbol de la MIB
     SNMPMIBTree *tree = 0;      // Arbol de la MIB
 
-    netsnmp_init_mib();         // Inicializa la lectura de la MIB
-    snmp_set_mib_warnings(0);   // Inhabilita los mensajes de advertencia
+    snmp_set_save_descriptions(1); // Habilita el campo de descripcion del objeto
+    snmp_set_mib_warnings(0);      // Inhabilita los mensajes de advertencia
+    snmp_set_mib_errors(0);        // Inhabilita los mensajes de advertencia
+    netsnmp_init_mib();            // Inicializa la lectura de la MIB
 
-    // Leer todos los modulos de la MIB
+
+    // Leer el modulo SNMPv2-MIB
     if((tree = read_module("SNMPv2-MIB"))) {
-        root = new SNMPNode;
+        root = new SNMPNode; // Nodo raiz de la MIB sin OID asignado
+        // Parseamos cada uno de los grupos de la MIB de mayor nivel
+        // incluyendo estos como hijos en el nodo raiz
         for(SNMPMIBTree *treePtr = tree; treePtr; treePtr = treePtr -> next_peer) {
             root -> childs().push_back(new SNMPNode(0, root));
             snmpParseMIB(root -> childs().back(), treePtr);
@@ -382,33 +390,42 @@ void Model::SNMPManager::snmpoperation(SNMPPDUType type,
     SOCK_CLEANUP;                                                 // Liberacion de recursos para SOs win32 (Sin efecto en SOs Unix).
 }
 
+/**
+ * @brief Parsea un modulo MIB para generar un arbol del mismo
+ * @param root Nodo raiz del subarbol de la MIB
+ * @param tree Puntero al objeto del modulo de la MIB parseado
+ */
 void Model::SNMPManager::snmpParseMIB(SNMPNode *root, SNMPMIBTree *tree)
 {
-    oid *parseOID;
-    size_t parseOIDLength = 1;
+    oid *parseOID;              // OID en notacion numerica del objeto parseado
+    size_t parseOIDLength = 1;  // Longitud del OID del objeto actual
 
     if(!tree)
         return;
 
+    // Si el nodo actual tiene padre con OID asignado generamos el OID completo
     if(root -> parent() && root -> parent() -> object()) {
         parseOID = new oid[(parseOIDLength = root -> parent() -> object() -> parseOIDLength() + 1)];
         std::copy(root -> parent() -> object() -> parseOID(),
                   root -> parent() -> object() -> parseOID() + parseOIDLength, parseOID);
-    } else
+    } else // Objeto de primer nivel de la MIB
         parseOID = new oid;
 
-    parseOID[parseOIDLength - 1] = tree -> subid;
+    parseOID[parseOIDLength - 1] = tree -> subid; // OID numerico del objeto
 
     SNMPOID *object = new SNMPOID(parseOID, parseOIDLength);
 
+    // Atributos del objeto
     object -> data() -> setType((SNMPDataType) tree -> type);
     object -> setName(tree -> label ? tree -> label : "");
     object -> setStatus((MIBStatus) tree -> status);
     object -> setAccess((MIBAccess) tree -> access);
     object -> setDescription(tree -> description ? tree -> description : "");
 
+    // Establecemos el objeto al nodo actual
     root -> setObject(object);
 
+    // Parseamos cada uno de los hijos del nodo actual y los incluimos como hijos del mismo
     for(SNMPMIBTree *child = tree -> child_list; child; child = child -> next_peer) {
         root -> childs().push_back(new SNMPNode(0, root));
         snmpParseMIB(root -> childs().back(), child);
