@@ -44,7 +44,7 @@ QT_END_NAMESPACE
 namespace View
 {
     /**
-     * @brief Clase CentralWidget
+     * @brief Clase CentralWidget que implementa el widget central de la ventana principal
      */
     class CentralWidget : public QWidget
     {

@@ -41,7 +41,7 @@ namespace View
     class CentralWidget;
 
     /**
-     * @brief Clase MainWindow
+     * @brief Clase MainWindow que implementa la ventana principal
      */
     class MainWindow : public QMainWindow
     {

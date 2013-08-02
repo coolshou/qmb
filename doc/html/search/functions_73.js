@@ -7,6 +7,7 @@ var searchData=
   ['setname',['setName',['../class_model_1_1_s_n_m_p_o_i_d.html#af3ac105634509747097e27eb11567bd1',1,'Model::SNMPOID']]],
   ['setobject',['setObject',['../class_model_1_1_s_n_m_p_node.html#a66a46613766a6b30fdf2d1af4c58e831',1,'Model::SNMPNode']]],
   ['setparent',['setParent',['../class_model_1_1_s_n_m_p_node.html#a57486f2d5164858bf30ae2384a867d9d',1,'Model::SNMPNode']]],
+  ['setroot',['setRoot',['../class_view_1_1_m_i_b_tree_model.html#aebfb8f4776a70ee141e60e36dbd45bd7',1,'View::MIBTreeModel']]],
   ['setstatus',['setStatus',['../class_model_1_1_s_n_m_p_o_i_d.html#a4518a679a83ce53b462a5fddc6f9480f',1,'Model::SNMPOID']]],
   ['setstroid',['setStrOID',['../class_model_1_1_s_n_m_p_o_i_d.html#a4ab2f8b132708b3e9cf73d6e6d4656cf',1,'Model::SNMPOID']]],
   ['settype',['setType',['../class_model_1_1_s_n_m_p_data.html#ad12974cd4b24057bdabe28a7b7b4c970',1,'Model::SNMPData']]],
