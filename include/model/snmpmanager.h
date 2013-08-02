@@ -188,7 +188,7 @@ namespace Model
                                   unsigned short nrepeaters = DEFAULT_NON_REPEATERS,
                                   unsigned short mrepetitions = DEFAULT_MAX_REPETITIONS);
 
-        static void snmpParseMIB(SNMPNode *root, SNMPTree *tree);
+        static void snmpParseMIB(SNMPNode *root, SNMPMIBTree *tree);
 
         /**
          * @brief Especifica si la libreria SNMP ha sido inicializada

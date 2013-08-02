@@ -141,18 +141,18 @@ void Model::SNMPManager::snmpset(SNMPVersion version,
 
 Model::SNMPNode *Model::SNMPManager::getMIBTree()
 {
-    SNMPNode *root = 0;  // Nodo raiz del arbol de la MIB
-    SNMPTree *tree = 0;  // Arbol de la MIB
+    SNMPNode *root = 0;         // Nodo raiz del arbol de la MIB
+    SNMPMIBTree *tree = 0;      // Arbol de la MIB
 
     netsnmp_init_mib();         // Inicializa la lectura de la MIB
     snmp_set_mib_warnings(0);   // Inhabilita los mensajes de advertencia
 
     // Leer todos los modulos de la MIB
-    if((tree = read_all_mibs())) {
+    if((tree = read_module("SNMPv2-MIB"))) {
         root = new SNMPNode;
-        for(SNMPTree *tp = tree; tp; tp = tp -> next_peer) {
+        for(SNMPMIBTree *treePtr = tree; treePtr; treePtr = treePtr -> next_peer) {
             root -> childs().push_back(new SNMPNode(0, root));
-            snmpParseMIB(root -> childs().back(), tp);
+            snmpParseMIB(root -> childs().back(), treePtr);
         }
     }
 
@@ -382,7 +382,7 @@ void Model::SNMPManager::snmpoperation(SNMPPDUType type,
     SOCK_CLEANUP;                                                 // Liberacion de recursos para SOs win32 (Sin efecto en SOs Unix).
 }
 
-void Model::SNMPManager::snmpParseMIB(SNMPNode *root, SNMPTree *tree)
+void Model::SNMPManager::snmpParseMIB(SNMPNode *root, SNMPMIBTree *tree)
 {
     oid *parseOID;
     size_t parseOIDLength = 1;
@@ -402,14 +402,14 @@ void Model::SNMPManager::snmpParseMIB(SNMPNode *root, SNMPTree *tree)
     SNMPOID *object = new SNMPOID(parseOID, parseOIDLength);
 
     object -> data() -> setType((SNMPDataType) tree -> type);
-    object -> setName(tree -> label);
+    object -> setName(tree -> label ? tree -> label : "");
     object -> setStatus((MIBStatus) tree -> status);
     object -> setAccess((MIBAccess) tree -> access);
-    object -> setDescription(tree -> description);
+    object -> setDescription(tree -> description ? tree -> description : "");
 
     root -> setObject(object);
 
-    for(SNMPTree *child = tree -> child_list; child; child = child -> next_peer) {
+    for(SNMPMIBTree *child = tree -> child_list; child; child = child -> next_peer) {
         root -> childs().push_back(new SNMPNode(0, root));
         snmpParseMIB(root -> childs().back(), child);
     }

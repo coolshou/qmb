@@ -121,7 +121,7 @@ namespace Model
     /**
      * @brief Arbol de la MIB
      */
-    typedef struct tree SNMPTree;
+    typedef struct tree SNMPMIBTree;
 }
 
 namespace Test
