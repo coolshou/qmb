@@ -61,11 +61,29 @@ void View::MIBTreeModel::setRoot(Model::SNMPNode *root)
     reset();
 }
 
+/**
+ * @brief Redefinicion de metodo QAbstractItemModel::index(..) usado por la vista y el modelo para crear nuevos indices
+ * @param row Fila
+ * @param column Columna
+ * @param parent Indice padre
+ * @return Nuevo indice
+ */
 QModelIndex View::MIBTreeModel::index(int row, int column, const QModelIndex &parent) const
 {
-    return QModelIndex();
+    if(!_root) // Nodo raiz no establecido
+        return QModelIndex(); // Devuelve indice invalido
+
+    Model::SNMPNode *parentNode = nodeFromIndex(parent);
+
+    // Creacion de indice
+    return createIndex(row, column, parentNode -> childs()[row]);
 }
 
+/**
+ * @brief View::MIBTreeModel::parent
+ * @param child
+ * @return
+ */
 QModelIndex View::MIBTreeModel::parent(const QModelIndex &child) const
 {
     return QModelIndex();

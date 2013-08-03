@@ -105,14 +105,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00044"></a><span class="lineno"><a class="code" href="class_view_1_1_m_i_b_tree_model.html">   44</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_view_1_1_m_i_b_tree_model.html" title="Clase MIBTreeModel que implementa el modelo jerarquico usado por QTreeView y que representa el arbol ...">MIBTreeModel</a> : <span class="keyword">public</span> QAbstractItemModel</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    {</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <a class="code" href="class_view_1_1_m_i_b_tree_model.html#ad8f6689918080354c6c02386357c6c16" title="Constructor de MIBTreeModel. ">MIBTreeModel</a>(QObject *parent = 0);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <a class="code" href="class_view_1_1_m_i_b_tree_model.html#ad8f6689918080354c6c02386357c6c16" title="Constructor de MIBTreeModel. ">MIBTreeModel</a>(QObject *<a class="code" href="class_view_1_1_m_i_b_tree_model.html#a990578747f0a7c0568e997d53f54d68d" title="View::MIBTreeModel::parent. ">parent</a> = 0);</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <a class="code" href="class_view_1_1_m_i_b_tree_model.html#a8265a78e0f118f6d9e7ff2da3f4693ae" title="Destructor de MIBTreeModel. ">~MIBTreeModel</a>();</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_view_1_1_m_i_b_tree_model.html#aebfb8f4776a70ee141e60e36dbd45bd7" title="Establece el nodo raiz del arbol de la MIB. ">setRoot</a>(<a class="code" href="class_model_1_1_s_n_m_p_node.html" title="Clase SNMPNode que implementa un nodo del arbol de la MIB. ">Model::SNMPNode</a> *root);</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        QModelIndex index(<span class="keywordtype">int</span> row, <span class="keywordtype">int</span> column, <span class="keyword">const</span> QModelIndex &amp;parent) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        QModelIndex parent(<span class="keyword">const</span> QModelIndex &amp;child) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        QModelIndex <a class="code" href="class_view_1_1_m_i_b_tree_model.html#a304f2ec0a83a894638f36ca79ec822c9" title="Redefinicion de metodo QAbstractItemModel::index(..) usado por la vista y el modelo para crear nuevos...">index</a>(<span class="keywordtype">int</span> row, <span class="keywordtype">int</span> column, <span class="keyword">const</span> QModelIndex &amp;<a class="code" href="class_view_1_1_m_i_b_tree_model.html#a990578747f0a7c0568e997d53f54d68d" title="View::MIBTreeModel::parent. ">parent</a>) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        QModelIndex <a class="code" href="class_view_1_1_m_i_b_tree_model.html#a990578747f0a7c0568e997d53f54d68d" title="View::MIBTreeModel::parent. ">parent</a>(<span class="keyword">const</span> QModelIndex &amp;child) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordtype">int</span> rowCount(<span class="keyword">const</span> QModelIndex &amp;parent) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordtype">int</span> columnCount(<span class="keyword">const</span> QModelIndex &amp;parent) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        QVariant data(<span class="keyword">const</span> QModelIndex &amp;index, <span class="keywordtype">int</span> role) <span class="keyword">const</span>;</div>
@@ -128,7 +128,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Viernes, 2 de Agosto de 2013 23:45:21 para QMB por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Sábado, 3 de Agosto de 2013 07:54:46 para QMB por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>
