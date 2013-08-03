@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['data',['data',['../class_model_1_1_s_n_m_p_o_i_d.html#a0ab45c025fd44b3b341b07243db23607',1,'Model::SNMPOID']]],
+  ['data',['data',['../class_model_1_1_s_n_m_p_o_i_d.html#a0ab45c025fd44b3b341b07243db23607',1,'Model::SNMPOID::data()'],['../class_view_1_1_m_i_b_tree_model.html#a996db1d4e073c9db51805e26e885993f',1,'View::MIBTreeModel::data()']]],
   ['default_5fmax_5frepetitions',['DEFAULT_MAX_REPETITIONS',['../global_8h.html#a8ab5602e7ab3d5f70b55794c0376252b',1,'global.h']]],
   ['default_5fnon_5frepeaters',['DEFAULT_NON_REPEATERS',['../global_8h.html#a847b68e41991c6c4b4c4b0558d4583bf',1,'global.h']]],
   ['default_5fremote_5fport',['DEFAULT_REMOTE_PORT',['../global_8h.html#a839596657b0b68b19e5aef696e47901a',1,'global.h']]],

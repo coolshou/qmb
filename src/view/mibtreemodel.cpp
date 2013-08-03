@@ -80,36 +80,106 @@ QModelIndex View::MIBTreeModel::index(int row, int column, const QModelIndex &pa
 }
 
 /**
- * @brief View::MIBTreeModel::parent
- * @param child
- * @return
+ * @brief Redefinicion de metodo QAbstractItemModel::parent(..) usado por la vista y el modelo para la obtencion del indice padre a partir de un hijo
+ * @param child Indice hijo
+ * @return Indice padre
  */
 QModelIndex View::MIBTreeModel::parent(const QModelIndex &child) const
 {
-    return QModelIndex();
+    Model::SNMPNode *node = nodeFromIndex(child);
+
+    if(!node)
+        return QModelIndex();
+
+    Model::SNMPNode *parentNode = node -> parent();
+
+    if(!parentNode)
+        return QModelIndex();
+
+    Model::SNMPNode *grandParentNode = parentNode -> parent();
+
+    if(!grandParentNode)
+        return QModelIndex();
+
+    int row = std::find(grandParentNode -> childs().begin(), grandParentNode -> childs().end(), parentNode) - grandParentNode -> childs().begin();
+
+    return createIndex(row, child.column(), parentNode);
+
 }
 
+/**
+ * @brief Obtiene el numero de filas de un item (numero de hijos)
+ * @param parent Indice padre
+ * @return Numero de filas
+ */
 int View::MIBTreeModel::rowCount(const QModelIndex &parent) const
 {
-    return 0;
+    Model::SNMPNode *parentNode = nodeFromIndex(parent);
+
+    if(!parentNode)
+        return 0;
+
+    return (int) parentNode -> childs().size();
+
 }
 
+/**
+ * @brief Obtiene el numero de columnas de un item
+ * @param parent Indice padre
+ * @return Numero de columnas
+ */
 int View::MIBTreeModel::columnCount(const QModelIndex &parent) const
 {
-    return 0;
+    Q_UNUSED(parent);
+
+    return 1;
 }
 
+/**
+ * @brief Obtiene el dato del item para la vista
+ * @param index Indice
+ * @param role Rol
+ * @return Dato del item
+ */
 QVariant View::MIBTreeModel::data(const QModelIndex &index, int role) const
 {
+    if(role != Qt::DisplayRole)
+        return QVariant();
+
+    Model::SNMPNode *node = nodeFromIndex(index);
+
+    if(!node)
+        return QVariant();
+
+    if(index.column() == 0)
+        return node -> object() ? node -> object() -> name().c_str() : "";
+
     return QVariant();
 }
 
+/**
+ * @brief Obtiene la etiquetas de las cabeceras vertical y horizontal para la vista
+ * @param section Fila/Columna (segun orientacion)
+ * @param orientation Orientacion
+ * @param role Rol
+ * @return Etiqueta de la cabecera
+ */
 QVariant View::MIBTreeModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
+    Q_UNUSED(section);
+    Q_UNUSED(orientation);
+    Q_UNUSED(role);
+
     return QVariant();
 }
 
+/**
+ * @brief Obtiene el nodo del arbol asociado a un item (indice)
+ * @param index Indice del item
+ * @return  nodo del arbol asociado
+ */
 Model::SNMPNode *View::MIBTreeModel::nodeFromIndex(const QModelIndex& index) const
 {
-    return 0;
+    // El nodo raiz del arbol usa un indice invalido
+    return index.isValid() ? static_cast<Model::SNMPNode *> (index.internalPointer()) : _root;
 }
