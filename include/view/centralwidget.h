@@ -44,6 +44,7 @@ QT_END_NAMESPACE
 namespace View
 {
     class MIBTreeModel;
+    class MIBTreeProxyModel;
 
     /**
      * @brief Clase CentralWidget que implementa el widget central de la ventana principal
@@ -87,6 +88,7 @@ namespace View
         QPushButton *_propertiesButton;
         QTreeView *_mibTreeView;
         MIBTreeModel *_mibTreeModel;
+        MIBTreeProxyModel *_mibTreeProxyModel;
         QPushButton *_getPushButton;
         QPushButton *_getNextPushButton;
         QPushButton *_getBulkPushButton;

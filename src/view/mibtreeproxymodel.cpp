@@ -27,6 +27,7 @@
  */
 
 #include "mibtreeproxymodel.h"
+#include "snmpnode.h"
 
 View::MIBTreeProxyModel::MIBTreeProxyModel(QObject *parent) : QSortFilterProxyModel(parent)
 {
@@ -40,5 +41,11 @@ View::MIBTreeProxyModel::MIBTreeProxyModel(QObject *parent) : QSortFilterProxyMo
  */
 bool View::MIBTreeProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right) const
 {
-    return true;
+    Model::SNMPNode *leftNode = static_cast<Model::SNMPNode *>(left.internalPointer());
+    Model::SNMPNode *rightNode = static_cast<Model::SNMPNode *>(right.internalPointer());
+
+    oid leftSubId = leftNode -> object() -> parseOID()[leftNode -> object() -> parseOIDLength() - 1];
+    oid rightSubId = rightNode -> object() -> parseOID()[rightNode -> object() -> parseOIDLength() - 1];
+
+    return leftSubId < rightSubId;
 }

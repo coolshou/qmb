@@ -152,11 +152,7 @@ QVariant View::MIBTreeModel::data(const QModelIndex &index, int role) const
         return QVariant();
 
     if(index.column() == 0)
-        return node -> object() ?
-                    QString("(%1) %2")
-                       .arg(node -> object() -> parseOID()[node->object()->parseOIDLength() - 1])
-                       .arg(node -> object() -> name().c_str()) :
-                    "";
+        return node -> object() ? node -> object() -> name().c_str() : "";
 
     return QVariant();
 }

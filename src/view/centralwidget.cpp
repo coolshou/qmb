@@ -28,6 +28,7 @@
 
 #include "centralwidget.h"
 #include "mibtreemodel.h"
+#include "mibtreeproxymodel.h"
 #include "snmpmanager.h"
 #include "types.h"
 #include <QLabel>
@@ -58,6 +59,7 @@ View::CentralWidget::CentralWidget(QWidget *parent) : QWidget(parent)
 View::CentralWidget::~CentralWidget()
 {
     delete _mibTreeModel;
+    delete _mibTreeProxyModel;
 }
 
 /**
@@ -99,7 +101,11 @@ void View::CentralWidget::createWidgets()
     _mibTreeView = new QTreeView;
     _mibTreeView -> setAlternatingRowColors(true);
     _mibTreeModel = new MIBTreeModel;
-    _mibTreeView -> setModel(_mibTreeModel);
+    _mibTreeProxyModel = new MIBTreeProxyModel;
+    _mibTreeProxyModel -> setSourceModel(_mibTreeModel);
+    _mibTreeView -> setModel(_mibTreeProxyModel);
+    _mibTreeView -> setSortingEnabled(true);
+    _mibTreeView -> sortByColumn(0, Qt::AscendingOrder);
 
     _getPushButton = new QPushButton(tr("Get"));
     _getNextPushButton = new QPushButton(tr("Get Next"));
