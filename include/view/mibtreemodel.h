@@ -106,7 +106,7 @@ namespace View
          * @param role Rol
          * @return Etiqueta de la cabecera
          */
-        QVariant headerData(int section, Qt::Orientation orientation, int role) const;
+        QVariant headerData(int section, Qt::Orientation orientation, int role) const;     
     private:
         /**
          * @brief Obtiene el nodo del arbol asociado a un indice

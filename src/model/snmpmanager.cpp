@@ -154,7 +154,8 @@ Model::SNMPNode *Model::SNMPManager::getMIBTree()
 
 
     // Leer el modulo SNMPv2-MIB
-    if((tree = read_module("SNMPv2-MIB"))) {
+    //if((tree = read_module("SNMPv2-MIB"))) {
+    if((tree = read_all_mibs())) {
         root = new SNMPNode; // Nodo raiz de la MIB sin OID asignado
         // Parseamos cada uno de los grupos de la MIB de mayor nivel
         // incluyendo estos como hijos en el nodo raiz

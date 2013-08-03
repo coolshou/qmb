@@ -152,7 +152,11 @@ QVariant View::MIBTreeModel::data(const QModelIndex &index, int role) const
         return QVariant();
 
     if(index.column() == 0)
-        return node -> object() ? node -> object() -> name().c_str() : "";
+        return node -> object() ?
+                    QString("(%1) %2")
+                       .arg(node -> object() -> parseOID()[node->object()->parseOIDLength() - 1])
+                       .arg(node -> object() -> name().c_str()) :
+                    "";
 
     return QVariant();
 }
@@ -166,9 +170,8 @@ QVariant View::MIBTreeModel::data(const QModelIndex &index, int role) const
  */
 QVariant View::MIBTreeModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
-    Q_UNUSED(section);
-    Q_UNUSED(orientation);
-    Q_UNUSED(role);
+    if(orientation == Qt::Horizontal && role == Qt::DisplayRole && section == 0)
+        return tr("Object");
 
     return QVariant();
 }

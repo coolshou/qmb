@@ -27,6 +27,8 @@
  */
 
 #include "centralwidget.h"
+#include "mibtreemodel.h"
+#include "snmpmanager.h"
 #include "types.h"
 #include <QLabel>
 #include <QLineEdit>
@@ -43,10 +45,19 @@
  * @brief Constructor de CentralWidget
  * @param parent Widget padre
  */
-View::CentralWidget::CentralWidget(QWidget *parent)
+View::CentralWidget::CentralWidget(QWidget *parent) : QWidget(parent)
 {
     createWidgets();
     createConnections();
+    loadMIBTree();
+}
+
+/**
+ * @brief Destructor de CentralWidget
+ */
+View::CentralWidget::~CentralWidget()
+{
+    delete _mibTreeModel;
 }
 
 /**
@@ -86,6 +97,9 @@ void View::CentralWidget::createWidgets()
     parametersGroupBox -> setLayout(parametersLayout);
 
     _mibTreeView = new QTreeView;
+    _mibTreeView -> setAlternatingRowColors(true);
+    _mibTreeModel = new MIBTreeModel;
+    _mibTreeView -> setModel(_mibTreeModel);
 
     _getPushButton = new QPushButton(tr("Get"));
     _getNextPushButton = new QPushButton(tr("Get Next"));
@@ -127,4 +141,14 @@ void View::CentralWidget::createWidgets()
 void View::CentralWidget::createConnections()
 {
 
+}
+
+/**
+ * @brief Carga el arbol MIB en el modelo MIBTreeModel
+ */
+void View::CentralWidget::loadMIBTree()
+{
+    Model::SNMPNode *root = Model::SNMPManager::getMIBTree();
+
+    _mibTreeModel -> setRoot(root);
 }

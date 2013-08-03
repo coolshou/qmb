@@ -107,35 +107,44 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">namespace </span>View</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;{</div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="code" href="class_view_1_1_central_widget.html">   49</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_view_1_1_central_widget.html" title="Clase CentralWidget que implementa el widget central de la ventana principal. ">CentralWidget</a> : <span class="keyword">public</span> QWidget</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        Q_OBJECT</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <a class="code" href="class_view_1_1_central_widget.html#afcc675175e25ca7560c34f6083236e91" title="Constructor de CentralWidget. ">CentralWidget</a>(QWidget *parent = 0);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_view_1_1_central_widget.html#a05ffb61af586bf14b55444986a0442b3" title="Crea los widgets. ">createWidgets</a>();</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_view_1_1_central_widget.html#a51b474f5e99d339fcc4288a7293489e1" title="Establece las conexiones. ">createConnections</a>();</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        QLabel *_agentLabel;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        QLineEdit *_agentLineEdit;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        QLabel *_portLabel;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        QSpinBox *_portSpinBox;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        QLabel *_versionLabel;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        QComboBox *_versionComboBox;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        QPushButton *_propertiesButton;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        QTreeView *_mibTreeView;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        QPushButton *_getPushButton;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        QPushButton *_getNextPushButton;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        QPushButton *_getBulkPushButton;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        QPushButton *_setPushButton;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        QTextEdit *_resultTextEdit;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    };</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;}</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor">#endif // CENTRALWIDGET_H</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">class </span>MIBTreeModel;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="code" href="class_view_1_1_central_widget.html">   51</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_view_1_1_central_widget.html" title="Clase CentralWidget que implementa el widget central de la ventana principal. ">CentralWidget</a> : <span class="keyword">public</span> QWidget</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        Q_OBJECT</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <a class="code" href="class_view_1_1_central_widget.html#afcc675175e25ca7560c34f6083236e91" title="Constructor de CentralWidget. ">CentralWidget</a>(QWidget *parent = 0);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <a class="code" href="class_view_1_1_central_widget.html#af8fcf19a8e020aa5012b4d6811dce048" title="Destructor de CentralWidget. ">~CentralWidget</a>();</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_view_1_1_central_widget.html#a05ffb61af586bf14b55444986a0442b3" title="Crea los widgets. ">createWidgets</a>();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_view_1_1_central_widget.html#a51b474f5e99d339fcc4288a7293489e1" title="Establece las conexiones. ">createConnections</a>();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_view_1_1_central_widget.html#a6c14b3d68fc0390339b1b3cdb6b963ae" title="Carga el arbol MIB en el modelo MIBTreeModel. ">loadMIBTree</a>();</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        QLabel *_agentLabel;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        QLineEdit *_agentLineEdit;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        QLabel *_portLabel;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        QSpinBox *_portSpinBox;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        QLabel *_versionLabel;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        QComboBox *_versionComboBox;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        QPushButton *_propertiesButton;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        QTreeView *_mibTreeView;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <a class="code" href="class_view_1_1_m_i_b_tree_model.html" title="Clase MIBTreeModel que implementa el modelo jerarquico usado por QTreeView y que representa el arbol ...">MIBTreeModel</a> *_mibTreeModel;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        QPushButton *_getPushButton;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        QPushButton *_getNextPushButton;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        QPushButton *_getBulkPushButton;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        QPushButton *_setPushButton;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        QTextEdit *_resultTextEdit;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    };</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;}</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="preprocessor">#endif // CENTRALWIDGET_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Sábado, 3 de Agosto de 2013 14:19:35 para QMB por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Sábado, 3 de Agosto de 2013 18:01:16 para QMB por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

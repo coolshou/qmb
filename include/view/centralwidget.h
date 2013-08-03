@@ -43,6 +43,8 @@ QT_END_NAMESPACE
 
 namespace View
 {
+    class MIBTreeModel;
+
     /**
      * @brief Clase CentralWidget que implementa el widget central de la ventana principal
      */
@@ -55,15 +57,27 @@ namespace View
          * @param parent Widget padre
          */
         CentralWidget(QWidget *parent = 0);
+
+        /**
+         * @brief Destructor de CentralWidget
+         */
+        ~CentralWidget();
     private:
         /**
          * @brief Crea los widgets
          */
         void createWidgets();
+
         /**
          * @brief Establece las conexiones
          */
         void createConnections();
+
+        /**
+         * @brief Carga el arbol MIB en el modelo MIBTreeModel
+         */
+        void loadMIBTree();
+
         QLabel *_agentLabel;
         QLineEdit *_agentLineEdit;
         QLabel *_portLabel;
@@ -72,6 +86,7 @@ namespace View
         QComboBox *_versionComboBox;
         QPushButton *_propertiesButton;
         QTreeView *_mibTreeView;
+        MIBTreeModel *_mibTreeModel;
         QPushButton *_getPushButton;
         QPushButton *_getNextPushButton;
         QPushButton *_getBulkPushButton;
