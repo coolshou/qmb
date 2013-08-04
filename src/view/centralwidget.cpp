@@ -63,6 +63,51 @@ View::CentralWidget::~CentralWidget()
 }
 
 /**
+ * @brief Invoca operacion SNMP GET
+ */
+void View::CentralWidget::invokeGet()
+{
+
+}
+
+/**
+ * @brief Invoca operacion SNMP GET NEXT
+ */
+void View::CentralWidget::invokeGetNext()
+{
+
+}
+
+/**
+ * @brief Invoca operacion SNMP GET BULK
+ */
+void View::CentralWidget::invokeGetBulk()
+{
+
+}
+
+/**
+ * @brief Invoca operacion SNMP SET
+ */
+void View::CentralWidget::invokeSet()
+{
+
+}
+
+/**
+ * @brief Activa/Desactiva botones de operacion ante cambios en la seleccion de un item
+ */
+void View::CentralWidget::rowSelectionChanged()
+{
+    int row = _mibTreeView -> currentIndex().row();
+
+    _getPushButton -> setEnabled(row != -1);
+    _getNextPushButton -> setEnabled(row != -1);
+    _getBulkPushButton -> setEnabled(row != -1);
+    _setPushButton -> setEnabled(row != -1);
+}
+
+/**
  * @brief Crea los widgets
  */
 void View::CentralWidget::createWidgets()
@@ -108,9 +153,13 @@ void View::CentralWidget::createWidgets()
     _mibTreeView -> sortByColumn(0, Qt::AscendingOrder);
 
     _getPushButton = new QPushButton(tr("Get"));
+    _getPushButton -> setEnabled(false);
     _getNextPushButton = new QPushButton(tr("Get Next"));
+    _getNextPushButton -> setEnabled(false);
     _getBulkPushButton = new QPushButton(tr("Get Bulk"));
+    _getBulkPushButton -> setEnabled(false);
     _setPushButton = new QPushButton(tr("Set"));
+    _setPushButton -> setEnabled(false);
 
     QHBoxLayout *operationsLayout = new QHBoxLayout;
     operationsLayout -> addWidget(_getPushButton);
@@ -146,7 +195,11 @@ void View::CentralWidget::createWidgets()
  */
 void View::CentralWidget::createConnections()
 {
-
+    connect(_getPushButton, SIGNAL(clicked()), this, SLOT(invokeGet()));
+    connect(_getNextPushButton, SIGNAL(clicked()), this, SLOT(invokeGetNext()));
+    connect(_getBulkPushButton, SIGNAL(clicked()), this, SLOT(invokeGetBulk()));
+    connect(_setPushButton, SIGNAL(clicked()), this, SLOT(invokeSet()));
+    connect(_mibTreeView -> selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)), this, SLOT(rowSelectionChanged()));
 }
 
 /**
@@ -154,7 +207,11 @@ void View::CentralWidget::createConnections()
  */
 void View::CentralWidget::loadMIBTree()
 {
+    emit statusChanged(tr("Loading MIB Tree ..."));
+
     Model::SNMPNode *root = Model::SNMPManager::getMIBTree();
 
     _mibTreeModel -> setRoot(root);
+
+    emit statusChanged(tr("MIB Tree loaded successfully"));
 }

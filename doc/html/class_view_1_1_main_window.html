@@ -129,6 +129,9 @@ Slots privados</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_view_1_1_main_window.html#aec40bc821cebc083c56214007d02cdc8">about</a> ()</td></tr>
 <tr class="memdesc:aec40bc821cebc083c56214007d02cdc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ranura Acerca de .. <br/></td></tr>
 <tr class="separator:aec40bc821cebc083c56214007d02cdc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fde308e472a10346c7b3f3c111b8ce8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_view_1_1_main_window.html#a2fde308e472a10346c7b3f3c111b8ce8">changeStatus</a> (const QString &amp;status)</td></tr>
+<tr class="memdesc:a2fde308e472a10346c7b3f3c111b8ce8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ranura para cambio de la barra de estado.  <a href="#a2fde308e472a10346c7b3f3c111b8ce8">Más...</a><br/></td></tr>
+<tr class="separator:a2fde308e472a10346c7b3f3c111b8ce8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Métodos privados</h2></td></tr>
@@ -173,13 +176,46 @@ Atributos privados</h2></td></tr>
 <tr class="separator:a80766c8fc170ed38545adcbfa2fdb1b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b96870b92bada8c47cc0f425292adf3"><td class="memItemLeft" align="right" valign="top">QMenu *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_view_1_1_main_window.html#a6b96870b92bada8c47cc0f425292adf3">_helpMenu</a></td></tr>
 <tr class="separator:a6b96870b92bada8c47cc0f425292adf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa5f2fb2e8ad45afa9152bdc1dcc5439f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa5f2fb2e8ad45afa9152bdc1dcc5439f"></a>
-<a class="el" href="class_view_1_1_central_widget.html">CentralWidget</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_centralWidget</b></td></tr>
+<tr class="memitem:aa5f2fb2e8ad45afa9152bdc1dcc5439f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_view_1_1_central_widget.html">CentralWidget</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_view_1_1_main_window.html#aa5f2fb2e8ad45afa9152bdc1dcc5439f">_centralWidget</a></td></tr>
 <tr class="separator:aa5f2fb2e8ad45afa9152bdc1dcc5439f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad150bd9e38a56d0dbbcceb42b1b3f22f"><td class="memItemLeft" align="right" valign="top">QLabel *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_view_1_1_main_window.html#ad150bd9e38a56d0dbbcceb42b1b3f22f">_statusLabel</a></td></tr>
+<tr class="separator:ad150bd9e38a56d0dbbcceb42b1b3f22f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
 <div class="textblock"><p>Clase <a class="el" href="class_view_1_1_main_window.html" title="Clase MainWindow que implementa la ventana principal. ">MainWindow</a> que implementa la ventana principal. </p>
 </div><h2 class="groupheader">Documentación de las funciones miembro</h2>
+<a class="anchor" id="a2fde308e472a10346c7b3f3c111b8ce8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void View::MainWindow::changeStatus </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>status</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ranura para cambio de la barra de estado. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">status</td><td>Mensaje de estado </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="a6135218326dccf7d6ef34413e1ceaead"></a>
 <div class="memitem">
 <div class="memproto">
@@ -276,6 +312,27 @@ Atributos privados</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="aa5f2fb2e8ad45afa9152bdc1dcc5439f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_view_1_1_central_widget.html">CentralWidget</a>* View::MainWindow::_centralWidget</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Widget Central </p>
+
+</div>
+</div>
 <a class="anchor" id="a93134d72d78805ccdeb9cfa178b8bf22"></a>
 <div class="memitem">
 <div class="memproto">
@@ -318,6 +375,27 @@ Atributos privados</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ad150bd9e38a56d0dbbcceb42b1b3f22f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QLabel* View::MainWindow::_statusLabel</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Etiqueta de estado </p>
+
+</div>
+</div>
 <hr/>La documentación para esta clase fue generada a partir de los siguientes ficheros:<ul>
 <li>include/view/<a class="el" href="mainwindow_8h_source.html">mainwindow.h</a></li>
 <li>src/view/<a class="el" href="mainwindow_8cpp.html">mainwindow.cpp</a></li>
@@ -325,7 +403,7 @@ Atributos privados</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Sábado, 3 de Agosto de 2013 19:56:32 para QMB por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Domingo, 4 de Agosto de 2013 20:40:16 para QMB por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

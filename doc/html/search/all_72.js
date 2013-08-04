@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['rowcount',['rowCount',['../class_view_1_1_m_i_b_tree_model.html#af1c3b2026b8d17c3211614b41d7b1006',1,'View::MIBTreeModel']]]
+  ['rowcount',['rowCount',['../class_view_1_1_m_i_b_tree_model.html#af1c3b2026b8d17c3211614b41d7b1006',1,'View::MIBTreeModel']]],
+  ['rowselectionchanged',['rowSelectionChanged',['../class_view_1_1_central_widget.html#aa2a8a25b828a638b07a9e64862d6dd4b',1,'View::CentralWidget']]]
 ];

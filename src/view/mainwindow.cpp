@@ -47,7 +47,6 @@ View::MainWindow::MainWindow()
  */
 View::MainWindow::~MainWindow()
 {
-
 }
 
 /**
@@ -76,6 +75,15 @@ void View::MainWindow::about()
                              .arg(AUTHOR_NAME)
                              .arg(AUTHOR_EMAIL)
                              .arg(APPLICATION_WEB));
+}
+
+/**
+ * @brief Ranura para cambio de la barra de estado
+ * @param status Mensaje de estado
+ */
+void View::MainWindow::changeStatus(const QString& status)
+{
+    statusBar() -> showMessage(status, 5000);
 }
 
 /**
@@ -141,7 +149,9 @@ void View::MainWindow::createToolBar()
  */
 void View::MainWindow::createStatusBar()
 {
+    _statusLabel = new QLabel;
 
+    statusBar() -> addWidget(_statusLabel);
 }
 
 /**
@@ -152,4 +162,5 @@ void View::MainWindow::createConnections()
     connect(_exitAction, SIGNAL(triggered()), this, SLOT(close()));
     connect(_aboutAction, SIGNAL(triggered()), this, SLOT(about()));
     connect(_aboutQtAction, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
+    connect(_centralWidget, SIGNAL(statusChanged(QString)), this, SLOT(changeStatus(QString)));
 }

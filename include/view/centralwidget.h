@@ -63,6 +63,39 @@ namespace View
          * @brief Destructor de CentralWidget
          */
         ~CentralWidget();
+
+    signals:
+        /**
+         * @brief Señal de notificacion de un cambio de estado
+         * @param status Mensaje de estado
+         */
+        void statusChanged(const QString& status);
+
+    private slots:
+        /**
+         * @brief Invoca operacion SNMP GET
+         */
+        void invokeGet();
+
+        /**
+         * @brief Invoca operacion SNMP GET NEXT
+         */
+        void invokeGetNext();
+
+        /**
+         * @brief Invoca operacion SNMP GET BULK
+         */
+        void invokeGetBulk();
+
+        /**
+         * @brief Invoca operacion SNMP SET
+         */
+        void invokeSet();
+
+        /**
+         * @brief Activa/Desactiva botones de operacion ante cambios en la seleccion de un item
+         */
+        void rowSelectionChanged();
     private:
         /**
          * @brief Crea los widgets

@@ -34,6 +34,7 @@
 QT_BEGIN_NAMESPACE
 class QAction;
 class QMenu;
+class QLabel;
 QT_END_NAMESPACE
 
 namespace View
@@ -69,6 +70,12 @@ namespace View
          * @brief Ranura Acerca de ..
          */
         void about();
+
+        /**
+         * @brief Ranura para cambio de la barra de estado
+         * @param status Mensaje de estado
+         */
+        void changeStatus(const QString& status);
 
     private:
         /**
@@ -111,7 +118,8 @@ namespace View
         QAction *_aboutQtAction;       /**< Accion Acerca de Qt */
         QMenu *_applicationMenu;       /**< Menu Aplication */
         QMenu *_helpMenu;              /**< Menu Ayuda */
-        CentralWidget *_centralWidget;
+        CentralWidget *_centralWidget; /**< Widget Central */
+        QLabel *_statusLabel;          /**< Etiqueta de estado */
     };
 }
 

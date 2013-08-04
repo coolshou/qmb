@@ -27,5 +27,6 @@ var searchData=
   ['snmpsessionexception',['SNMPSessionException',['../class_model_1_1_s_n_m_p_session_exception.html#ab4e1bfc797f3d777404db70de135c964',1,'Model::SNMPSessionException']]],
   ['snmpset',['snmpset',['../class_model_1_1_s_n_m_p_manager.html#a3fbb2252963bc9e6778869f9f996d8a1',1,'Model::SNMPManager']]],
   ['status',['status',['../class_model_1_1_s_n_m_p_o_i_d.html#ade758889cc7b6e6bbcbb1fb7d73059c1',1,'Model::SNMPOID']]],
+  ['statuschanged',['statusChanged',['../class_view_1_1_central_widget.html#ad4008c6aa371f54734c3f25a1c83f7be',1,'View::CentralWidget']]],
   ['stroid',['strOID',['../class_model_1_1_s_n_m_p_o_i_d.html#a11cb7458c15f7593614cf75f160a4cc1',1,'Model::SNMPOID']]]
 ];

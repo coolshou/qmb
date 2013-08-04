@@ -88,7 +88,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#signals">Señales</a> &#124;
 <a href="#pub-methods">Métodos públicos</a> &#124;
+<a href="#pri-slots">Slots privados</a> &#124;
 <a href="#pri-methods">Métodos privados</a> &#124;
 <a href="#pri-attribs">Atributos privados</a> &#124;
 <a href="class_view_1_1_central_widget-members.html">Lista de todos los miembros</a>  </div>
@@ -104,6 +106,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 
 <p>Herencias QWidget.</p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="signals"></a>
+Señales</h2></td></tr>
+<tr class="memitem:ad4008c6aa371f54734c3f25a1c83f7be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_view_1_1_central_widget.html#ad4008c6aa371f54734c3f25a1c83f7be">statusChanged</a> (const QString &amp;status)</td></tr>
+<tr class="memdesc:ad4008c6aa371f54734c3f25a1c83f7be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Señal de notificacion de un cambio de estado.  <a href="#ad4008c6aa371f54734c3f25a1c83f7be">Más...</a><br/></td></tr>
+<tr class="separator:ad4008c6aa371f54734c3f25a1c83f7be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos públicos</h2></td></tr>
 <tr class="memitem:afcc675175e25ca7560c34f6083236e91"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_view_1_1_central_widget.html#afcc675175e25ca7560c34f6083236e91">CentralWidget</a> (QWidget *parent=0)</td></tr>
@@ -113,6 +121,29 @@ Métodos públicos</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_view_1_1_central_widget.html#af8fcf19a8e020aa5012b4d6811dce048">~CentralWidget</a> ()</td></tr>
 <tr class="memdesc:af8fcf19a8e020aa5012b4d6811dce048"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor de <a class="el" href="class_view_1_1_central_widget.html" title="Clase CentralWidget que implementa el widget central de la ventana principal. ">CentralWidget</a>. <br/></td></tr>
 <tr class="separator:af8fcf19a8e020aa5012b4d6811dce048"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-slots"></a>
+Slots privados</h2></td></tr>
+<tr class="memitem:ae09443cf67939e80425da2fbca797590"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae09443cf67939e80425da2fbca797590"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_view_1_1_central_widget.html#ae09443cf67939e80425da2fbca797590">invokeGet</a> ()</td></tr>
+<tr class="memdesc:ae09443cf67939e80425da2fbca797590"><td class="mdescLeft">&#160;</td><td class="mdescRight">Invoca operacion SNMP GET. <br/></td></tr>
+<tr class="separator:ae09443cf67939e80425da2fbca797590"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca0a5985748dc0abca4881266b522ba6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aca0a5985748dc0abca4881266b522ba6"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_view_1_1_central_widget.html#aca0a5985748dc0abca4881266b522ba6">invokeGetNext</a> ()</td></tr>
+<tr class="memdesc:aca0a5985748dc0abca4881266b522ba6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Invoca operacion SNMP GET NEXT. <br/></td></tr>
+<tr class="separator:aca0a5985748dc0abca4881266b522ba6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a987446042a3e1115b1a1d1fe55536987"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a987446042a3e1115b1a1d1fe55536987"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_view_1_1_central_widget.html#a987446042a3e1115b1a1d1fe55536987">invokeGetBulk</a> ()</td></tr>
+<tr class="memdesc:a987446042a3e1115b1a1d1fe55536987"><td class="mdescLeft">&#160;</td><td class="mdescRight">Invoca operacion SNMP GET BULK. <br/></td></tr>
+<tr class="separator:a987446042a3e1115b1a1d1fe55536987"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b54162730758b867179bbc534df9aed"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3b54162730758b867179bbc534df9aed"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_view_1_1_central_widget.html#a3b54162730758b867179bbc534df9aed">invokeSet</a> ()</td></tr>
+<tr class="memdesc:a3b54162730758b867179bbc534df9aed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Invoca operacion SNMP SET. <br/></td></tr>
+<tr class="separator:a3b54162730758b867179bbc534df9aed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2a8a25b828a638b07a9e64862d6dd4b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa2a8a25b828a638b07a9e64862d6dd4b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_view_1_1_central_widget.html#aa2a8a25b828a638b07a9e64862d6dd4b">rowSelectionChanged</a> ()</td></tr>
+<tr class="memdesc:aa2a8a25b828a638b07a9e64862d6dd4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Activa/Desactiva botones de operacion ante cambios en la seleccion de un item. <br/></td></tr>
+<tr class="separator:aa2a8a25b828a638b07a9e64862d6dd4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Métodos privados</h2></td></tr>
@@ -158,6 +189,9 @@ QTreeView *&#160;</td><td class="memItemRight" valign="bottom"><b>_mibTreeView</
 <tr class="memitem:a35cac0b2c1bb267a295531b3635e8a29"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a35cac0b2c1bb267a295531b3635e8a29"></a>
 <a class="el" href="class_view_1_1_m_i_b_tree_model.html">MIBTreeModel</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_mibTreeModel</b></td></tr>
 <tr class="separator:a35cac0b2c1bb267a295531b3635e8a29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c90dfb531e0d8b4bfe2dcf9b3184d9a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9c90dfb531e0d8b4bfe2dcf9b3184d9a"></a>
+<a class="el" href="class_view_1_1_m_i_b_tree_proxy_model.html">MIBTreeProxyModel</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_mibTreeProxyModel</b></td></tr>
+<tr class="separator:a9c90dfb531e0d8b4bfe2dcf9b3184d9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac1fd5ad500724b5382a336e4cdcd0169"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac1fd5ad500724b5382a336e4cdcd0169"></a>
 QPushButton *&#160;</td><td class="memItemRight" valign="bottom"><b>_getPushButton</b></td></tr>
 <tr class="separator:ac1fd5ad500724b5382a336e4cdcd0169"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -201,6 +235,39 @@ QTextEdit *&#160;</td><td class="memItemRight" valign="bottom"><b>_resultTextEdi
 
 </div>
 </div>
+<h2 class="groupheader">Documentación de las funciones miembro</h2>
+<a class="anchor" id="ad4008c6aa371f54734c3f25a1c83f7be"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void View::CentralWidget::statusChanged </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>status</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Señal de notificacion de un cambio de estado. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">status</td><td>Mensaje de estado </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>La documentación para esta clase fue generada a partir de los siguientes ficheros:<ul>
 <li>include/view/<a class="el" href="centralwidget_8h_source.html">centralwidget.h</a></li>
 <li>src/view/<a class="el" href="centralwidget_8cpp.html">centralwidget.cpp</a></li>
@@ -208,7 +275,7 @@ QTextEdit *&#160;</td><td class="memItemRight" valign="bottom"><b>_resultTextEdi
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Sábado, 3 de Agosto de 2013 19:56:32 para QMB por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Domingo, 4 de Agosto de 2013 20:40:16 para QMB por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

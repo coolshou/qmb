@@ -76,7 +76,7 @@ QModelIndex View::MIBTreeModel::index(int row, int column, const QModelIndex &pa
     Model::SNMPNode *parentNode = nodeFromIndex(parent);
 
     // Creacion de indice
-    return createIndex(row, column, parentNode -> childs()[row]);
+    return createIndex(row, column, parentNode -> childs().at(row));
 }
 
 /**
