@@ -32,7 +32,6 @@
 #include "snmpmanager.h"
 #include "testsnmpmanager.h"
 #include <iostream>
-#include <stdexcept>
 
 // Declaracion de funciones
 

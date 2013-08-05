@@ -63,38 +63,22 @@ View::CentralWidget::~CentralWidget()
 }
 
 /**
- * @brief Invoca operacion SNMP GET
+ * @brief Invoca operacion SNMP
  */
-void View::CentralWidget::invokeGet()
+void View::CentralWidget::invokeOperation()
 {
-    Model::SNMPOID *object;
+    QModelIndex index = _mibTreeProxyModel -> mapToSource(_mibTreeView -> currentIndex());
+    Model::SNMPNode *node = static_cast<Model::SNMPNode *>(index.internalPointer());
+    QObject *sender = QObject::sender();
 
-    if(object)
-
-}
-
-/**
- * @brief Invoca operacion SNMP GET NEXT
- */
-void View::CentralWidget::invokeGetNext()
-{
-    Model::SNMPOID *object;
-}
-
-/**
- * @brief Invoca operacion SNMP GET BULK
- */
-void View::CentralWidget::invokeGetBulk()
-{
-    Model::SNMPOID *object;
-}
-
-/**
- * @brief Invoca operacion SNMP SET
- */
-void View::CentralWidget::invokeSet()
-{
-    Model::SNMPOID *object;
+    //if(sender == _getPushButton)
+        // Invoke SNMP GET
+    //else if(sender == _getNextPushButton)
+        // Invoke SNMP GET NEXT
+    //else if(sender == _getBulkPushButton)
+        // Invoke SNMP GET BULK
+    //else if(sender == _setPushButton)
+        // Invoke SNMP SET
 }
 
 /**
@@ -200,10 +184,10 @@ void View::CentralWidget::createWidgets()
  */
 void View::CentralWidget::createConnections()
 {
-    connect(_getPushButton, SIGNAL(clicked()), this, SLOT(invokeGet()));
-    connect(_getNextPushButton, SIGNAL(clicked()), this, SLOT(invokeGetNext()));
-    connect(_getBulkPushButton, SIGNAL(clicked()), this, SLOT(invokeGetBulk()));
-    connect(_setPushButton, SIGNAL(clicked()), this, SLOT(invokeSet()));
+    connect(_getPushButton, SIGNAL(clicked()), this, SLOT(invokeOperation()));
+    connect(_getNextPushButton, SIGNAL(clicked()), this, SLOT(invokeOperation()));
+    connect(_getBulkPushButton, SIGNAL(clicked()), this, SLOT(invokeOperation()));
+    connect(_setPushButton, SIGNAL(clicked()), this, SLOT(invokeOperation()));
     connect(_agentLineEdit, SIGNAL(textChanged(QString)), this, SLOT(readyToInvoke()));
     connect(_portSpinBox, SIGNAL(valueChanged(int)), this, SLOT(readyToInvoke()));
     connect(_versionComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(readyToInvoke()));

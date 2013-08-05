@@ -73,24 +73,9 @@ namespace View
 
     private slots:
         /**
-         * @brief Invoca operacion SNMP GET
+         * @brief Invoca operacion SNMP
          */
-        void invokeGet();
-
-        /**
-         * @brief Invoca operacion SNMP GET NEXT
-         */
-        void invokeGetNext();
-
-        /**
-         * @brief Invoca operacion SNMP GET BULK
-         */
-        void invokeGetBulk();
-
-        /**
-         * @brief Invoca operacion SNMP SET
-         */
-        void invokeSet();
+        void invokeOperation();
 
         /**
          * @brief Activa/Desactiva botones de operacion ante cambios en los otros widgets
