@@ -67,6 +67,9 @@ View::CentralWidget::~CentralWidget()
  */
 void View::CentralWidget::invokeGet()
 {
+    Model::SNMPOID *object;
+
+    if(object)
 
 }
 
@@ -75,7 +78,7 @@ void View::CentralWidget::invokeGet()
  */
 void View::CentralWidget::invokeGetNext()
 {
-
+    Model::SNMPOID *object;
 }
 
 /**
@@ -83,7 +86,7 @@ void View::CentralWidget::invokeGetNext()
  */
 void View::CentralWidget::invokeGetBulk()
 {
-
+    Model::SNMPOID *object;
 }
 
 /**
@@ -91,20 +94,22 @@ void View::CentralWidget::invokeGetBulk()
  */
 void View::CentralWidget::invokeSet()
 {
-
+    Model::SNMPOID *object;
 }
 
 /**
- * @brief Activa/Desactiva botones de operacion ante cambios en la seleccion de un item
+ * @brief Activa/Desactiva botones de operacion ante cambios en los otros widgets
  */
-void View::CentralWidget::rowSelectionChanged()
+void View::CentralWidget::readyToInvoke()
 {
     int row = _mibTreeView -> currentIndex().row();
+    bool agent = !(_agentLineEdit -> text().isEmpty()) && _portSpinBox -> value();
+    Model::SNMPVersion version = static_cast<Model::SNMPVersion>(_versionComboBox -> itemData(_versionComboBox -> currentIndex()).toInt());
 
-    _getPushButton -> setEnabled(row != -1);
-    _getNextPushButton -> setEnabled(row != -1);
-    _getBulkPushButton -> setEnabled(row != -1);
-    _setPushButton -> setEnabled(row != -1);
+    _getPushButton -> setEnabled(agent && row != -1);
+    _getNextPushButton -> setEnabled(agent && row != -1);
+    _getBulkPushButton -> setEnabled(agent && version != Model::SNMPv1 && row != -1);
+    _setPushButton -> setEnabled(agent && row != -1);
 }
 
 /**
@@ -199,7 +204,10 @@ void View::CentralWidget::createConnections()
     connect(_getNextPushButton, SIGNAL(clicked()), this, SLOT(invokeGetNext()));
     connect(_getBulkPushButton, SIGNAL(clicked()), this, SLOT(invokeGetBulk()));
     connect(_setPushButton, SIGNAL(clicked()), this, SLOT(invokeSet()));
-    connect(_mibTreeView -> selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)), this, SLOT(rowSelectionChanged()));
+    connect(_agentLineEdit, SIGNAL(textChanged(QString)), this, SLOT(readyToInvoke()));
+    connect(_portSpinBox, SIGNAL(valueChanged(int)), this, SLOT(readyToInvoke()));
+    connect(_versionComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(readyToInvoke()));
+    connect(_mibTreeView -> selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)), this, SLOT(readyToInvoke()));
 }
 
 /**

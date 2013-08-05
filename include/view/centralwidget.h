@@ -93,9 +93,9 @@ namespace View
         void invokeSet();
 
         /**
-         * @brief Activa/Desactiva botones de operacion ante cambios en la seleccion de un item
+         * @brief Activa/Desactiva botones de operacion ante cambios en los otros widgets
          */
-        void rowSelectionChanged();
+        void readyToInvoke();
     private:
         /**
          * @brief Crea los widgets
