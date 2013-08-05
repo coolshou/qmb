@@ -67,18 +67,31 @@ View::CentralWidget::~CentralWidget()
  */
 void View::CentralWidget::invokeOperation()
 {
+    QObject *sender = QObject::sender();
     QModelIndex index = _mibTreeProxyModel -> mapToSource(_mibTreeView -> currentIndex());
     Model::SNMPNode *node = static_cast<Model::SNMPNode *>(index.internalPointer());
-    QObject *sender = QObject::sender();
+    Model::SNMPOID object(*(node -> object()));
+    std::string agent = _agentLineEdit->text().toStdString();
+    Model::SNMPVersion version = static_cast<Model::SNMPVersion>(_versionComboBox -> itemData(_versionComboBox -> currentIndex()).toInt());
+    std::vector<Model::SNMPOID *> oids;
+    oids.push_back(&object);
 
-    //if(sender == _getPushButton)
-        // Invoke SNMP GET
-    //else if(sender == _getNextPushButton)
-        // Invoke SNMP GET NEXT
-    //else if(sender == _getBulkPushButton)
-        // Invoke SNMP GET BULK
+    _resultTextEdit -> append("SNMP Operation invoked");
+
+    try {
+    if(sender == _getPushButton)
+        Model::SNMPManager::snmpget(version, "public", agent, oids);
+    else if(sender == _getNextPushButton)
+        Model::SNMPManager::snmpgetnext(version, "public", agent, oids);
+    else if(sender == _getBulkPushButton)
+        Model::SNMPManager::snmpgetbulk(version, "public", agent, oids, DEFAULT_NON_REPEATERS, DEFAULT_MAX_REPETITIONS);
     //else if(sender == _setPushButton)
-        // Invoke SNMP SET
+    //    Model::SNMPManager::snmpset(version, "public", agent, oids);
+    } catch(Model::SNMPException& exception) {
+        _resultTextEdit -> append(exception.message().c_str());
+    }
+
+    _resultTextEdit -> append(QString("%1 : %2").arg(oids.back() -> strOID().c_str()).arg((char *)(oids.back()->data()->value())));
 }
 
 /**
@@ -164,6 +177,8 @@ void View::CentralWidget::createWidgets()
     mibGroupBox -> setLayout(mibLayout);
 
     _resultTextEdit = new QTextEdit;
+    _resultTextEdit -> setReadOnly(true);
+    _resultTextEdit -> append(QString("%1 - %2").arg(APPLICATION_NAME_LONG).arg(APPLICATION_VERSION));
 
     QHBoxLayout *resultLayout = new QHBoxLayout;
     resultLayout -> addWidget(_resultTextEdit);
@@ -204,6 +219,8 @@ void View::CentralWidget::loadMIBTree()
     Model::SNMPNode *root = Model::SNMPManager::getMIBTree();
 
     _mibTreeModel -> setRoot(root);
+
+    Model::SNMPManager::initSNMP();
 
     emit statusChanged(tr("MIB Tree loaded successfully"));
 }

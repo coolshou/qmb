@@ -47,6 +47,8 @@ Model::SNMPData::SNMPData(SNMPDataType type, void *value) : _type(type)
  */
 Model::SNMPData::SNMPData(const SNMPData& snmpData)
 {
+    initValue(0);
+
     *this = snmpData;
 }
 

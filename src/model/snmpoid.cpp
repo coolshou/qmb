@@ -62,6 +62,9 @@ Model::SNMPOID::SNMPOID(oid  *parseOID, size_t parseOIDLength)
  */
 Model::SNMPOID::SNMPOID(const SNMPOID& snmpOID)
 {
+    _parseOID = 0;
+    _data = 0;
+
     *this = snmpOID;
 }
 
@@ -84,9 +87,14 @@ Model::SNMPOID::~SNMPOID()
 Model::SNMPOID& Model::SNMPOID::operator=(const SNMPOID& snmpOID)
 {
     _strOID = snmpOID.strOID();
-    std::copy(snmpOID.parseOID(), snmpOID.parseOID() + snmpOID.parseOIDLength(), _parseOID);
+    if(_parseOID)
+        delete _parseOID;
+    _parseOID = new oid[MAX_OID_LEN];
     _parseOIDLength = snmpOID.parseOIDLength();
-    _data = snmpOID.data();
+    std::copy(snmpOID.parseOID(), snmpOID.parseOID() + snmpOID.parseOIDLength(), _parseOID);
+    if(_data)
+        delete _data;
+    _data = new SNMPData(*snmpOID.data());
     _name = snmpOID.name();
     _status = snmpOID.status();
     _access = snmpOID.access();
