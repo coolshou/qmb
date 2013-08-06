@@ -141,9 +141,6 @@ Métodos privados estáticos</h2></td></tr>
 <tr class="memitem:a4499a9643c0483b23f45ec4396c6306c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_1_1_s_n_m_p_manager.html#a4499a9643c0483b23f45ec4396c6306c">processResponse</a> (SNMPPDU *pdu, std::vector&lt; <a class="el" href="class_model_1_1_s_n_m_p_o_i_d.html">SNMPOID</a> * &gt; &amp;oids, SNMPPDUType type)</td></tr>
 <tr class="memdesc:a4499a9643c0483b23f45ec4396c6306c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Procesa la PDU SNMP de respuesta del agente.  <a href="#a4499a9643c0483b23f45ec4396c6306c">Más...</a><br/></td></tr>
 <tr class="separator:a4499a9643c0483b23f45ec4396c6306c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add91da04cb9c07f1ec955991a415eaa2"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_model_1_1_s_n_m_p_o_i_d.html">SNMPOID</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_1_1_s_n_m_p_manager.html#add91da04cb9c07f1ec955991a415eaa2">findOID</a> (const std::vector&lt; <a class="el" href="class_model_1_1_s_n_m_p_o_i_d.html">SNMPOID</a> * &gt; &amp;oids, SNMPVariableList *var)</td></tr>
-<tr class="memdesc:add91da04cb9c07f1ec955991a415eaa2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Busca el OID correspondiente a una variable de una PDU SNMP de respuesta.  <a href="#add91da04cb9c07f1ec955991a415eaa2">Más...</a><br/></td></tr>
-<tr class="separator:add91da04cb9c07f1ec955991a415eaa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac5117b8dc8c2747d358a0291c5947c70"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_model_1_1_s_n_m_p_manager.html#ac5117b8dc8c2747d358a0291c5947c70">snmpoperation</a> (SNMPPDUType type, SNMPVersion version, const std::string &amp;community, const std::string &amp;agent, std::vector&lt; <a class="el" href="class_model_1_1_s_n_m_p_o_i_d.html">SNMPOID</a> * &gt; &amp;oids, unsigned short nrepeaters=<a class="el" href="global_8h.html#a847b68e41991c6c4b4c4b0558d4583bf">DEFAULT_NON_REPEATERS</a>, unsigned short mrepetitions=<a class="el" href="global_8h.html#a8ab5602e7ab3d5f70b55794c0376252b">DEFAULT_MAX_REPETITIONS</a>)</td></tr>
 <tr class="memdesc:ac5117b8dc8c2747d358a0291c5947c70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Invoca una operacion SNMP de consulta (GET, GETNEXT, GET BULK) o modificacion (SET)  <a href="#ac5117b8dc8c2747d358a0291c5947c70">Más...</a><br/></td></tr>
 <tr class="separator:ac5117b8dc8c2747d358a0291c5947c70"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -352,64 +349,6 @@ static long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
   </dd>
 </dl>
 <dl class="section return"><dt>Devuelve</dt><dd>Sesion SNMP Agente-Gestor inicializada y abierta. </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="add91da04cb9c07f1ec955991a415eaa2"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_model_1_1_s_n_m_p_o_i_d.html">Model::SNMPOID</a> * Model::SNMPManager::findOID </td>
-          <td>(</td>
-          <td class="paramtype">const std::vector&lt; <a class="el" href="class_model_1_1_s_n_m_p_o_i_d.html">SNMPOID</a> * &gt; &amp;&#160;</td>
-          <td class="paramname"><em>oids</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">SNMPVariableList *&#160;</td>
-          <td class="paramname"><em>var</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Busca el OID correspondiente a una variable de una PDU SNMP de respuesta. </p>
-<dl class="params"><dt>Parámetros</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">oids</td><td>Lista de OIDs </td></tr>
-    <tr><td class="paramname">var</td><td>Variable de la lista de variables de una PDU SNMP de respuesta </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="exception"><dt>Excepciones</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname"><a class="el" href="class_model_1_1_s_n_m_p_exception.html" title="Clase SNMPException que implementa la notificacion de errores SNMP. ">SNMPException</a></td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Devuelve</dt><dd>OID correspondiente a la variable si se encuentra en el vector o 0 en caso contrario</dd></dl>
-<dl class="params"><dt>Parámetros</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">oids</td><td>Lista de OIDs </td></tr>
-    <tr><td class="paramname">var</td><td>Variable de la lista de variables de una PDU SNMP de respuesta </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Devuelve</dt><dd>OID correspondiente a la variable si se encuentra en el vector o 0 en caso contrario </dd></dl>
 
 </div>
 </div>
@@ -1006,7 +945,7 @@ static long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Lunes, 5 de Agosto de 2013 15:15:24 para QMB por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Martes, 6 de Agosto de 2013 18:45:24 para QMB por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

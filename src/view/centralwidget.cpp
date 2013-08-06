@@ -71,10 +71,11 @@ void View::CentralWidget::invokeOperation()
     QModelIndex index = _mibTreeProxyModel -> mapToSource(_mibTreeView -> currentIndex());
     Model::SNMPNode *node = static_cast<Model::SNMPNode *>(index.internalPointer());
     Model::SNMPOID object(*(node -> object()));
+    Model::SNMPOID other(std::string(object.strOID()).append(".0"));
     std::string agent = _agentLineEdit->text().toStdString();
     Model::SNMPVersion version = static_cast<Model::SNMPVersion>(_versionComboBox -> itemData(_versionComboBox -> currentIndex()).toInt());
     std::vector<Model::SNMPOID *> oids;
-    oids.push_back(&object);
+    oids.push_back(&other);
 
     _resultTextEdit -> append("SNMP Operation invoked");
 

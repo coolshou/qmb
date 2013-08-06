@@ -328,35 +328,6 @@ void Model::SNMPManager::processResponse(SNMPPDU *pdu, std::vector<SNMPOID *>& o
 }
 
 /**
- * @brief Busca el OID correspondiente a una variable de una PDU SNMP de respuesta
- * @param oids Lista de OIDs
- * @param var Variable de la lista de variables de una PDU SNMP de respuesta
- * @return OID correspondiente a la variable si se encuentra en el vector o 0 en caso contrario
- */
-Model::SNMPOID *Model::SNMPManager::findOID(const std::vector<SNMPOID *>& oids, SNMPVariableList *var)
-{
-    if(oids.empty()) // Lista de OIDs vacia
-        return 0;    // OID no encontrado
-
-    // Iteramos por la lista de OIDs en busca del OID asociado a la variable de la PDU
-    for(std::vector<SNMPOID *>::const_iterator vi = oids.begin(); vi != oids.end(); vi++) {
-        SNMPOID *currOID = *vi; // OID actual
-        // Comprobamos si las longitudes coinciden
-        if(currOID -> parseOIDLength() == var -> name_length) {
-            oid *currParseOID = currOID -> parseOID(); // Obtenemos puntero al OID en notacion numerica
-            bool equal = true;
-            // Comprobamos la igualdad de los numeros que componen el OID
-            for(int k = 0; k < (int) currOID -> parseOIDLength() && equal; k++)
-                equal = currParseOID[k] == (var -> name)[k];
-            if(equal) // OID encontrado
-                return currOID;
-        }
-    }
-
-    return 0; // OID no encontrado
-}
-
-/**
  * @brief Invoca una operacion SNMP de consulta (GET, GETNEXT, GET BULK) o modificacion (SET)
  * @param type Tipo de PDU de peticion
  * @param version Version de SNMP utilizada.

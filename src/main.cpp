@@ -56,6 +56,9 @@ int main(int argc, char *argv[])
 
     setUpApplication(&app);
 
+    std::cout << QString("%1 %2").arg(app.applicationName()).arg(app.applicationVersion()).toStdString() << std::endl;
+    std::cout << QObject::tr("Starting ...").toStdString() << std::endl << std::endl;
+
     window.show();
 
     return app.exec();
