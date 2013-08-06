@@ -47,6 +47,7 @@ Model::SNMPData::SNMPData(SNMPDataType type, void *value) : _type(type)
  */
 Model::SNMPData::SNMPData(const SNMPData& snmpData)
 {
+    _type = SNMPDataUnknown;
     initValue(0);
 
     *this = snmpData;
@@ -116,6 +117,11 @@ void *Model::SNMPData::value() const
 void Model::SNMPData::setValue(void *value)
 {
     deleteValue();
+
+    if(!value) {
+        initValue(0);
+        return;
+    }
 
     switch(_type) {
     case SNMPDataInteger:
