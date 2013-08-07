@@ -91,3 +91,12 @@ std::vector<Model::SNMPNode *>& Model::SNMPNode::childs()
 {
     return _childs;
 }
+
+/**
+ * @brief Determina si el nodo actual es un nodo interno del arbol
+ * @return true si es un nodo interno false en caso contrario
+ */
+bool Model::SNMPNode::isInternalNode() const
+{
+    return !_childs.empty();
+}

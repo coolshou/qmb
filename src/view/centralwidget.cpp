@@ -33,7 +33,6 @@
 #include "types.h"
 #include <QLabel>
 #include <QLineEdit>
-#include <QSpinBox>
 #include <QComboBox>
 #include <QPushButton>
 #include <QTreeView>
@@ -41,6 +40,7 @@
 #include <QGroupBox>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
+#include <QMessageBox>
 
 /**
  * @brief Constructor de CentralWidget
@@ -70,12 +70,11 @@ void View::CentralWidget::invokeOperation()
     QObject *sender = QObject::sender();
     QModelIndex index = _mibTreeProxyModel -> mapToSource(_mibTreeView -> currentIndex());
     Model::SNMPNode *node = static_cast<Model::SNMPNode *>(index.internalPointer());
-    Model::SNMPOID object(*(node -> object()));
-    object.setStrOID(std::string(object.strOID()) + ".0");
+    Model::SNMPOID *object = node -> object()-> getInstance();
     std::string agent = _agentLineEdit -> text().toStdString();
     Model::SNMPVersion version = static_cast<Model::SNMPVersion>(_versionComboBox -> itemData(_versionComboBox -> currentIndex()).toInt());
     std::vector<Model::SNMPOID *> oids;
-    oids.push_back(&object);
+    oids.push_back(object);
 
     _resultTextEdit -> append("SNMP Operation invoked");
 
@@ -86,13 +85,34 @@ void View::CentralWidget::invokeOperation()
             Model::SNMPManager::snmpgetnext(version, "public", agent, oids);
         else if(sender == _getBulkPushButton)
             Model::SNMPManager::snmpgetbulk(version, "public", agent, oids, DEFAULT_NON_REPEATERS, DEFAULT_MAX_REPETITIONS);
-        //else if(sender == _setPushButton)
-            //Model::SNMPManager::snmpset(version, "public", agent, oids);
+        /*else if(sender == _setPushButton)
+            Model::SNMPManager::snmpset(version, "public", agent, oids);*/
     } catch(Model::SNMPException& exception) {
-        _resultTextEdit -> append(exception.message().c_str());
+        QMessageBox::critical(this, "SNMP Exception", exception.message().c_str(), QMessageBox::Ok);
     }
 
-    _resultTextEdit -> append(QString("%1 : %2").arg(oids.back() -> strOID().c_str()).arg((char *)(oids.back()->data()->value())));
+    for(std::vector<Model::SNMPOID *>::iterator vi = oids.begin(); vi != oids.end(); vi++) {
+        QString type;
+
+        switch((*vi) -> data() -> type()) {
+        case Model::SNMPDataInteger:     type = "INTEGER";   break;
+        case Model::SNMPDataUnsigned:    type = "UNSIGNED";  break;
+        case Model::SNMPDataBits:        type = "BITS";      break;
+        case Model::SNMPDataCounter:     type = "COUNTER";   break;
+        case Model::SNMPDataTimeTicks:   type = "TIMETICKS"; break;
+        case Model::SNMPDataCounter64:   type = "COUNTER64"; break;
+        case Model::SNMPDataBitString:   type = "BITSTRING"; break;
+        case Model::SNMPDataOctetString: type = "STRING";    break;
+        case Model::SNMPDataIPAddress:   type = "IPADDRESS"; break;
+        case Model::SNMPDataObjectId:    type = "OBJID";     break;
+        default:                         type = "UNKNOWN";   break;
+        }
+
+        _resultTextEdit -> append(QString("%1 = %2 : %3").arg(oids.back() -> strOID().c_str())
+                                                         .arg(type)
+                                                         .arg(oids.back() -> data() -> toString().c_str()));
+        //delete *vi; // ¿Double free?
+    }
 }
 
 /**
@@ -100,14 +120,23 @@ void View::CentralWidget::invokeOperation()
  */
 void View::CentralWidget::readyToInvoke()
 {
+    QModelIndex index;
+    Model::SNMPNode *node;
+    bool internalNode = true;
     int row = _mibTreeView -> currentIndex().row();
-    bool agent = !(_agentLineEdit -> text().isEmpty()) && _portSpinBox -> value();
+    bool agent = !(_agentLineEdit -> text().isEmpty());
     Model::SNMPVersion version = static_cast<Model::SNMPVersion>(_versionComboBox -> itemData(_versionComboBox -> currentIndex()).toInt());
 
-    _getPushButton -> setEnabled(agent && row != -1);
+    if(row != -1) { // Las operaciones SNMP GET y SET no se efectuan sobre nodos internos
+        index = _mibTreeProxyModel -> mapToSource(_mibTreeView -> currentIndex());
+        node = static_cast<Model::SNMPNode *>(index.internalPointer());
+        internalNode = node -> isInternalNode();
+    }
+
+    _getPushButton -> setEnabled(agent && row != -1 && !internalNode);
     _getNextPushButton -> setEnabled(agent && row != -1);
     _getBulkPushButton -> setEnabled(agent && version != Model::SNMPv1 && row != -1);
-    _setPushButton -> setEnabled(agent && row != -1);
+    _setPushButton -> setEnabled(agent && row != -1 && !internalNode);
 }
 
 /**
@@ -118,11 +147,6 @@ void View::CentralWidget::createWidgets()
     _agentLabel = new QLabel(tr("&Agent: "));
     _agentLineEdit = new QLineEdit;
     _agentLabel -> setBuddy(_agentLineEdit);
-
-    _portLabel = new QLabel(tr("&Port: "));
-    _portSpinBox = new QSpinBox;
-    _portSpinBox -> setRange(0, 65535);
-    _portLabel -> setBuddy(_portSpinBox);
 
     _versionLabel = new QLabel(tr("&Version: "));
     _versionComboBox = new QComboBox;
@@ -137,8 +161,6 @@ void View::CentralWidget::createWidgets()
     QHBoxLayout *parametersLayout = new QHBoxLayout;
     parametersLayout -> addWidget(_agentLabel);
     parametersLayout -> addWidget(_agentLineEdit);
-    parametersLayout -> addWidget(_portLabel);
-    parametersLayout -> addWidget(_portSpinBox);
     parametersLayout -> addWidget(_versionLabel);
     parametersLayout -> addWidget(_versionComboBox);
     parametersLayout -> addWidget(_propertiesButton);
@@ -205,7 +227,6 @@ void View::CentralWidget::createConnections()
     connect(_getBulkPushButton, SIGNAL(clicked()), this, SLOT(invokeOperation()));
     connect(_setPushButton, SIGNAL(clicked()), this, SLOT(invokeOperation()));
     connect(_agentLineEdit, SIGNAL(textChanged(QString)), this, SLOT(readyToInvoke()));
-    connect(_portSpinBox, SIGNAL(valueChanged(int)), this, SLOT(readyToInvoke()));
     connect(_versionComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(readyToInvoke()));
     connect(_mibTreeView -> selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)), this, SLOT(readyToInvoke()));
 }

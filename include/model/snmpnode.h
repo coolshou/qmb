@@ -81,6 +81,12 @@ namespace Model
          * @return Lista de nodos hijo
          */
         std::vector<SNMPNode *>& childs();
+
+        /**
+         * @brief Determina si el nodo actual es un nodo interno del arbol
+         * @return true si es un nodo interno false en caso contrario
+         */
+        bool isInternalNode() const;
     private:
         /**
          * @brief OID asociado al nodo del arbol

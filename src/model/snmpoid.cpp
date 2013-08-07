@@ -104,6 +104,20 @@ Model::SNMPOID& Model::SNMPOID::operator=(const SNMPOID& snmpOID)
 }
 
 /**
+ * @brief Devuelve una instancia del OID actual referido por strOID.0
+ * @return Instancia del OID actual
+ */
+Model::SNMPOID *Model::SNMPOID::getInstance() const
+{
+    SNMPOID *instance = new SNMPOID(*this);
+
+    if(_parseOID[_parseOIDLength - 1])
+        instance -> setStrOID(_strOID + ".0");
+
+    return instance;
+}
+
+/**
  * @brief Obtiene el OID en notacion textual
  * @return OID en notacion textual
  */

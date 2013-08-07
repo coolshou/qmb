@@ -154,8 +154,8 @@ Model::SNMPNode *Model::SNMPManager::getMIBTree()
 
 
     // Leer el modulo SNMPv2-MIB
-    //if((tree = read_module("SNMPv2-MIB"))) {
-    if((tree = read_all_mibs())) {
+    if((tree = read_module("SNMPv2-MIB"))) {
+    //if((tree = read_all_mibs())) {
         root = new SNMPNode; // Nodo raiz de la MIB sin OID asignado
         // Parseamos cada uno de los grupos de la MIB de mayor nivel
         // incluyendo estos como hijos en el nodo raiz
@@ -303,25 +303,18 @@ Model::SNMPPDU *Model::SNMPManager::sendPDU(SNMPSession *session, SNMPPDU *pdu) 
  */
 void Model::SNMPManager::processResponse(SNMPPDU *pdu, std::vector<SNMPOID *>& oids, SNMPPDUType type)
 {
-    int k = 0;
-
-    if(type == SNMPPDUGet || type == SNMPPDUGetNext) {
-
-        // Iteramos por la lista de variables de la PDU de
-        // respuesta estableciendo el (tipo, valor) de cada OID
-        for(SNMPVariableList *vl = pdu -> variables; vl; vl = vl -> next_variable, k++) {
-            oids.at(k) -> data() -> setType((SNMPDataType) vl -> type);
-            oids.at(k) -> data() -> setValue((SNMPValue) vl -> val);
-        }
-    } else if(type == SNMPPDUGetBulk) {
+    if(type != SNMPPDUSet) {
+        // Liberamos memoria y borramos la lista de OIDs
         for(std::vector<SNMPOID *>::iterator vi = oids.begin();vi != oids.end(); ++vi)
             delete *vi;
 
         oids.clear();
-
+        // Iteramos por la lista de variables de la PDU de
+        // respuesta estableciendo el (tipo, valor) de cada OID
         for(SNMPVariableList *vl = pdu -> variables; vl; vl = vl -> next_variable) {
             oids.push_back(new SNMPOID(vl -> name, vl -> name_length));
             oids.back() -> data() -> setType((SNMPDataType) vl -> type);
+            oids.back() -> data() -> setLength(vl -> val_len);
             oids.back() -> data() -> setValue((SNMPValue) vl -> val);
         }
     }

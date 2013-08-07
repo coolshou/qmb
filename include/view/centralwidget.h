@@ -34,7 +34,6 @@
 QT_BEGIN_NAMESPACE
 class QLabel;
 class QLineEdit;
-class QSpinBox;
 class QComboBox;
 class QPushButton;
 class QTreeView;
@@ -99,8 +98,6 @@ namespace View
 
         QLabel *_agentLabel;
         QLineEdit *_agentLineEdit;
-        QLabel *_portLabel;
-        QSpinBox *_portSpinBox;
         QLabel *_versionLabel;
         QComboBox *_versionComboBox;
         QPushButton *_propertiesButton;

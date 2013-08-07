@@ -45,7 +45,7 @@ namespace Model
          * @param type Tipo de dato
          * @param value Valor del dato
          */
-        SNMPData(SNMPDataType type = SNMPDataUnknown, void *value = 0);
+        SNMPData(SNMPDataType type = SNMPDataUnknown, void *value = 0, size_t length = 0);
 
         /**
          * @brief Constructor copia de SNMPData
@@ -84,6 +84,19 @@ namespace Model
         void setValue(const SNMPValue &value);
 
         /**
+         * @brief Devuelve la longitud del valor del dato
+         * @return Longitud del valor del dato
+         */
+        size_t length() const;
+
+        /**
+         * @brief Establece la longitud del valor del dato
+         * @param length Longitud del valor del dato
+         */
+        void setLength(size_t length);
+
+
+        /**
          * @brief Devuelve el tipo del dato
          * @return Tipo del dato
          */
@@ -113,14 +126,21 @@ namespace Model
         void deleteValue();
 
         /**
+         * @brief Tipo del dato
+         */
+        SNMPDataType _type;
+
+        /**
          * @brief Valor del dato
          */
         SNMPValue _value;
 
         /**
-         * @brief Tipo del dato
+         * @brief Longitud del valor del dato
          */
-        SNMPDataType _type;
+        size_t _length;
+
+
     };
 }
 

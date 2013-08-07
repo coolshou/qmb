@@ -28,7 +28,6 @@
 
 #include "snmpdata.h"
 #include <algorithm>
-#include <cstring>
 #include <sstream>
 
 /**
@@ -36,7 +35,7 @@
  * @param type Tipo de dato
  * @param value Valor del dato
  */
-Model::SNMPData::SNMPData(SNMPDataType type, void *value) : _type(type)
+Model::SNMPData::SNMPData(SNMPDataType type, void *value, size_t length) : _type(type), _length(length)
 {
     initValue(value);
 }
@@ -48,6 +47,8 @@ Model::SNMPData::SNMPData(SNMPDataType type, void *value) : _type(type)
 Model::SNMPData::SNMPData(const SNMPData& snmpData)
 {
     _type = SNMPDataUnknown;
+    _length = 0;
+
     initValue(0);
 
     *this = snmpData;
@@ -69,6 +70,7 @@ Model::SNMPData::~SNMPData()
 Model::SNMPData& Model::SNMPData::operator=(const SNMPData& snmpData)
 {
     _type = snmpData.type();
+    _length = snmpData.length();
     setValue(snmpData.value());
 
     return *this;
@@ -118,7 +120,7 @@ void Model::SNMPData::setValue(void *value)
 {
     deleteValue();
 
-    if(!value) {
+    if(!value || _length <= 0) {
         initValue(0);
         return;
     }
@@ -137,19 +139,15 @@ void Model::SNMPData::setValue(void *value)
         *_value.counter64 = *((SNMPCounter64 *) value);
         break;
     case SNMPDataBitString:
-        _value.bitstring = new unsigned char[(int) strlen((const char *) value) + 1];
-        std::copy(((unsigned char *) value),
-                  ((unsigned char *) value) + (int) strlen(((const char *) value)),
-                  _value.bitstring);
-        _value.bitstring[(int) strlen((const char *) value)] = '\0';
+        _value.bitstring = new unsigned char[_length + 1];
+        std::copy(((unsigned char *) value), ((unsigned char *) value) + _length, _value.bitstring);
+        _value.bitstring[_length] = '\0';
         break;
     case SNMPDataOctetString:
     case SNMPDataIPAddress:
-        _value.string = new unsigned char[(int) strlen((const char *) value) + 1];
-        std::copy(((unsigned char *) value),
-                  ((unsigned char *) value) + (int) strlen(((const char *) value)),
-                  _value.string);
-        _value.string[(int) strlen((const char *) value)] = '\0';
+        _value.string = new unsigned char[_length + 1];
+        std::copy(((unsigned char *) value), ((unsigned char *) value) + _length, _value.string);
+        _value.string[_length] = '\0';
         break;
     case SNMPDataObjectId:
         _value.objid = new oid[MAX_OID_LEN];
@@ -172,41 +170,26 @@ void Model::SNMPData::setValue(void *value)
  */
 void Model::SNMPData::setValue(const SNMPValue &value)
 {
-    deleteValue();
-
     switch(_type) {
     case SNMPDataInteger:
     case SNMPDataUnsigned:
     case SNMPDataBits:
     case SNMPDataCounter:
     case SNMPDataTimeTicks:
-        _value.integer = new long;
-        *_value.integer = *(value.integer);
+        setValue(value.integer);
         break;
     case SNMPDataCounter64:
-        _value.counter64 = new SNMPCounter64;
-        *_value.counter64 = *(value.counter64);
+        setValue(value.counter64);
         break;
     case SNMPDataBitString:
-        _value.bitstring = new unsigned char[(int) strlen((const char *) value.bitstring) + 1];
-        std::copy((value.bitstring),
-                  (value.bitstring)+ (int) strlen(((const char *) value.bitstring)),
-                  _value.bitstring);
-        _value.bitstring[(int) strlen((const char *) value.bitstring)] = '\0';
+        setValue(value.bitstring);
         break;
     case SNMPDataOctetString:
     case SNMPDataIPAddress:
-        _value.string = new unsigned char[(int) strlen((const char *) value.string) + 1];
-        std::copy((value.string),
-                  (value.string)+ (int) strlen(((const char *) value.string)),
-                  _value.string);
-        _value.string[(int) strlen((const char *) value.string)] = '\0';
+        setValue(value.string);
         break;
     case SNMPDataObjectId:
-        _value.objid = new oid[MAX_OID_LEN];
-        std::copy((value.objid),
-                  (value.objid)+ MAX_OID_LEN,
-                  _value.objid);
+        setValue(value.objid);
         break;
     default:
         _value.integer = 0;
@@ -215,6 +198,24 @@ void Model::SNMPData::setValue(const SNMPValue &value)
         _value.string = 0;
         _value.objid = 0;
     }
+}
+
+/**
+ * @brief Devuelve la longitud del valor del dato
+ * @return Longitud del valor del dato
+ */
+size_t Model::SNMPData::length() const
+{
+    return _length;
+}
+
+/**
+ * @brief Establece la longitud del valor del dato
+ * @param length Longitud del valor del dato
+ */
+void Model::SNMPData::setLength(size_t length)
+{
+    _length = length;
 }
 
 /**

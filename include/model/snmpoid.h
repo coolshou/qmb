@@ -74,6 +74,12 @@ namespace Model
         SNMPOID& operator=(const SNMPOID& snmpOID);
 
         /**
+         * @brief Devuelve una instancia del OID actual referido por strOID.0
+         * @return Instancia del OID actual
+         */
+        SNMPOID *getInstance() const;
+
+        /**
          * @brief Obtiene el OID en notacion textual
          * @return OID en notacion textual
          */
