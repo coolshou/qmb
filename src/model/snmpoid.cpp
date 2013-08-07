@@ -119,6 +119,7 @@ const std::string& Model::SNMPOID::strOID() const
 void Model::SNMPOID::setStrOID(const std::string& strOID) throw(SNMPOIDException)
 {
     _strOID = strOID;
+    _parseOIDLength = MAX_OID_LEN;
 
     parseOIDtoNumeric();
 }

@@ -71,23 +71,23 @@ void View::CentralWidget::invokeOperation()
     QModelIndex index = _mibTreeProxyModel -> mapToSource(_mibTreeView -> currentIndex());
     Model::SNMPNode *node = static_cast<Model::SNMPNode *>(index.internalPointer());
     Model::SNMPOID object(*(node -> object()));
-    Model::SNMPOID other(std::string(object.strOID()).append(".0"));
-    std::string agent = _agentLineEdit->text().toStdString();
+    object.setStrOID(std::string(object.strOID()) + ".0");
+    std::string agent = _agentLineEdit -> text().toStdString();
     Model::SNMPVersion version = static_cast<Model::SNMPVersion>(_versionComboBox -> itemData(_versionComboBox -> currentIndex()).toInt());
     std::vector<Model::SNMPOID *> oids;
-    oids.push_back(&other);
+    oids.push_back(&object);
 
     _resultTextEdit -> append("SNMP Operation invoked");
 
     try {
-    if(sender == _getPushButton)
-        Model::SNMPManager::snmpget(version, "public", agent, oids);
-    else if(sender == _getNextPushButton)
-        Model::SNMPManager::snmpgetnext(version, "public", agent, oids);
-    else if(sender == _getBulkPushButton)
-        Model::SNMPManager::snmpgetbulk(version, "public", agent, oids, DEFAULT_NON_REPEATERS, DEFAULT_MAX_REPETITIONS);
-    //else if(sender == _setPushButton)
-    //    Model::SNMPManager::snmpset(version, "public", agent, oids);
+        if(sender == _getPushButton)
+            Model::SNMPManager::snmpget(version, "public", agent, oids);
+        else if(sender == _getNextPushButton)
+            Model::SNMPManager::snmpgetnext(version, "public", agent, oids);
+        else if(sender == _getBulkPushButton)
+            Model::SNMPManager::snmpgetbulk(version, "public", agent, oids, DEFAULT_NON_REPEATERS, DEFAULT_MAX_REPETITIONS);
+        //else if(sender == _setPushButton)
+            //Model::SNMPManager::snmpset(version, "public", agent, oids);
     } catch(Model::SNMPException& exception) {
         _resultTextEdit -> append(exception.message().c_str());
     }
