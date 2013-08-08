@@ -22,6 +22,7 @@ var searchData=
   ['_5fparseoidlength',['_parseOIDLength',['../class_model_1_1_s_n_m_p_o_i_d.html#a65296f153080c4100ce6c68cbd14e94a',1,'Model::SNMPOID']]],
   ['_5fremoteport',['_remotePort',['../class_model_1_1_s_n_m_p_manager.html#af857df1df892f28dc2a8ab6252dda06c',1,'Model::SNMPManager']]],
   ['_5fretries',['_retries',['../class_model_1_1_s_n_m_p_manager.html#a80a042ce53be5eb86090c4f52a191a02',1,'Model::SNMPManager']]],
+  ['_5froot',['_root',['../class_view_1_1_m_i_b_tree_model.html#a34faf8dceefdf3cd318c603e9849f0d2',1,'View::MIBTreeModel']]],
   ['_5fsession',['_session',['../class_model_1_1_s_n_m_p_session_exception.html#a6ae9148e600c22ffa3b7c3f66c953209',1,'Model::SNMPSessionException']]],
   ['_5fstatus',['_status',['../class_model_1_1_s_n_m_p_o_i_d.html#a63bc09544d4eb78a40cb5203ad99ed4d',1,'Model::SNMPOID']]],
   ['_5fstatuslabel',['_statusLabel',['../class_view_1_1_main_window.html#ad150bd9e38a56d0dbbcceb42b1b3f22f',1,'View::MainWindow']]],

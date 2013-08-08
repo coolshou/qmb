@@ -29,6 +29,7 @@
 #include "centralwidget.h"
 #include "mibtreemodel.h"
 #include "mibtreeproxymodel.h"
+#include "oideditordialog.h"
 #include "snmpmanager.h"
 #include "types.h"
 #include <QLabel>
@@ -41,6 +42,7 @@
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <QMessageBox>
+#include <QInputDialog>
 
 /**
  * @brief Constructor de CentralWidget
@@ -86,10 +88,23 @@ void View::CentralWidget::invokeOperation()
         else if(sender == _getBulkPushButton)
             Model::SNMPManager::snmpgetbulk(version, "public", agent, oids, DEFAULT_NON_REPEATERS, DEFAULT_MAX_REPETITIONS);
         else if(sender == _setPushButton) {
-            Model::SNMPManager::snmpset(version, "public", agent, oids);
+            if(object -> access() == Model::MIBAccessReadOnly) {
+                QMessageBox::critical(this, tr("SNMP Exception"), tr("Object is not writable"), QMessageBox::Ok);
+                delete object;
+                return;
+            }
+
+            OIDEditorDialog editorDialog(object, this);
+
+            if(editorDialog.exec() == QDialog::Rejected) {
+                delete object;
+                return;
+            }
+
+            //Model::SNMPManager::snmpset(version, "public", agent, oids);
         }
     } catch(Model::SNMPException& exception) {
-        QMessageBox::critical(this, "SNMP Exception", exception.message().c_str(), QMessageBox::Ok);
+        QMessageBox::critical(this, tr("SNMP Exception"), exception.message().c_str(), QMessageBox::Ok);
     }
 
     for(std::vector<Model::SNMPOID *>::iterator vi = oids.begin(); vi != oids.end(); ++vi) {

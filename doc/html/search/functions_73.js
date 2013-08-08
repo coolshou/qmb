@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['saveobject',['saveObject',['../class_view_1_1_o_i_d_editor_dialog.html#ab3374b35c060ddf5ee02cd7a13a12143',1,'View::OIDEditorDialog']]],
   ['sendpdu',['sendPDU',['../class_model_1_1_s_n_m_p_manager.html#adb89ceb52998aef547bea42742352d4e',1,'Model::SNMPManager']]],
   ['session',['session',['../class_model_1_1_s_n_m_p_session_exception.html#a7a3fe3000edc432115c3f69956172c19',1,'Model::SNMPSessionException']]],
   ['setaccess',['setAccess',['../class_model_1_1_s_n_m_p_o_i_d.html#aaa2701f455ce905bcdb1152eeaa12e83',1,'Model::SNMPOID']]],

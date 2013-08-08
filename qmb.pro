@@ -22,7 +22,8 @@ HEADERS += include/global.h \
     include/view/centralwidget.h \
     include/model/snmpnode.h \
     include/view/mibtreemodel.h \
-    include/view/mibtreeproxymodel.h
+    include/view/mibtreeproxymodel.h \
+    include/view/oideditordialog.h
 SOURCES += src/main.cpp \
            src/model/snmpdata.cpp \
            src/model/snmpmanager.cpp \
@@ -32,7 +33,8 @@ SOURCES += src/main.cpp \
     src/view/centralwidget.cpp \
     src/model/snmpnode.cpp \
     src/view/mibtreemodel.cpp \
-    src/view/mibtreeproxymodel.cpp
+    src/view/mibtreeproxymodel.cpp \
+    src/view/oideditordialog.cpp
 
 LIBS += -lnetsnmp
 

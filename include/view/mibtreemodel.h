@@ -117,7 +117,7 @@ namespace View
          */
         Model::SNMPNode *nodeFromIndex(const QModelIndex& index) const;
 
-        Model::SNMPNode *_root;
+        Model::SNMPNode *_root; /**< Nodo raiz */
     };
 }
 
