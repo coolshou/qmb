@@ -158,6 +158,7 @@ void View::OIDEditorDialog::loadObject()
     case Model::SNMPDataOctetString: type = "STRING";    break;
     case Model::SNMPDataIPAddress:   type = "IPADDRESS"; break;
     case Model::SNMPDataObjectId:    type = "OBJID";     break;
+    case Model::SNMPDataNull:        type = "NULL";     break;
     default:                         type = "UNKNOWN";   break;
     }
 

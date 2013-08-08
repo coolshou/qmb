@@ -103,31 +103,32 @@ void View::CentralWidget::invokeOperation()
 
             //Model::SNMPManager::snmpset(version, "public", agent, oids);
         }
+
+        for(std::vector<Model::SNMPOID *>::iterator vi = oids.begin(); vi != oids.end(); ++vi) {
+            QString type;
+
+            switch((*vi) -> data() -> type()) {
+            case Model::SNMPDataInteger:     type = "INTEGER";   break;
+            case Model::SNMPDataUnsigned:    type = "UNSIGNED";  break;
+            case Model::SNMPDataBits:        type = "BITS";      break;
+            case Model::SNMPDataCounter:     type = "COUNTER";   break;
+            case Model::SNMPDataTimeTicks:   type = "TIMETICKS"; break;
+            case Model::SNMPDataCounter64:   type = "COUNTER64"; break;
+            case Model::SNMPDataBitString:   type = "BITSTRING"; break;
+            case Model::SNMPDataOctetString: type = "STRING";    break;
+            case Model::SNMPDataIPAddress:   type = "IPADDRESS"; break;
+            case Model::SNMPDataObjectId:    type = "OBJID";     break;
+            case Model::SNMPDataNull:        type = "NULL";      break;
+            default:                         type = "UNKNOWN";   break;
+            }
+
+            _resultTextEdit -> append(QString("%1 = %2 : %3").arg((*vi) -> strOID().c_str())
+                                                             .arg(type)
+                                                             .arg((*vi) -> data() -> toString().c_str()));
+            delete *vi;
+        }
     } catch(Model::SNMPException& exception) {
         QMessageBox::critical(this, tr("SNMP Exception"), exception.message().c_str(), QMessageBox::Ok);
-    }
-
-    for(std::vector<Model::SNMPOID *>::iterator vi = oids.begin(); vi != oids.end(); ++vi) {
-        QString type;
-
-        switch((*vi) -> data() -> type()) {
-        case Model::SNMPDataInteger:     type = "INTEGER";   break;
-        case Model::SNMPDataUnsigned:    type = "UNSIGNED";  break;
-        case Model::SNMPDataBits:        type = "BITS";      break;
-        case Model::SNMPDataCounter:     type = "COUNTER";   break;
-        case Model::SNMPDataTimeTicks:   type = "TIMETICKS"; break;
-        case Model::SNMPDataCounter64:   type = "COUNTER64"; break;
-        case Model::SNMPDataBitString:   type = "BITSTRING"; break;
-        case Model::SNMPDataOctetString: type = "STRING";    break;
-        case Model::SNMPDataIPAddress:   type = "IPADDRESS"; break;
-        case Model::SNMPDataObjectId:    type = "OBJID";     break;
-        default:                         type = "UNKNOWN";   break;
-        }
-
-        _resultTextEdit -> append(QString("%1 = %2 : %3").arg((*vi) -> strOID().c_str())
-                                                         .arg(type)
-                                                         .arg((*vi) -> data() -> toString().c_str()));
-        delete *vi;
     }
 }
 

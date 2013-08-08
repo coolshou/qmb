@@ -383,9 +383,25 @@ void Model::SNMPManager::snmpParseMIB(SNMPNode *root, SNMPMIBTree *tree)
     parseOID[parseOIDLength - 1] = tree -> subid; // OID numerico del objeto
 
     SNMPOID *object = new SNMPOID(parseOID, parseOIDLength);
+    SNMPDataType type;
 
-    // Atributos del objeto
-    object -> data() -> setType((SNMPDataType) tree -> type);
+    // Tipos correspondientes a http://www.net-snmp.org/dev/agent/parse_8h_source.html#l00150
+    switch(tree -> type) {
+    case TYPE_INTEGER: case TYPE_INTEGER32: type = SNMPDataInteger; break;
+    case TYPE_UINTEGER: case TYPE_UNSIGNED32: type = SNMPDataUnsigned; break;
+    case TYPE_BITSTRING: type = SNMPDataBitString; break;
+    case TYPE_COUNTER: type = SNMPDataCounter; break;
+    case TYPE_TIMETICKS: type = SNMPDataTimeTicks; break;
+    case TYPE_COUNTER64: type = SNMPDataCounter64; break;
+    case TYPE_OCTETSTR: type = SNMPDataOctetString; break;
+    case TYPE_IPADDR: type = SNMPDataIPAddress; break;
+    case TYPE_OBJID: type = SNMPDataObjectId; break;
+    case TYPE_NULL: type = SNMPDataNull; break;
+    default: type = SNMPDataUnknown;
+    }
+
+    // Establecemos los atributos del OID
+    object -> data() -> setType(type);
     object -> setName(tree -> label ? tree -> label : "");
     object -> setStatus((MIBStatus) tree -> status);
     object -> setAccess((MIBAccess) tree -> access);
