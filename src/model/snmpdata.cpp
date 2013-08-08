@@ -151,9 +151,7 @@ void Model::SNMPData::setValue(void *value)
         break;
     case SNMPDataObjectId:
         _value.objid = new oid[MAX_OID_LEN];
-        std::copy(((oid *) value),
-                  ((oid *) value)+ MAX_OID_LEN,
-                  _value.objid);
+        std::copy(((oid *) value), ((oid *) value)+ MAX_OID_LEN, _value.objid);
         break;
     default:
         _value.integer = 0;

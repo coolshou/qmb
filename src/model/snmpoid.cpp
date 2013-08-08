@@ -47,10 +47,10 @@ Model::SNMPOID::SNMPOID(const std::string& strOID) : _strOID(strOID)
  * @param parseOID OID en notacion numerica
  * @param parseOIDLength Longitud del OID en notacion numerica
  */
-Model::SNMPOID::SNMPOID(oid  *parseOID, size_t parseOIDLength)
-    : _parseOID(parseOID), _parseOIDLength(parseOIDLength)
+Model::SNMPOID::SNMPOID(oid  *parseOID, size_t parseOIDLength) : _parseOIDLength(parseOIDLength)
 {
-    _strOID = std::string();
+    _parseOID = new oid[MAX_OID_LEN];
+    std::copy(parseOID, parseOID + _parseOIDLength, _parseOID);
     _data = new SNMPData;
 
     parseOIDtoTextual(); // Parseamos el OID para generar su notacion textual

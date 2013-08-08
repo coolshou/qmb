@@ -70,7 +70,7 @@ void View::CentralWidget::invokeOperation()
     QObject *sender = QObject::sender();
     QModelIndex index = _mibTreeProxyModel -> mapToSource(_mibTreeView -> currentIndex());
     Model::SNMPNode *node = static_cast<Model::SNMPNode *>(index.internalPointer());
-    Model::SNMPOID *object = node -> object()-> getInstance();
+    Model::SNMPOID *object = node -> object() -> getInstance();
     std::string agent = _agentLineEdit -> text().toStdString();
     Model::SNMPVersion version = static_cast<Model::SNMPVersion>(_versionComboBox -> itemData(_versionComboBox -> currentIndex()).toInt());
     std::vector<Model::SNMPOID *> oids;
@@ -85,13 +85,14 @@ void View::CentralWidget::invokeOperation()
             Model::SNMPManager::snmpgetnext(version, "public", agent, oids);
         else if(sender == _getBulkPushButton)
             Model::SNMPManager::snmpgetbulk(version, "public", agent, oids, DEFAULT_NON_REPEATERS, DEFAULT_MAX_REPETITIONS);
-        /*else if(sender == _setPushButton)
-            Model::SNMPManager::snmpset(version, "public", agent, oids);*/
+        else if(sender == _setPushButton) {
+            Model::SNMPManager::snmpset(version, "public", agent, oids);
+        }
     } catch(Model::SNMPException& exception) {
         QMessageBox::critical(this, "SNMP Exception", exception.message().c_str(), QMessageBox::Ok);
     }
 
-    for(std::vector<Model::SNMPOID *>::iterator vi = oids.begin(); vi != oids.end(); vi++) {
+    for(std::vector<Model::SNMPOID *>::iterator vi = oids.begin(); vi != oids.end(); ++vi) {
         QString type;
 
         switch((*vi) -> data() -> type()) {
@@ -108,10 +109,10 @@ void View::CentralWidget::invokeOperation()
         default:                         type = "UNKNOWN";   break;
         }
 
-        _resultTextEdit -> append(QString("%1 = %2 : %3").arg(oids.back() -> strOID().c_str())
+        _resultTextEdit -> append(QString("%1 = %2 : %3").arg((*vi) -> strOID().c_str())
                                                          .arg(type)
-                                                         .arg(oids.back() -> data() -> toString().c_str()));
-        //delete *vi; // ¿Double free?
+                                                         .arg((*vi) -> data() -> toString().c_str()));
+        delete *vi;
     }
 }
 
@@ -152,7 +153,7 @@ void View::CentralWidget::createWidgets()
     _versionComboBox = new QComboBox;
     _versionComboBox -> addItem(tr("SNMPv1"), Model::SNMPv1);
     _versionComboBox -> addItem(tr("SNMPv2c"), Model::SNMPv2);
-    _versionComboBox -> addItem(tr("SNMPv3"), Model::SNMPv3);
+    //_versionComboBox -> addItem(tr("SNMPv3"), Model::SNMPv3);
     _versionLabel -> setBuddy(_versionComboBox);
 
     _propertiesButton = new QPushButton(tr("Properties"));

@@ -309,13 +309,17 @@ void Model::SNMPManager::processResponse(SNMPPDU *pdu, std::vector<SNMPOID *>& o
             delete *vi;
 
         oids.clear();
+
         // Iteramos por la lista de variables de la PDU de
         // respuesta estableciendo el (tipo, valor) de cada OID
         for(SNMPVariableList *vl = pdu -> variables; vl; vl = vl -> next_variable) {
-            oids.push_back(new SNMPOID(vl -> name, vl -> name_length));
-            oids.back() -> data() -> setType((SNMPDataType) vl -> type);
-            oids.back() -> data() -> setLength(vl -> val_len);
-            oids.back() -> data() -> setValue((SNMPValue) vl -> val);
+            SNMPOID *object = new SNMPOID(vl -> name, vl -> name_length);
+
+            object -> data() -> setType((SNMPDataType) vl -> type);
+            object -> data() -> setLength(vl -> val_len);
+            object -> data() -> setValue((SNMPValue) vl -> val);
+
+            oids.push_back(object);
         }
     }
 }
