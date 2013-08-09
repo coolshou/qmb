@@ -40,6 +40,7 @@ View::MainWindow::MainWindow()
     createConnections();
 
     setWindowTitle(APPLICATION_NAME_LONG);
+    setWindowIcon(QIcon(":/images/qmb.svg"));
 }
 
 /**

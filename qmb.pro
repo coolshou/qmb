@@ -38,6 +38,8 @@ SOURCES += src/main.cpp \
 
 LIBS += -lnetsnmp
 
+RESOURCES += resources/qmb.qrc
+
 OTHER_FILES += \
     README \
     LICENSE

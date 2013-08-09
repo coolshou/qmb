@@ -171,9 +171,9 @@ void View::CentralWidget::createWidgets()
 
     _versionLabel = new QLabel(tr("&Version: "));
     _versionComboBox = new QComboBox;
-    _versionComboBox -> addItem(tr("SNMPv1"), Model::SNMPv1);
-    _versionComboBox -> addItem(tr("SNMPv2c"), Model::SNMPv2);
-    //_versionComboBox -> addItem(tr("SNMPv3"), Model::SNMPv3);
+    _versionComboBox -> addItem(tr("v1"), Model::SNMPv1);
+    _versionComboBox -> addItem(tr("v2C"), Model::SNMPv2);
+    //_versionComboBox -> addItem(tr("v3"), Model::SNMPv3);
     _versionLabel -> setBuddy(_versionComboBox);
 
     _propertiesButton = new QPushButton(tr("Properties"));
