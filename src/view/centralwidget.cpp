@@ -78,8 +78,6 @@ void View::CentralWidget::invokeOperation()
     std::vector<Model::SNMPOID *> oids;
     oids.push_back(object);
 
-    _resultTextEdit -> append("SNMP Operation invoked");
-
     try {
         if(sender == _getPushButton)
             Model::SNMPManager::snmpget(version, "public", agent, oids);
@@ -101,7 +99,7 @@ void View::CentralWidget::invokeOperation()
                 return;
             }
 
-            //Model::SNMPManager::snmpset(version, "public", agent, oids);
+            Model::SNMPManager::snmpset(version, "public", agent, oids);
         }
 
         for(std::vector<Model::SNMPOID *>::iterator vi = oids.begin(); vi != oids.end(); ++vi) {
@@ -127,6 +125,12 @@ void View::CentralWidget::invokeOperation()
                                                              .arg((*vi) -> data() -> toString().c_str()));
             delete *vi;
         }
+    } catch(Model::SNMPSessionException& exception) {
+        QMessageBox::critical(this, tr("SNMP Session Exception"), exception.message().c_str(), QMessageBox::Ok);
+    } catch(Model::SNMPOIDException& exception) {
+        QMessageBox::critical(this, tr("SNMP OID Exception"), exception.message().c_str(), QMessageBox::Ok);
+    } catch(Model::SNMPPacketException& exception) {
+        QMessageBox::critical(this, tr("SNMP Packet Exception"), exception.message().c_str(), QMessageBox::Ok);
     } catch(Model::SNMPException& exception) {
         QMessageBox::critical(this, tr("SNMP Exception"), exception.message().c_str(), QMessageBox::Ok);
     }

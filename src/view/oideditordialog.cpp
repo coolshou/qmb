@@ -70,17 +70,6 @@ void View::OIDEditorDialog::textChangedOnValueLineEdit(QString text)
     _okPushButton -> setEnabled(!text.isEmpty());
 }
 
-QLabel *_nameLabel;
-QLabel*_nameValue;
-QLabel*_oidLabel;
-QLabel*_oidValue;
-QLabel *_typeLabel;
-QLabel *_typeValue;
-QLabel *_valueLabel;
-QLineEdit *_valueLineEdit;
-QPushButton *_okPushButton;
-QPushButton *_cancelPushButton;
-
 /**
  * @brief Crea los widgets
  */
@@ -166,11 +155,39 @@ void View::OIDEditorDialog::loadObject()
     _oidValue -> setText(_object -> strOID().c_str());
     _typeValue -> setText(type);
 }
-
+#include <QDebug>
 /**
  * @brief Guarda el valor introducido en el OID
  */
 void View::OIDEditorDialog::saveObject()
 {
-
+    switch(_object -> data() -> type()) {
+    case Model::SNMPDataInteger:
+    case Model::SNMPDataUnsigned:
+    case Model::SNMPDataBits:
+    case Model::SNMPDataCounter:
+    case Model::SNMPDataTimeTicks: {
+        long value = _valueLineEdit -> text().toLong();
+        _object -> data() -> setLength(sizeof(long));
+        _object -> data() -> setValue(&value);
+    } break;
+    case Model::SNMPDataCounter64: {
+        Model::SNMPCounter64 value;
+        value.high = 0;
+        value.low = _valueLineEdit -> text().toLong();
+        _object -> data() -> setLength(sizeof(Model::SNMPCounter64));
+        _object -> data() -> setValue(&value);
+    } break;
+    case Model::SNMPDataBitString:
+    case Model::SNMPDataOctetString:
+    case Model::SNMPDataIPAddress: {
+        QString value = _valueLineEdit -> text();
+        _object -> data() -> setLength(sizeof(char) * value.length());
+        _object -> data() -> setValue((char *) value.toStdString().c_str());
+    } break;
+    //case Model::SNMPDataObjectId:
+    //    break;
+    default:
+        _object -> data() -> setValue(0);
+    }
 }
