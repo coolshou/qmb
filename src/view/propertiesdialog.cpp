@@ -140,7 +140,7 @@ void View::PropertiesDialog::createWidgets()
     getBulkLayout -> addWidget(_maxRepetitionsLabel, 1, 0, 1, 1);
     getBulkLayout -> addWidget(_maxRepetitionsSpinBox, 1, 1, 1, 1);
 
-    QGroupBox *getBulkGroupBox = new QGroupBox(tr("&Get Bulk Atributes"));
+    QGroupBox *getBulkGroupBox = new QGroupBox(tr("&Get Bulk"));
 
     getBulkGroupBox -> setLayout(getBulkLayout);
 

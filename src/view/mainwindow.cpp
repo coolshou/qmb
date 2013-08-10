@@ -66,7 +66,7 @@ void View::MainWindow::about()
 {
     QMessageBox::about(this, tr("About %1").arg(APPLICATION_NAME),
                              tr("<h2>%1 %2</h2>"
-                                "<h3>Invoicing and Management for SMBs</h3>"
+                                "<h3>MIB Browser to SNMP Agents</h3>"
                                 "<p>(C) %3 %4 <a href= \"mailto:%5\" >%5</a></p>"
                                 "<p><a href= \"%6\" >%6</a></p>"
                                 "<p>Licensed under <a href=\"http://www.gnu.org/licenses/gpl.html\" >GNU General Public License version 3</a></p>")

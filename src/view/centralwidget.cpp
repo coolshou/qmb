@@ -81,6 +81,9 @@ void View::CentralWidget::invokeOperation()
     std::vector<Model::SNMPOID *> oids;
     oids.push_back(object);
 
+    _resultTextEdit -> clear();
+    _resultTextEdit -> append(tr("### SNMP Operation to %1 invoked ###").arg(agent.c_str()));
+
     try {
         if(sender == _getPushButton)
             Model::SNMPManager::snmpget(version, _community.toStdString(), agent, oids);
@@ -128,6 +131,8 @@ void View::CentralWidget::invokeOperation()
                                                              .arg((*vi) -> data() -> toString().c_str()));
             delete *vi;
         }
+
+        _resultTextEdit -> append(tr("### SNMP Operation finished ###"));
     } catch(Model::SNMPSessionException& exception) {
         QMessageBox::critical(this, tr("SNMP Session Exception"), exception.message().c_str(), QMessageBox::Ok);
     } catch(Model::SNMPOIDException& exception) {
@@ -238,7 +243,6 @@ void View::CentralWidget::createWidgets()
 
     _resultTextEdit = new QTextEdit;
     _resultTextEdit -> setReadOnly(true);
-    _resultTextEdit -> append(QString("%1 - %2").arg(APPLICATION_NAME_LONG).arg(APPLICATION_VERSION));
 
     QHBoxLayout *resultLayout = new QHBoxLayout;
     resultLayout -> addWidget(_resultTextEdit);
