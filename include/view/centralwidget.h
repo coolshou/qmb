@@ -77,6 +77,11 @@ namespace View
         void invokeOperation();
 
         /**
+         * @brief Establece las propiedades de la sesion SNMP
+         */
+        void properties();
+
+        /**
          * @brief Activa/Desactiva botones de operacion ante cambios en los otros widgets
          */
         void readyToInvoke();
@@ -96,6 +101,11 @@ namespace View
          */
         void loadMIBTree();
 
+        /**
+         * @brief Carga las propiedades de la sesion SNMP
+         */
+        void loadProperties();
+
         QLabel *_agentLabel;
         QLineEdit *_agentLineEdit;
         QLabel *_versionLabel;
@@ -109,6 +119,10 @@ namespace View
         QPushButton *_getBulkPushButton;
         QPushButton *_setPushButton;
         QTextEdit *_resultTextEdit;
+
+        QString _community;
+        unsigned short _nonRepeaters;
+        unsigned short _maxRepetitions;
     };
 }
 

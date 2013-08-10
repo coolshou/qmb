@@ -29,9 +29,11 @@
 #include "centralwidget.h"
 #include "mibtreemodel.h"
 #include "mibtreeproxymodel.h"
+#include "propertiesdialog.h"
 #include "oideditordialog.h"
 #include "snmpmanager.h"
 #include "types.h"
+#include "global.h"
 #include <QLabel>
 #include <QLineEdit>
 #include <QComboBox>
@@ -53,6 +55,7 @@ View::CentralWidget::CentralWidget(QWidget *parent) : QWidget(parent)
     createWidgets();
     createConnections();
     loadMIBTree();
+    loadProperties();
 }
 
 /**
@@ -80,11 +83,11 @@ void View::CentralWidget::invokeOperation()
 
     try {
         if(sender == _getPushButton)
-            Model::SNMPManager::snmpget(version, "public", agent, oids);
+            Model::SNMPManager::snmpget(version, _community.toStdString(), agent, oids);
         else if(sender == _getNextPushButton)
-            Model::SNMPManager::snmpgetnext(version, "public", agent, oids);
+            Model::SNMPManager::snmpgetnext(version, _community.toStdString(), agent, oids);
         else if(sender == _getBulkPushButton)
-            Model::SNMPManager::snmpgetbulk(version, "public", agent, oids, DEFAULT_NON_REPEATERS, DEFAULT_MAX_REPETITIONS);
+            Model::SNMPManager::snmpgetbulk(version, _community.toStdString(), agent, oids, _nonRepeaters, _maxRepetitions);
         else if(sender == _setPushButton) {
             if(object -> access() == Model::MIBAccessReadOnly) {
                 QMessageBox::critical(this, tr("SNMP Exception"), tr("Object is not writable"), QMessageBox::Ok);
@@ -99,7 +102,7 @@ void View::CentralWidget::invokeOperation()
                 return;
             }
 
-            Model::SNMPManager::snmpset(version, "public", agent, oids);
+            Model::SNMPManager::snmpset(version, _community.toStdString(), agent, oids);
         }
 
         for(std::vector<Model::SNMPOID *>::iterator vi = oids.begin(); vi != oids.end(); ++vi) {
@@ -133,6 +136,20 @@ void View::CentralWidget::invokeOperation()
         QMessageBox::critical(this, tr("SNMP Packet Exception"), exception.message().c_str(), QMessageBox::Ok);
     } catch(Model::SNMPException& exception) {
         QMessageBox::critical(this, tr("SNMP Exception"), exception.message().c_str(), QMessageBox::Ok);
+    }
+}
+
+/**
+ * @brief Establece las propiedades de la sesion SNMP
+ */
+void View::CentralWidget::properties()
+{
+    PropertiesDialog dialog(_community, _nonRepeaters, _maxRepetitions, this);
+
+    if(dialog.exec() == QDialog::Accepted) {
+        _community = dialog.community();
+        _nonRepeaters = dialog.nonRepeaters();
+        _maxRepetitions = dialog.maxRepetitions();
     }
 }
 
@@ -177,7 +194,6 @@ void View::CentralWidget::createWidgets()
     _versionLabel -> setBuddy(_versionComboBox);
 
     _propertiesButton = new QPushButton(tr("Properties"));
-    _propertiesButton -> setEnabled(false);
 
     QHBoxLayout *parametersLayout = new QHBoxLayout;
     parametersLayout -> addWidget(_agentLabel);
@@ -243,6 +259,7 @@ void View::CentralWidget::createWidgets()
  */
 void View::CentralWidget::createConnections()
 {
+    connect(_propertiesButton, SIGNAL(clicked()), this, SLOT(properties()));
     connect(_getPushButton, SIGNAL(clicked()), this, SLOT(invokeOperation()));
     connect(_getNextPushButton, SIGNAL(clicked()), this, SLOT(invokeOperation()));
     connect(_getBulkPushButton, SIGNAL(clicked()), this, SLOT(invokeOperation()));
@@ -266,4 +283,14 @@ void View::CentralWidget::loadMIBTree()
     Model::SNMPManager::initSNMP();
 
     emit statusChanged(tr("MIB Tree loaded successfully"));
+}
+
+/**
+ * @brief Carga las propiedades de la sesion SNMP
+ */
+void View::CentralWidget::loadProperties()
+{
+    _community = DEFAULT_COMMUNITY_NAME;
+    _nonRepeaters = DEFAULT_NON_REPEATERS;
+    _maxRepetitions = DEFAULT_MAX_REPETITIONS;
 }

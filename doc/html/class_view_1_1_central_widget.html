@@ -128,6 +128,10 @@ Slots privados</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_view_1_1_central_widget.html#ae7357bfff15ec78bd0f33cd66cf74f1a">invokeOperation</a> ()</td></tr>
 <tr class="memdesc:ae7357bfff15ec78bd0f33cd66cf74f1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Invoca operacion SNMP. <br/></td></tr>
 <tr class="separator:ae7357bfff15ec78bd0f33cd66cf74f1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28ed30b58664e24e620ef271c4106985"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a28ed30b58664e24e620ef271c4106985"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_view_1_1_central_widget.html#a28ed30b58664e24e620ef271c4106985">properties</a> ()</td></tr>
+<tr class="memdesc:a28ed30b58664e24e620ef271c4106985"><td class="mdescLeft">&#160;</td><td class="mdescRight">Establece las propiedades de la sesion SNMP. <br/></td></tr>
+<tr class="separator:a28ed30b58664e24e620ef271c4106985"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae53f8973d09b7e193b78c6ee2058b540"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae53f8973d09b7e193b78c6ee2058b540"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_view_1_1_central_widget.html#ae53f8973d09b7e193b78c6ee2058b540">readyToInvoke</a> ()</td></tr>
 <tr class="memdesc:ae53f8973d09b7e193b78c6ee2058b540"><td class="mdescLeft">&#160;</td><td class="mdescRight">Activa/Desactiva botones de operacion ante cambios en los otros widgets. <br/></td></tr>
@@ -147,6 +151,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_view_1_1_central_widget.html#a6c14b3d68fc0390339b1b3cdb6b963ae">loadMIBTree</a> ()</td></tr>
 <tr class="memdesc:a6c14b3d68fc0390339b1b3cdb6b963ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Carga el arbol MIB en el modelo <a class="el" href="class_view_1_1_m_i_b_tree_model.html" title="Clase MIBTreeModel que implementa el modelo jerarquico usado por QTreeView y que representa el arbol ...">MIBTreeModel</a>. <br/></td></tr>
 <tr class="separator:a6c14b3d68fc0390339b1b3cdb6b963ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9814b3518641c0bcbdae15dd7696696"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad9814b3518641c0bcbdae15dd7696696"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_view_1_1_central_widget.html#ad9814b3518641c0bcbdae15dd7696696">loadProperties</a> ()</td></tr>
+<tr class="memdesc:ad9814b3518641c0bcbdae15dd7696696"><td class="mdescLeft">&#160;</td><td class="mdescRight">Carga las propiedades de la sesion SNMP. <br/></td></tr>
+<tr class="separator:ad9814b3518641c0bcbdae15dd7696696"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Atributos privados</h2></td></tr>
@@ -189,6 +197,15 @@ QPushButton *&#160;</td><td class="memItemRight" valign="bottom"><b>_setPushButt
 <tr class="memitem:a15e28297412db89595d140e268740e40"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a15e28297412db89595d140e268740e40"></a>
 QTextEdit *&#160;</td><td class="memItemRight" valign="bottom"><b>_resultTextEdit</b></td></tr>
 <tr class="separator:a15e28297412db89595d140e268740e40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab38f261569ee6386e39635cb49037eaf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab38f261569ee6386e39635cb49037eaf"></a>
+QString&#160;</td><td class="memItemRight" valign="bottom"><b>_community</b></td></tr>
+<tr class="separator:ab38f261569ee6386e39635cb49037eaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a790de68206e58d98e07bfa896563d6ef"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a790de68206e58d98e07bfa896563d6ef"></a>
+unsigned short&#160;</td><td class="memItemRight" valign="bottom"><b>_nonRepeaters</b></td></tr>
+<tr class="separator:a790de68206e58d98e07bfa896563d6ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e0c7978b71e8f71c5343efe6029c4d2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3e0c7978b71e8f71c5343efe6029c4d2"></a>
+unsigned short&#160;</td><td class="memItemRight" valign="bottom"><b>_maxRepetitions</b></td></tr>
+<tr class="separator:a3e0c7978b71e8f71c5343efe6029c4d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
 <div class="textblock"><p>Clase <a class="el" href="class_view_1_1_central_widget.html" title="Clase CentralWidget que implementa el widget central de la ventana principal. ">CentralWidget</a> que implementa el widget central de la ventana principal. </p>
@@ -257,7 +274,7 @@ QTextEdit *&#160;</td><td class="memItemRight" valign="bottom"><b>_resultTextEdi
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Jueves, 8 de Agosto de 2013 18:36:42 para QMB por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Sábado, 10 de Agosto de 2013 15:02:43 para QMB por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>
