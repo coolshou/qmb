@@ -24,7 +24,8 @@ HEADERS += include/global.h \
     include/view/mibtreemodel.h \
     include/view/mibtreeproxymodel.h \
     include/view/oideditordialog.h \
-    include/view/propertiesdialog.h
+    include/view/propertiesdialog.h \
+    include/view/optionsdialog.h
 SOURCES += src/main.cpp \
            src/model/snmpdata.cpp \
            src/model/snmpmanager.cpp \
@@ -36,7 +37,8 @@ SOURCES += src/main.cpp \
     src/view/mibtreemodel.cpp \
     src/view/mibtreeproxymodel.cpp \
     src/view/oideditordialog.cpp \
-    src/view/propertiesdialog.cpp
+    src/view/propertiesdialog.cpp \
+    src/view/optionsdialog.cpp
 
 LIBS += -lnetsnmp
 
