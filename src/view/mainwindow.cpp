@@ -29,6 +29,7 @@
 #include <QtGui>
 #include "mainwindow.h"
 #include "centralwidget.h"
+#include "optionsdialog.h"
 #include "global.h"
 
 /**
@@ -57,6 +58,16 @@ View::MainWindow::~MainWindow()
 void View::MainWindow::closeEvent(QCloseEvent *event)
 {
     event -> accept();
+}
+
+/**
+ * @brief Ranura opciones
+ */
+void View::MainWindow::options()
+{
+    OptionsDialog dialog(this);
+
+    dialog.exec();
 }
 
 /**
@@ -114,6 +125,9 @@ void View::MainWindow::createCentralWidget()
  */
 void View::MainWindow::createActions()
 {
+    _optionsAction = new QAction(tr("&Options"), this);
+    _optionsAction -> setStatusTip(tr("Application options"));
+
     _exitAction = new QAction(tr("E&xit"), this);
     _exitAction -> setStatusTip(tr("Exit the application"));
 
@@ -130,6 +144,7 @@ void View::MainWindow::createActions()
 void View::MainWindow::createMenus()
 {
     _applicationMenu = menuBar() -> addMenu(tr("&Application"));
+    _applicationMenu -> addAction(_optionsAction);
     _applicationMenu -> addAction(_exitAction);
 
     _helpMenu = menuBar() -> addMenu(tr("&Help"));
@@ -160,6 +175,7 @@ void View::MainWindow::createStatusBar()
  */
 void View::MainWindow::createConnections()
 {
+    connect(_optionsAction, SIGNAL(triggered()), this, SLOT(options()));
     connect(_exitAction, SIGNAL(triggered()), this, SLOT(close()));
     connect(_aboutAction, SIGNAL(triggered()), this, SLOT(about()));
     connect(_aboutQtAction, SIGNAL(triggered()), qApp, SLOT(aboutQt()));

@@ -27,6 +27,16 @@
  */
 
 #include "optionsdialog.h"
+#include "global.h"
+#include <QLabel>
+#include <QComboBox>
+#include <QLineEdit>
+#include <QSpinBox>
+#include <QPushButton>
+#include <QGridLayout>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
+#include <QGroupBox>
 
 /**
  * @brief Constructor de OptionsDialog
@@ -38,6 +48,7 @@ View::OptionsDialog::OptionsDialog(QWidget *parent) : QDialog(parent)
     createConnections();
     setWindowTitle(tr("Options"));
     setFixedSize(sizeHint());
+    loadOptions();
 }
 
 /**
@@ -57,7 +68,13 @@ void View::OptionsDialog::done(int result)
  */
 void View::OptionsDialog::setDefaultValues()
 {
-
+    _versionComboBox -> setCurrentIndex(0);
+    _communityLineEdit -> setText(DEFAULT_COMMUNITY_NAME);
+    _nonRepeatersSpinBox -> setValue(DEFAULT_NON_REPEATERS);
+    _maxRepetitionsSpinBox -> setValue(DEFAULT_MAX_REPETITIONS);
+    _remotePortSpinBox -> setValue(DEFAULT_REMOTE_PORT);
+    _timeoutSpinBox -> setValue(DEFAULT_TIMEOUT);
+    _retriesSpinBox -> setValue(DEFAULT_RETRIES);
 }
 
 /**
@@ -65,7 +82,93 @@ void View::OptionsDialog::setDefaultValues()
  */
 void View::OptionsDialog::createWidgets()
 {
+    _versionLabel = new QLabel(tr("&Version:"));
+    _versionComboBox = new QComboBox;
+    _versionComboBox -> addItem(tr("v1"));
+    _versionComboBox -> addItem(tr("v2C"));
+    //_versionComboBox -> addItem(tr("v3"));
+    _versionLabel -> setBuddy(_versionComboBox);
 
+    _communityLabel = new QLabel(tr("&Community:"));
+    _communityLineEdit = new QLineEdit;
+    _communityLabel -> setBuddy(_communityLineEdit);
+
+    _nonRepeatersLabel = new QLabel(tr("&Non Repeaters:"));
+    _nonRepeatersSpinBox = new QSpinBox;
+    _nonRepeatersSpinBox -> setMinimum(0);
+    _nonRepeatersLabel -> setBuddy(_nonRepeatersSpinBox);
+
+    _maxRepetitionsLabel = new QLabel(tr("&Max Repetitions:"));
+    _maxRepetitionsSpinBox = new QSpinBox;
+    _maxRepetitionsSpinBox -> setMinimum(0);
+    _maxRepetitionsLabel -> setBuddy(_maxRepetitionsSpinBox);
+
+    _remotePortLabel = new QLabel(tr("Remote &Port:"));
+    _remotePortSpinBox = new QSpinBox;
+    _remotePortSpinBox -> setMinimum(0);
+    _remotePortSpinBox -> setMaximum(65535);
+    _remotePortLabel -> setBuddy(_remotePortSpinBox);
+
+    _timeoutLabel = new QLabel(tr("&Timeout:"));
+    _timeoutSpinBox = new QSpinBox;
+    _timeoutSpinBox -> setSuffix(tr("s"));
+    _timeoutSpinBox -> setMinimum(0);
+    _timeoutLabel -> setBuddy(_timeoutSpinBox);
+
+    _retriesLabel = new QLabel(tr("&Retries:"));
+    _retriesSpinBox = new QSpinBox;
+    _retriesSpinBox -> setMinimum(0);
+    _retriesLabel -> setBuddy(_retriesSpinBox);
+
+    _defaultPushButton = new QPushButton(tr("Default Values"));
+
+    _okPushButton = new QPushButton(tr("Ok"));
+    _okPushButton -> setDefault(true);
+
+    _cancelPushButton = new QPushButton(tr("Cancel"));
+
+    QGridLayout *valuesByDefaultLayout = new QGridLayout;
+
+    valuesByDefaultLayout -> addWidget(_versionLabel, 0, 0, 1, 1);
+    valuesByDefaultLayout -> addWidget(_versionComboBox, 0, 1, 1, 1);
+    valuesByDefaultLayout -> addWidget(_communityLabel, 1, 0, 1, 1);
+    valuesByDefaultLayout -> addWidget(_communityLineEdit, 1, 1, 1, 3);
+    valuesByDefaultLayout -> addWidget(_nonRepeatersLabel, 2, 0, 1, 1);
+    valuesByDefaultLayout -> addWidget(_nonRepeatersSpinBox, 2, 1, 1, 1);
+    valuesByDefaultLayout -> addWidget(_maxRepetitionsLabel, 2, 2, 1, 1);
+    valuesByDefaultLayout -> addWidget(_maxRepetitionsSpinBox, 2, 3, 1, 1);
+
+    QGroupBox *valuesByDefaultGroupBox = new QGroupBox(tr("Values by default"));
+
+    valuesByDefaultGroupBox -> setLayout(valuesByDefaultLayout);
+
+    QGridLayout *sessionLayout = new QGridLayout;
+
+    sessionLayout -> addWidget(_remotePortLabel, 0, 0, 1, 1);
+    sessionLayout -> addWidget(_remotePortSpinBox, 0, 1, 1, 1);
+    sessionLayout -> addWidget(_timeoutLabel, 1, 0, 1, 1);
+    sessionLayout -> addWidget(_timeoutSpinBox, 1, 1, 1, 1);
+    sessionLayout -> addWidget(_retriesLabel, 2, 0, 1, 1);
+    sessionLayout -> addWidget(_retriesSpinBox, 2, 1, 1, 1);
+
+    QGroupBox *sessionGroupBox = new QGroupBox(tr("Session parameters"));
+
+    sessionGroupBox -> setLayout(sessionLayout);
+
+    QHBoxLayout *bottomLayout = new QHBoxLayout;
+
+    bottomLayout -> addWidget(_defaultPushButton);
+    bottomLayout -> addStretch();
+    bottomLayout -> addWidget(_okPushButton);
+    bottomLayout -> addWidget(_cancelPushButton);
+
+    QVBoxLayout *mainLayout = new QVBoxLayout;
+
+    mainLayout -> addWidget(valuesByDefaultGroupBox);
+    mainLayout -> addWidget(sessionGroupBox);
+    mainLayout -> addLayout(bottomLayout);
+
+    setLayout(mainLayout);
 }
 
 /**
@@ -73,7 +176,9 @@ void View::OptionsDialog::createWidgets()
  */
 void View::OptionsDialog::createConnections()
 {
-
+    connect(_defaultPushButton, SIGNAL(clicked()), this, SLOT(setDefaultValues()));
+    connect(_okPushButton, SIGNAL(clicked()), this, SLOT(accept()));
+    connect(_cancelPushButton, SIGNAL(clicked()), this, SLOT(reject()));
 }
 
 /**

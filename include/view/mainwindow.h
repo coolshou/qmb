@@ -67,6 +67,11 @@ namespace View
 
     private slots:
         /**
+         * @brief Ranura opciones
+         */
+        void options();
+
+        /**
          * @brief Ranura Acerca de ..
          */
         void about();
@@ -113,6 +118,7 @@ namespace View
          */
         void createConnections();
 
+        QAction *_optionsAction;       /**< Accion Opciones */
         QAction *_exitAction;          /**< Accion Salir */
         QAction *_aboutAction;         /**< Accion Acerca de */
         QAction *_aboutQtAction;       /**< Accion Acerca de Qt */

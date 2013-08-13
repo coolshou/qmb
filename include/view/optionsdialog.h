@@ -33,6 +33,7 @@
 
 QT_BEGIN_NAMESPACE
 class QLabel;
+class QComboBox;
 class QLineEdit;
 class QSpinBox;
 class QPushButton;
@@ -45,6 +46,7 @@ namespace View
      */
     class OptionsDialog : public QDialog
     {
+        Q_OBJECT
     public:
         /**
          * @brief Constructor de OptionsDialog
@@ -83,6 +85,24 @@ namespace View
          * @brief Guarda las opciones
          */
         void saveOptions();
+
+        QLabel *_versionLabel;
+        QComboBox *_versionComboBox;
+        QLabel *_communityLabel;
+        QLineEdit *_communityLineEdit;
+        QLabel *_nonRepeatersLabel;
+        QSpinBox *_nonRepeatersSpinBox;
+        QLabel *_maxRepetitionsLabel;
+        QSpinBox *_maxRepetitionsSpinBox;
+        QLabel *_remotePortLabel;
+        QSpinBox *_remotePortSpinBox;
+        QLabel *_timeoutLabel;
+        QSpinBox *_timeoutSpinBox;
+        QLabel *_retriesLabel;
+        QSpinBox *_retriesSpinBox;
+        QPushButton *_defaultPushButton;
+        QPushButton *_okPushButton;
+        QPushButton *_cancelPushButton;
     };
 }
 
