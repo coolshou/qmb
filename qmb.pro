@@ -49,4 +49,9 @@ RESOURCES += resources/qmb.qrc
 
 OTHER_FILES += \
     README \
-    LICENSE
+    LICENSE \
+    AUTHOR \
+    THANKS \
+    INSTALL \
+    COPYRIGHT \
+    CHANGELOG

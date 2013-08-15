@@ -2,12 +2,19 @@
 
     Copyright (c) 2013 Juan Jose Salazar Garcia - jjslzgc@gmail.com
 
-    - Descripcion
+    - Description
 
-    QMB es un navegador para la MIB (Management Information Base) de
-    agentes SNMP (Simple Network Management Protocol) version 1 y 2.
+       QMB is a MIB Browser for SNMP Agents version 1/2c.
 
-    - Licencia
+    - Details
 
-    QMB tiene licencia publica general de GNU version 3, para mas
-    detalles leer el fichero LICENSE.
+       - Developed in C++ and Qt4 framework
+       - SNMP support based on Net-SNMP library
+
+    - License
+
+       QMB is licensed under the GNU General Public License version 3,
+       you should read LICENSE file to get more details about this.
+
+For more information visit http://j2sg.wordpress.com/proyectos/qmb
+and you can get latest version from https://github.com/j2sg/qmb
