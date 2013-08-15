@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Name=QMB
+GenericName=QMB MIB Browser
+Version=0.1.0
+Comment=MIB Browser for SNMP Agents v1/2c
+Icon=/usr/share/pixmaps/qmb.svg
+Exec=qmb
+Terminal=false
+Categories=Qt;Network;System
+
+# Translations
+GenericName[es]=Navegador MIB QMB
+Comment[es]=Navegador MIB para agentes SNMP v1/2c
