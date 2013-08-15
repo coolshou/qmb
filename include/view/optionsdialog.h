@@ -33,8 +33,6 @@
 
 QT_BEGIN_NAMESPACE
 class QLabel;
-class QComboBox;
-class QLineEdit;
 class QSpinBox;
 class QPushButton;
 QT_END_NAMESPACE
@@ -83,17 +81,10 @@ namespace View
 
         /**
          * @brief Guarda las opciones
+         * @return true si las opciones se guardaron correctamente y false en caso contrario
          */
-        void saveOptions();
+        bool saveOptions();
 
-        QLabel *_versionLabel;
-        QComboBox *_versionComboBox;
-        QLabel *_communityLabel;
-        QLineEdit *_communityLineEdit;
-        QLabel *_nonRepeatersLabel;
-        QSpinBox *_nonRepeatersSpinBox;
-        QLabel *_maxRepetitionsLabel;
-        QSpinBox *_maxRepetitionsSpinBox;
         QLabel *_remotePortLabel;
         QSpinBox *_remotePortSpinBox;
         QLabel *_timeoutLabel;

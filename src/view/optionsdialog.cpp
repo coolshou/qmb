@@ -27,16 +27,16 @@
  */
 
 #include "optionsdialog.h"
+#include "persistencemanager.h"
 #include "global.h"
 #include <QLabel>
-#include <QComboBox>
-#include <QLineEdit>
 #include <QSpinBox>
 #include <QPushButton>
 #include <QGridLayout>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <QGroupBox>
+#include <QMessageBox>
 
 /**
  * @brief Constructor de OptionsDialog
@@ -57,8 +57,10 @@ View::OptionsDialog::OptionsDialog(QWidget *parent) : QDialog(parent)
  */
 void View::OptionsDialog::done(int result)
 {
-    if(result)
-        saveOptions();
+    if(result && !saveOptions()) {
+            QMessageBox::critical(this, tr("Critical error"), tr("There was errors while saving changes"), QMessageBox::Ok);
+            result = QDialog::Rejected;
+    }
 
     QDialog::done(result);
 }
@@ -68,12 +70,8 @@ void View::OptionsDialog::done(int result)
  */
 void View::OptionsDialog::setDefaultValues()
 {
-    _versionComboBox -> setCurrentIndex(0);
-    _communityLineEdit -> setText(DEFAULT_COMMUNITY_NAME);
-    _nonRepeatersSpinBox -> setValue(DEFAULT_NON_REPEATERS);
-    _maxRepetitionsSpinBox -> setValue(DEFAULT_MAX_REPETITIONS);
     _remotePortSpinBox -> setValue(DEFAULT_REMOTE_PORT);
-    _timeoutSpinBox -> setValue(DEFAULT_TIMEOUT);
+    _timeoutSpinBox -> setValue(DEFAULT_TIMEOUT / 1000000);
     _retriesSpinBox -> setValue(DEFAULT_RETRIES);
 }
 
@@ -82,27 +80,6 @@ void View::OptionsDialog::setDefaultValues()
  */
 void View::OptionsDialog::createWidgets()
 {
-    _versionLabel = new QLabel(tr("&Version:"));
-    _versionComboBox = new QComboBox;
-    _versionComboBox -> addItem(tr("v1"));
-    _versionComboBox -> addItem(tr("v2C"));
-    //_versionComboBox -> addItem(tr("v3"));
-    _versionLabel -> setBuddy(_versionComboBox);
-
-    _communityLabel = new QLabel(tr("&Community:"));
-    _communityLineEdit = new QLineEdit;
-    _communityLabel -> setBuddy(_communityLineEdit);
-
-    _nonRepeatersLabel = new QLabel(tr("&Non Repeaters:"));
-    _nonRepeatersSpinBox = new QSpinBox;
-    _nonRepeatersSpinBox -> setMinimum(0);
-    _nonRepeatersLabel -> setBuddy(_nonRepeatersSpinBox);
-
-    _maxRepetitionsLabel = new QLabel(tr("&Max Repetitions:"));
-    _maxRepetitionsSpinBox = new QSpinBox;
-    _maxRepetitionsSpinBox -> setMinimum(0);
-    _maxRepetitionsLabel -> setBuddy(_maxRepetitionsSpinBox);
-
     _remotePortLabel = new QLabel(tr("Remote &Port:"));
     _remotePortSpinBox = new QSpinBox;
     _remotePortSpinBox -> setMinimum(0);
@@ -127,20 +104,6 @@ void View::OptionsDialog::createWidgets()
 
     _cancelPushButton = new QPushButton(tr("Cancel"));
 
-    QGridLayout *valuesByDefaultLayout = new QGridLayout;
-
-    valuesByDefaultLayout -> addWidget(_versionLabel, 0, 0, 1, 1);
-    valuesByDefaultLayout -> addWidget(_versionComboBox, 0, 1, 1, 1);
-    valuesByDefaultLayout -> addWidget(_communityLabel, 1, 0, 1, 1);
-    valuesByDefaultLayout -> addWidget(_communityLineEdit, 1, 1, 1, 3);
-    valuesByDefaultLayout -> addWidget(_nonRepeatersLabel, 2, 0, 1, 1);
-    valuesByDefaultLayout -> addWidget(_nonRepeatersSpinBox, 2, 1, 1, 1);
-    valuesByDefaultLayout -> addWidget(_maxRepetitionsLabel, 2, 2, 1, 1);
-    valuesByDefaultLayout -> addWidget(_maxRepetitionsSpinBox, 2, 3, 1, 1);
-
-    QGroupBox *valuesByDefaultGroupBox = new QGroupBox(tr("Values by default"));
-
-    valuesByDefaultGroupBox -> setLayout(valuesByDefaultLayout);
 
     QGridLayout *sessionLayout = new QGridLayout;
 
@@ -151,7 +114,7 @@ void View::OptionsDialog::createWidgets()
     sessionLayout -> addWidget(_retriesLabel, 2, 0, 1, 1);
     sessionLayout -> addWidget(_retriesSpinBox, 2, 1, 1, 1);
 
-    QGroupBox *sessionGroupBox = new QGroupBox(tr("Session parameters"));
+    QGroupBox *sessionGroupBox = new QGroupBox(tr("SNMP Session"));
 
     sessionGroupBox -> setLayout(sessionLayout);
 
@@ -164,7 +127,6 @@ void View::OptionsDialog::createWidgets()
 
     QVBoxLayout *mainLayout = new QVBoxLayout;
 
-    mainLayout -> addWidget(valuesByDefaultGroupBox);
     mainLayout -> addWidget(sessionGroupBox);
     mainLayout -> addLayout(bottomLayout);
 
@@ -186,13 +148,28 @@ void View::OptionsDialog::createConnections()
  */
 void View::OptionsDialog::loadOptions()
 {
+    unsigned short port = Persistence::PersistenceManager::readConfig("RemotePort", "Session").toInt();
+    long timeout = Persistence::PersistenceManager::readConfig("Timeout", "Session").toInt();
+    unsigned short retries = Persistence::PersistenceManager::readConfig("Retries", "Session").toInt();
 
+    _remotePortSpinBox -> setValue(port);
+    _timeoutSpinBox -> setValue(timeout / 1000000);
+    _retriesSpinBox -> setValue(retries);
 }
 
 /**
  * @brief Guarda las opciones
+ * @return true si las opciones se guardaron correctamente y false en caso contrario
  */
-void View::OptionsDialog::saveOptions()
+bool View::OptionsDialog::saveOptions()
 {
+    unsigned short port = _remotePortSpinBox -> value();
+    int timeout = _timeoutSpinBox -> value() * 1000000;
+    unsigned short retries = _retriesSpinBox -> value();
 
+    bool portSaved = Persistence::PersistenceManager::writeConfig(port, "RemotePort", "Session");
+    bool timeoutSaved = Persistence::PersistenceManager::writeConfig(timeout, "Timeout", "Session");
+    bool retriesSaved = Persistence::PersistenceManager::writeConfig(retries, "Retries", "Session");
+
+    return portSaved && timeoutSaved && retriesSaved;
 }

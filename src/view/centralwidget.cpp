@@ -68,6 +68,22 @@ View::CentralWidget::~CentralWidget()
 }
 
 /**
+ * @brief Carga el arbol MIB en el modelo MIBTreeModel
+ */
+void View::CentralWidget::loadMIBTree()
+{
+    emit statusChanged(tr("Loading MIB Tree ..."));
+
+    Model::SNMPNode *root = Model::SNMPManager::getMIBTree();
+
+    _mibTreeModel -> setRoot(root);
+
+    Model::SNMPManager::initSNMP();
+
+    emit statusChanged(tr("MIB Tree loaded successfully"));
+}
+
+/**
  * @brief Invoca operacion SNMP
  */
 void View::CentralWidget::invokeOperation()
@@ -271,22 +287,6 @@ void View::CentralWidget::createConnections()
     connect(_agentLineEdit, SIGNAL(textChanged(QString)), this, SLOT(readyToInvoke()));
     connect(_versionComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(readyToInvoke()));
     connect(_mibTreeView -> selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)), this, SLOT(readyToInvoke()));
-}
-
-/**
- * @brief Carga el arbol MIB en el modelo MIBTreeModel
- */
-void View::CentralWidget::loadMIBTree()
-{
-    emit statusChanged(tr("Loading MIB Tree ..."));
-
-    Model::SNMPNode *root = Model::SNMPManager::getMIBTree();
-
-    _mibTreeModel -> setRoot(root);
-
-    Model::SNMPManager::initSNMP();
-
-    emit statusChanged(tr("MIB Tree loaded successfully"));
 }
 
 /**

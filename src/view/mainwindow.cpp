@@ -30,6 +30,8 @@
 #include "mainwindow.h"
 #include "centralwidget.h"
 #include "optionsdialog.h"
+#include "snmpmanager.h"
+#include "persistencemanager.h"
 #include "global.h"
 
 /**
@@ -67,7 +69,18 @@ void View::MainWindow::options()
 {
     OptionsDialog dialog(this);
 
-    dialog.exec();
+    if(dialog.exec() == QDialog::Accepted) {
+        changeStatus(tr("Options changes has been saved"));
+
+        unsigned short port = Persistence::PersistenceManager::readConfig("RemotePort", "Session").toInt();
+        unsigned short retries = Persistence::PersistenceManager::readConfig("Retries", "Session").toInt();
+        long timeout = Persistence::PersistenceManager::readConfig("Timeout", "Session").toInt();
+
+        Model::SNMPManager::configSNMP(port, retries, timeout);
+        _centralWidget -> loadMIBTree();
+
+        changeStatus(tr("Changes applied"));
+    }
 }
 
 /**

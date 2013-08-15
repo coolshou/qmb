@@ -21,11 +21,12 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="qmb.svg"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">QMB
    &#160;<span id="projectnumber">0.1.0</span>
    </div>
-   <div id="projectbrief">Qt Browser MIB</div>
+   <div id="projectbrief">QMB MIB Browser</div>
   </td>
  </tr>
  </tbody>
@@ -94,7 +95,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 
 <p>Constantes globales.  
 <a href="#details">Más...</a></p>
-
+<div class="textblock"><code>#include &quot;<a class="el" href="types_8h_source.html">types.h</a>&quot;</code><br/>
+</div>
 <p><a href="global_8h_source.html">Ir al código fuente de este archivo.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
@@ -117,6 +119,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <tr class="separator:a1e530fab35d7326883cb897cb1a1d678"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a63e3be7d8901f7b98dac730d764bcd32"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="global_8h.html#a63e3be7d8901f7b98dac730d764bcd32">APPLICATION_WEB</a>&#160;&#160;&#160;&quot;http://j2sg.wordpress.com/proyectos/qmb&quot;</td></tr>
 <tr class="separator:a63e3be7d8901f7b98dac730d764bcd32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13dae059206df8d2d9b9b42e694b3f9c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="global_8h.html#a13dae059206df8d2d9b9b42e694b3f9c">DEFAULT_VERSION</a>&#160;&#160;&#160;Model::SNMPv1</td></tr>
+<tr class="separator:a13dae059206df8d2d9b9b42e694b3f9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7709b46dbee461c5d7c17e1d8acc01b3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="global_8h.html#a7709b46dbee461c5d7c17e1d8acc01b3">DEFAULT_COMMUNITY_NAME</a>&#160;&#160;&#160;&quot;public&quot;</td></tr>
 <tr class="separator:a7709b46dbee461c5d7c17e1d8acc01b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a847b68e41991c6c4b4c4b0558d4583bf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="global_8h.html#a847b68e41991c6c4b4c4b0558d4583bf">DEFAULT_NON_REPEATERS</a>&#160;&#160;&#160;0</td></tr>
@@ -127,7 +131,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <tr class="separator:a839596657b0b68b19e5aef696e47901a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a107b146cc517708c4931b4803946c01c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="global_8h.html#a107b146cc517708c4931b4803946c01c">DEFAULT_RETRIES</a>&#160;&#160;&#160;2</td></tr>
 <tr class="separator:a107b146cc517708c4931b4803946c01c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad2dd72565852b91c809cd4685833b17"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="global_8h.html#aad2dd72565852b91c809cd4685833b17">DEFAULT_TIMEOUT</a>&#160;&#160;&#160;2000000L</td></tr>
+<tr class="memitem:aad2dd72565852b91c809cd4685833b17"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="global_8h.html#aad2dd72565852b91c809cd4685833b17">DEFAULT_TIMEOUT</a>&#160;&#160;&#160;2000000</td></tr>
 <tr class="separator:aad2dd72565852b91c809cd4685833b17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
@@ -302,11 +306,24 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define DEFAULT_TIMEOUT&#160;&#160;&#160;2000000L</td>
+          <td class="memname">#define DEFAULT_TIMEOUT&#160;&#160;&#160;2000000</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Numero de uSegundos para producirse un timeout </p>
+
+</div>
+</div>
+<a class="anchor" id="a13dae059206df8d2d9b9b42e694b3f9c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DEFAULT_VERSION&#160;&#160;&#160;Model::SNMPv1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Version SNMP </p>
 
 </div>
 </div>
@@ -339,7 +356,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Martes, 13 de Agosto de 2013 18:39:14 para QMB por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Jueves, 15 de Agosto de 2013 14:04:43 para QMB por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

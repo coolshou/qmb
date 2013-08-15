@@ -27,16 +27,15 @@
  */
 
 #include <QApplication>
+#include "persistencemanager.h"
 #include "mainwindow.h"
 #include "global.h"
 #include "snmpmanager.h"
-#include "testsnmpmanager.h"
+
 #include <iostream>
 
-// Declaracion de funciones
-
 void setUpApplication(QApplication *app);
-void testSNMP(std::string agent, std::string community);
+bool verifyConfig();
 
 /**
  * @brief Implementa la funcion principal
@@ -49,15 +48,16 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
     View::MainWindow window;
 
-    if(argc == 3) {
-        testSNMP(std::string(argv[1]), std::string(argv[2]));
-        return 0;
-    }
-
     setUpApplication(&app);
 
     std::cout << QString("%1 %2").arg(app.applicationName()).arg(app.applicationVersion()).toStdString() << std::endl;
     std::cout << QObject::tr("Starting ...").toStdString() << std::endl << std::endl;
+
+    if(!verifyConfig()) {
+        std::cout << QObject::tr("Config : Error : Application will be closed").toStdString() << std::endl;
+        return 1;
+    } else
+        std::cout << QObject::tr("Config : OK").toStdString() << std::endl;
 
     window.show();
 
@@ -81,10 +81,10 @@ void setUpApplication(QApplication *app)
     app -> setApplicationVersion(APPLICATION_VERSION);
 }
 
-void testSNMP(std::string agent, std::string community)
+bool verifyConfig()
 {
-    Model::SNMPManager::initSNMP();
-    std::vector<Model::SNMPOID *> oids;
-    oids.push_back(new Model::SNMPOID("1.3.6.1.2.1.1.0"));
-    std::cout << "SNMP Get Bulk test " << (Test::TestSNMPManager::testGetBulk(Model::SNMPv2, community, agent, oids, 0, 10., true) ? "completed successfully" : "has errors") << std::endl;
+    if(!Persistence::PersistenceManager::existsConfig() && !Persistence::PersistenceManager::createConfig())
+        return false;
+
+    return true;
 }

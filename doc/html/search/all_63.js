@@ -12,6 +12,7 @@ var searchData=
   ['configsnmp',['configSNMP',['../class_model_1_1_s_n_m_p_manager.html#ac43a39f01313a0f592f7d5c72cc9294f',1,'Model::SNMPManager']]],
   ['createactions',['createActions',['../class_view_1_1_main_window.html#ae199a39d4cf80f46b3beceb44dce6b31',1,'View::MainWindow']]],
   ['createcentralwidget',['createCentralWidget',['../class_view_1_1_main_window.html#a77abfc5923f276c308bb8a62cf03cce2',1,'View::MainWindow']]],
+  ['createconfig',['createConfig',['../class_persistence_1_1_persistence_manager.html#af06a23ec27ef663ecce29c7afca754a4',1,'Persistence::PersistenceManager']]],
   ['createconnections',['createConnections',['../class_view_1_1_central_widget.html#a51b474f5e99d339fcc4288a7293489e1',1,'View::CentralWidget::createConnections()'],['../class_view_1_1_main_window.html#ae727d470f05e5f4b4bf579fd4a3f8ba5',1,'View::MainWindow::createConnections()'],['../class_view_1_1_o_i_d_editor_dialog.html#aa7e2e0722a33cbf8cb3095a59d04adfc',1,'View::OIDEditorDialog::createConnections()'],['../class_view_1_1_options_dialog.html#adda0c196f92d7fe1ed6e498e85aa5cdd',1,'View::OptionsDialog::createConnections()'],['../class_view_1_1_properties_dialog.html#a33d679dcf98ce2f5e4849ac6cb998ea6',1,'View::PropertiesDialog::createConnections()']]],
   ['createmenus',['createMenus',['../class_view_1_1_main_window.html#a61a3daefa85c10935b5f1230ca935705',1,'View::MainWindow']]],
   ['createpdu',['createPDU',['../class_model_1_1_s_n_m_p_manager.html#adc47a544a1a1f4bf21819f8e4738ad60',1,'Model::SNMPManager']]],

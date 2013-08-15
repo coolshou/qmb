@@ -70,6 +70,12 @@ namespace View
          */
         void statusChanged(const QString& status);
 
+    public slots:
+        /**
+         * @brief Carga el arbol MIB en el modelo MIBTreeModel
+         */
+        void loadMIBTree();
+
     private slots:
         /**
          * @brief Invoca operacion SNMP
@@ -95,11 +101,6 @@ namespace View
          * @brief Establece las conexiones
          */
         void createConnections();
-
-        /**
-         * @brief Carga el arbol MIB en el modelo MIBTreeModel
-         */
-        void loadMIBTree();
 
         /**
          * @brief Carga las propiedades de la sesion SNMP

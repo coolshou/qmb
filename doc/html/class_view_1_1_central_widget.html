@@ -21,11 +21,12 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="qmb.svg"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">QMB
    &#160;<span id="projectnumber">0.1.0</span>
    </div>
-   <div id="projectbrief">Qt Browser MIB</div>
+   <div id="projectbrief">QMB MIB Browser</div>
   </td>
  </tr>
  </tbody>
@@ -88,6 +89,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-slots">Slots públicos</a> &#124;
 <a href="#signals">Señales</a> &#124;
 <a href="#pub-methods">Métodos públicos</a> &#124;
 <a href="#pri-slots">Slots privados</a> &#124;
@@ -103,9 +105,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
  <a href="class_view_1_1_central_widget.html#details">Más...</a></p>
 
 <p><code>#include &lt;<a class="el" href="centralwidget_8h_source.html">centralwidget.h</a>&gt;</code></p>
-
-<p>Herencias QWidget.</p>
+<div class="dynheader">
+Diagrama de herencias de View::CentralWidget</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_view_1_1_central_widget.png" usemap="#View::CentralWidget_map" alt=""/>
+  <map id="View::CentralWidget_map" name="View::CentralWidget_map">
+</map>
+ </div></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-slots"></a>
+Slots públicos</h2></td></tr>
+<tr class="memitem:a6c14b3d68fc0390339b1b3cdb6b963ae"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6c14b3d68fc0390339b1b3cdb6b963ae"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_view_1_1_central_widget.html#a6c14b3d68fc0390339b1b3cdb6b963ae">loadMIBTree</a> ()</td></tr>
+<tr class="memdesc:a6c14b3d68fc0390339b1b3cdb6b963ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Carga el arbol MIB en el modelo <a class="el" href="class_view_1_1_m_i_b_tree_model.html" title="Clase MIBTreeModel que implementa el modelo jerarquico usado por QTreeView y que representa el arbol ...">MIBTreeModel</a>. <br/></td></tr>
+<tr class="separator:a6c14b3d68fc0390339b1b3cdb6b963ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="signals"></a>
 Señales</h2></td></tr>
 <tr class="memitem:ad4008c6aa371f54734c3f25a1c83f7be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_view_1_1_central_widget.html#ad4008c6aa371f54734c3f25a1c83f7be">statusChanged</a> (const QString &amp;status)</td></tr>
@@ -147,10 +162,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_view_1_1_central_widget.html#a51b474f5e99d339fcc4288a7293489e1">createConnections</a> ()</td></tr>
 <tr class="memdesc:a51b474f5e99d339fcc4288a7293489e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Establece las conexiones. <br/></td></tr>
 <tr class="separator:a51b474f5e99d339fcc4288a7293489e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6c14b3d68fc0390339b1b3cdb6b963ae"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6c14b3d68fc0390339b1b3cdb6b963ae"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_view_1_1_central_widget.html#a6c14b3d68fc0390339b1b3cdb6b963ae">loadMIBTree</a> ()</td></tr>
-<tr class="memdesc:a6c14b3d68fc0390339b1b3cdb6b963ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Carga el arbol MIB en el modelo <a class="el" href="class_view_1_1_m_i_b_tree_model.html" title="Clase MIBTreeModel que implementa el modelo jerarquico usado por QTreeView y que representa el arbol ...">MIBTreeModel</a>. <br/></td></tr>
-<tr class="separator:a6c14b3d68fc0390339b1b3cdb6b963ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad9814b3518641c0bcbdae15dd7696696"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad9814b3518641c0bcbdae15dd7696696"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_view_1_1_central_widget.html#ad9814b3518641c0bcbdae15dd7696696">loadProperties</a> ()</td></tr>
 <tr class="memdesc:ad9814b3518641c0bcbdae15dd7696696"><td class="mdescLeft">&#160;</td><td class="mdescRight">Carga las propiedades de la sesion SNMP. <br/></td></tr>
@@ -275,7 +286,7 @@ unsigned short&#160;</td><td class="memItemRight" valign="bottom"><b>_maxRepetit
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Martes, 13 de Agosto de 2013 18:39:14 para QMB por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Jueves, 15 de Agosto de 2013 14:04:44 para QMB por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

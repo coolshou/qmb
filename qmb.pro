@@ -7,8 +7,9 @@ TARGET = qmb
 OBJECTS_DIR = build
 MOC_DIR = build
 RCC_DIR = build
-DEPENDPATH += . include src include/model include/test include/view src/model src/test src/view
-INCLUDEPATH += . include/view include include/model include/test
+DEPENDPATH += . include src include/model include/persistence include/test \
+                include/view src/model src/persistence src/test src/view
+INCLUDEPATH += . include/view include include/model include/persistence include/test
 
 # Input
 HEADERS += include/global.h \
@@ -25,7 +26,8 @@ HEADERS += include/global.h \
     include/view/mibtreeproxymodel.h \
     include/view/oideditordialog.h \
     include/view/propertiesdialog.h \
-    include/view/optionsdialog.h
+    include/view/optionsdialog.h \
+    include/persistence/persistencemanager.h
 SOURCES += src/main.cpp \
            src/model/snmpdata.cpp \
            src/model/snmpmanager.cpp \
@@ -38,7 +40,8 @@ SOURCES += src/main.cpp \
     src/view/mibtreeproxymodel.cpp \
     src/view/oideditordialog.cpp \
     src/view/propertiesdialog.cpp \
-    src/view/optionsdialog.cpp
+    src/view/optionsdialog.cpp \
+    src/persistence/persistencemanager.cpp
 
 LIBS += -lnetsnmp
 
