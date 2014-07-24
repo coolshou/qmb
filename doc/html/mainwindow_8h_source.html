@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.4"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>QMB: Fichero Fuente include/view/mainwindow.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -33,7 +33,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Generado por Doxygen 1.8.4 -->
+<!-- Generado por Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 </script>
@@ -92,8 +92,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="contents">
 <a href="mainwindow_8h.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#ifndef MAINWINDOW_H</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MAINWINDOW_H</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#define MAINWINDOW_H</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;QMainWindow&gt;</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;QT_BEGIN_NAMESPACE</div>
@@ -106,57 +106,80 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;{</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">class </span>CentralWidget;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="code" href="class_view_1_1_main_window.html">   47</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_view_1_1_main_window.html" title="Clase MainWindow que implementa la ventana principal. ">MainWindow</a> : <span class="keyword">public</span> QMainWindow</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="class_view_1_1_main_window.html">   47</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_view_1_1_main_window.html">MainWindow</a> : <span class="keyword">public</span> QMainWindow</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    {</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        Q_OBJECT</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <a class="code" href="class_view_1_1_main_window.html#ab99235e9080809c7ec2dde3c7f57f4db" title="Constructor de MainWindow. ">MainWindow</a>();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <a class="code" href="class_view_1_1_main_window.html#ab99235e9080809c7ec2dde3c7f57f4db">MainWindow</a>();</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <a class="code" href="class_view_1_1_main_window.html#afddc22bf74dd60d8dc90adc2f145cc8d" title="Destructor de MainWindow. ">~MainWindow</a>();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <a class="code" href="class_view_1_1_main_window.html#afddc22bf74dd60d8dc90adc2f145cc8d">~MainWindow</a>();</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_view_1_1_main_window.html#a6135218326dccf7d6ef34413e1ceaead" title="Manejador de eventos de cierre de la ventana principal. ">closeEvent</a>(QCloseEvent *event);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_view_1_1_main_window.html#a6135218326dccf7d6ef34413e1ceaead">closeEvent</a>(QCloseEvent *event);</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keyword">private</span> slots:</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_view_1_1_main_window.html#a210627e5f17e98e49b6b3a38ce2da655" title="Ranura opciones. ">options</a>();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_view_1_1_main_window.html#a210627e5f17e98e49b6b3a38ce2da655">options</a>();</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_view_1_1_main_window.html#aec40bc821cebc083c56214007d02cdc8" title="Ranura Acerca de .. ">about</a>();</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_view_1_1_main_window.html#aec40bc821cebc083c56214007d02cdc8">about</a>();</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_view_1_1_main_window.html#a2fde308e472a10346c7b3f3c111b8ce8" title="Ranura para cambio de la barra de estado. ">changeStatus</a>(<span class="keyword">const</span> QString&amp; status);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_view_1_1_main_window.html#a2fde308e472a10346c7b3f3c111b8ce8">changeStatus</a>(<span class="keyword">const</span> QString&amp; status);</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_view_1_1_main_window.html#ac78aecf18e7f864d9028a9943424ce16" title="Crea los widgets. ">createWidgets</a>();</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_view_1_1_main_window.html#ac78aecf18e7f864d9028a9943424ce16">createWidgets</a>();</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_view_1_1_main_window.html#a77abfc5923f276c308bb8a62cf03cce2" title="Crea y establece el widget central. ">createCentralWidget</a>();</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_view_1_1_main_window.html#a77abfc5923f276c308bb8a62cf03cce2">createCentralWidget</a>();</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_view_1_1_main_window.html#ae199a39d4cf80f46b3beceb44dce6b31" title="Crea las acciones del menu y barra de herramientas. ">createActions</a>();</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_view_1_1_main_window.html#ae199a39d4cf80f46b3beceb44dce6b31">createActions</a>();</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_view_1_1_main_window.html#a61a3daefa85c10935b5f1230ca935705" title="Crea los menus. ">createMenus</a>();</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_view_1_1_main_window.html#a61a3daefa85c10935b5f1230ca935705">createMenus</a>();</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_view_1_1_main_window.html#a2d6a9d3c01d90d3fb65ad467e1d72860" title="Crea las barras de herramientas. ">createToolBar</a>();</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_view_1_1_main_window.html#a2d6a9d3c01d90d3fb65ad467e1d72860">createToolBar</a>();</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_view_1_1_main_window.html#aaa53e33a9f7f4a02cc151ed52440f2f6" title="Crea la barra de estado. ">createStatusBar</a>();</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_view_1_1_main_window.html#aaa53e33a9f7f4a02cc151ed52440f2f6">createStatusBar</a>();</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_view_1_1_main_window.html#ae727d470f05e5f4b4bf579fd4a3f8ba5" title="Establece las conexiones. ">createConnections</a>();</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_view_1_1_main_window.html#ae727d470f05e5f4b4bf579fd4a3f8ba5">createConnections</a>();</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
-<div class="line"><a name="l00121"></a><span class="lineno"><a class="code" href="class_view_1_1_main_window.html#ad9f6e340ad3220edb4c8889162167a96">  121</a></span>&#160;        QAction *<a class="code" href="class_view_1_1_main_window.html#ad9f6e340ad3220edb4c8889162167a96">_optionsAction</a>;       </div>
-<div class="line"><a name="l00122"></a><span class="lineno"><a class="code" href="class_view_1_1_main_window.html#a93134d72d78805ccdeb9cfa178b8bf22">  122</a></span>&#160;        QAction *<a class="code" href="class_view_1_1_main_window.html#a93134d72d78805ccdeb9cfa178b8bf22">_exitAction</a>;          </div>
-<div class="line"><a name="l00123"></a><span class="lineno"><a class="code" href="class_view_1_1_main_window.html#a16d704917bfa3534cfa313130a69a4e9">  123</a></span>&#160;        QAction *<a class="code" href="class_view_1_1_main_window.html#a16d704917bfa3534cfa313130a69a4e9">_aboutAction</a>;         </div>
-<div class="line"><a name="l00124"></a><span class="lineno"><a class="code" href="class_view_1_1_main_window.html#a206fb52b73e56ae20819368c73819cdb">  124</a></span>&#160;        QAction *<a class="code" href="class_view_1_1_main_window.html#a206fb52b73e56ae20819368c73819cdb">_aboutQtAction</a>;       </div>
-<div class="line"><a name="l00125"></a><span class="lineno"><a class="code" href="class_view_1_1_main_window.html#a80766c8fc170ed38545adcbfa2fdb1b6">  125</a></span>&#160;        QMenu *<a class="code" href="class_view_1_1_main_window.html#a80766c8fc170ed38545adcbfa2fdb1b6">_applicationMenu</a>;       </div>
-<div class="line"><a name="l00126"></a><span class="lineno"><a class="code" href="class_view_1_1_main_window.html#a6b96870b92bada8c47cc0f425292adf3">  126</a></span>&#160;        QMenu *<a class="code" href="class_view_1_1_main_window.html#a6b96870b92bada8c47cc0f425292adf3">_helpMenu</a>;              </div>
-<div class="line"><a name="l00127"></a><span class="lineno"><a class="code" href="class_view_1_1_main_window.html#aa5f2fb2e8ad45afa9152bdc1dcc5439f">  127</a></span>&#160;        <a class="code" href="class_view_1_1_central_widget.html" title="Clase CentralWidget que implementa el widget central de la ventana principal. ">CentralWidget</a> *<a class="code" href="class_view_1_1_main_window.html#aa5f2fb2e8ad45afa9152bdc1dcc5439f">_centralWidget</a>; </div>
-<div class="line"><a name="l00128"></a><span class="lineno"><a class="code" href="class_view_1_1_main_window.html#ad150bd9e38a56d0dbbcceb42b1b3f22f">  128</a></span>&#160;        QLabel *<a class="code" href="class_view_1_1_main_window.html#ad150bd9e38a56d0dbbcceb42b1b3f22f">_statusLabel</a>;          </div>
+<div class="line"><a name="l00121"></a><span class="lineno"><a class="line" href="class_view_1_1_main_window.html#ad9f6e340ad3220edb4c8889162167a96">  121</a></span>&#160;        QAction *<a class="code" href="class_view_1_1_main_window.html#ad9f6e340ad3220edb4c8889162167a96">_optionsAction</a>;       </div>
+<div class="line"><a name="l00122"></a><span class="lineno"><a class="line" href="class_view_1_1_main_window.html#a93134d72d78805ccdeb9cfa178b8bf22">  122</a></span>&#160;        QAction *<a class="code" href="class_view_1_1_main_window.html#a93134d72d78805ccdeb9cfa178b8bf22">_exitAction</a>;          </div>
+<div class="line"><a name="l00123"></a><span class="lineno"><a class="line" href="class_view_1_1_main_window.html#a16d704917bfa3534cfa313130a69a4e9">  123</a></span>&#160;        QAction *<a class="code" href="class_view_1_1_main_window.html#a16d704917bfa3534cfa313130a69a4e9">_aboutAction</a>;         </div>
+<div class="line"><a name="l00124"></a><span class="lineno"><a class="line" href="class_view_1_1_main_window.html#a206fb52b73e56ae20819368c73819cdb">  124</a></span>&#160;        QAction *<a class="code" href="class_view_1_1_main_window.html#a206fb52b73e56ae20819368c73819cdb">_aboutQtAction</a>;       </div>
+<div class="line"><a name="l00125"></a><span class="lineno"><a class="line" href="class_view_1_1_main_window.html#a80766c8fc170ed38545adcbfa2fdb1b6">  125</a></span>&#160;        QMenu *<a class="code" href="class_view_1_1_main_window.html#a80766c8fc170ed38545adcbfa2fdb1b6">_applicationMenu</a>;       </div>
+<div class="line"><a name="l00126"></a><span class="lineno"><a class="line" href="class_view_1_1_main_window.html#a6b96870b92bada8c47cc0f425292adf3">  126</a></span>&#160;        QMenu *<a class="code" href="class_view_1_1_main_window.html#a6b96870b92bada8c47cc0f425292adf3">_helpMenu</a>;              </div>
+<div class="line"><a name="l00127"></a><span class="lineno"><a class="line" href="class_view_1_1_main_window.html#aa5f2fb2e8ad45afa9152bdc1dcc5439f">  127</a></span>&#160;        <a class="code" href="class_view_1_1_central_widget.html">CentralWidget</a> *<a class="code" href="class_view_1_1_main_window.html#aa5f2fb2e8ad45afa9152bdc1dcc5439f">_centralWidget</a>; </div>
+<div class="line"><a name="l00128"></a><span class="lineno"><a class="line" href="class_view_1_1_main_window.html#ad150bd9e38a56d0dbbcceb42b1b3f22f">  128</a></span>&#160;        QLabel *<a class="code" href="class_view_1_1_main_window.html#ad150bd9e38a56d0dbbcceb42b1b3f22f">_statusLabel</a>;          </div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    };</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;}</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="preprocessor">#endif // MAINWINDOW_H</span></div>
+<div class="ttc" id="class_view_1_1_main_window_html_a2d6a9d3c01d90d3fb65ad467e1d72860"><div class="ttname"><a href="class_view_1_1_main_window.html#a2d6a9d3c01d90d3fb65ad467e1d72860">View::MainWindow::createToolBar</a></div><div class="ttdeci">void createToolBar()</div><div class="ttdoc">Crea las barras de herramientas. </div><div class="ttdef"><b>Definition:</b> mainwindow.cpp:171</div></div>
+<div class="ttc" id="class_view_1_1_central_widget_html"><div class="ttname"><a href="class_view_1_1_central_widget.html">View::CentralWidget</a></div><div class="ttdoc">Clase CentralWidget que implementa el widget central de la ventana principal. </div><div class="ttdef"><b>Definition:</b> centralwidget.h:51</div></div>
+<div class="ttc" id="class_view_1_1_main_window_html_ae199a39d4cf80f46b3beceb44dce6b31"><div class="ttname"><a href="class_view_1_1_main_window.html#ae199a39d4cf80f46b3beceb44dce6b31">View::MainWindow::createActions</a></div><div class="ttdeci">void createActions()</div><div class="ttdoc">Crea las acciones del menu y barra de herramientas. </div><div class="ttdef"><b>Definition:</b> mainwindow.cpp:139</div></div>
+<div class="ttc" id="class_view_1_1_main_window_html_ab99235e9080809c7ec2dde3c7f57f4db"><div class="ttname"><a href="class_view_1_1_main_window.html#ab99235e9080809c7ec2dde3c7f57f4db">View::MainWindow::MainWindow</a></div><div class="ttdeci">MainWindow()</div><div class="ttdoc">Constructor de MainWindow. </div><div class="ttdef"><b>Definition:</b> mainwindow.cpp:40</div></div>
+<div class="ttc" id="class_view_1_1_main_window_html_a6b96870b92bada8c47cc0f425292adf3"><div class="ttname"><a href="class_view_1_1_main_window.html#a6b96870b92bada8c47cc0f425292adf3">View::MainWindow::_helpMenu</a></div><div class="ttdeci">QMenu * _helpMenu</div><div class="ttdef"><b>Definition:</b> mainwindow.h:126</div></div>
+<div class="ttc" id="class_view_1_1_main_window_html_ad150bd9e38a56d0dbbcceb42b1b3f22f"><div class="ttname"><a href="class_view_1_1_main_window.html#ad150bd9e38a56d0dbbcceb42b1b3f22f">View::MainWindow::_statusLabel</a></div><div class="ttdeci">QLabel * _statusLabel</div><div class="ttdef"><b>Definition:</b> mainwindow.h:128</div></div>
+<div class="ttc" id="class_view_1_1_main_window_html_a77abfc5923f276c308bb8a62cf03cce2"><div class="ttname"><a href="class_view_1_1_main_window.html#a77abfc5923f276c308bb8a62cf03cce2">View::MainWindow::createCentralWidget</a></div><div class="ttdeci">void createCentralWidget()</div><div class="ttdoc">Crea y establece el widget central. </div><div class="ttdef"><b>Definition:</b> mainwindow.cpp:129</div></div>
+<div class="ttc" id="class_view_1_1_main_window_html_a6135218326dccf7d6ef34413e1ceaead"><div class="ttname"><a href="class_view_1_1_main_window.html#a6135218326dccf7d6ef34413e1ceaead">View::MainWindow::closeEvent</a></div><div class="ttdeci">void closeEvent(QCloseEvent *event)</div><div class="ttdoc">Manejador de eventos de cierre de la ventana principal. </div><div class="ttdef"><b>Definition:</b> mainwindow.cpp:60</div></div>
+<div class="ttc" id="class_view_1_1_main_window_html_a80766c8fc170ed38545adcbfa2fdb1b6"><div class="ttname"><a href="class_view_1_1_main_window.html#a80766c8fc170ed38545adcbfa2fdb1b6">View::MainWindow::_applicationMenu</a></div><div class="ttdeci">QMenu * _applicationMenu</div><div class="ttdef"><b>Definition:</b> mainwindow.h:125</div></div>
+<div class="ttc" id="class_view_1_1_main_window_html_a16d704917bfa3534cfa313130a69a4e9"><div class="ttname"><a href="class_view_1_1_main_window.html#a16d704917bfa3534cfa313130a69a4e9">View::MainWindow::_aboutAction</a></div><div class="ttdeci">QAction * _aboutAction</div><div class="ttdef"><b>Definition:</b> mainwindow.h:123</div></div>
+<div class="ttc" id="class_view_1_1_main_window_html_afddc22bf74dd60d8dc90adc2f145cc8d"><div class="ttname"><a href="class_view_1_1_main_window.html#afddc22bf74dd60d8dc90adc2f145cc8d">View::MainWindow::~MainWindow</a></div><div class="ttdeci">~MainWindow()</div><div class="ttdoc">Destructor de MainWindow. </div><div class="ttdef"><b>Definition:</b> mainwindow.cpp:52</div></div>
+<div class="ttc" id="class_view_1_1_main_window_html_a210627e5f17e98e49b6b3a38ce2da655"><div class="ttname"><a href="class_view_1_1_main_window.html#a210627e5f17e98e49b6b3a38ce2da655">View::MainWindow::options</a></div><div class="ttdeci">void options()</div><div class="ttdoc">Ranura opciones. </div><div class="ttdef"><b>Definition:</b> mainwindow.cpp:68</div></div>
+<div class="ttc" id="class_view_1_1_main_window_html_aaa53e33a9f7f4a02cc151ed52440f2f6"><div class="ttname"><a href="class_view_1_1_main_window.html#aaa53e33a9f7f4a02cc151ed52440f2f6">View::MainWindow::createStatusBar</a></div><div class="ttdeci">void createStatusBar()</div><div class="ttdoc">Crea la barra de estado. </div><div class="ttdef"><b>Definition:</b> mainwindow.cpp:179</div></div>
+<div class="ttc" id="class_view_1_1_main_window_html_ad9f6e340ad3220edb4c8889162167a96"><div class="ttname"><a href="class_view_1_1_main_window.html#ad9f6e340ad3220edb4c8889162167a96">View::MainWindow::_optionsAction</a></div><div class="ttdeci">QAction * _optionsAction</div><div class="ttdef"><b>Definition:</b> mainwindow.h:121</div></div>
+<div class="ttc" id="class_view_1_1_main_window_html_aa5f2fb2e8ad45afa9152bdc1dcc5439f"><div class="ttname"><a href="class_view_1_1_main_window.html#aa5f2fb2e8ad45afa9152bdc1dcc5439f">View::MainWindow::_centralWidget</a></div><div class="ttdeci">CentralWidget * _centralWidget</div><div class="ttdef"><b>Definition:</b> mainwindow.h:127</div></div>
+<div class="ttc" id="class_view_1_1_main_window_html_a93134d72d78805ccdeb9cfa178b8bf22"><div class="ttname"><a href="class_view_1_1_main_window.html#a93134d72d78805ccdeb9cfa178b8bf22">View::MainWindow::_exitAction</a></div><div class="ttdeci">QAction * _exitAction</div><div class="ttdef"><b>Definition:</b> mainwindow.h:122</div></div>
+<div class="ttc" id="class_view_1_1_main_window_html_ae727d470f05e5f4b4bf579fd4a3f8ba5"><div class="ttname"><a href="class_view_1_1_main_window.html#ae727d470f05e5f4b4bf579fd4a3f8ba5">View::MainWindow::createConnections</a></div><div class="ttdeci">void createConnections()</div><div class="ttdoc">Establece las conexiones. </div><div class="ttdef"><b>Definition:</b> mainwindow.cpp:189</div></div>
+<div class="ttc" id="class_view_1_1_main_window_html_ac78aecf18e7f864d9028a9943424ce16"><div class="ttname"><a href="class_view_1_1_main_window.html#ac78aecf18e7f864d9028a9943424ce16">View::MainWindow::createWidgets</a></div><div class="ttdeci">void createWidgets()</div><div class="ttdoc">Crea los widgets. </div><div class="ttdef"><b>Definition:</b> mainwindow.cpp:117</div></div>
+<div class="ttc" id="class_view_1_1_main_window_html_aec40bc821cebc083c56214007d02cdc8"><div class="ttname"><a href="class_view_1_1_main_window.html#aec40bc821cebc083c56214007d02cdc8">View::MainWindow::about</a></div><div class="ttdeci">void about()</div><div class="ttdoc">Ranura Acerca de .. </div><div class="ttdef"><b>Definition:</b> mainwindow.cpp:89</div></div>
+<div class="ttc" id="class_view_1_1_main_window_html_a61a3daefa85c10935b5f1230ca935705"><div class="ttname"><a href="class_view_1_1_main_window.html#a61a3daefa85c10935b5f1230ca935705">View::MainWindow::createMenus</a></div><div class="ttdeci">void createMenus()</div><div class="ttdoc">Crea los menus. </div><div class="ttdef"><b>Definition:</b> mainwindow.cpp:157</div></div>
+<div class="ttc" id="class_view_1_1_main_window_html_a206fb52b73e56ae20819368c73819cdb"><div class="ttname"><a href="class_view_1_1_main_window.html#a206fb52b73e56ae20819368c73819cdb">View::MainWindow::_aboutQtAction</a></div><div class="ttdeci">QAction * _aboutQtAction</div><div class="ttdef"><b>Definition:</b> mainwindow.h:124</div></div>
+<div class="ttc" id="class_view_1_1_main_window_html_a2fde308e472a10346c7b3f3c111b8ce8"><div class="ttname"><a href="class_view_1_1_main_window.html#a2fde308e472a10346c7b3f3c111b8ce8">View::MainWindow::changeStatus</a></div><div class="ttdeci">void changeStatus(const QString &amp;status)</div><div class="ttdoc">Ranura para cambio de la barra de estado. </div><div class="ttdef"><b>Definition:</b> mainwindow.cpp:109</div></div>
+<div class="ttc" id="class_view_1_1_main_window_html"><div class="ttname"><a href="class_view_1_1_main_window.html">View::MainWindow</a></div><div class="ttdoc">Clase MainWindow que implementa la ventana principal. </div><div class="ttdef"><b>Definition:</b> mainwindow.h:47</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Jueves, 15 de Agosto de 2013 14:04:43 para QMB por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Miércoles, 23 de Julio de 2014 15:14:56 para QMB por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.4
+</a> 1.8.7
 </small></address>
 </body>
 </html>

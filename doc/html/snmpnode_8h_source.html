@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.4"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
 <title>QMB: Fichero Fuente include/model/snmpnode.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -33,7 +33,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Generado por Doxygen 1.8.4 -->
+<!-- Generado por Doxygen 1.8.7 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 </script>
@@ -92,47 +92,61 @@ var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
 <div class="contents">
 <a href="snmpnode_8h.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#ifndef SNMPNODE_H</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SNMPNODE_H</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="snmpoid_8h.html" title="Declaracion de clase SNMPOID. ">snmpoid.h</a>&quot;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#define SNMPNODE_H</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="snmpoid_8h.html">snmpoid.h</a>&quot;</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">namespace </span>Model</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;{</div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="code" href="class_model_1_1_s_n_m_p_node.html">   40</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_model_1_1_s_n_m_p_node.html" title="Clase SNMPNode que implementa un nodo del arbol de la MIB. ">SNMPNode</a></div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="class_model_1_1_s_n_m_p_node.html">   40</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_model_1_1_s_n_m_p_node.html">SNMPNode</a></div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    {</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <a class="code" href="class_model_1_1_s_n_m_p_node.html#ac0ce2452739bf83305f143221d9c52c4" title="Constructor de SNMPNode. ">SNMPNode</a>(<a class="code" href="class_model_1_1_s_n_m_p_o_i_d.html" title="Clase SNMPOID que implementa el tratamiento de OIDs. ">SNMPOID</a> *<span class="keywordtype">object</span> = 0, <a class="code" href="class_model_1_1_s_n_m_p_node.html" title="Clase SNMPNode que implementa un nodo del arbol de la MIB. ">SNMPNode</a> *<a class="code" href="class_model_1_1_s_n_m_p_node.html#acaacaebaab979604418136b59014680a" title="Obtiene el nodo padre. ">parent</a> = 0);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <a class="code" href="class_model_1_1_s_n_m_p_node.html#ac0ce2452739bf83305f143221d9c52c4">SNMPNode</a>(<a class="code" href="class_model_1_1_s_n_m_p_o_i_d.html">SNMPOID</a> *<span class="keywordtype">object</span> = 0, <a class="code" href="class_model_1_1_s_n_m_p_node.html">SNMPNode</a> *<a class="code" href="class_model_1_1_s_n_m_p_node.html#acaacaebaab979604418136b59014680a">parent</a> = 0);</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <a class="code" href="class_model_1_1_s_n_m_p_node.html#a713f10df6e0589e5abee286cd604fe63" title="Destructor de SNMPNode. ">~SNMPNode</a>();</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <a class="code" href="class_model_1_1_s_n_m_p_node.html#a713f10df6e0589e5abee286cd604fe63">~SNMPNode</a>();</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <a class="code" href="class_model_1_1_s_n_m_p_o_i_d.html" title="Clase SNMPOID que implementa el tratamiento de OIDs. ">SNMPOID</a> *<a class="code" href="class_model_1_1_s_n_m_p_node.html#a3d0c80205df21db9ee88a5188a4bf87d" title="Obtiene el OID asociado al nodo del arbol. ">object</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <a class="code" href="class_model_1_1_s_n_m_p_o_i_d.html">SNMPOID</a> *<a class="code" href="class_model_1_1_s_n_m_p_node.html#a3d0c80205df21db9ee88a5188a4bf87d">object</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_model_1_1_s_n_m_p_node.html#a66a46613766a6b30fdf2d1af4c58e831" title="Establece el OID asociado al nodo del arbol. ">setObject</a>(<a class="code" href="class_model_1_1_s_n_m_p_o_i_d.html" title="Clase SNMPOID que implementa el tratamiento de OIDs. ">SNMPOID</a> *<span class="keywordtype">object</span>);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_model_1_1_s_n_m_p_node.html#a66a46613766a6b30fdf2d1af4c58e831">setObject</a>(<a class="code" href="class_model_1_1_s_n_m_p_o_i_d.html">SNMPOID</a> *<span class="keywordtype">object</span>);</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <a class="code" href="class_model_1_1_s_n_m_p_node.html" title="Clase SNMPNode que implementa un nodo del arbol de la MIB. ">SNMPNode</a> *<a class="code" href="class_model_1_1_s_n_m_p_node.html#acaacaebaab979604418136b59014680a" title="Obtiene el nodo padre. ">parent</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <a class="code" href="class_model_1_1_s_n_m_p_node.html">SNMPNode</a> *<a class="code" href="class_model_1_1_s_n_m_p_node.html#acaacaebaab979604418136b59014680a">parent</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_model_1_1_s_n_m_p_node.html#a57486f2d5164858bf30ae2384a867d9d" title="Establece el nodo padre. ">setParent</a>(<a class="code" href="class_model_1_1_s_n_m_p_node.html" title="Clase SNMPNode que implementa un nodo del arbol de la MIB. ">SNMPNode</a> *parent);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_model_1_1_s_n_m_p_node.html#a57486f2d5164858bf30ae2384a867d9d">setParent</a>(<a class="code" href="class_model_1_1_s_n_m_p_node.html">SNMPNode</a> *parent);</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        std::vector&lt;SNMPNode *&gt;&amp; <a class="code" href="class_model_1_1_s_n_m_p_node.html#a8f6cd73310dd019a7b5f894436d919b5" title="Obtiene la lista de nodos hijo. ">childs</a>();</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        std::vector&lt;SNMPNode *&gt;&amp; <a class="code" href="class_model_1_1_s_n_m_p_node.html#a8f6cd73310dd019a7b5f894436d919b5">childs</a>();</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_model_1_1_s_n_m_p_node.html#a4beb8a4d481e54e10240a68192cd00e9" title="Determina si el nodo actual es un nodo interno del arbol. ">isInternalNode</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_model_1_1_s_n_m_p_node.html#a4beb8a4d481e54e10240a68192cd00e9">isInternalNode</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00094"></a><span class="lineno"><a class="code" href="class_model_1_1_s_n_m_p_node.html#aa38f1bae6538e2af65d3e463d219058a">   94</a></span>&#160;        <a class="code" href="class_model_1_1_s_n_m_p_o_i_d.html" title="Clase SNMPOID que implementa el tratamiento de OIDs. ">SNMPOID</a> *<a class="code" href="class_model_1_1_s_n_m_p_node.html#aa38f1bae6538e2af65d3e463d219058a" title="OID asociado al nodo del arbol. ">_object</a>;</div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="class_model_1_1_s_n_m_p_node.html#aa38f1bae6538e2af65d3e463d219058a">   94</a></span>&#160;        <a class="code" href="class_model_1_1_s_n_m_p_o_i_d.html">SNMPOID</a> *<a class="code" href="class_model_1_1_s_n_m_p_node.html#aa38f1bae6538e2af65d3e463d219058a">_object</a>;</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
-<div class="line"><a name="l00099"></a><span class="lineno"><a class="code" href="class_model_1_1_s_n_m_p_node.html#a8d3df70867892d2546be0b2a44cd3a57">   99</a></span>&#160;        <a class="code" href="class_model_1_1_s_n_m_p_node.html" title="Clase SNMPNode que implementa un nodo del arbol de la MIB. ">SNMPNode</a> *<a class="code" href="class_model_1_1_s_n_m_p_node.html#a8d3df70867892d2546be0b2a44cd3a57" title="Nodo padre. ">_parent</a>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="class_model_1_1_s_n_m_p_node.html#a8d3df70867892d2546be0b2a44cd3a57">   99</a></span>&#160;        <a class="code" href="class_model_1_1_s_n_m_p_node.html">SNMPNode</a> *<a class="code" href="class_model_1_1_s_n_m_p_node.html#a8d3df70867892d2546be0b2a44cd3a57">_parent</a>;</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
-<div class="line"><a name="l00104"></a><span class="lineno"><a class="code" href="class_model_1_1_s_n_m_p_node.html#af1b53ec7b852af5c1497448cb5dfb362">  104</a></span>&#160;        std::vector&lt;SNMPNode *&gt; <a class="code" href="class_model_1_1_s_n_m_p_node.html#af1b53ec7b852af5c1497448cb5dfb362" title="Lista de nodos hijo. ">_childs</a>;</div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="class_model_1_1_s_n_m_p_node.html#af1b53ec7b852af5c1497448cb5dfb362">  104</a></span>&#160;        std::vector&lt;SNMPNode *&gt; <a class="code" href="class_model_1_1_s_n_m_p_node.html#af1b53ec7b852af5c1497448cb5dfb362">_childs</a>;</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    };</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;}</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="preprocessor">#endif // SNMPNODE_H</span></div>
+<div class="ttc" id="class_model_1_1_s_n_m_p_node_html_aa38f1bae6538e2af65d3e463d219058a"><div class="ttname"><a href="class_model_1_1_s_n_m_p_node.html#aa38f1bae6538e2af65d3e463d219058a">Model::SNMPNode::_object</a></div><div class="ttdeci">SNMPOID * _object</div><div class="ttdoc">OID asociado al nodo del arbol. </div><div class="ttdef"><b>Definition:</b> snmpnode.h:94</div></div>
+<div class="ttc" id="class_model_1_1_s_n_m_p_node_html_a713f10df6e0589e5abee286cd604fe63"><div class="ttname"><a href="class_model_1_1_s_n_m_p_node.html#a713f10df6e0589e5abee286cd604fe63">Model::SNMPNode::~SNMPNode</a></div><div class="ttdeci">~SNMPNode()</div><div class="ttdoc">Destructor de SNMPNode. </div><div class="ttdef"><b>Definition:</b> snmpnode.cpp:42</div></div>
+<div class="ttc" id="class_model_1_1_s_n_m_p_node_html_af1b53ec7b852af5c1497448cb5dfb362"><div class="ttname"><a href="class_model_1_1_s_n_m_p_node.html#af1b53ec7b852af5c1497448cb5dfb362">Model::SNMPNode::_childs</a></div><div class="ttdeci">std::vector&lt; SNMPNode * &gt; _childs</div><div class="ttdoc">Lista de nodos hijo. </div><div class="ttdef"><b>Definition:</b> snmpnode.h:104</div></div>
+<div class="ttc" id="class_model_1_1_s_n_m_p_node_html_a4beb8a4d481e54e10240a68192cd00e9"><div class="ttname"><a href="class_model_1_1_s_n_m_p_node.html#a4beb8a4d481e54e10240a68192cd00e9">Model::SNMPNode::isInternalNode</a></div><div class="ttdeci">bool isInternalNode() const </div><div class="ttdoc">Determina si el nodo actual es un nodo interno del arbol. </div><div class="ttdef"><b>Definition:</b> snmpnode.cpp:99</div></div>
+<div class="ttc" id="class_model_1_1_s_n_m_p_node_html_a66a46613766a6b30fdf2d1af4c58e831"><div class="ttname"><a href="class_model_1_1_s_n_m_p_node.html#a66a46613766a6b30fdf2d1af4c58e831">Model::SNMPNode::setObject</a></div><div class="ttdeci">void setObject(SNMPOID *object)</div><div class="ttdoc">Establece el OID asociado al nodo del arbol. </div><div class="ttdef"><b>Definition:</b> snmpnode.cpp:63</div></div>
+<div class="ttc" id="class_model_1_1_s_n_m_p_node_html_a8d3df70867892d2546be0b2a44cd3a57"><div class="ttname"><a href="class_model_1_1_s_n_m_p_node.html#a8d3df70867892d2546be0b2a44cd3a57">Model::SNMPNode::_parent</a></div><div class="ttdeci">SNMPNode * _parent</div><div class="ttdoc">Nodo padre. </div><div class="ttdef"><b>Definition:</b> snmpnode.h:99</div></div>
+<div class="ttc" id="snmpoid_8h_html"><div class="ttname"><a href="snmpoid_8h.html">snmpoid.h</a></div><div class="ttdoc">Declaracion de clase SNMPOID. </div></div>
+<div class="ttc" id="class_model_1_1_s_n_m_p_node_html_acaacaebaab979604418136b59014680a"><div class="ttname"><a href="class_model_1_1_s_n_m_p_node.html#acaacaebaab979604418136b59014680a">Model::SNMPNode::parent</a></div><div class="ttdeci">SNMPNode * parent() const </div><div class="ttdoc">Obtiene el nodo padre. </div><div class="ttdef"><b>Definition:</b> snmpnode.cpp:72</div></div>
+<div class="ttc" id="class_model_1_1_s_n_m_p_node_html_ac0ce2452739bf83305f143221d9c52c4"><div class="ttname"><a href="class_model_1_1_s_n_m_p_node.html#ac0ce2452739bf83305f143221d9c52c4">Model::SNMPNode::SNMPNode</a></div><div class="ttdeci">SNMPNode(SNMPOID *object=0, SNMPNode *parent=0)</div><div class="ttdoc">Constructor de SNMPNode. </div><div class="ttdef"><b>Definition:</b> snmpnode.cpp:36</div></div>
+<div class="ttc" id="class_model_1_1_s_n_m_p_node_html_a57486f2d5164858bf30ae2384a867d9d"><div class="ttname"><a href="class_model_1_1_s_n_m_p_node.html#a57486f2d5164858bf30ae2384a867d9d">Model::SNMPNode::setParent</a></div><div class="ttdeci">void setParent(SNMPNode *parent)</div><div class="ttdoc">Establece el nodo padre. </div><div class="ttdef"><b>Definition:</b> snmpnode.cpp:81</div></div>
+<div class="ttc" id="class_model_1_1_s_n_m_p_node_html"><div class="ttname"><a href="class_model_1_1_s_n_m_p_node.html">Model::SNMPNode</a></div><div class="ttdoc">Clase SNMPNode que implementa un nodo del arbol de la MIB. </div><div class="ttdef"><b>Definition:</b> snmpnode.h:40</div></div>
+<div class="ttc" id="class_model_1_1_s_n_m_p_o_i_d_html"><div class="ttname"><a href="class_model_1_1_s_n_m_p_o_i_d.html">Model::SNMPOID</a></div><div class="ttdoc">Clase SNMPOID que implementa el tratamiento de OIDs. </div><div class="ttdef"><b>Definition:</b> snmpoid.h:42</div></div>
+<div class="ttc" id="class_model_1_1_s_n_m_p_node_html_a8f6cd73310dd019a7b5f894436d919b5"><div class="ttname"><a href="class_model_1_1_s_n_m_p_node.html#a8f6cd73310dd019a7b5f894436d919b5">Model::SNMPNode::childs</a></div><div class="ttdeci">std::vector&lt; SNMPNode * &gt; &amp; childs()</div><div class="ttdoc">Obtiene la lista de nodos hijo. </div><div class="ttdef"><b>Definition:</b> snmpnode.cpp:90</div></div>
+<div class="ttc" id="class_model_1_1_s_n_m_p_node_html_a3d0c80205df21db9ee88a5188a4bf87d"><div class="ttname"><a href="class_model_1_1_s_n_m_p_node.html#a3d0c80205df21db9ee88a5188a4bf87d">Model::SNMPNode::object</a></div><div class="ttdeci">SNMPOID * object() const </div><div class="ttdoc">Obtiene el OID asociado al nodo del arbol. </div><div class="ttdef"><b>Definition:</b> snmpnode.cpp:54</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generado el Jueves, 15 de Agosto de 2013 14:04:43 para QMB por &#160;<a href="http://www.doxygen.org/index.html">
+Generado el Miércoles, 23 de Julio de 2014 15:14:56 para QMB por &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.4
+</a> 1.8.7
 </small></address>
 </body>
 </html>
