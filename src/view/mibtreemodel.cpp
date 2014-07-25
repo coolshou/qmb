@@ -1,7 +1,7 @@
 /**
  *  This file is part of QMB.
  *
- *  Copyright (c) 2013 Juan Jose Salazar Garcia jjslzgc@gmail.com
+ *  Copyright (c) 2013 2014 Juan Jose Salazar Garcia jjslzgc@gmail.com
  *
  *  QMB is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -18,39 +18,20 @@
  *
  **/
 
-/**
- * @file mibtreemodel.cpp
- * @brief Implementacion de metodos de la clase MIBTreeModel
- * @author Juan Jose Salazar Garcia, jjslzgc@gmail.com
- * @version 0.1.0
- * @date Agosto 2013
- */
-
 #include "mibtreemodel.h"
 #include "snmpnode.h"
 
-/**
- * @brief Constructor de MIBTreeModel
- * @param parent Objeto padre
- */
 View::MIBTreeModel::MIBTreeModel(QObject *parent) : QAbstractItemModel(parent)
 {
     _root = 0;
 }
 
-/**
- * @brief Destructor de MIBTreeModel
- */
 View::MIBTreeModel::~MIBTreeModel()
 {
     if(_root)
         delete _root;
 }
 
-/**
- * @brief Establece el nodo raiz del arbol de la MIB
- * @param root nodo raiz del arbol de la MIB
- */
 void View::MIBTreeModel::setRoot(Model::SNMPNode *root)
 {
     if(_root)
@@ -61,13 +42,6 @@ void View::MIBTreeModel::setRoot(Model::SNMPNode *root)
     reset();
 }
 
-/**
- * @brief Redefinicion de metodo QAbstractItemModel::index(..) usado por la vista y el modelo para crear nuevos indices
- * @param row Fila
- * @param column Columna
- * @param parent Indice padre
- * @return Nuevo indice
- */
 QModelIndex View::MIBTreeModel::index(int row, int column, const QModelIndex &parent) const
 {
     if(!_root) // Nodo raiz no establecido
@@ -79,11 +53,6 @@ QModelIndex View::MIBTreeModel::index(int row, int column, const QModelIndex &pa
     return createIndex(row, column, parentNode -> childs().at(row));
 }
 
-/**
- * @brief Redefinicion de metodo QAbstractItemModel::parent(..) usado por la vista y el modelo para la obtencion del indice padre a partir de un hijo
- * @param child Indice hijo
- * @return Indice padre
- */
 QModelIndex View::MIBTreeModel::parent(const QModelIndex &child) const
 {
     Model::SNMPNode *node = nodeFromIndex(child);
@@ -107,11 +76,6 @@ QModelIndex View::MIBTreeModel::parent(const QModelIndex &child) const
 
 }
 
-/**
- * @brief Obtiene el numero de filas de un item (numero de hijos)
- * @param parent Indice padre
- * @return Numero de filas
- */
 int View::MIBTreeModel::rowCount(const QModelIndex &parent) const
 {
     Model::SNMPNode *parentNode = nodeFromIndex(parent);
@@ -123,11 +87,6 @@ int View::MIBTreeModel::rowCount(const QModelIndex &parent) const
 
 }
 
-/**
- * @brief Obtiene el numero de columnas de un item
- * @param parent Indice padre
- * @return Numero de columnas
- */
 int View::MIBTreeModel::columnCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
@@ -135,12 +94,6 @@ int View::MIBTreeModel::columnCount(const QModelIndex &parent) const
     return 1;
 }
 
-/**
- * @brief Obtiene el dato del item para la vista
- * @param index Indice
- * @param role Rol
- * @return Dato del item
- */
 QVariant View::MIBTreeModel::data(const QModelIndex &index, int role) const
 {
     if(role != Qt::DisplayRole)
@@ -157,13 +110,6 @@ QVariant View::MIBTreeModel::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
-/**
- * @brief Obtiene la etiquetas de las cabeceras vertical y horizontal para la vista
- * @param section Fila/Columna (segun orientacion)
- * @param orientation Orientacion
- * @param role Rol
- * @return Etiqueta de la cabecera
- */
 QVariant View::MIBTreeModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
     if(orientation == Qt::Horizontal && role == Qt::DisplayRole && section == 0)
@@ -172,11 +118,6 @@ QVariant View::MIBTreeModel::headerData(int section, Qt::Orientation orientation
     return QVariant();
 }
 
-/**
- * @brief Obtiene el nodo del arbol asociado a un item (indice)
- * @param index Indice del item
- * @return  nodo del arbol asociado
- */
 Model::SNMPNode *View::MIBTreeModel::nodeFromIndex(const QModelIndex& index) const
 {
     // El nodo raiz del arbol usa un indice invalido

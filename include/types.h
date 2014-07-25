@@ -1,7 +1,7 @@
 /**
  *  This file is part of QMB.
  *
- *  Copyright (c) 2013 Juan Jose Salazar Garcia jjslzgc@gmail.com
+ *  Copyright (c) 2013 2014 Juan Jose Salazar Garcia jjslzgc@gmail.com
  *
  *  QMB is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -18,14 +18,6 @@
  *
  **/
 
-/**
- * @file types.h
- * @brief Declaracion de tipos
- * @author Juan Jose Salazar Garcia, jjslzgc@gmail.com
- * @version 0.1.0
- * @date Junio 2013
- */
-
 #ifndef TYPES_H
 #define TYPES_H
 
@@ -34,106 +26,70 @@
 
 namespace Model
 { 
-    /**
-     * @brief Version SNMP utilizada
-     */
     typedef enum SNMPVersionEnum {
-        SNMPv1 = SNMP_VERSION_1,  /**< SNMP VERSION 1 */
-        SNMPv2 = SNMP_VERSION_2c, /**< SNMP VERSION 2 */
-        SNMPv3 = SNMP_VERSION_3   /**< SNMP VERSION 3 */
+        SNMPv1 = SNMP_VERSION_1,
+        SNMPv2 = SNMP_VERSION_2c,
+        SNMPv3 = SNMP_VERSION_3
     } SNMPVersion;
 
-    /**
-     * @brief Tipo de PDU SNMP
-     */
     typedef enum SNMPPDUTypeEnum {
-        SNMPPDUGet      = SNMP_MSG_GET,         /**< PDU de peticion GET */
-        SNMPPDUGetNext  = SNMP_MSG_GETNEXT,     /**< PDU de peticion GETNEXT */
-        SNMPPDUGetBulk  = SNMP_MSG_GETBULK,     /**< PDU de peticion GETBULK */
-        SNMPPDUSet      = SNMP_MSG_SET,         /**< PDU de peticion SET */
-        SNMPPDUResponse = SNMP_MSG_RESPONSE     /**< PDU de respuesta */
+        SNMPPDUGet      = SNMP_MSG_GET,
+        SNMPPDUGetNext  = SNMP_MSG_GETNEXT,
+        SNMPPDUGetBulk  = SNMP_MSG_GETBULK,
+        SNMPPDUSet      = SNMP_MSG_SET,
+        SNMPPDUResponse = SNMP_MSG_RESPONSE
     } SNMPPDUType;
 
-    /**
-     * @brief Tipo de dato SNMP
-     */
     typedef enum SNMPDataTypeEnum {
-        SNMPDataUnknown     = -1,               /**< Tipo Desconocido */
-        SNMPDataNull        = ASN_NULL,         /**< Tipo Null */
-        SNMPDataInteger     = ASN_INTEGER,      /**< Tipo Integer */
-        SNMPDataUnsigned    = ASN_UNSIGNED,     /**< Tipo Unsigned */
-        SNMPDataOctetString = ASN_OCTET_STR,    /**< Tipo String */
-        SNMPDataBits        = ASN_BIT8,         /**< Tipo Bits */
-        SNMPDataBitString   = ASN_BIT_STR,      /**< Tipo Bit String */
-        SNMPDataObjectId    = ASN_OBJECT_ID,    /**< Tipo OID */
-        SNMPDataIPAddress   = ASN_IPADDRESS,    /**< Tipo IP Address */
-        SNMPDataCounter     = ASN_COUNTER,      /**< Tipo Counter */
-        SNMPDataCounter64   = ASN_COUNTER64,    /**< Tipo Counter64 */
-        SNMPDataGauge       = ASN_GAUGE,        /**< Tipo Gauge */
-        SNMPDataTimeTicks   = ASN_TIMETICKS     /**< Tipo Time Ticks */
+        SNMPDataUnknown     = -1,
+        SNMPDataNull        = ASN_NULL,
+        SNMPDataInteger     = ASN_INTEGER,
+        SNMPDataUnsigned    = ASN_UNSIGNED,
+        SNMPDataOctetString = ASN_OCTET_STR,
+        SNMPDataBits        = ASN_BIT8,
+        SNMPDataBitString   = ASN_BIT_STR,
+        SNMPDataObjectId    = ASN_OBJECT_ID,
+        SNMPDataIPAddress   = ASN_IPADDRESS,
+        SNMPDataCounter     = ASN_COUNTER,
+        SNMPDataCounter64   = ASN_COUNTER64,
+        SNMPDataGauge       = ASN_GAUGE,
+        SNMPDataTimeTicks   = ASN_TIMETICKS
     } SNMPDataType;
 
-    /**
-     * @brief Estado del objeto de la MIB
-     */
     typedef enum MIBStatusEnum {
-        MIBStatusMandatory  = MIB_STATUS_MANDATORY,   /**< Estado Mandatory */
-        MIBStatusOptional   = MIB_STATUS_OPTIONAL,    /**< Estado Optional */
-        MIBStatusObsolete   = MIB_STATUS_OBSOLETE,    /**< Estado Obsolete */
-        MIBStatusDeprecated = MIB_STATUS_DEPRECATED   /**< Estado Deprecated */
+        MIBStatusMandatory  = MIB_STATUS_MANDATORY,
+        MIBStatusOptional   = MIB_STATUS_OPTIONAL,
+        MIBStatusObsolete   = MIB_STATUS_OBSOLETE,
+        MIBStatusDeprecated = MIB_STATUS_DEPRECATED
     } MIBStatus;
 
-    /**
-     * @brief Model de acceso del objeto de la MIB
-     */
     typedef enum MIBAccessEnum {
-        MIBAccessReadOnly      = MIB_ACCESS_READONLY,  /**< Acceso Read-Only */
-        MIBAccessReadWrite     = MIB_ACCESS_READWRITE, /**< Acceso Read-Write */
-        MIBAccessWriteOnly     = MIB_ACCESS_WRITEONLY, /**< Acceso Write-Only */
-        MIBAccessNotAccessible = MIB_ACCESS_NOACCESS   /**< Acceso Not-Accessible */
+        MIBAccessReadOnly      = MIB_ACCESS_READONLY,
+        MIBAccessReadWrite     = MIB_ACCESS_READWRITE,
+        MIBAccessWriteOnly     = MIB_ACCESS_WRITEONLY,
+        MIBAccessNotAccessible = MIB_ACCESS_NOACCESS
     } MIBAccess;
 
-    /**
-     * @brief Valor tomado por un dato en SNMP
-     */
     typedef netsnmp_vardata SNMPValue;
 
-    /**
-     * @brief Contador de 64 bits
-     */
     typedef struct counter64 SNMPCounter64;
 
-    /**
-     * @brief Sesion SNMP Gestor-Agente
-     */
     typedef netsnmp_session SNMPSession;
 
-    /**
-     * @brief PDU SNMP Peticion/Respuesta
-     */
     typedef struct snmp_pdu SNMPPDU;
 
-    /**
-     * @brief Lista de variables de PDU SNMP
-     */
     typedef netsnmp_variable_list SNMPVariableList;
 
-    /**
-     * @brief Arbol de la MIB
-     */
     typedef struct tree SNMPMIBTree;
 }
 
 namespace Test
 {
-    /**
-     * @brief Operation de test
-     */
     typedef enum TestOperationEnum {
-        TestGet,     /**< Probar SNMP GET */
-        TestGetNext, /**< Probar SNMP GET NEXT */
-        TestGetBulk, /**< Probar SNMP GET BULK */
-        TestSet      /**< Probar SNMP SET */
+        TestGet,
+        TestGetNext,
+        TestGetBulk,
+        TestSet
     } TestOperation;
 }
 

@@ -1,7 +1,7 @@
 /**
  *  This file is part of QMB.
  *
- *  Copyright (c) 2013 Juan Jose Salazar Garcia jjslzgc@gmail.com
+ *  Copyright (c) 2014 Juan Jose Salazar Garcia jjslzgc@gmail.com
  *
  *  QMB is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -18,22 +18,10 @@
  *
  **/
 
-/**
- * @file persistencemanager.cpp
- * @brief Implementacion de metodos de la clase PersistenceManager
- * @author Juan Jose Salazar Garcia, jjslzgc@gmail.com
- * @version 0.1.0
- * @date Agosto 2013
- */
-
 #include "persistencemanager.h"
 #include "global.h"
 #include <QSettings>
 
-/**
- * @brief Determina si existe o no la configuracion
- * @return true si existe la configuracion y false en caso contrario
- */
 bool Persistence::PersistenceManager::existsConfig()
 {
     QSettings setting(ORGANIZATION_NAME, APPLICATION_NAME);
@@ -41,11 +29,6 @@ bool Persistence::PersistenceManager::existsConfig()
     return setting.value("Executed", false).toBool();
 }
 
-/**
- * @brief Crea la configuracion por defecto
- * @param overwrite Si existe la configuracion esta sera sobreescrita
- * @return true si se ha creado correctamente y false en caso contrario
- */
 bool Persistence::PersistenceManager::createConfig(bool overwrite)
 {
     if(existsConfig() && !overwrite)
@@ -63,10 +46,6 @@ bool Persistence::PersistenceManager::createConfig(bool overwrite)
     return true;
 }
 
-/**
- * @brief Borra la configuracion
- * @return true si se ha borrado correctamente o false en caso contrario
- */
 bool Persistence::PersistenceManager::deleteConfig()
 {
     QSettings setting(ORGANIZATION_NAME, APPLICATION_NAME);
@@ -79,12 +58,6 @@ bool Persistence::PersistenceManager::deleteConfig()
     return true;
 }
 
-/**
- * @brief Lee el valor correspondiente a la clave perteneciente a un grupo de la configuracion
- * @param key Clave
- * @param group Grupo al que pertenece la clave
- * @return Valor correspondiente al grupo y clave
- */
 QVariant Persistence::PersistenceManager::readConfig(const QString &key, const QString &group)
 {
     QSettings setting(ORGANIZATION_NAME, APPLICATION_NAME);
@@ -97,13 +70,6 @@ QVariant Persistence::PersistenceManager::readConfig(const QString &key, const Q
     return QVariant();
 }
 
-/**
- * @brief Escribe el valor correspondiente a la clave perteneciente a un grupo de la configuracion
- * @param value Valor
- * @param key Clave
- * @param group Grupo al que pertenece la clave
- * @return true si el valor se escribio correscamente y false en caso contrario
- */
 bool Persistence::PersistenceManager::writeConfig(const QVariant &value, const QString &key, const QString &group)
 {
     QSettings setting(ORGANIZATION_NAME, APPLICATION_NAME);
@@ -119,4 +85,3 @@ bool Persistence::PersistenceManager::writeConfig(const QVariant &value, const Q
 
     return true;
 }
-

@@ -1,7 +1,7 @@
 /**
  *  This file is part of QMB.
  *
- *  Copyright (c) 2013 Juan Jose Salazar Garcia jjslzgc@gmail.com
+ *  Copyright (c) 2013 2014 Juan Jose Salazar Garcia jjslzgc@gmail.com
  *
  *  QMB is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -18,22 +18,11 @@
  *
  **/
 
-/**
- * @file snmpmanager.cpp
- * @brief Implementacion de metodos de la clase SNMPManager
- * @author Juan Jose Salazar Garcia, jjslzgc@gmail.com
- * @version 0.1.0
- * @date Junio 2013
- */
-
 #include <net-snmp/net-snmp-config.h>
 #include <net-snmp/net-snmp-includes.h>
 #include "snmpmanager.h"
 #include <algorithm>
 
-/**
- * @brief Inicializa la libreria SNMP
- */
 void Model::SNMPManager::initSNMP()
 {
     if(!_initialized) {
@@ -42,12 +31,6 @@ void Model::SNMPManager::initSNMP()
     }
 }
 
-/**
- * @brief Establece parametros de configuracion para una sesion SNMP
- * @param remotePort Numero de puerto del agente SNMP remoto
- * @param retries Numero de reintentos
- * @param timeout Numero de uSegundos para producirse un timeout
- */
 void Model::SNMPManager::configSNMP(unsigned short remotePort, unsigned short retries, long timeout)
 {
     _remotePort = remotePort;
@@ -55,14 +38,6 @@ void Model::SNMPManager::configSNMP(unsigned short remotePort, unsigned short re
     _timeout = timeout;
 }
 
-/**
- * @brief Envia mensaje de peticion SNMP GET y recibe mensaje de respuesta.
- * @param version Version de SNMP utilizada.
- * @param community Nombre de la comunidad.
- * @param agent Dirección IP o nombre de dominio del agente SNMP.
- * @param oids Lista de OIDs
- * @throw SNMPException
- */
 void Model::SNMPManager::snmpget(SNMPVersion version,
                                  const std::string& community,
                                  const std::string& agent,
@@ -74,14 +49,6 @@ void Model::SNMPManager::snmpget(SNMPVersion version,
     snmpoperation(SNMPPDUGet, version, community, agent, oids);
 }
 
-/**
- * @brief Envia mensaje de peticion SNMP GETNEXT y recibe mensaje de respuesta.
- * @param version Version de SNMP utilizada.
- * @param community Nombre de la comunidad.
- * @param agent Dirección IP o nombre de dominio del agente SNMP.
- * @param oids Lista de OIDs
- * @throw SNMPException
- */
 void Model::SNMPManager::snmpgetnext(SNMPVersion version,
                                      const std::string& community,
                                      const std::string& agent,
@@ -93,16 +60,6 @@ void Model::SNMPManager::snmpgetnext(SNMPVersion version,
     snmpoperation(SNMPPDUGetNext, version, community, agent, oids);
 }
 
-/**
- * @brief Envia mensaje de peticion SNMP GET BULK y recibe mensaje de respuesta.
- * @param version Version de SNMP utilizada.
- * @param community Nombre de la comunidad.
- * @param agent Dirección IP o nombre de dominio del agente SNMP.
- * @param oids Lista de OIDs
- * @param nrepeaters Numero de variables sobre las que no se iterara
- * @param mrepetitions Numero de iteraciones sobre cada variable
- * @throw SNMPException
- */
 void Model::SNMPManager::snmpgetbulk(SNMPVersion version,
                                      const std::string& community,
                                      const std::string& agent,
@@ -119,14 +76,6 @@ void Model::SNMPManager::snmpgetbulk(SNMPVersion version,
     snmpoperation(SNMPPDUGetBulk, version, community, agent, oids, nrepeaters, mrepetitions);
 }
 
-/**
- * @brief Envia mensaje de peticion SNMP SET y recibe mensaje de respuesta.
- * @param version Version de SNMP utilizada.
- * @param community Nombre de la comunidad.
- * @param agent Dirección IP o nombre de dominio del agente SNMP.
- * @param oids Lista de OIDs con su tipo y valor
- * @throw SNMPException
- */
 void Model::SNMPManager::snmpset(SNMPVersion version,
                                  const std::string& community,
                                  const std::string& agent,
@@ -138,10 +87,6 @@ void Model::SNMPManager::snmpset(SNMPVersion version,
     snmpoperation(SNMPPDUSet, version, community, agent, oids);
 }
 
-/**
- * @brief Obtiene el arbol del modulo SNMPv2-MIB
- * @return Arbol MIB
- */
 Model::SNMPNode *Model::SNMPManager::getMIBTree()
 {
     SNMPNode *root = 0;         // Nodo raiz del arbol de la MIB
@@ -168,14 +113,6 @@ Model::SNMPNode *Model::SNMPManager::getMIBTree()
     return root;
 }
 
-/**
- * @brief Crea, inicializa y abre una session SNMP Agente-Gestor
- * @param version Version de SNMP utilizada.
- * @param community Nombre de la comunidad.
- * @param agent Dirección IP o nombre de dominio del agente SNMP.
- * @throw SNMPException
- * @return Sesion SNMP Agente-Gestor inicializada y abierta.
- */
 Model::SNMPSession *Model::SNMPManager::createSession(SNMPVersion version,
                                                       const std::string& community,
                                                       const std::string& agent) throw(SNMPException)
@@ -204,15 +141,6 @@ Model::SNMPSession *Model::SNMPManager::createSession(SNMPVersion version,
     return openedSession;
 }
 
-/**
- * @brief Crea una PDU SNMP de peticion
- * @param type Tipo de PDU SNMP
- * @param oids Lista de OIDs
- * @param nrepeaters Numero de variables sobre las que no se iterara
- * @param mrepetitions Numero de iteraciones sobre cada variable
- * @throw SNMPException
- * @return PDU SNMP
- */
 Model::SNMPPDU *Model::SNMPManager::createPDU(SNMPPDUType type,
                                               const std::vector<SNMPOID *>& oids,
                                               unsigned short nrepeaters,
@@ -269,13 +197,6 @@ Model::SNMPPDU *Model::SNMPManager::createPDU(SNMPPDUType type,
     return pdu;
 }
 
-/**
- * @brief Envia la PDU SNMP de peticion a traves de una sesion Gestor-Agente
- * @param session Gestion SNMP Gestor-Agente
- * @param pdu PDU SNMP de peticion
- * @throw SNMPException
- * @return PDU de respuesta
- */
 Model::SNMPPDU *Model::SNMPManager::sendPDU(SNMPSession *session, SNMPPDU *pdu) throw(SNMPException)
 {
     SNMPPDU *response;  // PDU SNMP de respuesta
@@ -296,11 +217,6 @@ Model::SNMPPDU *Model::SNMPManager::sendPDU(SNMPSession *session, SNMPPDU *pdu) 
         throw SNMPSessionException(*session, "Error en sesion SNMP");
 }
 
-/**
- * @brief Procesa la PDU SNMP de respuesta del agente
- * @param pdu PDU SNMP de respuesta
- * @param oids Lista de OIDs
- */
 void Model::SNMPManager::processResponse(SNMPPDU *pdu, std::vector<SNMPOID *>& oids, SNMPPDUType type)
 {
     if(type != SNMPPDUSet) {
@@ -324,17 +240,6 @@ void Model::SNMPManager::processResponse(SNMPPDU *pdu, std::vector<SNMPOID *>& o
     }
 }
 
-/**
- * @brief Invoca una operacion SNMP de consulta (GET, GETNEXT, GET BULK) o modificacion (SET)
- * @param type Tipo de PDU de peticion
- * @param version Version de SNMP utilizada.
- * @param community Nombre de la comunidad.
- * @param agent Dirección IP o nombre de dominio del agente SNMP.
- * @param oids Lista de OIDs
- * @param nrepeaters Numero de variables sobre las que no se iterara
- * @param mrepetitions Numero de iteraciones sobre cada variable
- * @throw SNMPException
- */
 void Model::SNMPManager::snmpoperation(SNMPPDUType type,
                                        SNMPVersion version,
                                        const std::string& community,
@@ -359,11 +264,6 @@ void Model::SNMPManager::snmpoperation(SNMPPDUType type,
     SOCK_CLEANUP;                                                 // Liberacion de recursos para SOs win32 (Sin efecto en SOs Unix).
 }
 
-/**
- * @brief Parsea un modulo MIB para generar un arbol del mismo
- * @param root Nodo raiz del subarbol de la MIB
- * @param tree Puntero al objeto del modulo de la MIB parseado
- */
 void Model::SNMPManager::snmpParseMIB(SNMPNode *root, SNMPMIBTree *tree)
 {
     oid *parseOID;              // OID en notacion numerica del objeto parseado
@@ -417,22 +317,10 @@ void Model::SNMPManager::snmpParseMIB(SNMPNode *root, SNMPMIBTree *tree)
     }
 }
 
-/**
- * @brief Inicializacion de atributo estatico _initialized
- */
 bool Model::SNMPManager::_initialized = false;
 
-/**
- * @brief Numero de puerto del agente SNMP remoto
- */
 unsigned short Model::SNMPManager::_remotePort = DEFAULT_REMOTE_PORT;
 
-/**
- * @brief Numero de reintentos
- */
 unsigned short Model::SNMPManager::_retries = DEFAULT_RETRIES;
 
-/**
- * @brief Numero de uSegundos para producirse un timeout
- */
 long Model::SNMPManager::_timeout = DEFAULT_TIMEOUT;

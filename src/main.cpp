@@ -1,7 +1,7 @@
 /**
  *  This file is part of QMB.
  *
- *  Copyright (c) 2013 Juan Jose Salazar Garcia jjslzgc@gmail.com
+ *  Copyright (c) 2013 2014 Juan Jose Salazar Garcia jjslzgc@gmail.com
  *
  *  QMB is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -18,14 +18,6 @@
  *
  **/
 
-/**
- * @file main.cpp
- * @brief Implementacion de funcion principal
- * @author Juan Jose Salazar Garcia, jjslzgc@gmail.com
- * @version 0.1.0
- * @date Junio 2013
- */
-
 #include <QApplication>
 #include "persistencemanager.h"
 #include "mainwindow.h"
@@ -37,12 +29,6 @@
 void setUpApplication(QApplication *app);
 bool verifyConfig();
 
-/**
- * @brief Implementa la funcion principal
- * @param argc Numero de argumentos
- * @param argv Argumentos de la linea de ordenes
- * @return Codigo de finalizacion de ejecucion, 0 con exito, 1 con errores.
- */
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
@@ -62,14 +48,8 @@ int main(int argc, char *argv[])
     window.show();
 
     return app.exec();
-
-    return 0;
 }
 
-/**
- * @brief Establece las propiedades de la aplicacion
- * @param app Puntero a instancia de QApplication de control de flujo de ejecucion.
- */
 void setUpApplication(QApplication *app)
 {
     if(!app)

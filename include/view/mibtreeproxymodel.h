@@ -1,7 +1,7 @@
 /**
  *  This file is part of QMB.
  *
- *  Copyright (c) 2013 Juan Jose Salazar Garcia jjslzgc@gmail.com
+ *  Copyright (c) 2013 2014 Juan Jose Salazar Garcia jjslzgc@gmail.com
  *
  *  QMB is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -18,14 +18,6 @@
  *
  **/
 
-/**
- * @file mibtreeproxymodel.h
- * @brief Declaracion de clase MIBTreeProxyModel
- * @author Juan Jose Salazar Garcia, jjslzgc@gmail.com
- * @version 0.1.0
- * @date Agosto 2013
- */
-
 #ifndef MIBTREEPROXYMODEL_H
 #define MIBTREEPROXYMODEL_H
 
@@ -33,25 +25,12 @@
 
 namespace View
 {
-    /**
-     * @brief Clase MIBTreeProxyModel que implementa un modelo proxy para la ordenacion/filtrado de un modelo origen
-     */
     class MIBTreeProxyModel : public QSortFilterProxyModel
     {
         Q_OBJECT
     public:
-        /**
-         * @brief Constructor de MIBTreeProxyModel
-         * @param parent Objeto padre
-         */
         MIBTreeProxyModel(QObject *parent = 0);
     protected:
-        /**
-         * @brief Determina si un item referido por su indice es o no es mayor que otro item
-         * @param left Indice del primer item
-         * @param right Indice del segundo item
-         * @return True si left < right y false en caso contrario
-         */
         bool lessThan(const QModelIndex &left, const QModelIndex &right) const;
     };
 }

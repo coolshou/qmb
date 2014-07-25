@@ -1,7 +1,7 @@
 /**
  *  This file is part of QMB.
  *
- *  Copyright (c) 2013 Juan Jose Salazar Garcia jjslzgc@gmail.com
+ *  Copyright (c) 2013 2014 Juan Jose Salazar Garcia jjslzgc@gmail.com
  *
  *  QMB is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -18,14 +18,6 @@
  *
  **/
 
-/**
- * @file oideditordialog.cpp
- * @brief Implementacion de metodos de la clase OIDEditorDialog
- * @author Juan Jose Salazar Garcia, jjslzgc@gmail.com
- * @version 0.1.0
- * @date Agosto 2013
- */
-
 #include "oideditordialog.h"
 #include "snmpoid.h"
 #include <QLabel>
@@ -35,11 +27,6 @@
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 
-/**
- * @brief Constructor de OIDEditorDialog
- * @param object OID al que asignar el valor
- * @param parent Widget padre
- */
 View::OIDEditorDialog::OIDEditorDialog(Model::SNMPOID *object, QWidget *parent) : QDialog(parent), _object(object)
 {
     createWidgets();
@@ -49,10 +36,6 @@ View::OIDEditorDialog::OIDEditorDialog(Model::SNMPOID *object, QWidget *parent) 
     loadObject();
 }
 
-/**
- * @brief Establece el resultado de Aceptado/Rechazado del cuadro de dialogo
- * @param result Resultado del cuadro de dialogo
- */
 void View::OIDEditorDialog::done(int result)
 {
     if(result)
@@ -61,18 +44,11 @@ void View::OIDEditorDialog::done(int result)
     QDialog::done(result);
 }
 
-/**
- * @brief Ranura en habilita/inhabilita el boton ok
- * @param text Texto en QLineEdit
- */
 void View::OIDEditorDialog::textChangedOnValueLineEdit(QString text)
 {
     _okPushButton -> setEnabled(!text.isEmpty());
 }
 
-/**
- * @brief Crea los widgets
- */
 void View::OIDEditorDialog::createWidgets()
 {
     _nameLabel = new QLabel(tr("Name:"));
@@ -119,9 +95,6 @@ void View::OIDEditorDialog::createWidgets()
     setLayout(mainLayout);
 }
 
-/**
- * @brief Establece las conexiones
- */
 void View::OIDEditorDialog::createConnections()
 {
     connect(_valueLineEdit, SIGNAL(textChanged(QString)), this, SLOT(textChangedOnValueLineEdit(QString)));
@@ -129,9 +102,6 @@ void View::OIDEditorDialog::createConnections()
     connect(_cancelPushButton, SIGNAL(clicked()), this, SLOT(reject()));
 }
 
-/**
- * @brief Carga el OID en el cuadro de dialogo
- */
 void View::OIDEditorDialog::loadObject()
 {
     QString type;
@@ -155,10 +125,7 @@ void View::OIDEditorDialog::loadObject()
     _oidValue -> setText(_object -> strOID().c_str());
     _typeValue -> setText(type);
 }
-#include <QDebug>
-/**
- * @brief Guarda el valor introducido en el OID
- */
+
 void View::OIDEditorDialog::saveObject()
 {
     switch(_object -> data() -> type()) {

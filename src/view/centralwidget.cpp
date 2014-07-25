@@ -1,7 +1,7 @@
 /**
  *  This file is part of QMB.
  *
- *  Copyright (c) 2013 Juan Jose Salazar Garcia jjslzgc@gmail.com
+ *  Copyright (c) 2013 2014 Juan Jose Salazar Garcia jjslzgc@gmail.com
  *
  *  QMB is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -17,14 +17,6 @@
  *  along with QMB.  If not, see <http://www.gnu.org/licenses/>.
  *
  **/
-
-/**
- * @file centralwidget.cpp
- * @brief Implementacion de metodos de la clase CentralWidget
- * @author Juan Jose Salazar Garcia, jjslzgc@gmail.com
- * @version 0.1.0
- * @date Julio 2013
- */
 
 #include "centralwidget.h"
 #include "mibtreemodel.h"
@@ -46,10 +38,6 @@
 #include <QMessageBox>
 #include <QInputDialog>
 
-/**
- * @brief Constructor de CentralWidget
- * @param parent Widget padre
- */
 View::CentralWidget::CentralWidget(QWidget *parent) : QWidget(parent)
 {
     createWidgets();
@@ -58,18 +46,12 @@ View::CentralWidget::CentralWidget(QWidget *parent) : QWidget(parent)
     loadProperties();
 }
 
-/**
- * @brief Destructor de CentralWidget
- */
 View::CentralWidget::~CentralWidget()
 {
     delete _mibTreeModel;
     delete _mibTreeProxyModel;
 }
 
-/**
- * @brief Carga el arbol MIB en el modelo MIBTreeModel
- */
 void View::CentralWidget::loadMIBTree()
 {
     emit statusChanged(tr("Loading MIB Tree ..."));
@@ -83,9 +65,6 @@ void View::CentralWidget::loadMIBTree()
     emit statusChanged(tr("MIB Tree loaded successfully"));
 }
 
-/**
- * @brief Invoca operacion SNMP
- */
 void View::CentralWidget::invokeOperation()
 {
     QObject *sender = QObject::sender();
@@ -160,9 +139,6 @@ void View::CentralWidget::invokeOperation()
     }
 }
 
-/**
- * @brief Establece las propiedades de la sesion SNMP
- */
 void View::CentralWidget::properties()
 {
     PropertiesDialog dialog(_community, _nonRepeaters, _maxRepetitions, this);
@@ -174,9 +150,6 @@ void View::CentralWidget::properties()
     }
 }
 
-/**
- * @brief Activa/Desactiva botones de operacion ante cambios en los otros widgets
- */
 void View::CentralWidget::readyToInvoke()
 {
     QModelIndex index;
@@ -198,9 +171,6 @@ void View::CentralWidget::readyToInvoke()
     _setPushButton -> setEnabled(agent && row != -1 && !internalNode);
 }
 
-/**
- * @brief Crea los widgets
- */
 void View::CentralWidget::createWidgets()
 {
     _agentLabel = new QLabel(tr("&Agent: "));
@@ -274,9 +244,6 @@ void View::CentralWidget::createWidgets()
     setLayout(mainLayout);
 }
 
-/**
- * @brief Establece las conexiones
- */
 void View::CentralWidget::createConnections()
 {
     connect(_propertiesButton, SIGNAL(clicked()), this, SLOT(properties()));
@@ -289,9 +256,6 @@ void View::CentralWidget::createConnections()
     connect(_mibTreeView -> selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)), this, SLOT(readyToInvoke()));
 }
 
-/**
- * @brief Carga las propiedades de la sesion SNMP
- */
 void View::CentralWidget::loadProperties()
 {
     _community = DEFAULT_COMMUNITY_NAME;

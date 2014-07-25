@@ -1,7 +1,7 @@
 /**
  *  This file is part of QMB.
  *
- *  Copyright (c) 2013 Juan Jose Salazar Garcia jjslzgc@gmail.com
+ *  Copyright (c) 2013 2014 Juan Jose Salazar Garcia jjslzgc@gmail.com
  *
  *  QMB is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -18,32 +18,15 @@
  *
  **/
 
-/**
- * @file snmpdata.cpp
- * @brief Implementacion de metodos de la clase SNMPData
- * @author Juan Jose Salazar Garcia, jjslzgc@gmail.com
- * @version 0.1.0
- * @date Julio 2013
- */
-
 #include "snmpdata.h"
 #include <algorithm>
 #include <sstream>
 
-/**
- * @brief Constructor de SNMPData
- * @param type Tipo de dato
- * @param value Valor del dato
- */
 Model::SNMPData::SNMPData(SNMPDataType type, void *value, size_t length) : _type(type), _length(length)
 {
     initValue(value);
 }
 
-/**
- * @brief Constructor copia de SNMPData
- * @param snmpData Objeto origen
- */
 Model::SNMPData::SNMPData(const SNMPData& snmpData)
 {
     _type = SNMPDataUnknown;
@@ -54,19 +37,11 @@ Model::SNMPData::SNMPData(const SNMPData& snmpData)
     *this = snmpData;
 }
 
-/**
- * @brief Destructor de SNMPData
- */
 Model::SNMPData::~SNMPData()
 {
     deleteValue();
 }
 
-/**
- * @brief Redefinicion de operador de asignacion
- * @param snmpData Objeto origen
- * @return
- */
 Model::SNMPData& Model::SNMPData::operator=(const SNMPData& snmpData)
 {
     _type = snmpData.type();
@@ -76,10 +51,6 @@ Model::SNMPData& Model::SNMPData::operator=(const SNMPData& snmpData)
     return *this;
 }
 
-/**
- * @brief Devuelve el valor del dato
- * @return Valor del dato
- */
 void *Model::SNMPData::value() const
 {
     void *vp;
@@ -112,10 +83,6 @@ void *Model::SNMPData::value() const
     return vp;
 }
 
-/**
- * @brief Establece el valor del dato
- * @param value Valor del dato
- */
 void Model::SNMPData::setValue(void *value)
 {
     deleteValue();
@@ -162,10 +129,6 @@ void Model::SNMPData::setValue(void *value)
     }
 }
 
-/**
- * @brief Establece el valor del dato
- * @param value Valor del dato
- */
 void Model::SNMPData::setValue(const SNMPValue &value)
 {
     switch(_type) {
@@ -198,46 +161,26 @@ void Model::SNMPData::setValue(const SNMPValue &value)
     }
 }
 
-/**
- * @brief Devuelve la longitud del valor del dato
- * @return Longitud del valor del dato
- */
 size_t Model::SNMPData::length() const
 {
     return _length;
 }
 
-/**
- * @brief Establece la longitud del valor del dato
- * @param length Longitud del valor del dato
- */
 void Model::SNMPData::setLength(size_t length)
 {
     _length = length;
 }
 
-/**
- * @brief Devuelve el tipo del dato
- * @return Tipo del dato
- */
 Model::SNMPDataType Model::SNMPData::type() const
 {
     return _type;
 }
 
-/**
- * @brief Establece el tipo del dato
- * @param type Tipo del dato
- */
 void Model::SNMPData::setType(SNMPDataType type)
 {
     _type = type;
 }
 
-/**
- * @brief Obtiene representacion textual del valor del dato
- * @return Representacion textual del valor del dato
- */
 std::string Model::SNMPData::toString() const
 {
     std::stringstream ss;
@@ -272,10 +215,6 @@ std::string Model::SNMPData::toString() const
     return ss.str();
 }
 
-/**
- * @brief Inicializa el valor del dato
- * @param value Valor del dato
- */
 void Model::SNMPData::initValue(void *value)
 {
     switch(_type) {
@@ -308,9 +247,6 @@ void Model::SNMPData::initValue(void *value)
     }
 }
 
-/**
- * @brief Libera memoria del valor del dato
- */
 void Model::SNMPData::deleteValue()
 {   
     switch(_type) {

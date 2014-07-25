@@ -1,7 +1,7 @@
 /**
  *  This file is part of QMB.
  *
- *  Copyright (c) 2013 Juan Jose Salazar Garcia jjslzgc@gmail.com
+ *  Copyright (c) 2013 2014 Juan Jose Salazar Garcia jjslzgc@gmail.com
  *
  *  QMB is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -18,14 +18,6 @@
  *
  **/
 
-/**
- * @file optionsdialog.cpp
- * @brief Implementacion de metodos de la clase OptionsDialog
- * @author Juan Jose Salazar Garcia, jjslzgc@gmail.com
- * @version 0.1.0
- * @date Agosto 2013
- */
-
 #include "optionsdialog.h"
 #include "persistencemanager.h"
 #include "global.h"
@@ -38,10 +30,6 @@
 #include <QGroupBox>
 #include <QMessageBox>
 
-/**
- * @brief Constructor de OptionsDialog
- * @param parent Widget padre
- */
 View::OptionsDialog::OptionsDialog(QWidget *parent) : QDialog(parent)
 {
     createWidgets();
@@ -51,10 +39,6 @@ View::OptionsDialog::OptionsDialog(QWidget *parent) : QDialog(parent)
     loadOptions();
 }
 
-/**
- * @brief Establece el resultado de Aceptado/Rechazado del cuadro de dialogo
- * @param result Resultado del cuadro de dialogo
- */
 void View::OptionsDialog::done(int result)
 {
     if(result && !saveOptions()) {
@@ -65,9 +49,6 @@ void View::OptionsDialog::done(int result)
     QDialog::done(result);
 }
 
-/**
- * @brief Establece en las opciones los valores por defecto
- */
 void View::OptionsDialog::setDefaultValues()
 {
     _remotePortSpinBox -> setValue(DEFAULT_REMOTE_PORT);
@@ -75,9 +56,6 @@ void View::OptionsDialog::setDefaultValues()
     _retriesSpinBox -> setValue(DEFAULT_RETRIES);
 }
 
-/**
- * @brief Crea los widgets
- */
 void View::OptionsDialog::createWidgets()
 {
     _remotePortLabel = new QLabel(tr("Remote &Port:"));
@@ -133,9 +111,6 @@ void View::OptionsDialog::createWidgets()
     setLayout(mainLayout);
 }
 
-/**
- * @brief Establece las conexiones
- */
 void View::OptionsDialog::createConnections()
 {
     connect(_defaultPushButton, SIGNAL(clicked()), this, SLOT(setDefaultValues()));
@@ -143,9 +118,6 @@ void View::OptionsDialog::createConnections()
     connect(_cancelPushButton, SIGNAL(clicked()), this, SLOT(reject()));
 }
 
-/**
- * @brief Carga las opciones en el cuadro de dialogo
- */
 void View::OptionsDialog::loadOptions()
 {
     unsigned short port = Persistence::PersistenceManager::readConfig("RemotePort", "Session").toInt();
@@ -157,10 +129,6 @@ void View::OptionsDialog::loadOptions()
     _retriesSpinBox -> setValue(retries);
 }
 
-/**
- * @brief Guarda las opciones
- * @return true si las opciones se guardaron correctamente y false en caso contrario
- */
 bool View::OptionsDialog::saveOptions()
 {
     unsigned short port = _remotePortSpinBox -> value();

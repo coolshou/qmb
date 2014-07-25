@@ -1,7 +1,7 @@
 /**
  *  This file is part of QMB.
  *
- *  Copyright (c) 2013 Juan Jose Salazar Garcia jjslzgc@gmail.com
+ *  Copyright (c) 2013 2014 Juan Jose Salazar Garcia jjslzgc@gmail.com
  *
  *  QMB is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -17,14 +17,6 @@
  *  along with QMB.  If not, see <http://www.gnu.org/licenses/>.
  *
  **/
-
-/**
- * @file oideditordialog.h
- * @brief Declaracion de clase OIDEditorDialog
- * @author Juan Jose Salazar Garcia, jjslzgc@gmail.com
- * @version 0.1.0
- * @date Agosto 2013
- */
 
 #ifndef OIDEDITORDIALOG_H
 #define OIDEDITORDIALOG_H
@@ -44,52 +36,18 @@ namespace Model
 
 namespace View
 {
-    /**
-     * @brief Clase OIDEditorDialog que implementa un cuadro de dialogo para introducir el valor del OID
-     */
     class OIDEditorDialog : public QDialog
     {
         Q_OBJECT
     public:
-        /**
-         * @brief Constructor de OIDEditorDialog
-         * @param object OID al que asignar el valor
-         * @param parent Widget padre
-         */
         OIDEditorDialog(Model::SNMPOID *object, QWidget *parent = 0);
-
-        /**
-         * @brief Establece el resultado de Aceptado/Rechazado del cuadro de dialogo
-         * @param result Resultado del cuadro de dialogo
-         */
         void done(int result);
-
     private slots:
-        /**
-         * @brief Ranura en habilita/inhabilita el boton ok
-         * @param text Texto en QLineEdit
-         */
         void textChangedOnValueLineEdit(QString text);
-
     private:
-        /**
-         * @brief Crea los widgets
-         */
         void createWidgets();
-
-        /**
-         * @brief Establece las conexiones
-         */
         void createConnections();
-
-        /**
-         * @brief Carga el OID en el cuadro de dialogo
-         */
         void loadObject();
-
-        /**
-         * @brief Guarda el valor introducido en el OID
-         */
         void saveObject();
 
         QLabel *_nameLabel;

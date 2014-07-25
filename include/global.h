@@ -1,7 +1,7 @@
 /**
  *  This file is part of QMB.
  *
- *  Copyright (c) 2013 Juan Jose Salazar Garcia jjslzgc@gmail.com
+ *  Copyright (c) 2013 2014 Juan Jose Salazar Garcia jjslzgc@gmail.com
  *
  *  QMB is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -18,35 +18,27 @@
  *
  **/
 
-/**
- * @file global.h
- * @brief Constantes globales
- * @author Juan Jose Salazar Garcia, jjslzgc@gmail.com
- * @version 0.1.0
- * @date Junio 2013
- */
-
 #ifndef GLOBAL_H
 #define GLOBAL_H
 
 #include "types.h"
 
-#define ORGANIZATION_NAME     "j2sg_software"                           /**< Nombre de la organizacion */
-#define ORGANIZATION_DOMAIN   "http://j2sg.wordpress.com"               /**< Web de la organizacion */
-#define AUTHOR_NAME           "Juan Jose Salazar Garcia"                /**< Autor */
-#define AUTHOR_EMAIL          "jjslzgc@gmail.com"                       /**< Email del autor */
-#define APPLICATION_NAME      "QMB"                                     /**< Nombre de la aplicacion */
-#define APPLICATION_NAME_LONG "QMB MIB Browser"                         /**< Nombre extendido de la aplicacion */
-#define APPLICATION_VERSION   "0.1.0"                                   /**< Version */
-#define APPLICATION_YEARS     "2013"                                    /**< Anios de desarrollo */
-#define APPLICATION_WEB       "http://j2sg.wordpress.com/proyectos/qmb" /**< Web de la aplicacion */
+#define ORGANIZATION_NAME     "j2sg_software"
+#define ORGANIZATION_DOMAIN   "http://j2sg.wordpress.com"
+#define AUTHOR_NAME           "Juan Jose Salazar Garcia"
+#define AUTHOR_EMAIL          "jjslzgc@gmail.com"
+#define APPLICATION_NAME      "QMB"
+#define APPLICATION_NAME_LONG "QMB MIB Browser"
+#define APPLICATION_VERSION   "0.1.0"
+#define APPLICATION_YEARS     "2013 2014"
+#define APPLICATION_WEB       "http://j2sg.wordpress.com/proyectos/qmb"
 
-#define DEFAULT_VERSION Model::SNMPv1                                   /**< Version SNMP */
-#define DEFAULT_COMMUNITY_NAME "public"                                 /**< Nombre de comunidad SNMP version 1/2c */
-#define DEFAULT_NON_REPEATERS 0                                         /**< Numero de variables por defecto sobre las que no se iterara en una operacion GET BULK */
-#define DEFAULT_MAX_REPETITIONS 10                                      /**< Numero de iteraciones por defecto sobre cada variable en una operacion GET BULK */
-#define DEFAULT_REMOTE_PORT 161                                         /**< Numero de puerto del agente SNMP remoto */
-#define DEFAULT_RETRIES 2                                               /**< Numero de reintentos */
-#define DEFAULT_TIMEOUT 2000000                                         /**< Numero de uSegundos para producirse un timeout */
+#define DEFAULT_VERSION Model::SNMPv1
+#define DEFAULT_COMMUNITY_NAME "public"
+#define DEFAULT_NON_REPEATERS 0
+#define DEFAULT_MAX_REPETITIONS 10
+#define DEFAULT_REMOTE_PORT 161
+#define DEFAULT_RETRIES 2
+#define DEFAULT_TIMEOUT 1000000
 
 #endif // GLOBAL_H

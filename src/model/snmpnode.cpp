@@ -1,7 +1,7 @@
 /**
  *  This file is part of QMB.
  *
- *  Copyright (c) 2013 Juan Jose Salazar Garcia jjslzgc@gmail.com
+ *  Copyright (c) 2013 2014 Juan Jose Salazar Garcia jjslzgc@gmail.com
  *
  *  QMB is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -18,27 +18,10 @@
  *
  **/
 
-/**
- * @file snmpnode.cpp
- * @brief Implementacion de metodos de la clase SNMPNode
- * @author Juan Jose Salazar Garcia, jjslzgc@gmail.com
- * @version 0.1.0
- * @date Julio 2013
- */
-
 #include "snmpnode.h"
 
-/**
- * @brief Constructor de SNMPNode
- * @param object OID asociado al nodo del arbol
- * @param parent Nodo padre
- */
-Model::SNMPNode::SNMPNode(SNMPOID *object, SNMPNode *parent) : _object(object), _parent(parent)
-{}
+Model::SNMPNode::SNMPNode(SNMPOID *object, SNMPNode *parent) : _object(object), _parent(parent) {}
 
-/**
- * @brief Destructor de SNMPNode
- */
 Model::SNMPNode::~SNMPNode()
 {
     delete _object;
@@ -47,55 +30,31 @@ Model::SNMPNode::~SNMPNode()
         delete *vi;
 }
 
-/**
- * @brief Obtiene el OID asociado al nodo del arbol
- * @return OID asociado al nodo del arbol
- */
 Model::SNMPOID *Model::SNMPNode::object() const
 {
     return _object;
 }
 
-/**
- * @brief Establece el OID asociado al nodo del arbol
- * @param object OID asociado al nodo del arbol
- */
 void Model::SNMPNode::setObject(SNMPOID *object)
 {
     _object = object;
 }
 
-/**
- * @brief Obtiene el nodo padre
- * @return Nodo padre
- */
 Model::SNMPNode *Model::SNMPNode::parent() const
 {
     return _parent;
 }
 
-/**
- * @brief Establece el nodo padre
- * @param Nodo padre
- */
 void Model::SNMPNode::setParent(SNMPNode *parent)
 {
     _parent = parent;
 }
 
-/**
- * @brief Obtiene la lista de nodos hijo
- * @return Lista de nodos hijo
- */
 std::vector<Model::SNMPNode *>& Model::SNMPNode::childs()
 {
     return _childs;
 }
 
-/**
- * @brief Determina si el nodo actual es un nodo interno del arbol
- * @return true si es un nodo interno false en caso contrario
- */
 bool Model::SNMPNode::isInternalNode() const
 {
     return !_childs.empty();

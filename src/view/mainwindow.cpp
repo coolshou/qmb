@@ -1,7 +1,7 @@
 /**
  *  This file is part of QMB.
  *
- *  Copyright (c) 2013 Juan Jose Salazar Garcia jjslzgc@gmail.com
+ *  Copyright (c) 2013 2014 Juan Jose Salazar Garcia jjslzgc@gmail.com
  *
  *  QMB is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -18,14 +18,6 @@
  *
  **/
 
-/**
- * @file mainwindow.cpp
- * @brief Implementacion de metodos de la clase MainWindow
- * @author Juan Jose Salazar Garcia, jjslzgc@gmail.com
- * @version 0.1.0
- * @date Julio 2013
- */
-
 #include <QtGui>
 #include "mainwindow.h"
 #include "centralwidget.h"
@@ -34,9 +26,6 @@
 #include "persistencemanager.h"
 #include "global.h"
 
-/**
- * @brief Constructor de MainWindow
- */
 View::MainWindow::MainWindow()
 {
     createWidgets();
@@ -46,25 +35,15 @@ View::MainWindow::MainWindow()
     setWindowIcon(QIcon(":/images/qmb.svg"));
 }
 
-/**
- * @brief Destructor de MainWindow
- */
 View::MainWindow::~MainWindow()
 {
 }
 
-/**
- * @brief Manejador de eventos de cierre de la ventana principal
- * @param event Evento de cierre
- */
 void View::MainWindow::closeEvent(QCloseEvent *event)
 {
     event -> accept();
 }
 
-/**
- * @brief Ranura opciones
- */
 void View::MainWindow::options()
 {
     OptionsDialog dialog(this);
@@ -83,9 +62,6 @@ void View::MainWindow::options()
     }
 }
 
-/**
- * @brief Ranura Acerca de ..
- */
 void View::MainWindow::about()
 {
     QMessageBox::about(this, tr("About %1").arg(APPLICATION_NAME),
@@ -102,18 +78,11 @@ void View::MainWindow::about()
                              .arg(APPLICATION_WEB));
 }
 
-/**
- * @brief Ranura para cambio de la barra de estado
- * @param status Mensaje de estado
- */
 void View::MainWindow::changeStatus(const QString& status)
 {
     statusBar() -> showMessage(status, 5000);
 }
 
-/**
- * @brief Crea los widgets
- */
 void View::MainWindow::createWidgets()
 {
     createCentralWidget();
@@ -123,9 +92,6 @@ void View::MainWindow::createWidgets()
     createStatusBar();
 }
 
-/**
- * @brief Crea y establece el widget central
- */
 void View::MainWindow::createCentralWidget()
 {
     _centralWidget = new CentralWidget;
@@ -133,9 +99,6 @@ void View::MainWindow::createCentralWidget()
     setCentralWidget(_centralWidget);
 }
 
-/**
- * @brief Crea las acciones del menu y barra de herramientas
- */
 void View::MainWindow::createActions()
 {
     _optionsAction = new QAction(tr("&Options"), this);
@@ -151,9 +114,6 @@ void View::MainWindow::createActions()
     _aboutQtAction -> setStatusTip(tr("Show information about Qt framework"));
 }
 
-/**
- * @brief Crea los menus
- */
 void View::MainWindow::createMenus()
 {
     _applicationMenu = menuBar() -> addMenu(tr("&Application"));
@@ -165,17 +125,11 @@ void View::MainWindow::createMenus()
     _helpMenu -> addAction(_aboutQtAction);
 }
 
-/**
- * @brief Crea las barras de herramientas
- */
 void View::MainWindow::createToolBar()
 {
 
 }
 
-/**
- * @brief Crea la barra de estado
- */
 void View::MainWindow::createStatusBar()
 {
     _statusLabel = new QLabel;
@@ -183,9 +137,6 @@ void View::MainWindow::createStatusBar()
     statusBar() -> addWidget(_statusLabel);
 }
 
-/**
- * @brief Establece las conexiones
- */
 void View::MainWindow::createConnections()
 {
     connect(_optionsAction, SIGNAL(triggered()), this, SLOT(options()));

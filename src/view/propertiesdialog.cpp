@@ -1,7 +1,7 @@
 /**
  *  This file is part of QMB.
  *
- *  Copyright (c) 2013 Juan Jose Salazar Garcia jjslzgc@gmail.com
+ *  Copyright (c) 2013 2014 Juan Jose Salazar Garcia jjslzgc@gmail.com
  *
  *  QMB is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -18,14 +18,6 @@
  *
  **/
 
-/**
- * @file propertiesdialog.cpp
- * @brief Implementacion de metodos de la clase PropertiesDialog
- * @author Juan Jose Salazar Garcia, jjslzgc@gmail.com
- * @version 0.1.0
- * @date Agosto 2013
- */
-
 #include "propertiesdialog.h"
 #include <QLabel>
 #include <QComboBox>
@@ -37,13 +29,6 @@
 #include <QVBoxLayout>
 #include <QGroupBox>
 
-/**
- * @brief Constructor de PropertiesDialog
- * @param community Nombre de comunidad SNMP version 1/2c
- * @param nonRepeaters Numero de Non Repeaters
- * @param maxRepetitions Numero de Max Repetitions
- * @param parent Widget padre
- */
 View::PropertiesDialog::PropertiesDialog(const QString &community, unsigned short nonRepeaters, unsigned short maxRepetitions, QWidget *parent)
     : QDialog(parent), _community(community), _nonRepeaters(nonRepeaters), _maxRepetitions(maxRepetitions)
 {
@@ -54,10 +39,6 @@ View::PropertiesDialog::PropertiesDialog(const QString &community, unsigned shor
     loadProperties();
 }
 
-/**
- * @brief Establece el resultado de Aceptado/Rechazado del cuadro de dialogo
- * @param result Resultado del cuadro de dialogo
- */
 void View::PropertiesDialog::done(int result)
 {
     if(result)
@@ -66,36 +47,21 @@ void View::PropertiesDialog::done(int result)
     QDialog::done(result);
 }
 
-/**
- * @brief Obtiene el nombre de la comunidad SNMPv1/v2c
- * @return Nombre de la comunidad SNMPv1/v2c
- */
 const QString& View::PropertiesDialog::community() const
 {
     return _community;
 }
 
-/**
- * @brief Obtiene el numero de NON REPEATERS para operaciones SNMP GET BULK
- * @return  Numero de NON REPEATERS para operaciones SNMP GET BULK
- */
 unsigned short View::PropertiesDialog::nonRepeaters() const
 {
     return _nonRepeaters;
 }
 
-/**
- * @brief Obtiene el numero de MAX REPETITIONS para operaciones SNMP GET BULK
- * @return  Numero de MAX REPETITIONS para operaciones SNMP GET BULK
- */
 unsigned short View::PropertiesDialog::maxRepetitions() const
 {
     return _maxRepetitions;
 }
 
-/**
- * @brief Crea los widgets
- */
 void View::PropertiesDialog::createWidgets()
 {
     _versionLabel = new QLabel(tr("&Version:"));
@@ -159,18 +125,12 @@ void View::PropertiesDialog::createWidgets()
     setLayout(mainLayout);
 }
 
-/**
- * @brief Establece las conexiones
- */
 void View::PropertiesDialog::createConnections()
 {
     connect(_okPushButton, SIGNAL(clicked()), this, SLOT(accept()));
     connect(_cancelPushButton, SIGNAL(clicked()), this, SLOT(reject()));
 }
 
-/**
- * @brief Carga las propiedades de la sesion SNMP
- */
 void View::PropertiesDialog::loadProperties()
 {
     _communityLineEdit -> setText(_community);
@@ -178,9 +138,6 @@ void View::PropertiesDialog::loadProperties()
     _maxRepetitionsSpinBox -> setValue(_maxRepetitions);
 }
 
-/**
- * @brief Guarda las propiedades de la sesion SNMP
- */
 void View::PropertiesDialog::saveProperties()
 {
     _community = _communityLineEdit -> text();
