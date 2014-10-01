@@ -17,7 +17,7 @@
  *  along with QMB.  If not, see <http://www.gnu.org/licenses/>.
  *
  **/
-
+/**
 #include "snmpnode.h"
 
 Model::SNMPNode::SNMPNode(SNMPOID *object, SNMPNode *parent) : _object(object), _parent(parent) {}
@@ -59,3 +59,4 @@ bool Model::SNMPNode::isInternalNode() const
 {
     return !_childs.empty();
 }
+**/

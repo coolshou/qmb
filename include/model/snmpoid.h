@@ -20,7 +20,7 @@
 
 #ifndef SNMPOID_H
 #define SNMPOID_H
-
+/**
 #include <string>
 #include "snmpdata.h"
 #include "snmpexception.h"
@@ -64,5 +64,5 @@ namespace Model
         std::string _description;
     };
 }
-
+**/
 #endif // SNMPOID_H

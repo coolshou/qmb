@@ -23,10 +23,12 @@
 
 #include <QAbstractItemModel>
 
-namespace Model
+/**namespace Model
 {
     class SNMPNode;
-}
+}*/
+
+#include <QtNetSNMP/qmibtree.h>
 
 namespace View
 {
@@ -35,7 +37,7 @@ namespace View
     public:
         MIBTreeModel(QObject *parent = 0);
         ~MIBTreeModel();
-        void setRoot(Model::SNMPNode *root);
+        void setRoot(QtNetSNMP::QMIBTree *root);
         QModelIndex index(int row, int column, const QModelIndex &parent) const;
         QModelIndex parent(const QModelIndex &child) const;
         int rowCount(const QModelIndex &parent) const;
@@ -43,9 +45,10 @@ namespace View
         QVariant data(const QModelIndex &index, int role) const;
         QVariant headerData(int section, Qt::Orientation orientation, int role) const;
     private:
-        Model::SNMPNode *nodeFromIndex(const QModelIndex& index) const;
+        QtNetSNMP::QMIBTree *nodeFromIndex(const QModelIndex& index) const;
 
-        Model::SNMPNode *_root;
+        //Model::SNMPNode *_root;
+        QtNetSNMP::QMIBTree *_root;
     };
 }
 

@@ -17,7 +17,7 @@
  *  along with QMB.  If not, see <http://www.gnu.org/licenses/>.
  *
  **/
-
+/**
 #ifndef TESTSNMPMANAGER_H
 #define TESTSNMPMANAGER_H
 
@@ -64,5 +64,5 @@ namespace Test
                          bool verbose = false);
     };
 }
-
+**/
 #endif // TESTSNMPMANAGER_H

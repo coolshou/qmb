@@ -17,7 +17,7 @@
  *  along with QMB.  If not, see <http://www.gnu.org/licenses/>.
  *
  **/
-
+/**
 #include "snmpdata.h"
 #include <algorithm>
 #include <sstream>
@@ -293,3 +293,4 @@ void Model::SNMPData::deleteValue()
         _value.objid = 0;
     }
 }
+**/

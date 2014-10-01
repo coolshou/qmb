@@ -17,7 +17,7 @@
  *  along with QMB.  If not, see <http://www.gnu.org/licenses/>.
  *
  **/
-
+/**
 #include "snmpoid.h"
 #include <sstream>
 
@@ -170,3 +170,4 @@ void Model::SNMPOID::parseOIDtoTextual()
 
     _strOID = ss.str();
 }
+**/

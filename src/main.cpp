@@ -22,8 +22,6 @@
 #include "persistencemanager.h"
 #include "mainwindow.h"
 #include "global.h"
-#include "snmpmanager.h"
-
 #include <iostream>
 
 void setUpApplication(QApplication *app);

@@ -19,15 +19,17 @@
  **/
 
 #include "oideditordialog.h"
-#include "snmpoid.h"
+//#include "snmpoid.h"
 #include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>
 #include <QGridLayout>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
+#include <QtNetSNMP/qsnmpoid.h>
+#include <QtNetSNMP/qsnmpdata.h>
 
-View::OIDEditorDialog::OIDEditorDialog(Model::SNMPOID *object, QWidget *parent) : QDialog(parent), _object(object)
+View::OIDEditorDialog::OIDEditorDialog(QtNetSNMP::QSNMPObject *object, QWidget *parent) : QDialog(parent), _object(object)
 {
     createWidgets();
     createConnections();
@@ -107,54 +109,53 @@ void View::OIDEditorDialog::loadObject()
     QString type;
 
     switch(_object -> data() -> type()) {
-    case Model::SNMPDataInteger:     type = "INTEGER";   break;
-    case Model::SNMPDataUnsigned:    type = "UNSIGNED";  break;
-    case Model::SNMPDataBits:        type = "BITS";      break;
-    case Model::SNMPDataCounter:     type = "COUNTER";   break;
-    case Model::SNMPDataTimeTicks:   type = "TIMETICKS"; break;
-    case Model::SNMPDataCounter64:   type = "COUNTER64"; break;
-    case Model::SNMPDataBitString:   type = "BITSTRING"; break;
-    case Model::SNMPDataOctetString: type = "STRING";    break;
-    case Model::SNMPDataIPAddress:   type = "IPADDRESS"; break;
-    case Model::SNMPDataObjectId:    type = "OBJID";     break;
-    case Model::SNMPDataNull:        type = "NULL";     break;
-    default:                         type = "UNKNOWN";   break;
+    case QtNetSNMP::SNMPDataInteger:     type = "INTEGER";   break;
+    case QtNetSNMP::SNMPDataUnsigned:    type = "UNSIGNED";  break;
+    case QtNetSNMP::SNMPDataBits:        type = "BITS";      break;
+    case QtNetSNMP::SNMPDataCounter:     type = "COUNTER";   break;
+    case QtNetSNMP::SNMPDataTimeTicks:   type = "TIMETICKS"; break;
+    case QtNetSNMP::SNMPDataCounter64:   type = "COUNTER64"; break;
+    case QtNetSNMP::SNMPDataBitString:   type = "BITSTRING"; break;
+    case QtNetSNMP::SNMPDataOctetString: type = "STRING";    break;
+    case QtNetSNMP::SNMPDataIPAddress:   type = "IPADDRESS"; break;
+    case QtNetSNMP::SNMPDataObjectId:    type = "OBJID";     break;
+    case QtNetSNMP::SNMPDataNull:        type = "NULL";     break;
+    default:                             type = "UNKNOWN";   break;
     }
 
-    _nameValue -> setText(_object -> name().c_str());
-    _oidValue -> setText(_object -> strOID().c_str());
+    _nameValue -> setText(_object -> name());
+    _oidValue -> setText(_object -> objID() -> textOID());
     _typeValue -> setText(type);
 }
 
 void View::OIDEditorDialog::saveObject()
 {
-    switch(_object -> data() -> type()) {
-    case Model::SNMPDataInteger:
-    case Model::SNMPDataUnsigned:
-    case Model::SNMPDataBits:
-    case Model::SNMPDataCounter:
-    case Model::SNMPDataTimeTicks: {
+    QtNetSNMP::SNMPDataType type = _object -> data() -> type();
+
+    switch(type) {
+    case QtNetSNMP::SNMPDataInteger:
+    case QtNetSNMP::SNMPDataUnsigned:
+    case QtNetSNMP::SNMPDataBits:
+    case QtNetSNMP::SNMPDataCounter:
+    case QtNetSNMP::SNMPDataTimeTicks: {
         long value = _valueLineEdit -> text().toLong();
-        _object -> data() -> setLength(sizeof(long));
-        _object -> data() -> setValue(&value);
+        _object -> data() -> setValue(type, &value, sizeof(long));
     } break;
-    case Model::SNMPDataCounter64: {
-        Model::SNMPCounter64 value;
+    case QtNetSNMP::SNMPDataCounter64: {
+        QtNetSNMP::SNMPCounter64 value;
         value.high = 0;
         value.low = _valueLineEdit -> text().toLong();
-        _object -> data() -> setLength(sizeof(Model::SNMPCounter64));
-        _object -> data() -> setValue(&value);
+        _object -> data() -> setValue(type, &value, sizeof(QtNetSNMP::SNMPCounter64));
     } break;
-    case Model::SNMPDataBitString:
-    case Model::SNMPDataOctetString:
-    case Model::SNMPDataIPAddress: {
+    case QtNetSNMP::SNMPDataBitString:
+    case QtNetSNMP::SNMPDataOctetString:
+    case QtNetSNMP::SNMPDataIPAddress: {
         QString value = _valueLineEdit -> text();
-        _object -> data() -> setLength(sizeof(char) * value.length());
-        _object -> data() -> setValue((char *) value.toStdString().c_str());
+        _object -> data() -> setValue(type, const_cast<char *>(value.toStdString().c_str()), sizeof(char) * value.length());
     } break;
-    //case Model::SNMPDataObjectId:
+    //case QtNetSNMP::SNMPDataObjectId:
     //    break;
     default:
-        _object -> data() -> setValue(0);
+        _object -> data()->setValue(QtNetSNMP::SNMPDataUnknown, 0);
     }
 }

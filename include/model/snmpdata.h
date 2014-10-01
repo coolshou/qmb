@@ -20,7 +20,7 @@
 
 #ifndef SNMPDATA_H
 #define SNMPDATA_H
-
+/**
 #include <string>
 #include "types.h"
 
@@ -50,5 +50,5 @@ namespace Model
         size_t _length;
     };
 }
-
+**/
 #endif // SNMPDATA_H

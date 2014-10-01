@@ -20,7 +20,7 @@
 
 #ifndef SNMPNODE_H
 #define SNMPNODE_H
-
+/**
 #include "snmpoid.h"
 #include <vector>
 
@@ -43,5 +43,5 @@ namespace Model
         std::vector<SNMPNode *> _childs;
     };
 }
-
+**/
 #endif // SNMPNODE_H

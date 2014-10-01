@@ -22,8 +22,9 @@
 #include "mainwindow.h"
 #include "centralwidget.h"
 #include "optionsdialog.h"
-#include "snmpmanager.h"
+//#include "snmpmanager.h"
 #include "persistencemanager.h"
+#include <QtNetSNMP/qsnmpmanager.h>
 #include "global.h"
 
 View::MainWindow::MainWindow()
@@ -55,7 +56,9 @@ void View::MainWindow::options()
         unsigned short retries = Persistence::PersistenceManager::readConfig("Retries", "Session").toInt();
         long timeout = Persistence::PersistenceManager::readConfig("Timeout", "Session").toInt();
 
-        Model::SNMPManager::configSNMP(port, retries, timeout);
+        //Model::SNMPManager::configSNMP(port, retries, timeout);
+        QtNetSNMP::QSNMPManager *snmpManager = QtNetSNMP::QSNMPManager::instance();
+        snmpManager -> setup(port, retries, timeout);
         _centralWidget -> loadMIBTree();
 
         changeStatus(tr("Changes applied"));

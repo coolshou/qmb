@@ -43,7 +43,7 @@ SOURCES += src/main.cpp \
     src/view/optionsdialog.cpp \
     src/persistence/persistencemanager.cpp
 
-LIBS += -lnetsnmp
+LIBS += -lqt-net-snmp
 
 RESOURCES += resources/qmb.qrc
 

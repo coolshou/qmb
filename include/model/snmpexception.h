@@ -20,7 +20,7 @@
 
 #ifndef SNMPEXCEPTION_H
 #define SNMPEXCEPTION_H
-
+/**
 #include <string>
 #include "types.h"
 
@@ -74,5 +74,5 @@ namespace Model
         std::string _error;
     };
 }
-
+**/
 #endif // SNMPEXCEPTION_H

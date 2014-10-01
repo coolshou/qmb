@@ -23,7 +23,11 @@
 #include "mibtreeproxymodel.h"
 #include "propertiesdialog.h"
 #include "oideditordialog.h"
-#include "snmpmanager.h"
+//#include "snmpmanager.h"
+#include <QtNetSNMP/qsnmpmanager.h>
+#include <QtNetSNMP/qsnmpobject.h>
+#include <QtNetSNMP/qsnmpoid.h>
+#include <QtNetSNMP/qsnmpdata.h>
 #include "types.h"
 #include "global.h"
 #include <QLabel>
@@ -56,11 +60,13 @@ void View::CentralWidget::loadMIBTree()
 {
     emit statusChanged(tr("Loading MIB Tree ..."));
 
-    Model::SNMPNode *root = Model::SNMPManager::getMIBTree();
+    //Model::SNMPNode *root = Model::SNMPManager::getMIBTree();
+    QtNetSNMP::QSNMPManager *snmpManager = QtNetSNMP::QSNMPManager::instance();
+    QtNetSNMP::QMIBTree *mibTree = snmpManager->getMIBModule();
 
-    _mibTreeModel -> setRoot(root);
+    _mibTreeModel -> setRoot(mibTree);
 
-    Model::SNMPManager::initSNMP();
+    //Model::SNMPManager::initSNMP();
 
     emit statusChanged(tr("MIB Tree loaded successfully"));
 }
@@ -69,25 +75,26 @@ void View::CentralWidget::invokeOperation()
 {
     QObject *sender = QObject::sender();
     QModelIndex index = _mibTreeProxyModel -> mapToSource(_mibTreeView -> currentIndex());
-    Model::SNMPNode *node = static_cast<Model::SNMPNode *>(index.internalPointer());
-    Model::SNMPOID *object = node -> object() -> getInstance();
-    std::string agent = _agentLineEdit -> text().toStdString();
-    Model::SNMPVersion version = static_cast<Model::SNMPVersion>(_versionComboBox -> itemData(_versionComboBox -> currentIndex()).toInt());
-    std::vector<Model::SNMPOID *> oids;
-    oids.push_back(object);
+    QtNetSNMP::QSNMPManager *snmpManager = QtNetSNMP::QSNMPManager::instance();
+    QtNetSNMP::QMIBTree *node = static_cast<QtNetSNMP::QMIBTree *>(index.internalPointer());
+    QtNetSNMP::QSNMPObject *object = new QtNetSNMP::QSNMPObject(*node -> object());
+    QString agent = _agentLineEdit -> text();
+    QtNetSNMP::SNMPVersion version = static_cast<QtNetSNMP::SNMPVersion>(_versionComboBox -> itemData(_versionComboBox -> currentIndex()).toInt());
+    QVector<QtNetSNMP::QSNMPObject *> objs;
+    objs.push_back(object);
 
     _resultTextEdit -> clear();
-    _resultTextEdit -> append(tr("### SNMP Operation to %1 invoked ###").arg(agent.c_str()));
+    _resultTextEdit -> append(tr("### SNMP Operation to %1 invoked ###").arg(agent));
 
     try {
         if(sender == _getPushButton)
-            Model::SNMPManager::snmpget(version, _community.toStdString(), agent, oids);
+            snmpManager -> snmpget(version, _community, agent, objs);
         else if(sender == _getNextPushButton)
-            Model::SNMPManager::snmpgetnext(version, _community.toStdString(), agent, oids);
+            snmpManager -> snmpgetnext(version, _community, agent, objs);
         else if(sender == _getBulkPushButton)
-            Model::SNMPManager::snmpgetbulk(version, _community.toStdString(), agent, oids, _nonRepeaters, _maxRepetitions);
+            snmpManager -> snmpgetbulk(version, _community, agent, objs, _nonRepeaters, _maxRepetitions);
         else if(sender == _setPushButton) {
-            if(object -> access() == Model::MIBAccessReadOnly) {
+            if(object -> access() == QtNetSNMP::MIBAccessReadOnly) {
                 QMessageBox::critical(this, tr("SNMP Exception"), tr("Object is not writable"), QMessageBox::Ok);
                 delete object;
                 return;
@@ -100,42 +107,39 @@ void View::CentralWidget::invokeOperation()
                 return;
             }
 
-            Model::SNMPManager::snmpset(version, _community.toStdString(), agent, oids);
+            snmpManager -> snmpset(version, _community, agent, objs);
         }
 
-        for(std::vector<Model::SNMPOID *>::iterator vi = oids.begin(); vi != oids.end(); ++vi) {
+        foreach(QtNetSNMP::QSNMPObject *object, objs) {
             QString type;
 
-            switch((*vi) -> data() -> type()) {
-            case Model::SNMPDataInteger:     type = "INTEGER";   break;
-            case Model::SNMPDataUnsigned:    type = "UNSIGNED";  break;
-            case Model::SNMPDataBits:        type = "BITS";      break;
-            case Model::SNMPDataCounter:     type = "COUNTER";   break;
-            case Model::SNMPDataTimeTicks:   type = "TIMETICKS"; break;
-            case Model::SNMPDataCounter64:   type = "COUNTER64"; break;
-            case Model::SNMPDataBitString:   type = "BITSTRING"; break;
-            case Model::SNMPDataOctetString: type = "STRING";    break;
-            case Model::SNMPDataIPAddress:   type = "IPADDRESS"; break;
-            case Model::SNMPDataObjectId:    type = "OBJID";     break;
-            case Model::SNMPDataNull:        type = "NULL";      break;
-            default:                         type = "UNKNOWN";   break;
+            switch(object -> data() -> type()) {
+            case QtNetSNMP::SNMPDataInteger:     type = "INTEGER";   break;
+            case QtNetSNMP::SNMPDataUnsigned:    type = "UNSIGNED";  break;
+            case QtNetSNMP::SNMPDataBits:        type = "BITS";      break;
+            case QtNetSNMP::SNMPDataCounter:     type = "COUNTER";   break;
+            case QtNetSNMP::SNMPDataTimeTicks:   type = "TIMETICKS"; break;
+            case QtNetSNMP::SNMPDataCounter64:   type = "COUNTER64"; break;
+            case QtNetSNMP::SNMPDataBitString:   type = "BITSTRING"; break;
+            case QtNetSNMP::SNMPDataOctetString: type = "STRING";    break;
+            case QtNetSNMP::SNMPDataIPAddress:   type = "IPADDRESS"; break;
+            case QtNetSNMP::SNMPDataObjectId:    type = "OBJID";     break;
+            case QtNetSNMP::SNMPDataNull:        type = "NULL";      break;
+            default:                             type = "UNKNOWN";   break;
             }
 
-            _resultTextEdit -> append(QString("%1 = %2 : %3").arg((*vi) -> strOID().c_str())
-                                                             .arg(type)
-                                                             .arg((*vi) -> data() -> toString().c_str()));
-            delete *vi;
+            _resultTextEdit -> append(QString("%1 = %2 : %3").arg(object -> objID() -> textOID()).arg(type).arg(""));
         }
 
         _resultTextEdit -> append(tr("### SNMP Operation finished ###"));
-    } catch(Model::SNMPSessionException& exception) {
+    /**} catch(Model::SNMPSessionException& exception) {
         QMessageBox::critical(this, tr("SNMP Session Exception"), exception.message().c_str(), QMessageBox::Ok);
     } catch(Model::SNMPOIDException& exception) {
         QMessageBox::critical(this, tr("SNMP OID Exception"), exception.message().c_str(), QMessageBox::Ok);
     } catch(Model::SNMPPacketException& exception) {
-        QMessageBox::critical(this, tr("SNMP Packet Exception"), exception.message().c_str(), QMessageBox::Ok);
-    } catch(Model::SNMPException& exception) {
-        QMessageBox::critical(this, tr("SNMP Exception"), exception.message().c_str(), QMessageBox::Ok);
+        QMessageBox::critical(this, tr("SNMP Packet Exception"), exception.message().c_str(), QMessageBox::Ok);**/
+    } catch(QtNetSNMP::QSNMPException& exception) {
+        QMessageBox::critical(this, tr("SNMP Exception"), exception.message(), QMessageBox::Ok);
     }
 }
 
@@ -153,21 +157,21 @@ void View::CentralWidget::properties()
 void View::CentralWidget::readyToInvoke()
 {
     QModelIndex index;
-    Model::SNMPNode *node;
+    QtNetSNMP::QMIBTree *node;
     bool internalNode = true;
     int row = _mibTreeView -> currentIndex().row();
     bool agent = !(_agentLineEdit -> text().isEmpty());
-    Model::SNMPVersion version = static_cast<Model::SNMPVersion>(_versionComboBox -> itemData(_versionComboBox -> currentIndex()).toInt());
+    QtNetSNMP::SNMPVersion version = static_cast<QtNetSNMP::SNMPVersion>(_versionComboBox -> itemData(_versionComboBox -> currentIndex()).toInt());
 
     if(row != -1) { // Las operaciones SNMP GET y SET no se efectuan sobre nodos internos
         index = _mibTreeProxyModel -> mapToSource(_mibTreeView -> currentIndex());
-        node = static_cast<Model::SNMPNode *>(index.internalPointer());
-        internalNode = node -> isInternalNode();
+        node = static_cast<QtNetSNMP::QMIBTree *>(index.internalPointer());
+        internalNode = !node -> childs().isEmpty();
     }
 
     _getPushButton -> setEnabled(agent && row != -1 && !internalNode);
     _getNextPushButton -> setEnabled(agent && row != -1);
-    _getBulkPushButton -> setEnabled(agent && version != Model::SNMPv1 && row != -1);
+    _getBulkPushButton -> setEnabled(agent && version != QtNetSNMP::SNMPv1 && row != -1);
     _setPushButton -> setEnabled(agent && row != -1 && !internalNode);
 }
 
@@ -179,9 +183,9 @@ void View::CentralWidget::createWidgets()
 
     _versionLabel = new QLabel(tr("&Version: "));
     _versionComboBox = new QComboBox;
-    _versionComboBox -> addItem(tr("v1"), Model::SNMPv1);
-    _versionComboBox -> addItem(tr("v2C"), Model::SNMPv2);
-    //_versionComboBox -> addItem(tr("v3"), Model::SNMPv3);
+    _versionComboBox -> addItem(tr("v1"), QtNetSNMP::SNMPv1);
+    _versionComboBox -> addItem(tr("v2C"), QtNetSNMP::SNMPv2);
+    //_versionComboBox -> addItem(tr("v3"), QtNetSNMP::SNMPv3);
     _versionLabel -> setBuddy(_versionComboBox);
 
     _propertiesButton = new QPushButton(tr("Properties"));
@@ -253,7 +257,7 @@ void View::CentralWidget::createConnections()
     connect(_setPushButton, SIGNAL(clicked()), this, SLOT(invokeOperation()));
     connect(_agentLineEdit, SIGNAL(textChanged(QString)), this, SLOT(readyToInvoke()));
     connect(_versionComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(readyToInvoke()));
-    connect(_mibTreeView -> selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)), this, SLOT(readyToInvoke()));
+    connect(_mibTreeView -> selectionModel(), SIGNAL(selectionChanged(QItemSelection, QItemSelection)), this, SLOT(readyToInvoke()));
 }
 
 void View::CentralWidget::loadProperties()

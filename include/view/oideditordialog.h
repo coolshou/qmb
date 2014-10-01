@@ -29,10 +29,12 @@ class QLineEdit;
 class QPushButton;
 QT_END_NAMESPACE
 
-namespace Model
+/**namespace Model
 {
     class SNMPOID;
-}
+}**/
+
+#include <QtNetSNMP/qsnmpobject.h>
 
 namespace View
 {
@@ -40,7 +42,7 @@ namespace View
     {
         Q_OBJECT
     public:
-        OIDEditorDialog(Model::SNMPOID *object, QWidget *parent = 0);
+        OIDEditorDialog(QtNetSNMP::QSNMPObject *object, QWidget *parent = 0);
         void done(int result);
     private slots:
         void textChangedOnValueLineEdit(QString text);
@@ -61,7 +63,7 @@ namespace View
         QPushButton *_okPushButton;
         QPushButton *_cancelPushButton;
 
-        Model::SNMPOID *_object;
+        QtNetSNMP::QSNMPObject *_object;
     };
 }
 

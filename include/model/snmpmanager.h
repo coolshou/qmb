@@ -20,7 +20,7 @@
 
 #ifndef SNMPMANAGER_H
 #define SNMPMANAGER_H
-
+/**
 #include <string>
 #include <vector>
 #include "types.h"
@@ -82,5 +82,5 @@ namespace Model
         static long _timeout;
     };
 }
-
+**/
 #endif // SNMPMANAGER_H

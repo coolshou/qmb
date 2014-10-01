@@ -17,7 +17,7 @@
  *  along with QMB.  If not, see <http://www.gnu.org/licenses/>.
  *
  **/
-
+/**
 #include "testsnmpmanager.h"
 #include <iostream>
 
@@ -134,3 +134,4 @@ bool Test::TestSNMPManager::test(TestOperation operation,
 
     return true;
 }
+**/

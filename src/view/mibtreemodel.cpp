@@ -19,7 +19,8 @@
  **/
 
 #include "mibtreemodel.h"
-#include "snmpnode.h"
+//#include "snmpnode.h"
+#include <QtNetSNMP/qsnmpobject.h>
 
 View::MIBTreeModel::MIBTreeModel(QObject *parent) : QAbstractItemModel(parent)
 {
@@ -32,7 +33,7 @@ View::MIBTreeModel::~MIBTreeModel()
         delete _root;
 }
 
-void View::MIBTreeModel::setRoot(Model::SNMPNode *root)
+void View::MIBTreeModel::setRoot(QtNetSNMP::QMIBTree *root)
 {
     if(_root)
         delete _root;
@@ -47,7 +48,7 @@ QModelIndex View::MIBTreeModel::index(int row, int column, const QModelIndex &pa
     if(!_root) // Nodo raiz no establecido
         return QModelIndex(); // Devuelve indice invalido
 
-    Model::SNMPNode *parentNode = nodeFromIndex(parent);
+    QtNetSNMP::QMIBTree *parentNode = nodeFromIndex(parent);
 
     // Creacion de indice
     return createIndex(row, column, parentNode -> childs().at(row));
@@ -55,22 +56,24 @@ QModelIndex View::MIBTreeModel::index(int row, int column, const QModelIndex &pa
 
 QModelIndex View::MIBTreeModel::parent(const QModelIndex &child) const
 {
-    Model::SNMPNode *node = nodeFromIndex(child);
+    QtNetSNMP::QMIBTree *node = nodeFromIndex(child);
 
     if(!node)
         return QModelIndex();
 
-    Model::SNMPNode *parentNode = node -> parent();
+    QtNetSNMP::QMIBTree *parentNode = node -> parent();
 
     if(!parentNode)
         return QModelIndex();
 
-    Model::SNMPNode *grandParentNode = parentNode -> parent();
+    QtNetSNMP::QMIBTree *grandParentNode = parentNode -> parent();
 
     if(!grandParentNode)
         return QModelIndex();
 
-    int row = std::find(grandParentNode -> childs().begin(), grandParentNode -> childs().end(), parentNode) - grandParentNode -> childs().begin();
+    int row = grandParentNode -> childs().indexOf(parentNode);
+
+    //int row = std::find(grandParentNode -> childs().begin(), grandParentNode -> childs().end(), parentNode) - grandParentNode -> childs().begin();
 
     return createIndex(row, child.column(), parentNode);
 
@@ -78,7 +81,7 @@ QModelIndex View::MIBTreeModel::parent(const QModelIndex &child) const
 
 int View::MIBTreeModel::rowCount(const QModelIndex &parent) const
 {
-    Model::SNMPNode *parentNode = nodeFromIndex(parent);
+    QtNetSNMP::QMIBTree *parentNode = nodeFromIndex(parent);
 
     if(!parentNode)
         return 0;
@@ -99,13 +102,13 @@ QVariant View::MIBTreeModel::data(const QModelIndex &index, int role) const
     if(role != Qt::DisplayRole)
         return QVariant();
 
-    Model::SNMPNode *node = nodeFromIndex(index);
+    QtNetSNMP::QMIBTree *node = nodeFromIndex(index);
 
     if(!node)
         return QVariant();
 
     if(index.column() == 0)
-        return node -> object() ? node -> object() -> name().c_str() : "";
+        return node -> object() ? node -> object() -> name() : "";
 
     return QVariant();
 }
@@ -118,8 +121,8 @@ QVariant View::MIBTreeModel::headerData(int section, Qt::Orientation orientation
     return QVariant();
 }
 
-Model::SNMPNode *View::MIBTreeModel::nodeFromIndex(const QModelIndex& index) const
+QtNetSNMP::QMIBTree *View::MIBTreeModel::nodeFromIndex(const QModelIndex& index) const
 {
     // El nodo raiz del arbol usa un indice invalido
-    return index.isValid() ? static_cast<Model::SNMPNode *> (index.internalPointer()) : _root;
+    return index.isValid() ? static_cast<QtNetSNMP::QMIBTree *> (index.internalPointer()) : _root;
 }

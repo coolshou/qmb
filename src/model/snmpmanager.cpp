@@ -17,7 +17,7 @@
  *  along with QMB.  If not, see <http://www.gnu.org/licenses/>.
  *
  **/
-
+/**
 #include <net-snmp/net-snmp-config.h>
 #include <net-snmp/net-snmp-includes.h>
 #include "snmpmanager.h"
@@ -324,3 +324,4 @@ unsigned short Model::SNMPManager::_remotePort = DEFAULT_REMOTE_PORT;
 unsigned short Model::SNMPManager::_retries = DEFAULT_RETRIES;
 
 long Model::SNMPManager::_timeout = DEFAULT_TIMEOUT;
+**/

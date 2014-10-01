@@ -19,17 +19,23 @@
  **/
 
 #include "mibtreeproxymodel.h"
-#include "snmpnode.h"
+//#include "snmpnode.h"
+#include <QtNetSNMP/qmibtree.h>
+#include <QtNetSNMP/qsnmpobject.h>
+#include <QtNetSNMP/qsnmpoid.h>
 
 View::MIBTreeProxyModel::MIBTreeProxyModel(QObject *parent) : QSortFilterProxyModel(parent) {}
 
 bool View::MIBTreeProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right) const
 {
-    Model::SNMPNode *leftNode = static_cast<Model::SNMPNode *>(left.internalPointer());
-    Model::SNMPNode *rightNode = static_cast<Model::SNMPNode *>(right.internalPointer());
+    QtNetSNMP::QMIBTree *leftNode = static_cast<QtNetSNMP::QMIBTree *>(left.internalPointer());
+    QtNetSNMP::QMIBTree *rightNode = static_cast<QtNetSNMP::QMIBTree *>(right.internalPointer());
 
-    oid leftSubId = leftNode -> object() -> parseOID()[leftNode -> object() -> parseOIDLength() - 1];
-    oid rightSubId = rightNode -> object() -> parseOID()[rightNode -> object() -> parseOIDLength() - 1];
+    //oid leftSubId = leftNode -> object() -> parseOID()[leftNode -> object() -> parseOIDLength() - 1];
+    //oid rightSubId = rightNode -> object() -> parseOID()[rightNode -> object() -> parseOIDLength() - 1];
+
+    oid leftSubId = leftNode -> object() -> objID() -> numOID() -> last();
+    oid rightSubId = rightNode -> object() -> objID() -> numOID() -> last();
 
     return leftSubId < rightSubId;
 }
