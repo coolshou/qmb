@@ -29,7 +29,7 @@
 #define AUTHOR_EMAIL          "jjslzgc@gmail.com"
 #define APPLICATION_NAME      "QMB"
 #define APPLICATION_NAME_LONG "QMB MIB Browser"
-#define APPLICATION_VERSION   "0.1.0"
+#define APPLICATION_VERSION   "0.1.1"
 #define APPLICATION_YEARS     "2013 2014"
 #define APPLICATION_WEB       "http://j2sg.wordpress.com/proyectos/qmb"
 

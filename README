@@ -1,6 +1,6 @@
-- QMB v0.1.0
+- QMB v0.1.1
 
-    Copyright (c) 2013 2014 Juan Jose Salazar Garcia - jjslzgc@gmail.com
+    Copyright (c) 2013-2014 Juan Jose Salazar Garcia - jjslzgc@gmail.com
 
     - Description
 
@@ -9,12 +9,9 @@
     - Details
 
        - Developed in C++ and Qt4 framework
-       - SNMP support based on Net-SNMP library
+       - SNMP support based on QtNetSNMP library
 
     - License
 
        QMB is licensed under the GNU General Public License version 3,
        you should read LICENSE file to get more details about this.
-
-For more information visit http://j2sg.wordpress.com/proyectos/qmb
-and you can get latest version from https://github.com/j2sg/qmb

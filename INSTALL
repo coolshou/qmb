@@ -1,14 +1,10 @@
 - QMB Requirements
 
-      - Net-SNMP libraries
-      - Net-SNMP  headers
-      - MIB files
-      - Qt4 libraries
-      - Qt4 headers
-      - Makefile generation tool QMake.
-        
-        You can obtain Qt at http://qt.nokia.com/ or through 
-        your package manager on unix systems.
+   - QtNetSNMP libraries and headers.
+   - Qt4 libraries and headers.
+   - Makefile generation tool QMake.
+   
+   You can obtain Qt at http://www.qt.io/download/ or through  your package manager on unix systems. For QtNetSNMP download the lastest version from https://github.com/j2sg/qt-net-snmp
 
 - Compilation
 
@@ -18,14 +14,7 @@
 
    - Build the application:
 
-      - On Unix:
-
-         make
-
-      - On Windows:
-
-         mingw32-make
-
+      make
    
    Now we have the QMB binary ready to execute.
 

@@ -2,7 +2,7 @@
 Type=Application
 Name=QMB
 GenericName=QMB MIB Browser
-Version=0.1.0
+Version=0.1.1
 Comment=MIB Browser for SNMP Agents v1/2c
 Icon=/usr/share/pixmaps/qmb.svg
 Exec=qmb
