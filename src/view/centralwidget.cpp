@@ -28,7 +28,6 @@
 #include <QtNetSNMP/qsnmpobject.h>
 #include <QtNetSNMP/qsnmpoid.h>
 #include <QtNetSNMP/qsnmpdata.h>
-#include "types.h"
 #include "global.h"
 #include <QLabel>
 #include <QLineEdit>

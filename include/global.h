@@ -21,7 +21,7 @@
 #ifndef GLOBAL_H
 #define GLOBAL_H
 
-#include "types.h"
+#include <QtNetSNMP/qsnmptypes.h>
 
 #define ORGANIZATION_NAME     "j2sg_software"
 #define ORGANIZATION_DOMAIN   "http://j2sg.wordpress.com"
@@ -30,10 +30,10 @@
 #define APPLICATION_NAME      "QMB"
 #define APPLICATION_NAME_LONG "QMB MIB Browser"
 #define APPLICATION_VERSION   "0.1.1"
-#define APPLICATION_YEARS     "2013 2014"
+#define APPLICATION_YEARS     "2013-2014"
 #define APPLICATION_WEB       "http://j2sg.wordpress.com/proyectos/qmb"
 
-#define DEFAULT_VERSION Model::SNMPv1
+#define DEFAULT_VERSION QtNetSNMP::SNMPv1
 #define DEFAULT_COMMUNITY_NAME "public"
 #define DEFAULT_NON_REPEATERS 0
 #define DEFAULT_MAX_REPETITIONS 10
