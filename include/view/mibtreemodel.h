@@ -22,12 +22,6 @@
 #define MIBTREEMODEL_H
 
 #include <QAbstractItemModel>
-
-/**namespace Model
-{
-    class SNMPNode;
-}*/
-
 #include <QtNetSNMP/qmibtree.h>
 
 namespace View
@@ -47,7 +41,6 @@ namespace View
     private:
         QtNetSNMP::QMIBTree *nodeFromIndex(const QModelIndex& index) const;
 
-        //Model::SNMPNode *_root;
         QtNetSNMP::QMIBTree *_root;
     };
 }

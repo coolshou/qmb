@@ -19,7 +19,6 @@
  **/
 
 #include "oideditordialog.h"
-//#include "snmpoid.h"
 #include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>

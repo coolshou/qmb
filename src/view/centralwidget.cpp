@@ -23,11 +23,6 @@
 #include "mibtreeproxymodel.h"
 #include "propertiesdialog.h"
 #include "oideditordialog.h"
-//#include "snmpmanager.h"
-#include <QtNetSNMP/qsnmpmanager.h>
-#include <QtNetSNMP/qsnmpobject.h>
-#include <QtNetSNMP/qsnmpoid.h>
-#include <QtNetSNMP/qsnmpdata.h>
 #include "global.h"
 #include <QLabel>
 #include <QLineEdit>
@@ -40,6 +35,10 @@
 #include <QVBoxLayout>
 #include <QMessageBox>
 #include <QInputDialog>
+#include <QtNetSNMP/qsnmpmanager.h>
+#include <QtNetSNMP/qsnmpobject.h>
+#include <QtNetSNMP/qsnmpoid.h>
+#include <QtNetSNMP/qsnmpdata.h>
 
 View::CentralWidget::CentralWidget(QWidget *parent) : QWidget(parent)
 {
@@ -59,13 +58,10 @@ void View::CentralWidget::loadMIBTree()
 {
     emit statusChanged(tr("Loading MIB Tree ..."));
 
-    //Model::SNMPNode *root = Model::SNMPManager::getMIBTree();
     QtNetSNMP::QSNMPManager *snmpManager = QtNetSNMP::QSNMPManager::instance();
     QtNetSNMP::QMIBTree *mibTree = snmpManager->getMIBModule();
 
     _mibTreeModel -> setRoot(mibTree);
-
-    //Model::SNMPManager::initSNMP();
 
     emit statusChanged(tr("MIB Tree loaded successfully"));
 }
@@ -131,12 +127,6 @@ void View::CentralWidget::invokeOperation()
         }
 
         _resultTextEdit -> append(tr("### SNMP Operation finished ###"));
-    /**} catch(Model::SNMPSessionException& exception) {
-        QMessageBox::critical(this, tr("SNMP Session Exception"), exception.message().c_str(), QMessageBox::Ok);
-    } catch(Model::SNMPOIDException& exception) {
-        QMessageBox::critical(this, tr("SNMP OID Exception"), exception.message().c_str(), QMessageBox::Ok);
-    } catch(Model::SNMPPacketException& exception) {
-        QMessageBox::critical(this, tr("SNMP Packet Exception"), exception.message().c_str(), QMessageBox::Ok);**/
     } catch(QtNetSNMP::QSNMPException& exception) {
         QMessageBox::critical(this, tr("SNMP Exception"), exception.message(), QMessageBox::Ok);
     }
@@ -162,7 +152,7 @@ void View::CentralWidget::readyToInvoke()
     bool agent = !(_agentLineEdit -> text().isEmpty());
     QtNetSNMP::SNMPVersion version = static_cast<QtNetSNMP::SNMPVersion>(_versionComboBox -> itemData(_versionComboBox -> currentIndex()).toInt());
 
-    if(row != -1) { // Las operaciones SNMP GET y SET no se efectuan sobre nodos internos
+    if(row != -1) {
         index = _mibTreeProxyModel -> mapToSource(_mibTreeView -> currentIndex());
         node = static_cast<QtNetSNMP::QMIBTree *>(index.internalPointer());
         internalNode = !node -> childs().isEmpty();

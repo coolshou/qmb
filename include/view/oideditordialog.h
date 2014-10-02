@@ -22,19 +22,13 @@
 #define OIDEDITORDIALOG_H
 
 #include <QDialog>
+#include <QtNetSNMP/qsnmpobject.h>
 
 QT_BEGIN_NAMESPACE
 class QLabel;
 class QLineEdit;
 class QPushButton;
 QT_END_NAMESPACE
-
-/**namespace Model
-{
-    class SNMPOID;
-}**/
-
-#include <QtNetSNMP/qsnmpobject.h>
 
 namespace View
 {
