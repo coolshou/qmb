@@ -8,6 +8,10 @@ OBJECTS_DIR = build
 MOC_DIR = build
 RCC_DIR = build
 
+greaterThan(QT_MAJOR_VERSION, 4) {
+   QT += widgets
+}
+
 DEPENDPATH += . \
               include \
               resources \
@@ -52,3 +56,5 @@ OTHER_FILES += \
     INSTALL \
     COPYRIGHT \
     CHANGELOG
+
+message("Qt Version: $$QT_VERSION")
