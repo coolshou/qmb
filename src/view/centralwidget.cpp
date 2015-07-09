@@ -36,6 +36,7 @@
 #include <QMessageBox>
 #include <QInputDialog>
 #include <QtNetSNMP/qsnmpmanager.h>
+#include <QtNetSNMP/qmibtree.h>
 #include <QtNetSNMP/qsnmpobject.h>
 #include <QtNetSNMP/qsnmpoid.h>
 #include <QtNetSNMP/qsnmpdata.h>

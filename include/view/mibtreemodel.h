@@ -22,7 +22,11 @@
 #define MIBTREEMODEL_H
 
 #include <QAbstractItemModel>
-#include <QtNetSNMP/qmibtree.h>
+
+namespace QtNetSNMP
+{
+    class QMIBTree;
+}
 
 namespace View
 {
