@@ -34,12 +34,14 @@ View::MIBTreeModel::~MIBTreeModel()
 
 void View::MIBTreeModel::setRoot(QtNetSNMP::QMIBTree *root)
 {
+    beginResetModel();
+
     if(_root)
         delete _root;
 
     _root = root;
 
-    reset();
+    endResetModel();
 }
 
 QModelIndex View::MIBTreeModel::index(int row, int column, const QModelIndex &parent) const
