@@ -1,7 +1,7 @@
 /**
  *  This file is part of QMB.
  *
- *  Copyright (c) 2013-2014 Juan Jose Salazar Garcia jjslzgc@gmail.com
+ *  Copyright (c) 2013-2015 Juan Jose Salazar Garcia jjslzgc@gmail.com
  *
  *  QMB is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@
 #define APPLICATION_NAME      "QMB"
 #define APPLICATION_NAME_LONG "QMB MIB Browser"
 #define APPLICATION_VERSION   "0.1.1"
-#define APPLICATION_YEARS     "2013-2014"
+#define APPLICATION_YEARS     "2013-2015"
 #define APPLICATION_WEB       "http://j2sg.wordpress.com/proyectos/qmb"
 
 #define DEFAULT_VERSION QtNetSNMP::SNMPv1

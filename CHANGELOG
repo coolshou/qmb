@@ -1,4 +1,4 @@
-v0.1.0 : Internal release
-
 v0.1.1 : Internal release
    - Net-SNMP replaced by QtNetSNMP as SNMP library.
+
+v0.1.0 : Internal release
