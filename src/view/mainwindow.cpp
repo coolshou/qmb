@@ -23,7 +23,14 @@
 #include "optionsdialog.h"
 #include "persistencemanager.h"
 #include "global.h"
-#include <QtGui>
+#include <QAction>
+#include <QMenuBar>
+#include <QMenu>
+#include <QStatusBar>
+#include <QLabel>
+#include <QCloseEvent>
+#include <QApplication>
+#include <QMessageBox>
 #include <QtNetSNMP/qsnmpmanager.h>
 
 
