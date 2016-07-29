@@ -22,7 +22,7 @@
 #define OIDEDITORDIALOG_H
 
 #include <QDialog>
-#include <QtNetSNMP/qsnmpobject.h>
+#include <qsnmpobject.h>
 
 QT_BEGIN_NAMESPACE
 class QLabel;

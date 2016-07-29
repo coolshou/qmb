@@ -45,7 +45,7 @@ SOURCES += src/main.cpp \
            src/view/optionsdialog.cpp \
            src/view/propertiesdialog.cpp
 
-LIBS += -L$$PWD/qt-net-snmp/ -lqt-net-snmp
+#LIBS += -L$$PWD/qt-net-snmp/ -lqt-net-snmp
 
 RESOURCES += resources/qmb.qrc
 

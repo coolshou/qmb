@@ -21,7 +21,7 @@
 #ifndef GLOBAL_H
 #define GLOBAL_H
 
-#include <QtNetSNMP/qsnmptypes.h>
+#include <qsnmptypes.h>
 
 #define ORGANIZATION_NAME     "j2sg_software"
 #define ORGANIZATION_DOMAIN   "http://j2sg.wordpress.com"
