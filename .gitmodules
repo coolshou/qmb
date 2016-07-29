@@ -1,0 +1,3 @@
+[submodule "qt-net-snmp"]
+	path = qt-net-snmp
+	url = https://github.com/coolshou/qt-net-snmp.git
