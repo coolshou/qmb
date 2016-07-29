@@ -35,11 +35,11 @@
 #include <QVBoxLayout>
 #include <QMessageBox>
 #include <QInputDialog>
-#include <QtNetSNMP/qsnmpmanager.h>
-#include <QtNetSNMP/qmibtree.h>
-#include <QtNetSNMP/qsnmpobject.h>
-#include <QtNetSNMP/qsnmpoid.h>
-#include <QtNetSNMP/qsnmpdata.h>
+#include <qsnmpmanager.h>
+#include <qmibtree.h>
+#include <qsnmpobject.h>
+#include <qsnmpoid.h>
+#include <qsnmpdata.h>
 
 View::CentralWidget::CentralWidget(QWidget *parent) : QWidget(parent)
 {

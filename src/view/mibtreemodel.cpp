@@ -19,8 +19,8 @@
  **/
 
 #include "mibtreemodel.h"
-#include <QtNetSNMP/qmibtree.h>
-#include <QtNetSNMP/qsnmpobject.h>
+#include <qmibtree.h>
+#include <qsnmpobject.h>
 
 View::MIBTreeModel::MIBTreeModel(QObject *parent) : QAbstractItemModel(parent)
 {

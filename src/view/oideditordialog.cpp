@@ -25,8 +25,8 @@
 #include <QGridLayout>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
-#include <QtNetSNMP/qsnmpoid.h>
-#include <QtNetSNMP/qsnmpdata.h>
+#include <qsnmpoid.h>
+#include <qsnmpdata.h>
 
 View::OIDEditorDialog::OIDEditorDialog(QtNetSNMP::QSNMPObject *object, QWidget *parent) : QDialog(parent), _object(object)
 {

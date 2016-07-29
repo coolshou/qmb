@@ -19,9 +19,9 @@
  **/
 
 #include "mibtreeproxymodel.h"
-#include <QtNetSNMP/qmibtree.h>
-#include <QtNetSNMP/qsnmpobject.h>
-#include <QtNetSNMP/qsnmpoid.h>
+#include <qmibtree.h>
+#include <qsnmpobject.h>
+#include <qsnmpoid.h>
 
 View::MIBTreeProxyModel::MIBTreeProxyModel(QObject *parent) : QSortFilterProxyModel(parent) {}
 

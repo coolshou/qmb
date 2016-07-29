@@ -11,6 +11,7 @@ RCC_DIR = build
 greaterThan(QT_MAJOR_VERSION, 4) {
    QT += widgets
 }
+include($$PWD/qt-net-snmp/qt-net-snmp.pri)
 
 DEPENDPATH += . \
               include \
@@ -44,7 +45,7 @@ SOURCES += src/main.cpp \
            src/view/optionsdialog.cpp \
            src/view/propertiesdialog.cpp
 
-LIBS += -lqt-net-snmp
+LIBS += -L$$PWD/qt-net-snmp/ -lqt-net-snmp
 
 RESOURCES += resources/qmb.qrc
 

@@ -31,7 +31,7 @@
 #include <QCloseEvent>
 #include <QApplication>
 #include <QMessageBox>
-#include <QtNetSNMP/qsnmpmanager.h>
+#include <qsnmpmanager.h>
 
 
 View::MainWindow::MainWindow()
